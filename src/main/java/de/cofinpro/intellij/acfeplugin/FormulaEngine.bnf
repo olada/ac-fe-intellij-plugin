@@ -1,0 +1,18 @@
+{
+    parserClass="de.cofinpro.intellij.acfeplugin.parser.FormulaEngineParser"
+
+    extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+
+    psiClassPrefix="Simple"
+    psiImplClassSuffix="Impl"
+    psiPackage="de.cofinpro.intellij.acfeplugin.psi"
+    psiImplPackage="de.cofinpro.intellij.acfeplugin.psi.impl"
+
+    elementTypeHolderClass="de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementTypes"
+    elementTypeClass="de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementType"
+    tokenTypeClass="de.cofinpro.intellij.acfeplugin.psi.FormulaEngineTokenType"
+}
+
+feFile ::= feToken*
+
+private feToken ::= hello
