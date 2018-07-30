@@ -3,7 +3,7 @@
 
     extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
 
-    psiClassPrefix="Simple"
+    psiClassPrefix="FormulaEngine"
     psiImplClassSuffix="Impl"
     psiPackage="de.cofinpro.intellij.acfeplugin.psi"
     psiImplPackage="de.cofinpro.intellij.acfeplugin.psi.impl"
@@ -13,6 +13,8 @@
     tokenTypeClass="de.cofinpro.intellij.acfeplugin.psi.FormulaEngineTokenType"
 }
 
-feFile ::= feToken*
+feFile ::= item_*
 
-private feToken ::= hello
+private item_ ::= (property|COMMENT|CRLF)
+
+property ::= (KEY? SEPARATOR VALUE?) | KEY
