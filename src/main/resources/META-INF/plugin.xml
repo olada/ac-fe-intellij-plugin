@@ -13,9 +13,14 @@
     <depends>com.intellij.modules.lang</depends>
     -->
 
+    <!-- Compatible with the following versions of IntelliJ Platform
+        At least 2019.2 is required. Otherwise, FileTypeFactory must be registered as an extension.
+        See the extensions section below. -->
+    <idea-version since-build="192.2" />
+
 
     <extensions defaultExtensionNs="com.intellij">
-        <fileTypeFactory implementation="de.cofinpro.intellij.acfeplugin.FormulaEngineFileTypeFactory"/>
+        <fileType name="FE file" implementationClass="de.cofinpro.intellij.acfeplugin.FormulaEngineFileType" fieldName="INSTANCE" language="FormulaEngine" extensions="fe" />
         <lang.parserDefinition language="FormulaEngine" implementationClass="de.cofinpro.intellij.acfeplugin.FormulaEngineParserDefinition"/>
     </extensions>
 

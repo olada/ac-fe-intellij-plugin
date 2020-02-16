@@ -1,11 +1,10 @@
 plugins {
-    id 'org.jetbrains.intellij' version '0.3.5'
+    id 'java'
+    id 'org.jetbrains.intellij' version '0.4.16'
 }
 
 group 'de.cofinpro.intellij'
 version '1.0-SNAPSHOT'
-
-apply plugin: 'java'
 
 sourceCompatibility = 1.8
 
@@ -17,20 +16,15 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 
-sourceSets {
-    main {
-        java {
-            srcDirs "src/main/gen"
-        }
-    }
-}
+sourceSets.main.java.srcDirs "src/main/gen"
 
 intellij {
-    version '2018.1.1'
+    version '2019.3.3'
 }
 
 patchPluginXml {
     changeNotes """
       Add change notes here.<br>
       <em>most HTML tags may be used</em>"""
+    version = project.version
 }
