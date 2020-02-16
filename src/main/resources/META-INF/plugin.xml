@@ -20,7 +20,7 @@
 
 
     <extensions defaultExtensionNs="com.intellij">
-        <fileType name="FE file" implementationClass="de.cofinpro.intellij.acfeplugin.FormulaEngineFileType" fieldName="INSTANCE" language="FormulaEngine" extensions="fe" />
+        <fileType name="Formula Engine File" implementationClass="de.cofinpro.intellij.acfeplugin.FormulaEngineFileType" fieldName="INSTANCE" language="FormulaEngine" extensions="fe" />
         <lang.parserDefinition language="FormulaEngine" implementationClass="de.cofinpro.intellij.acfeplugin.FormulaEngineParserDefinition"/>
     </extensions>
 
