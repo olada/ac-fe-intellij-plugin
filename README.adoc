@@ -1,6 +1,6 @@
-# ac-fe-intellij-plugin
+= ac-fe-intellij-plugin
 
-## Backlog
+== Backlog
 * Write Grammar with at least following tokens (taken from Eclipse plugin)
   * Annotation
   * Built in function
