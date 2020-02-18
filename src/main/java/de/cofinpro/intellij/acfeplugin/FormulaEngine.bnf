@@ -37,8 +37,9 @@ FunctionArguments ::= IDENTIFIER (',' IDENTIFIER)*
 FunctionInvocation ::= IDENTIFIER '(' FunctionArguments? ')'
 
 FunctionBody ::= Statement*
-Statement ::= Assignment ';'
+Statement ::= (Assignment | ReturnStatement) ';'
 Assignment ::= VisibilityPrefix? TypePrefix IDENTIFIER '=' FunctionInvocation
+ReturnStatement ::= return IDENTIFIER
 
 VisibilityPrefix ::= local | global
 TypePrefix ::= integer | string | list | dict | any

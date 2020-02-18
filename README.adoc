@@ -1,3 +1,5 @@
+:icons: font
+
 = ac-fe-intellij-plugin
 
 == Backlog
@@ -13,7 +15,7 @@
   ** Deprecated global
   ** Doc comment
   ** Final variable
-  ** Global variable
+  ** Global variable icon:check-circle[]
   ** Invalid Symbol
   ** Keyword
   ** Local variable
@@ -25,7 +27,7 @@
 * Syntax Highlighting
 * Auto Completion
 * Reference Resolution and jumping to definition
-* Highlight in-built functions
+* Bracket Pair Highlighting
 
 == Testen des Plugins
 

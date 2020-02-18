@@ -203,14 +203,35 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // Assignment ';'
+  // return IDENTIFIER
+  public static boolean ReturnStatement(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "ReturnStatement")) return false;
+    if (!nextTokenIs(b, RETURN)) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeTokens(b, 0, RETURN, IDENTIFIER);
+    exit_section_(b, m, RETURN_STATEMENT, r);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // (Assignment | ReturnStatement) ';'
   public static boolean Statement(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Statement")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, STATEMENT, "<statement>");
-    r = Assignment(b, l + 1);
+    r = Statement_0(b, l + 1);
     r = r && consumeToken(b, ";");
     exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  // Assignment | ReturnStatement
+  private static boolean Statement_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "Statement_0")) return false;
+    boolean r;
+    r = Assignment(b, l + 1);
+    if (!r) r = ReturnStatement(b, l + 1);
     return r;
   }
 

@@ -49,9 +49,9 @@ public class FormulaEngineSyntaxHighlighter extends SyntaxHighlighterBase {
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.LIST, LIST_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.DICT, DICT_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.ANY, ANY_ATTR_KEY);
-        safeMap(ATTRIBUTES, FormulaEngineElementTypes.TYPE_PREFIX, TYPE_PREFIX_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.LOCAL, LOCAL_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.GLOBAL, GLOBAL_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.RETURN, RETURN_ATTR_KEY);
     }
 
 

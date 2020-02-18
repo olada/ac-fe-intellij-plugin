@@ -34,9 +34,9 @@ IDENTIFIER=[a-zA-Z_][a-zA-Z0-9_]*
 
     "=" { return FormulaEngineElementTypes.OPERATOR_EQUALS; }
 
-
-
     "function" { return FormulaEngineElementTypes.FUNCTION; }
+    "return" { return FormulaEngineElementTypes.RETURN; }
+
 
     // Visibility
     "local" { return FormulaEngineElementTypes.LOCAL; }

@@ -15,6 +15,7 @@ public interface FormulaEngineElementTypes {
   IElementType FUNCTION_INVOCATION = new FormulaEngineElementType("FUNCTION_INVOCATION");
   IElementType FUNCTION_PARAMETER = new FormulaEngineElementType("FUNCTION_PARAMETER");
   IElementType FUNCTION_PARAMETERS = new FormulaEngineElementType("FUNCTION_PARAMETERS");
+  IElementType RETURN_STATEMENT = new FormulaEngineElementType("RETURN_STATEMENT");
   IElementType STATEMENT = new FormulaEngineElementType("STATEMENT");
   IElementType TYPE_PREFIX = new FormulaEngineElementType("TYPE_PREFIX");
   IElementType VISIBILITY_PREFIX = new FormulaEngineElementType("VISIBILITY_PREFIX");
@@ -32,6 +33,7 @@ public interface FormulaEngineElementTypes {
   IElementType LIST = new FormulaEngineTokenType("list");
   IElementType LOCAL = new FormulaEngineTokenType("local");
   IElementType OPERATOR_EQUALS = new FormulaEngineTokenType("=");
+  IElementType RETURN = new FormulaEngineTokenType("return");
   IElementType RIGHT_CURLY_BRACE = new FormulaEngineTokenType("}");
   IElementType RIGHT_PARENTHESIS = new FormulaEngineTokenType(")");
   IElementType STRING = new FormulaEngineTokenType("string");
@@ -59,6 +61,9 @@ public interface FormulaEngineElementTypes {
       }
       else if (type == FUNCTION_PARAMETERS) {
         return new FormulaEngineFunctionParametersImpl(node);
+      }
+      else if (type == RETURN_STATEMENT) {
+        return new FormulaEngineReturnStatementImpl(node);
       }
       else if (type == STATEMENT) {
         return new FormulaEngineStatementImpl(node);
