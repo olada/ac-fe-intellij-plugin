@@ -1,0 +1,53 @@
+// This is a generated file. Not intended for manual editing.
+package de.cofinpro.intellij.acfeplugin.psi.impl;
+
+import java.util.List;
+import org.jetbrains.annotations.*;
+import com.intellij.lang.ASTNode;
+import com.intellij.psi.PsiElement;
+import com.intellij.psi.PsiElementVisitor;
+import com.intellij.psi.util.PsiTreeUtil;
+import static de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementTypes.*;
+import com.intellij.extapi.psi.ASTWrapperPsiElement;
+import de.cofinpro.intellij.acfeplugin.psi.*;
+
+public class FormulaEngineAssignmentImpl extends ASTWrapperPsiElement implements FormulaEngineAssignment {
+
+  public FormulaEngineAssignmentImpl(@NotNull ASTNode node) {
+    super(node);
+  }
+
+  public void accept(@NotNull FormulaEngineVisitor visitor) {
+    visitor.visitAssignment(this);
+  }
+
+  public void accept(@NotNull PsiElementVisitor visitor) {
+    if (visitor instanceof FormulaEngineVisitor) accept((FormulaEngineVisitor)visitor);
+    else super.accept(visitor);
+  }
+
+  @Override
+  @NotNull
+  public FormulaEngineFunctionInvocation getFunctionInvocation() {
+    return findNotNullChildByClass(FormulaEngineFunctionInvocation.class);
+  }
+
+  @Override
+  @NotNull
+  public FormulaEngineTypePrefix getTypePrefix() {
+    return findNotNullChildByClass(FormulaEngineTypePrefix.class);
+  }
+
+  @Override
+  @Nullable
+  public FormulaEngineVisibilityPrefix getVisibilityPrefix() {
+    return findChildByClass(FormulaEngineVisibilityPrefix.class);
+  }
+
+  @Override
+  @NotNull
+  public PsiElement getIdentifier() {
+    return findNotNullChildByType(IDENTIFIER);
+  }
+
+}
