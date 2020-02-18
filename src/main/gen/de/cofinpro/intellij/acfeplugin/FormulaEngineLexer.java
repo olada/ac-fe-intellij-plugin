@@ -66,11 +66,11 @@ public class FormulaEngineLexer implements FlexLexer {
 
   private static final String ZZ_ACTION_PACKED_0 =
     "\2\0\1\1\1\2\1\3\1\4\1\5\1\6\1\7"+
-    "\1\10\23\3\1\11\5\3\1\12\2\3\1\13\2\3"+
-    "\1\14\3\3\1\15\1\3\1\16\1\17";
+    "\1\10\23\3\1\11\5\3\1\12\3\3\1\13\2\3"+
+    "\1\14\4\3\1\15\1\16\1\3\1\17\1\20";
 
   private static int [] zzUnpackAction() {
-    int [] result = new int[49];
+    int [] result = new int[52];
     int offset = 0;
     offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
     return result;
@@ -99,12 +99,12 @@ public class FormulaEngineLexer implements FlexLexer {
     "\0\62\0\62\0\144\0\175\0\226\0\257\0\310\0\341"+
     "\0\372\0\u0113\0\u012c\0\u0145\0\u015e\0\u0177\0\u0190\0\u01a9"+
     "\0\u01c2\0\u01db\0\u01f4\0\u020d\0\u0226\0\113\0\u023f\0\u0258"+
-    "\0\u0271\0\u028a\0\u02a3\0\113\0\u02bc\0\u02d5\0\113\0\u02ee"+
-    "\0\u0307\0\113\0\u0320\0\u0339\0\u0352\0\113\0\u036b\0\113"+
-    "\0\113";
+    "\0\u0271\0\u028a\0\u02a3\0\113\0\u02bc\0\u02d5\0\u02ee\0\113"+
+    "\0\u0307\0\u0320\0\113\0\u0339\0\u0352\0\u036b\0\u0384\0\113"+
+    "\0\113\0\u039d\0\113\0\113";
 
   private static int [] zzUnpackRowMap() {
-    int [] result = new int[49];
+    int [] result = new int[52];
     int offset = 0;
     offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
     return result;
@@ -144,20 +144,21 @@ public class FormulaEngineLexer implements FlexLexer {
     "\3\5\1\41\14\5\2\0\2\5\5\0\3\5\1\42"+
     "\14\5\2\0\2\5\5\0\13\5\1\43\4\5\2\0"+
     "\2\5\5\0\4\5\1\44\13\5\2\0\2\5\5\0"+
-    "\10\5\1\45\7\5\2\0\2\5\5\0\12\5\1\35"+
-    "\5\5\2\0\2\5\5\0\5\5\1\46\12\5\2\0"+
-    "\2\5\5\0\4\5\1\47\13\5\2\0\2\5\5\0"+
-    "\4\5\1\50\13\5\2\0\2\5\5\0\11\5\1\51"+
-    "\6\5\2\0\2\5\5\0\7\5\1\52\10\5\2\0"+
-    "\2\5\5\0\2\5\1\53\15\5\2\0\2\5\5\0"+
-    "\5\5\1\54\12\5\2\0\2\5\5\0\13\5\1\55"+
-    "\4\5\2\0\2\5\5\0\11\5\1\56\6\5\2\0"+
-    "\2\5\5\0\6\5\1\57\11\5\2\0\2\5\5\0"+
-    "\14\5\1\60\3\5\2\0\2\5\5\0\2\5\1\61"+
-    "\15\5";
+    "\10\5\1\45\7\5\2\0\2\5\5\0\12\5\1\46"+
+    "\5\5\2\0\2\5\5\0\5\5\1\47\12\5\2\0"+
+    "\2\5\5\0\4\5\1\50\13\5\2\0\2\5\5\0"+
+    "\4\5\1\51\13\5\2\0\2\5\5\0\11\5\1\52"+
+    "\6\5\2\0\2\5\5\0\7\5\1\53\10\5\2\0"+
+    "\2\5\5\0\10\5\1\54\7\5\2\0\2\5\5\0"+
+    "\2\5\1\55\15\5\2\0\2\5\5\0\5\5\1\56"+
+    "\12\5\2\0\2\5\5\0\13\5\1\57\4\5\2\0"+
+    "\2\5\5\0\7\5\1\60\10\5\2\0\2\5\5\0"+
+    "\11\5\1\61\6\5\2\0\2\5\5\0\6\5\1\62"+
+    "\11\5\2\0\2\5\5\0\14\5\1\63\3\5\2\0"+
+    "\2\5\5\0\2\5\1\64\15\5";
 
   private static int [] zzUnpackTrans() {
-    int [] result = new int[900];
+    int [] result = new int[950];
     int offset = 0;
     offset = zzUnpackTrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -195,10 +196,10 @@ public class FormulaEngineLexer implements FlexLexer {
   private static final int [] ZZ_ATTRIBUTE = zzUnpackAttribute();
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
-    "\2\0\2\11\1\1\5\11\47\1";
+    "\2\0\2\11\1\1\5\11\52\1";
 
   private static int [] zzUnpackAttribute() {
-    int [] result = new int[49];
+    int [] result = new int[52];
     int offset = 0;
     offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
     return result;
@@ -515,77 +516,82 @@ public class FormulaEngineLexer implements FlexLexer {
             { return TokenType.BAD_CHARACTER;
             } 
             // fall through
-          case 16: break;
+          case 17: break;
           case 2: 
             { return TokenType.WHITE_SPACE;
             } 
             // fall through
-          case 17: break;
+          case 18: break;
           case 3: 
             { return FormulaEngineElementTypes.IDENTIFIER;
             } 
             // fall through
-          case 18: break;
+          case 19: break;
           case 4: 
             { return FormulaEngineElementTypes.LEFT_PARENTHESIS;
             } 
             // fall through
-          case 19: break;
+          case 20: break;
           case 5: 
             { return FormulaEngineElementTypes.RIGHT_PARENTHESIS;
             } 
             // fall through
-          case 20: break;
+          case 21: break;
           case 6: 
             { return FormulaEngineElementTypes.LEFT_CURLY_BRACE;
             } 
             // fall through
-          case 21: break;
+          case 22: break;
           case 7: 
             { return FormulaEngineElementTypes.RIGHT_CURLY_BRACE;
             } 
             // fall through
-          case 22: break;
+          case 23: break;
           case 8: 
             { return FormulaEngineElementTypes.OPERATOR_EQUALS;
             } 
             // fall through
-          case 23: break;
+          case 24: break;
           case 9: 
             { return FormulaEngineElementTypes.ANY;
             } 
             // fall through
-          case 24: break;
+          case 25: break;
           case 10: 
             { return FormulaEngineElementTypes.LIST;
             } 
             // fall through
-          case 25: break;
+          case 26: break;
           case 11: 
             { return FormulaEngineElementTypes.DICT;
             } 
             // fall through
-          case 26: break;
-          case 12: 
-            { return FormulaEngineElementTypes.VISIBILITY_PREFIX;
-            } 
-            // fall through
           case 27: break;
-          case 13: 
-            { return FormulaEngineElementTypes.STRING;
+          case 12: 
+            { return FormulaEngineElementTypes.LOCAL;
             } 
             // fall through
           case 28: break;
-          case 14: 
-            { return FormulaEngineElementTypes.INTEGER;
+          case 13: 
+            { return FormulaEngineElementTypes.GLOBAL;
             } 
             // fall through
           case 29: break;
-          case 15: 
-            { return FormulaEngineElementTypes.FUNCTION;
+          case 14: 
+            { return FormulaEngineElementTypes.STRING;
             } 
             // fall through
           case 30: break;
+          case 15: 
+            { return FormulaEngineElementTypes.INTEGER;
+            } 
+            // fall through
+          case 31: break;
+          case 16: 
+            { return FormulaEngineElementTypes.FUNCTION;
+            } 
+            // fall through
+          case 32: break;
           default:
             zzScanError(ZZ_NO_MATCH);
           }

@@ -39,8 +39,8 @@ IDENTIFIER=[a-zA-Z_][a-zA-Z0-9_]*
     "function" { return FormulaEngineElementTypes.FUNCTION; }
 
     // Visibility
-    "local" { return FormulaEngineElementTypes.VISIBILITY_PREFIX; }
-    "global" { return FormulaEngineElementTypes.VISIBILITY_PREFIX; }
+    "local" { return FormulaEngineElementTypes.LOCAL; }
+    "global" { return FormulaEngineElementTypes.GLOBAL; }
 
     // Data Types
     "integer" { return FormulaEngineElementTypes.INTEGER; }

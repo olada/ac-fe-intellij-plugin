@@ -13,6 +13,7 @@ public class FormulaEngineHighlighterColors {
     public static final TextAttributesKey LIST_ATTR_KEY = createTextAttributesKey("FE_LIST", KEYWORD);
     public static final TextAttributesKey DICT_ATTR_KEY = createTextAttributesKey("FE_DICT", KEYWORD);
     public static final TextAttributesKey ANY_ATTR_KEY = createTextAttributesKey("FE_ANY", KEYWORD);
-    public static final TextAttributesKey VISIBILITY_PREFIX_ATTR_KEY = createTextAttributesKey("FE_VISIBILITY_PREFIX", PARAMETER);
+    public static final TextAttributesKey LOCAL_ATTR_KEY = createTextAttributesKey("FE_LOCAL", KEYWORD);
+    public static final TextAttributesKey GLOBAL_ATTR_KEY = createTextAttributesKey("FE_GLOBAL", KEYWORD);
     public static final TextAttributesKey TYPE_PREFIX_ATTR_KEY = createTextAttributesKey("FE_TYPE_PREFIX", KEYWORD);
 }
