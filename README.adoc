@@ -25,3 +25,15 @@
 * Syntax Highlighting
 * Auto Completion
 * Reference Resolution and jumping to definition
+
+== Testen des Plugins
+
+Task _runIde_ des intellij-Gradle-Plugins ausführen.
+
+== Quellen
+
+* https://www.jetbrains.org/intellij/sdk/docs/reference_guide/custom_language_support.html
+* https://medium.com/@shan1024/custom-language-plugin-development-for-intellij-idea-part-02-f948a078dc81
+* https://medium.com/@shan1024/custom-language-plugin-development-for-intellij-idea-part-03-2bfcc7f1517
+* https://medium.com/@shan1024/custom-language-plugin-development-for-intellij-idea-part-04-df2f3ce88b30
+* https://github.com/Shan1024/Simple-Intellij-Plugin/blob/master/src/main/java/org/shan/grammar/Simple.flex

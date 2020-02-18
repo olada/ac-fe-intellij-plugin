@@ -22,7 +22,7 @@ import org.jetbrains.annotations.NotNull;
  */
 public class FormulaEngineParserDefinition implements ParserDefinition {
     public static final TokenSet WHITE_SPACES = TokenSet.create(TokenType.WHITE_SPACE);
-    public static final TokenSet COMMENTS = TokenSet.create(FormulaEngineElementTypes.COMMENT);
+    public static final TokenSet COMMENTS = TokenSet.create(FormulaEngineElementTypes.LINE_COMMENT, FormulaEngineElementTypes.BLOCK_COMMENT);
 
     public static final IFileElementType FILE = new IFileElementType(FormulaEngineLanguage.INSTANCE);
 

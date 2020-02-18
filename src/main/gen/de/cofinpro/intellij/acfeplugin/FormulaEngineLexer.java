@@ -4,8 +4,9 @@ package de.cofinpro.intellij.acfeplugin;
 
 import com.intellij.lexer.FlexLexer;
 import com.intellij.psi.tree.IElementType;
-import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementTypes;
 import com.intellij.psi.TokenType;
+import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementType;
+import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementTypes;
 
 
 /**
@@ -37,25 +38,26 @@ public class FormulaEngineLexer implements FlexLexer {
 
   /** 
    * Translates characters to character classes
-   * Chosen bits are [9, 6, 6]
-   * Total runtime size is 1568 bytes
+   * Chosen bits are [8, 6, 7]
+   * Total runtime size is 1040 bytes
    */
   public static int ZZ_CMAP(int ch) {
-    return ZZ_CMAP_A[(ZZ_CMAP_Y[ZZ_CMAP_Z[ch>>12]|((ch>>6)&0x3f)]<<6)|(ch&0x3f)];
+    return ZZ_CMAP_A[ZZ_CMAP_Y[ZZ_CMAP_Z[ch>>13]|((ch>>7)&0x3f)]|(ch&0x7f)];
   }
 
-  /* The ZZ_CMAP_Z table has 272 entries */
+  /* The ZZ_CMAP_Z table has 136 entries */
   static final char ZZ_CMAP_Z[] = zzUnpackCMap(
-    "\1\0\1\100\1\200\u010d\100");
+    "\1\0\207\100");
 
-  /* The ZZ_CMAP_Y table has 192 entries */
+  /* The ZZ_CMAP_Y table has 128 entries */
   static final char ZZ_CMAP_Y[] = zzUnpackCMap(
-    "\1\0\1\1\1\2\175\3\1\4\77\3");
+    "\1\0\177\200");
 
-  /* The ZZ_CMAP_A table has 320 entries */
+  /* The ZZ_CMAP_A table has 256 entries */
   static final char ZZ_CMAP_A[] = zzUnpackCMap(
-    "\11\0\1\4\1\2\1\1\1\5\1\3\22\0\1\7\1\10\1\0\1\10\26\0\1\11\2\0\1\11\36\0\1"+
-    "\6\50\0\1\1\242\0\2\1\26\0");
+    "\11\0\2\1\1\0\2\1\22\0\1\1\7\0\1\4\1\5\6\0\12\3\3\0\1\10\3\0\32\2\4\0\1\2"+
+    "\1\0\1\21\1\23\1\14\1\27\1\24\1\11\1\22\1\2\1\16\2\2\1\20\1\2\1\13\1\17\2"+
+    "\2\1\25\1\26\1\15\1\12\3\2\1\30\1\2\1\6\1\0\1\7\202\0");
 
   /** 
    * Translates DFA states to action switch labels.
@@ -63,11 +65,12 @@ public class FormulaEngineLexer implements FlexLexer {
   private static final int [] ZZ_ACTION = zzUnpackAction();
 
   private static final String ZZ_ACTION_PACKED_0 =
-    "\2\0\2\1\1\2\1\3\1\4\1\5\2\6\2\7"+
-    "\1\3\1\7\1\0\2\4\1\0\1\2\2\6";
+    "\2\0\1\1\1\2\1\3\1\4\1\5\1\6\1\7"+
+    "\1\10\23\3\1\11\5\3\1\12\2\3\1\13\2\3"+
+    "\1\14\3\3\1\15\1\3\1\16\1\17";
 
   private static int [] zzUnpackAction() {
-    int [] result = new int[21];
+    int [] result = new int[49];
     int offset = 0;
     offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
     return result;
@@ -92,12 +95,16 @@ public class FormulaEngineLexer implements FlexLexer {
   private static final int [] ZZ_ROWMAP = zzUnpackRowMap();
 
   private static final String ZZ_ROWMAP_PACKED_0 =
-    "\0\0\0\12\0\24\0\36\0\50\0\62\0\74\0\106"+
-    "\0\120\0\132\0\50\0\144\0\156\0\170\0\62\0\202"+
-    "\0\214\0\156\0\132\0\226\0\240";
+    "\0\0\0\31\0\62\0\62\0\113\0\62\0\62\0\62"+
+    "\0\62\0\62\0\144\0\175\0\226\0\257\0\310\0\341"+
+    "\0\372\0\u0113\0\u012c\0\u0145\0\u015e\0\u0177\0\u0190\0\u01a9"+
+    "\0\u01c2\0\u01db\0\u01f4\0\u020d\0\u0226\0\113\0\u023f\0\u0258"+
+    "\0\u0271\0\u028a\0\u02a3\0\113\0\u02bc\0\u02d5\0\113\0\u02ee"+
+    "\0\u0307\0\113\0\u0320\0\u0339\0\u0352\0\113\0\u036b\0\113"+
+    "\0\113";
 
   private static int [] zzUnpackRowMap() {
-    int [] result = new int[21];
+    int [] result = new int[49];
     int offset = 0;
     offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
     return result;
@@ -120,22 +127,37 @@ public class FormulaEngineLexer implements FlexLexer {
   private static final int [] ZZ_TRANS = zzUnpackTrans();
 
   private static final String ZZ_TRANS_PACKED_0 =
-    "\1\3\1\4\1\5\1\4\2\5\1\6\1\5\1\7"+
-    "\1\10\1\11\1\12\1\13\1\12\1\14\1\13\1\15"+
-    "\1\16\2\11\2\3\1\0\1\3\2\0\1\17\1\0"+
-    "\1\3\1\0\1\3\1\4\1\5\1\4\2\5\1\17"+
-    "\1\5\1\3\2\0\5\5\1\0\1\5\11\0\1\3"+
-    "\2\0\2\7\1\0\1\3\2\20\1\21\1\20\1\7"+
-    "\1\20\12\0\2\11\1\0\2\11\1\0\1\22\4\11"+
-    "\1\23\1\5\2\23\1\5\1\22\1\23\3\11\1\24"+
-    "\1\16\1\24\1\14\1\16\1\22\1\14\5\11\1\25"+
-    "\6\11\1\0\1\5\1\16\1\5\2\16\1\0\1\16"+
-    "\2\0\2\20\2\0\10\20\2\0\3\20\1\7\2\20"+
-    "\1\11\1\24\1\5\2\24\1\5\1\22\1\24\7\11"+
-    "\1\0\1\22\3\11";
+    "\1\3\1\4\1\5\1\3\1\6\1\7\1\10\1\11"+
+    "\1\12\1\13\4\5\1\14\1\5\1\15\1\16\1\17"+
+    "\3\5\1\20\1\21\1\5\31\3\33\0\2\5\5\0"+
+    "\20\5\2\0\2\5\5\0\1\5\1\22\16\5\2\0"+
+    "\2\5\5\0\2\5\1\23\15\5\2\0\2\5\5\0"+
+    "\5\5\1\24\1\25\11\5\2\0\2\5\5\0\2\5"+
+    "\1\26\15\5\2\0\2\5\5\0\7\5\1\27\10\5"+
+    "\2\0\2\5\5\0\4\5\1\30\13\5\2\0\2\5"+
+    "\5\0\5\5\1\31\12\5\2\0\2\5\5\0\2\5"+
+    "\1\32\15\5\2\0\2\5\5\0\4\5\1\33\13\5"+
+    "\2\0\2\5\5\0\15\5\1\34\2\5\2\0\2\5"+
+    "\5\0\3\5\1\35\14\5\2\0\2\5\5\0\17\5"+
+    "\1\36\2\0\2\5\5\0\6\5\1\37\11\5\2\0"+
+    "\2\5\5\0\14\5\1\40\3\5\2\0\2\5\5\0"+
+    "\3\5\1\41\14\5\2\0\2\5\5\0\3\5\1\42"+
+    "\14\5\2\0\2\5\5\0\13\5\1\43\4\5\2\0"+
+    "\2\5\5\0\4\5\1\44\13\5\2\0\2\5\5\0"+
+    "\10\5\1\45\7\5\2\0\2\5\5\0\12\5\1\35"+
+    "\5\5\2\0\2\5\5\0\5\5\1\46\12\5\2\0"+
+    "\2\5\5\0\4\5\1\47\13\5\2\0\2\5\5\0"+
+    "\4\5\1\50\13\5\2\0\2\5\5\0\11\5\1\51"+
+    "\6\5\2\0\2\5\5\0\7\5\1\52\10\5\2\0"+
+    "\2\5\5\0\2\5\1\53\15\5\2\0\2\5\5\0"+
+    "\5\5\1\54\12\5\2\0\2\5\5\0\13\5\1\55"+
+    "\4\5\2\0\2\5\5\0\11\5\1\56\6\5\2\0"+
+    "\2\5\5\0\6\5\1\57\11\5\2\0\2\5\5\0"+
+    "\14\5\1\60\3\5\2\0\2\5\5\0\2\5\1\61"+
+    "\15\5";
 
   private static int [] zzUnpackTrans() {
-    int [] result = new int[170];
+    int [] result = new int[900];
     int offset = 0;
     offset = zzUnpackTrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -173,10 +195,10 @@ public class FormulaEngineLexer implements FlexLexer {
   private static final int [] ZZ_ATTRIBUTE = zzUnpackAttribute();
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
-    "\2\0\5\1\1\11\6\1\1\0\2\1\1\0\3\1";
+    "\2\0\2\11\1\1\5\11\47\1";
 
   private static int [] zzUnpackAttribute() {
-    int [] result = new int[21];
+    int [] result = new int[49];
     int offset = 0;
     offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
     return result;
@@ -284,7 +306,7 @@ public class FormulaEngineLexer implements FlexLexer {
   /**
    * Refills the input buffer.
    *
-   * @return      <code>false</code>, iff there was new input.
+   * @return      {@code false}, iff there was new input.
    *
    * @exception   java.io.IOException  if any I/O-Error occurs
    */
@@ -320,7 +342,7 @@ public class FormulaEngineLexer implements FlexLexer {
 
 
   /**
-   * Returns the character at position <tt>pos</tt> from the
+   * Returns the character at position {@code pos} from the
    * matched text.
    *
    * It is equivalent to yytext().charAt(pos), but faster
@@ -344,7 +366,7 @@ public class FormulaEngineLexer implements FlexLexer {
 
 
   /**
-   * Reports an error that occured while scanning.
+   * Reports an error that occurred while scanning.
    *
    * In a wellformed scanner (no or only correct usage of
    * yypushback(int) and a match-all fallback rule) this method
@@ -490,40 +512,80 @@ public class FormulaEngineLexer implements FlexLexer {
       else {
         switch (zzAction < 0 ? zzAction : ZZ_ACTION[zzAction]) {
           case 1: 
-            { yybegin(YYINITIAL); return FormulaEngineElementTypes.KEY;
-            } 
-            // fall through
-          case 8: break;
-          case 2: 
-            { yybegin(YYINITIAL); return TokenType.WHITE_SPACE;
-            } 
-            // fall through
-          case 9: break;
-          case 3: 
             { return TokenType.BAD_CHARACTER;
             } 
             // fall through
-          case 10: break;
+          case 16: break;
+          case 2: 
+            { return TokenType.WHITE_SPACE;
+            } 
+            // fall through
+          case 17: break;
+          case 3: 
+            { return FormulaEngineElementTypes.IDENTIFIER;
+            } 
+            // fall through
+          case 18: break;
           case 4: 
-            { yybegin(YYINITIAL); return FormulaEngineElementTypes.COMMENT;
+            { return FormulaEngineElementTypes.LEFT_PARENTHESIS;
             } 
             // fall through
-          case 11: break;
+          case 19: break;
           case 5: 
-            { yybegin(WAITING_VALUE); return FormulaEngineElementTypes.SEPARATOR;
+            { return FormulaEngineElementTypes.RIGHT_PARENTHESIS;
             } 
             // fall through
-          case 12: break;
+          case 20: break;
           case 6: 
-            { yybegin(YYINITIAL); return FormulaEngineElementTypes.VALUE;
+            { return FormulaEngineElementTypes.LEFT_CURLY_BRACE;
             } 
             // fall through
-          case 13: break;
+          case 21: break;
           case 7: 
-            { yybegin(WAITING_VALUE); return TokenType.WHITE_SPACE;
+            { return FormulaEngineElementTypes.RIGHT_CURLY_BRACE;
             } 
             // fall through
-          case 14: break;
+          case 22: break;
+          case 8: 
+            { return FormulaEngineElementTypes.OPERATOR_EQUALS;
+            } 
+            // fall through
+          case 23: break;
+          case 9: 
+            { return FormulaEngineElementTypes.ANY;
+            } 
+            // fall through
+          case 24: break;
+          case 10: 
+            { return FormulaEngineElementTypes.LIST;
+            } 
+            // fall through
+          case 25: break;
+          case 11: 
+            { return FormulaEngineElementTypes.DICT;
+            } 
+            // fall through
+          case 26: break;
+          case 12: 
+            { return FormulaEngineElementTypes.VISIBILITY_PREFIX;
+            } 
+            // fall through
+          case 27: break;
+          case 13: 
+            { return FormulaEngineElementTypes.STRING;
+            } 
+            // fall through
+          case 28: break;
+          case 14: 
+            { return FormulaEngineElementTypes.INTEGER;
+            } 
+            // fall through
+          case 29: break;
+          case 15: 
+            { return FormulaEngineElementTypes.FUNCTION;
+            } 
+            // fall through
+          case 30: break;
           default:
             zzScanError(ZZ_NO_MATCH);
           }

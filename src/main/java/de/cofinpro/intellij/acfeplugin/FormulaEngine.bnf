@@ -11,10 +11,34 @@
     elementTypeHolderClass="de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementTypes"
     elementTypeClass="de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementType"
     tokenTypeClass="de.cofinpro.intellij.acfeplugin.psi.FormulaEngineTokenType"
+
+    tokens = [
+            LEFT_PARENTHESIS = '('
+            RIGHT_PARENTHESIS = ')'
+            LEFT_CURLY_BRACE = '{'
+            RIGHT_CURLY_BRACE = '}'
+            OPERATOR_EQUALS = '='
+
+            IDENTIFIER = 'regexp:[a-zA-Z_][a-zA-Z0-9_]*'
+            LINE_COMMENT='regexp://.*'
+            BLOCK_COMMENT='regexp:/\*([^*]|\*+[^*/])*(\*+/)?'
+            WHITE_SPACE = 'regexp:\s+'
+    ]
 }
 
-feFile ::= item_*
+feFile ::= FunctionDefinition*
 
-private item_ ::= (property|COMMENT|CRLF)
+FunctionDefinition ::= function IDENTIFIER '(' FunctionParameters? ')' '{' FunctionBody '}'
+FunctionParameters ::= FunctionParameter (',' FunctionParameter)*
+FunctionParameter ::= TypePrefix? IDENTIFIER
 
-property ::= (KEY? SEPARATOR VALUE?) | KEY
+
+FunctionArguments ::= IDENTIFIER (',' IDENTIFIER)*
+FunctionInvocation ::= IDENTIFIER '(' FunctionArguments? ')'
+
+FunctionBody ::= Statement*
+Statement ::= Assignment ';'
+Assignment ::= VisibilityPrefix? TypePrefix IDENTIFIER '=' FunctionInvocation
+
+VisibilityPrefix ::= local | global
+TypePrefix ::= integer | string | list | dict | any

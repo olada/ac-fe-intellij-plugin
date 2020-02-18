@@ -7,11 +7,16 @@ import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.fileTypes.SyntaxHighlighterBase;
 import com.intellij.psi.TokenType;
 import com.intellij.psi.tree.IElementType;
+import com.intellij.util.ui.Centerizer;
 import de.cofinpro.intellij.acfeplugin.lex.FormulaEngineLexerAdapter;
 import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementTypes;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static com.intellij.openapi.editor.colors.TextAttributesKey.createTextAttributesKey;
+import static de.cofinpro.intellij.acfeplugin.highlighting.FormulaEngineHighlighterColors.*;
 
 public class FormulaEngineSyntaxHighlighter extends SyntaxHighlighterBase {
 
@@ -33,6 +38,21 @@ public class FormulaEngineSyntaxHighlighter extends SyntaxHighlighterBase {
     private static final TextAttributesKey[] COMMENT_KEYS = new TextAttributesKey[]{COMMENT};
     private static final TextAttributesKey[] EMPTY_KEYS = new TextAttributesKey[0];
 
+    protected static final Map<IElementType, TextAttributesKey> ATTRIBUTES = new HashMap<>();
+
+    static {
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.FUNCTION, FUNCTION_ATTR_KEY);
+
+        // Keywords
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.INTEGER, INTEGER_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.STRING, STRING_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.LIST, LIST_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.DICT, DICT_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.ANY, ANY_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.TYPE_PREFIX, TYPE_PREFIX_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.VISIBILITY_PREFIX, VISIBILITY_PREFIX_ATTR_KEY);
+    }
+
 
     @NotNull
     @Override
@@ -43,18 +63,6 @@ public class FormulaEngineSyntaxHighlighter extends SyntaxHighlighterBase {
     @NotNull
     @Override
     public TextAttributesKey[] getTokenHighlights(IElementType tokenType) {
-        if (tokenType.equals(FormulaEngineElementTypes.SEPARATOR)) {
-            return SEPARATOR_KEYS;
-        } else if (tokenType.equals(FormulaEngineElementTypes.KEY)) {
-            return KEY_KEYS;
-        } else if (tokenType.equals(FormulaEngineElementTypes.VALUE)) {
-            return VALUE_KEYS;
-        } else if (tokenType.equals(FormulaEngineElementTypes.COMMENT)) {
-            return COMMENT_KEYS;
-        } else if (tokenType.equals(TokenType.BAD_CHARACTER)) {
-            return BAD_CHAR_KEYS;
-        } else {
-            return EMPTY_KEYS;
-        }
+        return pack(ATTRIBUTES.get(tokenType));
     }
 }

@@ -7,7 +7,43 @@ import com.intellij.psi.PsiElement;
 
 public class FormulaEngineVisitor extends PsiElementVisitor {
 
-  public void visitProperty(@NotNull FormulaEngineProperty o) {
+  public void visitAssignment(@NotNull FormulaEngineAssignment o) {
+    visitPsiElement(o);
+  }
+
+  public void visitFunctionArguments(@NotNull FormulaEngineFunctionArguments o) {
+    visitPsiElement(o);
+  }
+
+  public void visitFunctionBody(@NotNull FormulaEngineFunctionBody o) {
+    visitPsiElement(o);
+  }
+
+  public void visitFunctionDefinition(@NotNull FormulaEngineFunctionDefinition o) {
+    visitPsiElement(o);
+  }
+
+  public void visitFunctionInvocation(@NotNull FormulaEngineFunctionInvocation o) {
+    visitPsiElement(o);
+  }
+
+  public void visitFunctionParameter(@NotNull FormulaEngineFunctionParameter o) {
+    visitPsiElement(o);
+  }
+
+  public void visitFunctionParameters(@NotNull FormulaEngineFunctionParameters o) {
+    visitPsiElement(o);
+  }
+
+  public void visitStatement(@NotNull FormulaEngineStatement o) {
+    visitPsiElement(o);
+  }
+
+  public void visitTypePrefix(@NotNull FormulaEngineTypePrefix o) {
+    visitPsiElement(o);
+  }
+
+  public void visitVisibilityPrefix(@NotNull FormulaEngineVisibilityPrefix o) {
     visitPsiElement(o);
   }
 
