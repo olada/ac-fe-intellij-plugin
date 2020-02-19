@@ -5,7 +5,7 @@
 == Backlog
 * Write Grammar with at least following tokens (taken from Eclipse plugin)
   ** Annotation
-  ** Built in function
+  ** Built in function (probably requires an annotator)
   ** Comment
   ** Cross reference
   ** Data type

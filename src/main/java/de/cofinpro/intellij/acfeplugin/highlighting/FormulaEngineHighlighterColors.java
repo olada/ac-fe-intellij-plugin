@@ -1,5 +1,6 @@
 package de.cofinpro.intellij.acfeplugin.highlighting;
 
+import com.intellij.openapi.editor.DefaultLanguageHighlighterColors;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
 
 import static com.intellij.openapi.editor.DefaultLanguageHighlighterColors.FUNCTION_DECLARATION;
@@ -16,4 +17,5 @@ public class FormulaEngineHighlighterColors {
     public static final TextAttributesKey LOCAL_ATTR_KEY = createTextAttributesKey("FE_LOCAL", KEYWORD);
     public static final TextAttributesKey GLOBAL_ATTR_KEY = createTextAttributesKey("FE_GLOBAL", KEYWORD);
     public static final TextAttributesKey RETURN_ATTR_KEY = createTextAttributesKey("FE_RETURN", KEYWORD);
+
 }

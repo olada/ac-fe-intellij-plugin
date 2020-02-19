@@ -53,20 +53,4 @@ IDENTIFIER=[a-zA-Z_][a-zA-Z0-9_]*
     {WHITE_SPACE} { return TokenType.WHITE_SPACE; }
 }
 
-/*
-<YYINITIAL> {END_OF_LINE_COMMENT}                           { yybegin(YYINITIAL); return FormulaEngineElementTypes.COMMENT; }
-
-<YYINITIAL> {KEY_CHARACTER}+                                { yybegin(YYINITIAL); return FormulaEngineElementTypes.KEY; }
-
-<YYINITIAL> {SEPARATOR}                                     { yybegin(WAITING_VALUE); return FormulaEngineElementTypes.SEPARATOR; }
-
-<WAITING_VALUE> {CRLF}({CRLF}|{WHITE_SPACE})+               { yybegin(YYINITIAL); return TokenType.WHITE_SPACE; }
-
-<WAITING_VALUE> {WHITE_SPACE}+                              { yybegin(WAITING_VALUE); return TokenType.WHITE_SPACE; }
-
-<WAITING_VALUE> {FIRST_VALUE_CHARACTER}{VALUE_CHARACTER}*   { yybegin(YYINITIAL); return FormulaEngineElementTypes.VALUE; }
-
-({CRLF}|{WHITE_SPACE})+                                     { yybegin(YYINITIAL); return TokenType.WHITE_SPACE; }
-*/
-
 [^]                                                         { return TokenType.BAD_CHARACTER; }
