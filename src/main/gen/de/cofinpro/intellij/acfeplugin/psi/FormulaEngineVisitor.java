@@ -11,6 +11,14 @@ public class FormulaEngineVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitBuiltInFunctionName(@NotNull FormulaEngineBuiltInFunctionName o) {
+    visitPsiElement(o);
+  }
+
+  public void visitCustomFunctionName(@NotNull FormulaEngineCustomFunctionName o) {
+    visitPsiElement(o);
+  }
+
   public void visitFunctionArguments(@NotNull FormulaEngineFunctionArguments o) {
     visitPsiElement(o);
   }

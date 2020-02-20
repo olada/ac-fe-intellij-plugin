@@ -9,6 +9,8 @@ import de.cofinpro.intellij.acfeplugin.psi.impl.*;
 public interface FormulaEngineElementTypes {
 
   IElementType ASSIGNMENT = new FormulaEngineElementType("ASSIGNMENT");
+  IElementType BUILT_IN_FUNCTION_NAME = new FormulaEngineElementType("BUILT_IN_FUNCTION_NAME");
+  IElementType CUSTOM_FUNCTION_NAME = new FormulaEngineElementType("CUSTOM_FUNCTION_NAME");
   IElementType FUNCTION_ARGUMENTS = new FormulaEngineElementType("FUNCTION_ARGUMENTS");
   IElementType FUNCTION_BODY = new FormulaEngineElementType("FUNCTION_BODY");
   IElementType FUNCTION_DEFINITION = new FormulaEngineElementType("FUNCTION_DEFINITION");
@@ -21,21 +23,32 @@ public interface FormulaEngineElementTypes {
   IElementType VISIBILITY_PREFIX = new FormulaEngineElementType("VISIBILITY_PREFIX");
 
   IElementType ANY = new FormulaEngineTokenType("any");
+  IElementType ATTRIBUTE = new FormulaEngineTokenType("attribute");
   IElementType BLOCK_COMMENT = new FormulaEngineTokenType("BLOCK_COMMENT");
+  IElementType DATE = new FormulaEngineTokenType("date");
+  IElementType DATETIME = new FormulaEngineTokenType("datetime");
   IElementType DICT = new FormulaEngineTokenType("dict");
+  IElementType ELT = new FormulaEngineTokenType("elt");
   IElementType FUNCTION = new FormulaEngineTokenType("function");
   IElementType GLOBAL = new FormulaEngineTokenType("global");
   IElementType IDENTIFIER = new FormulaEngineTokenType("IDENTIFIER");
   IElementType INTEGER = new FormulaEngineTokenType("integer");
+  IElementType IS_LIST = new FormulaEngineTokenType("is_list");
+  IElementType IS_NA = new FormulaEngineTokenType("is_na");
   IElementType LEFT_CURLY_BRACE = new FormulaEngineTokenType("{");
   IElementType LEFT_PARENTHESIS = new FormulaEngineTokenType("(");
+  IElementType LEN = new FormulaEngineTokenType("len");
   IElementType LINE_COMMENT = new FormulaEngineTokenType("LINE_COMMENT");
   IElementType LIST = new FormulaEngineTokenType("list");
+  IElementType LOAD = new FormulaEngineTokenType("load");
   IElementType LOCAL = new FormulaEngineTokenType("local");
   IElementType OPERATOR_EQUALS = new FormulaEngineTokenType("=");
+  IElementType REMOVE = new FormulaEngineTokenType("remove");
   IElementType RETURN = new FormulaEngineTokenType("return");
   IElementType RIGHT_CURLY_BRACE = new FormulaEngineTokenType("}");
   IElementType RIGHT_PARENTHESIS = new FormulaEngineTokenType(")");
+  IElementType STATUS = new FormulaEngineTokenType("status");
+  IElementType STR = new FormulaEngineTokenType("str");
   IElementType STRING = new FormulaEngineTokenType("string");
 
   class Factory {
@@ -43,6 +56,12 @@ public interface FormulaEngineElementTypes {
       IElementType type = node.getElementType();
       if (type == ASSIGNMENT) {
         return new FormulaEngineAssignmentImpl(node);
+      }
+      else if (type == BUILT_IN_FUNCTION_NAME) {
+        return new FormulaEngineBuiltInFunctionNameImpl(node);
+      }
+      else if (type == CUSTOM_FUNCTION_NAME) {
+        return new FormulaEngineCustomFunctionNameImpl(node);
       }
       else if (type == FUNCTION_ARGUMENTS) {
         return new FormulaEngineFunctionArgumentsImpl(node);

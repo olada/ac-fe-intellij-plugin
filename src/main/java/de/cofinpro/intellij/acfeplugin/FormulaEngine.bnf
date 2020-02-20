@@ -34,8 +34,16 @@ FunctionParameter ::= TypePrefix? IDENTIFIER
 
 
 FunctionArguments ::= IDENTIFIER (',' IDENTIFIER)*
-FunctionInvocation ::= IDENTIFIER '(' FunctionArguments? ')'
+FunctionInvocation ::= (BuiltInFunctionName | CustomFunctionName) '(' FunctionArguments? ')'
+CustomFunctionName ::= IDENTIFIER
 
+BuiltInFunctionName ::= attribute | status
+    | date | datetime | str
+    | elt
+    | is_list | is_na
+    | len
+    | load
+    | remove
 FunctionBody ::= Statement*
 Statement ::= (Assignment | ReturnStatement) ';'
 Assignment ::= VisibilityPrefix? TypePrefix IDENTIFIER '=' FunctionInvocation

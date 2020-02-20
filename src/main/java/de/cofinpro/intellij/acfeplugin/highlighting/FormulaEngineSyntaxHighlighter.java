@@ -52,6 +52,19 @@ public class FormulaEngineSyntaxHighlighter extends SyntaxHighlighterBase {
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.LOCAL, LOCAL_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.GLOBAL, GLOBAL_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.RETURN, RETURN_ATTR_KEY);
+
+        // Built in functions
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.ATTRIBUTE, INBUILT_FUNCTION_ATTRIBUTE_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.DATE, INBUILT_FUNCTION_DATE_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.DATETIME, INBUILT_FUNCTION_DATETIME_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.ELT, INBUILT_FUNCTION_ELT_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.IS_LIST, INBUILT_FUNCTION_IS_LIST_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.IS_NA, INBUILT_FUNCTION_IS_NA_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.LEN, INBUILT_FUNCTION_LEN_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.LOAD, INBUILT_FUNCTION_LOAD_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.REMOVE, INBUILT_FUNCTION_REMOVE_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.STATUS, INBUILT_FUNCTION_STATUS_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.STR, INBUILT_FUNCTION_STR_ATTR_KEY);
     }
 
 

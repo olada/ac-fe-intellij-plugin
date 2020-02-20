@@ -8,9 +8,12 @@ import com.intellij.psi.PsiElement;
 public interface FormulaEngineFunctionInvocation extends PsiElement {
 
   @Nullable
-  FormulaEngineFunctionArguments getFunctionArguments();
+  FormulaEngineBuiltInFunctionName getBuiltInFunctionName();
 
-  @NotNull
-  PsiElement getIdentifier();
+  @Nullable
+  FormulaEngineCustomFunctionName getCustomFunctionName();
+
+  @Nullable
+  FormulaEngineFunctionArguments getFunctionArguments();
 
 }

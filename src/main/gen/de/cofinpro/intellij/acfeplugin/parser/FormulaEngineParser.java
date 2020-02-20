@@ -57,6 +57,45 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
+  // attribute | status
+  //     | date | datetime | str
+  //     | elt
+  //     | is_list | is_na
+  //     | len
+  //     | load
+  //     | remove
+  public static boolean BuiltInFunctionName(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "BuiltInFunctionName")) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, BUILT_IN_FUNCTION_NAME, "<built in function name>");
+    r = consumeToken(b, ATTRIBUTE);
+    if (!r) r = consumeToken(b, STATUS);
+    if (!r) r = consumeToken(b, DATE);
+    if (!r) r = consumeToken(b, DATETIME);
+    if (!r) r = consumeToken(b, STR);
+    if (!r) r = consumeToken(b, ELT);
+    if (!r) r = consumeToken(b, IS_LIST);
+    if (!r) r = consumeToken(b, IS_NA);
+    if (!r) r = consumeToken(b, LEN);
+    if (!r) r = consumeToken(b, LOAD);
+    if (!r) r = consumeToken(b, REMOVE);
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // IDENTIFIER
+  public static boolean CustomFunctionName(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "CustomFunctionName")) return false;
+    if (!nextTokenIs(b, IDENTIFIER)) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeToken(b, IDENTIFIER);
+    exit_section_(b, m, CUSTOM_FUNCTION_NAME, r);
+    return r;
+  }
+
+  /* ********************************************************** */
   // IDENTIFIER (',' IDENTIFIER)*
   public static boolean FunctionArguments(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "FunctionArguments")) return false;
@@ -129,16 +168,25 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // IDENTIFIER '(' FunctionArguments? ')'
+  // (BuiltInFunctionName | CustomFunctionName) '(' FunctionArguments? ')'
   public static boolean FunctionInvocation(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "FunctionInvocation")) return false;
-    if (!nextTokenIs(b, IDENTIFIER)) return false;
     boolean r;
-    Marker m = enter_section_(b);
-    r = consumeTokens(b, 0, IDENTIFIER, LEFT_PARENTHESIS);
+    Marker m = enter_section_(b, l, _NONE_, FUNCTION_INVOCATION, "<function invocation>");
+    r = FunctionInvocation_0(b, l + 1);
+    r = r && consumeToken(b, LEFT_PARENTHESIS);
     r = r && FunctionInvocation_2(b, l + 1);
     r = r && consumeToken(b, RIGHT_PARENTHESIS);
-    exit_section_(b, m, FUNCTION_INVOCATION, r);
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  // BuiltInFunctionName | CustomFunctionName
+  private static boolean FunctionInvocation_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "FunctionInvocation_0")) return false;
+    boolean r;
+    r = BuiltInFunctionName(b, l + 1);
+    if (!r) r = CustomFunctionName(b, l + 1);
     return r;
   }
 
