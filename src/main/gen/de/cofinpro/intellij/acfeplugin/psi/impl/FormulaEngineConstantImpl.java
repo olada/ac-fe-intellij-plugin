@@ -27,9 +27,15 @@ public class FormulaEngineConstantImpl extends ASTWrapperPsiElement implements F
   }
 
   @Override
-  @NotNull
+  @Nullable
   public FormulaEngineBuiltInVariableName getBuiltInVariableName() {
-    return findNotNullChildByClass(FormulaEngineBuiltInVariableName.class);
+    return findChildByClass(FormulaEngineBuiltInVariableName.class);
+  }
+
+  @Override
+  @Nullable
+  public PsiElement getNumberInteger() {
+    return findChildByType(NUMBER_INTEGER);
   }
 
 }

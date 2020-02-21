@@ -7,7 +7,10 @@ import com.intellij.psi.PsiElement;
 
 public interface FormulaEngineConstant extends PsiElement {
 
-  @NotNull
+  @Nullable
   FormulaEngineBuiltInVariableName getBuiltInVariableName();
+
+  @Nullable
+  PsiElement getNumberInteger();
 
 }

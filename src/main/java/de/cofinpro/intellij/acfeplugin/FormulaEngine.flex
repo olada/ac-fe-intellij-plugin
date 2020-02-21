@@ -30,6 +30,8 @@ ESCAPE_SEQUENCE=\\[^\r\n]
 
 COMMENT_SINGLE_LINE = "/""/"[^\r\n]*
 
+NUMBER_INTEGER = [0-9]+
+
 %state WAITING_VALUE
 
 %%
@@ -83,6 +85,8 @@ COMMENT_SINGLE_LINE = "/""/"[^\r\n]*
    {COMMENT_SINGLE_LINE} { return FormulaEngineElementTypes.LINE_COMMENT; }
 
    {DOUBLE_QUOTED_LITERAL} { return FormulaEngineElementTypes.DOUBLE_QUOTED_STRING_LITERAL; }
+
+   {NUMBER_INTEGER} { return FormulaEngineElementTypes.NUMBER_INTEGER; }
 
    {IDENTIFIER} { return FormulaEngineElementTypes.IDENTIFIER; }
    {WHITE_SPACE} { return TokenType.WHITE_SPACE; }

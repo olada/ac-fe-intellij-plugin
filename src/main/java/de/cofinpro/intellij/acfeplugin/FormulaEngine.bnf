@@ -35,6 +35,8 @@
             LINE_COMMENT='regexp://.*'
             BLOCK_COMMENT='regexp:/\*([^*]|\*+[^*/])*(\*+/)?'
             WHITE_SPACE = 'regexp:\s+'
+
+            NUMBER_INTEGER = 'regexp:[0-9]+'
     ]
 }
 
@@ -64,5 +66,5 @@ ReturnStatement ::= return IDENTIFIER
 VisibilityPrefix ::= local | global
 TypePrefix ::= integer | float | date | string | list | dict | any
 
-Constant ::= BuiltInVariableName
+Constant ::= BuiltInVariableName | NUMBER_INTEGER
 BuiltInVariableName ::= BUILT_IN_VAR_NA

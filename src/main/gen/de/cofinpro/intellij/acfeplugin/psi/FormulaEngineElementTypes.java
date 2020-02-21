@@ -53,6 +53,7 @@ public interface FormulaEngineElementTypes {
   IElementType LIST = new FormulaEngineTokenType("list");
   IElementType LOAD = new FormulaEngineTokenType("load");
   IElementType LOCAL = new FormulaEngineTokenType("local");
+  IElementType NUMBER_INTEGER = new FormulaEngineTokenType("NUMBER_INTEGER");
   IElementType OPERATOR_EQUALS = new FormulaEngineTokenType("=");
   IElementType REMOVE = new FormulaEngineTokenType("remove");
   IElementType RETURN = new FormulaEngineTokenType("return");
