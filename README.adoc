@@ -6,9 +6,10 @@
 * Syntax Highlighting for following tokens (partly taken from Eclipse plugin)
   ** Annotation
   ** Built in function
-  ** Comment
+  ** Single Line Comment icon:check-circle[]
+  ** Block Comment
   ** Cross reference
-  ** Data type
+  ** Data type icon:check-circle[]
   ** Default
   ** Deprecated final variable
   ** Deprecated function
@@ -17,18 +18,17 @@
   ** Final variable
   ** Global variable icon:check-circle[]
   ** Invalid Symbol
-  ** Keyword
+  ** Keyword icon:check-circle[]
   ** Local variable
   ** Number
   ** Punctuation character
   ** Special variable
-  ** String
+  ** String icon:check-circle[]
   ** Task Tag
-* Syntax Highlighting
 * Auto Completion
 * Reference Resolution and jumping to definition
-* Bracket Pair Highlighting
-* Toggle Regions
+* Brace Pair Highlighting icon:check-circle[]
+* Toggle Regions / Region Folding
 * TODO Detection
 
 == Testen des Plugins
