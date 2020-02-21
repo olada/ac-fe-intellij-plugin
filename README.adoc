@@ -3,7 +3,7 @@
 = ac-fe-intellij-plugin
 
 == Backlog
-* Write Grammar with at least following tokens (taken from Eclipse plugin)
+* Syntax Highlighting for following tokens (partly taken from Eclipse plugin)
   ** Annotation
   ** Built in function
   ** Comment
