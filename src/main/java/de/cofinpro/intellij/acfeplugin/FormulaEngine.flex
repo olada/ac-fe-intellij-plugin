@@ -63,6 +63,7 @@ COMMENT_SINGLE_LINE = "/""/"[^\r\n]*
    "date(" { yypushback(1); return FormulaEngineElementTypes.DATE; }
    "datetime(" { yypushback(1); return FormulaEngineElementTypes.DATETIME; }
    "elt(" { yypushback(1); return FormulaEngineElementTypes.ELT; }
+   "integer(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_INTEGER; }
    "is_list(" { yypushback(1); return FormulaEngineElementTypes.IS_LIST; }
    "is_na(" { yypushback(1); return FormulaEngineElementTypes.IS_NA; }
    "len(" { yypushback(1); return FormulaEngineElementTypes.LEN; }

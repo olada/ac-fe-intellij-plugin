@@ -27,6 +27,7 @@ public interface FormulaEngineElementTypes {
   IElementType ANY = new FormulaEngineTokenType("any");
   IElementType ATTRIBUTE = new FormulaEngineTokenType("attribute");
   IElementType BLOCK_COMMENT = new FormulaEngineTokenType("BLOCK_COMMENT");
+  IElementType BUILT_IN_FUNC_INTEGER = new FormulaEngineTokenType("integer(");
   IElementType BUILT_IN_VAR_NA = new FormulaEngineTokenType("$NA");
   IElementType DATE = new FormulaEngineTokenType("date");
   IElementType DATETIME = new FormulaEngineTokenType("datetime");
