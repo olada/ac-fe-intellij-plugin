@@ -18,6 +18,10 @@ public class FormulaEngineHighlighterColors {
     public static final TextAttributesKey GLOBAL_ATTR_KEY = createTextAttributesKey("FE_GLOBAL", KEYWORD);
     public static final TextAttributesKey RETURN_ATTR_KEY = createTextAttributesKey("FE_RETURN", KEYWORD);
 
+    // Comments
+    public static final TextAttributesKey COMMENT_SINGLE_LINE = createTextAttributesKey("FE_COMMENT_SINGLE_LINE", DefaultLanguageHighlighterColors.LINE_COMMENT);
+
+
     // Built in Variables
     public static final TextAttributesKey INBUILT_VARIABLE_NA_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_NA", DefaultLanguageHighlighterColors.STATIC_FIELD);
 

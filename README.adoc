@@ -28,6 +28,8 @@
 * Auto Completion
 * Reference Resolution and jumping to definition
 * Bracket Pair Highlighting
+* Toggle Regions
+* TODO Detection
 
 == Testen des Plugins
 

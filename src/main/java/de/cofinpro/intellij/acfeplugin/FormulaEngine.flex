@@ -28,6 +28,8 @@ QUOTED_LITERAL="'" ([^\\\'\r\n] | {ESCAPE_SEQUENCE} | (\\[\r\n]))* ("'"|\\)?
 DOUBLE_QUOTED_LITERAL=\"([^\\\"\r\n]|{ESCAPE_SEQUENCE}|(\\[\r\n]))*?(\"|\\)?
 ESCAPE_SEQUENCE=\\[^\r\n]
 
+COMMENT_SINGLE_LINE = "/""/"[^\r\n]*
+
 %state WAITING_VALUE
 
 %%
@@ -69,8 +71,10 @@ ESCAPE_SEQUENCE=\\[^\r\n]
    "status(" { yypushback(1); return FormulaEngineElementTypes.STATUS; }
    "str(" { yypushback(1); return FormulaEngineElementTypes.STR; }
 
-    {IDENTIFIER} { return FormulaEngineElementTypes.IDENTIFIER; }
-    {WHITE_SPACE} { return TokenType.WHITE_SPACE; }
+   {COMMENT_SINGLE_LINE} { return FormulaEngineElementTypes.LINE_COMMENT; }
+
+   {IDENTIFIER} { return FormulaEngineElementTypes.IDENTIFIER; }
+   {WHITE_SPACE} { return TokenType.WHITE_SPACE; }
 }
 
 [^] { return TokenType.BAD_CHARACTER; }
