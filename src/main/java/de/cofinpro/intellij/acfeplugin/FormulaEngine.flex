@@ -71,6 +71,8 @@ NUMBER_INTEGER = [0-9]+
    "attribute(" { yypushback(1); return FormulaEngineElementTypes.ATTRIBUTE; }
    "date(" { yypushback(1); return FormulaEngineElementTypes.DATE; }
    "datetime(" { yypushback(1); return FormulaEngineElementTypes.DATETIME; }
+   "daydiff(" { yypushback(1); return FormulaEngineElementTypes.DAYDIFF; }
+   "dayplus(" { yypushback(1); return FormulaEngineElementTypes.DAYPLUS; }
    "elt(" { yypushback(1); return FormulaEngineElementTypes.ELT; }
    "float(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_FLOAT; }
    "integer(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_INTEGER; }

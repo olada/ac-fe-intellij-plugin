@@ -53,6 +53,7 @@ CustomFunctionName ::= IDENTIFIER
 
 BuiltInFunctionName ::= attribute | status
     | date | datetime | str
+    | dayplus | daydiff
     | elt
     | is_list | is_na
     | len

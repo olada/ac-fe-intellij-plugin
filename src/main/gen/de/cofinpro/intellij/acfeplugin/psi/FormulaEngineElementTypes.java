@@ -32,6 +32,8 @@ public interface FormulaEngineElementTypes {
   IElementType BUILT_IN_VAR_NA = new FormulaEngineTokenType("$NA");
   IElementType DATE = new FormulaEngineTokenType("date");
   IElementType DATETIME = new FormulaEngineTokenType("datetime");
+  IElementType DAYDIFF = new FormulaEngineTokenType("daydiff");
+  IElementType DAYPLUS = new FormulaEngineTokenType("dayplus");
   IElementType DICT = new FormulaEngineTokenType("dict");
   IElementType DOUBLE_QUOTED_STRING_LITERAL = new FormulaEngineTokenType("double quoted string literal");
   IElementType ELT = new FormulaEngineTokenType("elt");

@@ -68,6 +68,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   /* ********************************************************** */
   // attribute | status
   //     | date | datetime | str
+  //     | dayplus | daydiff
   //     | elt
   //     | is_list | is_na
   //     | len
@@ -82,6 +83,8 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     if (!r) r = consumeToken(b, DATE);
     if (!r) r = consumeToken(b, DATETIME);
     if (!r) r = consumeToken(b, STR);
+    if (!r) r = consumeToken(b, DAYPLUS);
+    if (!r) r = consumeToken(b, DAYDIFF);
     if (!r) r = consumeToken(b, ELT);
     if (!r) r = consumeToken(b, IS_LIST);
     if (!r) r = consumeToken(b, IS_NA);
