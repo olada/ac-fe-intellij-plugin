@@ -32,6 +32,7 @@ public interface FormulaEngineElementTypes {
   IElementType DATE = new FormulaEngineTokenType("date");
   IElementType DATETIME = new FormulaEngineTokenType("datetime");
   IElementType DICT = new FormulaEngineTokenType("dict");
+  IElementType DOUBLE_QUOTED_STRING_LITERAL = new FormulaEngineTokenType("double quoted string literal");
   IElementType ELT = new FormulaEngineTokenType("elt");
   IElementType FUNCTION = new FormulaEngineTokenType("function");
   IElementType GLOBAL = new FormulaEngineTokenType("global");
@@ -39,6 +40,10 @@ public interface FormulaEngineElementTypes {
   IElementType INTEGER = new FormulaEngineTokenType("integer");
   IElementType IS_LIST = new FormulaEngineTokenType("is_list");
   IElementType IS_NA = new FormulaEngineTokenType("is_na");
+  IElementType KEYWORD_ELSE = new FormulaEngineTokenType("else");
+  IElementType KEYWORD_FOR = new FormulaEngineTokenType("for");
+  IElementType KEYWORD_IF = new FormulaEngineTokenType("if");
+  IElementType KEYWORD_WHILE = new FormulaEngineTokenType("while");
   IElementType LEFT_CURLY_BRACE = new FormulaEngineTokenType("{");
   IElementType LEFT_PARENTHESIS = new FormulaEngineTokenType("(");
   IElementType LEN = new FormulaEngineTokenType("len");

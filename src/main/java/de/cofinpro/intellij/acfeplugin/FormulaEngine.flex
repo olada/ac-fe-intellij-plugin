@@ -55,6 +55,12 @@ COMMENT_SINGLE_LINE = "/""/"[^\r\n]*
     "dict" { return FormulaEngineElementTypes.DICT; }
     "any" { return FormulaEngineElementTypes.ANY; }
 
+    // Keywords
+    "else" { return FormulaEngineElementTypes.KEYWORD_ELSE; }
+    "for" { return FormulaEngineElementTypes.KEYWORD_FOR; }
+    "if" { return FormulaEngineElementTypes.KEYWORD_IF; }
+    "while" { return FormulaEngineElementTypes.KEYWORD_WHILE; }
+
     // Built-in Variables
     "\$NA" { return FormulaEngineElementTypes.BUILT_IN_VAR_NA; }
 
@@ -73,6 +79,8 @@ COMMENT_SINGLE_LINE = "/""/"[^\r\n]*
    "str(" { yypushback(1); return FormulaEngineElementTypes.STR; }
 
    {COMMENT_SINGLE_LINE} { return FormulaEngineElementTypes.LINE_COMMENT; }
+
+   {DOUBLE_QUOTED_LITERAL} { return FormulaEngineElementTypes.DOUBLE_QUOTED_STRING_LITERAL; }
 
    {IDENTIFIER} { return FormulaEngineElementTypes.IDENTIFIER; }
    {WHITE_SPACE} { return TokenType.WHITE_SPACE; }
