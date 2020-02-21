@@ -27,6 +27,7 @@ public interface FormulaEngineElementTypes {
   IElementType ANY = new FormulaEngineTokenType("any");
   IElementType ATTRIBUTE = new FormulaEngineTokenType("attribute");
   IElementType BLOCK_COMMENT = new FormulaEngineTokenType("BLOCK_COMMENT");
+  IElementType BUILT_IN_FUNC_FLOAT = new FormulaEngineTokenType("float(");
   IElementType BUILT_IN_FUNC_INTEGER = new FormulaEngineTokenType("integer(");
   IElementType BUILT_IN_VAR_NA = new FormulaEngineTokenType("$NA");
   IElementType DATE = new FormulaEngineTokenType("date");
@@ -34,6 +35,7 @@ public interface FormulaEngineElementTypes {
   IElementType DICT = new FormulaEngineTokenType("dict");
   IElementType DOUBLE_QUOTED_STRING_LITERAL = new FormulaEngineTokenType("double quoted string literal");
   IElementType ELT = new FormulaEngineTokenType("elt");
+  IElementType FLOAT = new FormulaEngineTokenType("float");
   IElementType FUNCTION = new FormulaEngineTokenType("function");
   IElementType GLOBAL = new FormulaEngineTokenType("global");
   IElementType IDENTIFIER = new FormulaEngineTokenType("IDENTIFIER");

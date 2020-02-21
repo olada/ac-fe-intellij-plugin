@@ -317,12 +317,14 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // integer | string | list | dict | any
+  // integer | float | date | string | list | dict | any
   public static boolean TypePrefix(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "TypePrefix")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, TYPE_PREFIX, "<type prefix>");
     r = consumeToken(b, INTEGER);
+    if (!r) r = consumeToken(b, FLOAT);
+    if (!r) r = consumeToken(b, DATE);
     if (!r) r = consumeToken(b, STRING);
     if (!r) r = consumeToken(b, LIST);
     if (!r) r = consumeToken(b, DICT);

@@ -26,6 +26,7 @@
 
             BUILT_IN_VAR_NA = '$NA'
 
+            BUILT_IN_FUNC_FLOAT = 'float('
             BUILT_IN_FUNC_INTEGER = 'integer('
 
             DOUBLE_QUOTED_STRING_LITERAL = 'double quoted string literal'
@@ -61,7 +62,7 @@ Assignment ::= VisibilityPrefix? TypePrefix IDENTIFIER '=' (Constant | FunctionI
 ReturnStatement ::= return IDENTIFIER
 
 VisibilityPrefix ::= local | global
-TypePrefix ::= integer | string | list | dict | any
+TypePrefix ::= integer | float | date | string | list | dict | any
 
 Constant ::= BuiltInVariableName
 BuiltInVariableName ::= BUILT_IN_VAR_NA
