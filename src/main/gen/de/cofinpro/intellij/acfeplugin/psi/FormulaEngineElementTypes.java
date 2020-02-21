@@ -48,6 +48,7 @@ public interface FormulaEngineElementTypes {
   IElementType KEYWORD_FOR = new FormulaEngineTokenType("for");
   IElementType KEYWORD_IF = new FormulaEngineTokenType("if");
   IElementType KEYWORD_WHILE = new FormulaEngineTokenType("while");
+  IElementType LEFT_BRACKET = new FormulaEngineTokenType("[");
   IElementType LEFT_CURLY_BRACE = new FormulaEngineTokenType("{");
   IElementType LEFT_PARENTHESIS = new FormulaEngineTokenType("(");
   IElementType LEN = new FormulaEngineTokenType("len");
@@ -59,6 +60,7 @@ public interface FormulaEngineElementTypes {
   IElementType OPERATOR_EQUALS = new FormulaEngineTokenType("=");
   IElementType REMOVE = new FormulaEngineTokenType("remove");
   IElementType RETURN = new FormulaEngineTokenType("return");
+  IElementType RIGHT_BRACKET = new FormulaEngineTokenType("]");
   IElementType RIGHT_CURLY_BRACE = new FormulaEngineTokenType("}");
   IElementType RIGHT_PARENTHESIS = new FormulaEngineTokenType(")");
   IElementType STATUS = new FormulaEngineTokenType("status");

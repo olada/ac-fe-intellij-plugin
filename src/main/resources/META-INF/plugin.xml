@@ -23,6 +23,7 @@
         <fileType name="Formula Engine File" implementationClass="de.cofinpro.intellij.acfeplugin.FormulaEngineFileType" fieldName="INSTANCE" language="FormulaEngine" extensions="fe" />
         <lang.parserDefinition language="FormulaEngine" implementationClass="de.cofinpro.intellij.acfeplugin.FormulaEngineParserDefinition"/>
         <lang.syntaxHighlighterFactory language="FormulaEngine" implementationClass="de.cofinpro.intellij.acfeplugin.highlighting.FormulaEngineSyntaxHighlighterFactory" />
+        <lang.braceMatcher language="FormulaEngine" implementationClass="de.cofinpro.intellij.acfeplugin.brackets.FormulaEngineBraceMatcher" />
         <colorSettingsPage implementation="de.cofinpro.intellij.acfeplugin.highlighting.FormulaEngineColorSettingsPage" />
     </extensions>
 

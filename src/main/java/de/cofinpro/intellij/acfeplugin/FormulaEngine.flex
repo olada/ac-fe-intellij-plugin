@@ -40,6 +40,8 @@ NUMBER_INTEGER = [0-9]+
     ")" { return FormulaEngineElementTypes.RIGHT_PARENTHESIS; }
     "{" { return FormulaEngineElementTypes.LEFT_CURLY_BRACE; }
     "}" { return FormulaEngineElementTypes.RIGHT_CURLY_BRACE; }
+    "[" { return FormulaEngineElementTypes.LEFT_BRACKET; }
+    "]" { return FormulaEngineElementTypes.RIGHT_BRACKET; }
 
     "=" { return FormulaEngineElementTypes.OPERATOR_EQUALS; }
 

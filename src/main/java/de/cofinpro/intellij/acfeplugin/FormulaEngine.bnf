@@ -17,6 +17,9 @@
             RIGHT_PARENTHESIS = ')'
             LEFT_CURLY_BRACE = '{'
             RIGHT_CURLY_BRACE = '}'
+            LEFT_BRACKET = '['
+            RIGHT_BRACKET = ']'
+
             OPERATOR_EQUALS = '='
 
             KEYWORD_ELSE = 'else'
