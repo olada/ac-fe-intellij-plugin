@@ -7,7 +7,10 @@ import com.intellij.psi.PsiElement;
 
 public interface FormulaEngineAssignment extends PsiElement {
 
-  @NotNull
+  @Nullable
+  FormulaEngineConstant getConstant();
+
+  @Nullable
   FormulaEngineFunctionInvocation getFunctionInvocation();
 
   @NotNull

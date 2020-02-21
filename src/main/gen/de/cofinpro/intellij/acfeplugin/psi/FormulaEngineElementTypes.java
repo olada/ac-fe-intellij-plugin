@@ -10,6 +10,8 @@ public interface FormulaEngineElementTypes {
 
   IElementType ASSIGNMENT = new FormulaEngineElementType("ASSIGNMENT");
   IElementType BUILT_IN_FUNCTION_NAME = new FormulaEngineElementType("BUILT_IN_FUNCTION_NAME");
+  IElementType BUILT_IN_VARIABLE_NAME = new FormulaEngineElementType("BUILT_IN_VARIABLE_NAME");
+  IElementType CONSTANT = new FormulaEngineElementType("CONSTANT");
   IElementType CUSTOM_FUNCTION_NAME = new FormulaEngineElementType("CUSTOM_FUNCTION_NAME");
   IElementType FUNCTION_ARGUMENTS = new FormulaEngineElementType("FUNCTION_ARGUMENTS");
   IElementType FUNCTION_BODY = new FormulaEngineElementType("FUNCTION_BODY");
@@ -25,6 +27,7 @@ public interface FormulaEngineElementTypes {
   IElementType ANY = new FormulaEngineTokenType("any");
   IElementType ATTRIBUTE = new FormulaEngineTokenType("attribute");
   IElementType BLOCK_COMMENT = new FormulaEngineTokenType("BLOCK_COMMENT");
+  IElementType BUILT_IN_VAR_NA = new FormulaEngineTokenType("$NA");
   IElementType DATE = new FormulaEngineTokenType("date");
   IElementType DATETIME = new FormulaEngineTokenType("datetime");
   IElementType DICT = new FormulaEngineTokenType("dict");
@@ -59,6 +62,12 @@ public interface FormulaEngineElementTypes {
       }
       else if (type == BUILT_IN_FUNCTION_NAME) {
         return new FormulaEngineBuiltInFunctionNameImpl(node);
+      }
+      else if (type == BUILT_IN_VARIABLE_NAME) {
+        return new FormulaEngineBuiltInVariableNameImpl(node);
+      }
+      else if (type == CONSTANT) {
+        return new FormulaEngineConstantImpl(node);
       }
       else if (type == CUSTOM_FUNCTION_NAME) {
         return new FormulaEngineCustomFunctionNameImpl(node);

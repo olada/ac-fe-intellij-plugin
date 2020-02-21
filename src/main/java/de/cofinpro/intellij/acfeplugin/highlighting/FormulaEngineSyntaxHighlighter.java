@@ -53,6 +53,9 @@ public class FormulaEngineSyntaxHighlighter extends SyntaxHighlighterBase {
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.GLOBAL, GLOBAL_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.RETURN, RETURN_ATTR_KEY);
 
+        // Built in variables
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_VAR_NA, INBUILT_VARIABLE_NA_ATTR_KEY);
+
         // Built in functions
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.ATTRIBUTE, INBUILT_FUNCTION_ATTRIBUTE_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.DATE, INBUILT_FUNCTION_DATE_ATTR_KEY);

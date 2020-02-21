@@ -36,7 +36,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // VisibilityPrefix? TypePrefix IDENTIFIER '=' FunctionInvocation
+  // VisibilityPrefix? TypePrefix IDENTIFIER '=' (Constant | FunctionInvocation)
   public static boolean Assignment(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Assignment")) return false;
     boolean r;
@@ -44,7 +44,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     r = Assignment_0(b, l + 1);
     r = r && TypePrefix(b, l + 1);
     r = r && consumeTokens(b, 0, IDENTIFIER, OPERATOR_EQUALS);
-    r = r && FunctionInvocation(b, l + 1);
+    r = r && Assignment_4(b, l + 1);
     exit_section_(b, l, m, r, false, null);
     return r;
   }
@@ -54,6 +54,15 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     if (!recursion_guard_(b, l, "Assignment_0")) return false;
     VisibilityPrefix(b, l + 1);
     return true;
+  }
+
+  // Constant | FunctionInvocation
+  private static boolean Assignment_4(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "Assignment_4")) return false;
+    boolean r;
+    r = Constant(b, l + 1);
+    if (!r) r = FunctionInvocation(b, l + 1);
+    return r;
   }
 
   /* ********************************************************** */
@@ -80,6 +89,30 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     if (!r) r = consumeToken(b, LOAD);
     if (!r) r = consumeToken(b, REMOVE);
     exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // BUILT_IN_VAR_NA
+  public static boolean BuiltInVariableName(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "BuiltInVariableName")) return false;
+    if (!nextTokenIs(b, BUILT_IN_VAR_NA)) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeToken(b, BUILT_IN_VAR_NA);
+    exit_section_(b, m, BUILT_IN_VARIABLE_NAME, r);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // BuiltInVariableName
+  public static boolean Constant(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "Constant")) return false;
+    if (!nextTokenIs(b, BUILT_IN_VAR_NA)) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = BuiltInVariableName(b, l + 1);
+    exit_section_(b, m, CONSTANT, r);
     return r;
   }
 

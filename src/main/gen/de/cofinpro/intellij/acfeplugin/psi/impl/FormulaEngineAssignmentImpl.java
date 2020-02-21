@@ -27,9 +27,15 @@ public class FormulaEngineAssignmentImpl extends ASTWrapperPsiElement implements
   }
 
   @Override
-  @NotNull
+  @Nullable
+  public FormulaEngineConstant getConstant() {
+    return findChildByClass(FormulaEngineConstant.class);
+  }
+
+  @Override
+  @Nullable
   public FormulaEngineFunctionInvocation getFunctionInvocation() {
-    return findNotNullChildByClass(FormulaEngineFunctionInvocation.class);
+    return findChildByClass(FormulaEngineFunctionInvocation.class);
   }
 
   @Override

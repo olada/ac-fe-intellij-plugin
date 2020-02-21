@@ -53,6 +53,9 @@ ESCAPE_SEQUENCE=\\[^\r\n]
     "dict" { return FormulaEngineElementTypes.DICT; }
     "any" { return FormulaEngineElementTypes.ANY; }
 
+    // Built-in Variables
+    "\$NA" { return FormulaEngineElementTypes.BUILT_IN_VAR_NA; }
+
     // Built-in Functions (use parenthesis for matching but don't include the parenthesis in the token)
    "attribute(" { yypushback(1); return FormulaEngineElementTypes.ATTRIBUTE; }
    "date(" { yypushback(1); return FormulaEngineElementTypes.DATE; }

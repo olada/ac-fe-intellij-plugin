@@ -19,6 +19,8 @@
             RIGHT_CURLY_BRACE = '}'
             OPERATOR_EQUALS = '='
 
+            BUILT_IN_VAR_NA = '$NA'
+
             IDENTIFIER = 'regexp:[a-zA-Z_][a-zA-Z0-9_]*'
             LINE_COMMENT='regexp://.*'
             BLOCK_COMMENT='regexp:/\*([^*]|\*+[^*/])*(\*+/)?'
@@ -46,8 +48,11 @@ BuiltInFunctionName ::= attribute | status
     | remove
 FunctionBody ::= Statement*
 Statement ::= (Assignment | ReturnStatement) ';'
-Assignment ::= VisibilityPrefix? TypePrefix IDENTIFIER '=' FunctionInvocation
+Assignment ::= VisibilityPrefix? TypePrefix IDENTIFIER '=' (Constant | FunctionInvocation)
 ReturnStatement ::= return IDENTIFIER
 
 VisibilityPrefix ::= local | global
 TypePrefix ::= integer | string | list | dict | any
+
+Constant ::= BuiltInVariableName
+BuiltInVariableName ::= BUILT_IN_VAR_NA
