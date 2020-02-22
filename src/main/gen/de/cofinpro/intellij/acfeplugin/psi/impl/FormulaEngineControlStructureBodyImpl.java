@@ -11,14 +11,14 @@ import static de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import de.cofinpro.intellij.acfeplugin.psi.*;
 
-public class FormulaEngineTopLevelItemImpl extends ASTWrapperPsiElement implements FormulaEngineTopLevelItem {
+public class FormulaEngineControlStructureBodyImpl extends ASTWrapperPsiElement implements FormulaEngineControlStructureBody {
 
-  public FormulaEngineTopLevelItemImpl(@NotNull ASTNode node) {
+  public FormulaEngineControlStructureBodyImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull FormulaEngineVisitor visitor) {
-    visitor.visitTopLevelItem(this);
+    visitor.visitControlStructureBody(this);
   }
 
   public void accept(@NotNull PsiElementVisitor visitor) {
@@ -27,21 +27,15 @@ public class FormulaEngineTopLevelItemImpl extends ASTWrapperPsiElement implemen
   }
 
   @Override
-  @Nullable
-  public FormulaEngineControlStructure getControlStructure() {
-    return findChildByClass(FormulaEngineControlStructure.class);
+  @NotNull
+  public List<FormulaEngineControlStructure> getControlStructureList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, FormulaEngineControlStructure.class);
   }
 
   @Override
-  @Nullable
-  public FormulaEngineFunctionDefinition getFunctionDefinition() {
-    return findChildByClass(FormulaEngineFunctionDefinition.class);
-  }
-
-  @Override
-  @Nullable
-  public FormulaEngineStatement getStatement() {
-    return findChildByClass(FormulaEngineStatement.class);
+  @NotNull
+  public List<FormulaEngineStatement> getStatementList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, FormulaEngineStatement.class);
   }
 
 }

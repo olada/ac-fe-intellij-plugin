@@ -85,7 +85,7 @@ NUMBER_INTEGER = [0-9]+
    "kernel(" { yypushback(1); return FormulaEngineElementTypes.KERNEL; }
    "len(" { yypushback(1); return FormulaEngineElementTypes.LEN; }
    "load(" { yypushback(1); return FormulaEngineElementTypes.LOAD; }
-   "out(" { yypushback(1); return FormulaEngineElementTypes.OUT; }
+   "out(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_OUT; }
    "remove(" { yypushback(1); return FormulaEngineElementTypes.REMOVE; }
    "status(" { yypushback(1); return FormulaEngineElementTypes.STATUS; }
    "str(" { yypushback(1); return FormulaEngineElementTypes.STR; }

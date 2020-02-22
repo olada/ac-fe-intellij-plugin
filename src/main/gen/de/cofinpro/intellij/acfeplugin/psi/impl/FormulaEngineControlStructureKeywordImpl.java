@@ -11,37 +11,19 @@ import static de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import de.cofinpro.intellij.acfeplugin.psi.*;
 
-public class FormulaEngineTopLevelItemImpl extends ASTWrapperPsiElement implements FormulaEngineTopLevelItem {
+public class FormulaEngineControlStructureKeywordImpl extends ASTWrapperPsiElement implements FormulaEngineControlStructureKeyword {
 
-  public FormulaEngineTopLevelItemImpl(@NotNull ASTNode node) {
+  public FormulaEngineControlStructureKeywordImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull FormulaEngineVisitor visitor) {
-    visitor.visitTopLevelItem(this);
+    visitor.visitControlStructureKeyword(this);
   }
 
   public void accept(@NotNull PsiElementVisitor visitor) {
     if (visitor instanceof FormulaEngineVisitor) accept((FormulaEngineVisitor)visitor);
     else super.accept(visitor);
-  }
-
-  @Override
-  @Nullable
-  public FormulaEngineControlStructure getControlStructure() {
-    return findChildByClass(FormulaEngineControlStructure.class);
-  }
-
-  @Override
-  @Nullable
-  public FormulaEngineFunctionDefinition getFunctionDefinition() {
-    return findChildByClass(FormulaEngineFunctionDefinition.class);
-  }
-
-  @Override
-  @Nullable
-  public FormulaEngineStatement getStatement() {
-    return findChildByClass(FormulaEngineStatement.class);
   }
 
 }

@@ -23,11 +23,27 @@ public class FormulaEngineVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitControlStructure(@NotNull FormulaEngineControlStructure o) {
+    visitPsiElement(o);
+  }
+
+  public void visitControlStructureBody(@NotNull FormulaEngineControlStructureBody o) {
+    visitPsiElement(o);
+  }
+
+  public void visitControlStructureKeyword(@NotNull FormulaEngineControlStructureKeyword o) {
+    visitPsiElement(o);
+  }
+
   public void visitCustomFunctionName(@NotNull FormulaEngineCustomFunctionName o) {
     visitPsiElement(o);
   }
 
   public void visitDeclaration(@NotNull FormulaEngineDeclaration o) {
+    visitPsiElement(o);
+  }
+
+  public void visitExpression(@NotNull FormulaEngineExpression o) {
     visitPsiElement(o);
   }
 

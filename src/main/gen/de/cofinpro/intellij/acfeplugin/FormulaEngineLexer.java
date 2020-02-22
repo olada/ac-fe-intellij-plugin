@@ -752,7 +752,7 @@ public class FormulaEngineLexer implements FlexLexer {
             // fall through
           case 70: break;
           case 20: 
-            { yypushback(1); return FormulaEngineElementTypes.OUT;
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_OUT;
             } 
             // fall through
           case 71: break;

@@ -78,7 +78,7 @@ public class FormulaEngineSyntaxHighlighter extends SyntaxHighlighterBase {
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.KERNEL, INBUILT_FUNCTION_KERNEL_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.LEN, INBUILT_FUNCTION_LEN_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.LOAD, INBUILT_FUNCTION_LOAD_ATTR_KEY);
-        safeMap(ATTRIBUTES, FormulaEngineElementTypes.OUT, INBUILT_FUNCTION_OUT_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_OUT, INBUILT_FUNCTION_OUT_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.REMOVE, INBUILT_FUNCTION_REMOVE_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.STATUS, INBUILT_FUNCTION_STATUS_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.STR, INBUILT_FUNCTION_STR_ATTR_KEY);

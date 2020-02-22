@@ -31,6 +31,7 @@
 
             BUILT_IN_FUNC_FLOAT = 'float('
             BUILT_IN_FUNC_INTEGER = 'integer('
+            BUILT_IN_FUNC_OUT = 'out('
 
             DOUBLE_QUOTED_STRING_LITERAL = 'double quoted string literal'
             SINGLE_QUOTED_STRING_LITERAL = 'single quoted string literal'
@@ -48,7 +49,7 @@
 
 feFile ::= TopLevelItem*
 
-TopLevelItem ::= FunctionDefinition | Statement
+TopLevelItem ::= FunctionDefinition | ControlStructure | Statement
 
 FunctionDefinition ::= function IDENTIFIER '(' FunctionParameters? ')' '{' FunctionBody '}'
 FunctionParameters ::= FunctionParameter (',' FunctionParameter)*
@@ -58,13 +59,19 @@ FunctionParameter ::= TypePrefix? IDENTIFIER
 FunctionArguments ::= FunctionArgument (',' FunctionArgument)*
 FunctionArgument ::= StringLiteral | IDENTIFIER
 
+// Control Structures
+ControlStructure ::= ControlStructureKeyword '(' Expression ')' '{' ControlStructureBody '}'
+ControlStructureKeyword ::= KEYWORD_IF | KEYWORD_FOR | KEYWORD_WHILE
+Expression ::= '!'? IDENTIFIER
+ControlStructureBody ::= (ControlStructure | Statement)*
+
 StringLiteral ::= SINGLE_QUOTED_STRING | DOUBLE_QUOTED_STRING
 
 FunctionInvocation ::= (BuiltInFunctionName | CustomFunctionName) '(' FunctionArguments? ')'
 CustomFunctionName ::= IDENTIFIER
 
 BuiltInFunctionName ::= attribute | status
-    | date | datetime | str
+    | date | datetime | str | BUILT_IN_FUNC_FLOAT | BUILT_IN_FUNC_INTEGER
     | dayplus | daydiff
     | elt
     | hash_get | hash_put | hash_keys | hash_iskey
@@ -72,7 +79,7 @@ BuiltInFunctionName ::= attribute | status
     | kernel
     | len
     | load
-    | out
+    | BUILT_IN_FUNC_OUT
     | remove
 FunctionBody ::= FunctionBodyStatement*
 Statement ::= (Assignment | Declaration | FunctionInvocation) ';'

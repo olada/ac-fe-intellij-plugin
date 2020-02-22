@@ -12,8 +12,12 @@ public interface FormulaEngineElementTypes {
   IElementType BUILT_IN_FUNCTION_NAME = new FormulaEngineElementType("BUILT_IN_FUNCTION_NAME");
   IElementType BUILT_IN_VARIABLE_NAME = new FormulaEngineElementType("BUILT_IN_VARIABLE_NAME");
   IElementType CONSTANT = new FormulaEngineElementType("CONSTANT");
+  IElementType CONTROL_STRUCTURE = new FormulaEngineElementType("CONTROL_STRUCTURE");
+  IElementType CONTROL_STRUCTURE_BODY = new FormulaEngineElementType("CONTROL_STRUCTURE_BODY");
+  IElementType CONTROL_STRUCTURE_KEYWORD = new FormulaEngineElementType("CONTROL_STRUCTURE_KEYWORD");
   IElementType CUSTOM_FUNCTION_NAME = new FormulaEngineElementType("CUSTOM_FUNCTION_NAME");
   IElementType DECLARATION = new FormulaEngineElementType("DECLARATION");
+  IElementType EXPRESSION = new FormulaEngineElementType("EXPRESSION");
   IElementType FUNCTION_ARGUMENT = new FormulaEngineElementType("FUNCTION_ARGUMENT");
   IElementType FUNCTION_ARGUMENTS = new FormulaEngineElementType("FUNCTION_ARGUMENTS");
   IElementType FUNCTION_BODY = new FormulaEngineElementType("FUNCTION_BODY");
@@ -34,6 +38,7 @@ public interface FormulaEngineElementTypes {
   IElementType BLOCK_COMMENT = new FormulaEngineTokenType("BLOCK_COMMENT");
   IElementType BUILT_IN_FUNC_FLOAT = new FormulaEngineTokenType("float(");
   IElementType BUILT_IN_FUNC_INTEGER = new FormulaEngineTokenType("integer(");
+  IElementType BUILT_IN_FUNC_OUT = new FormulaEngineTokenType("out(");
   IElementType BUILT_IN_VAR_NA = new FormulaEngineTokenType("$NA");
   IElementType DATE = new FormulaEngineTokenType("date");
   IElementType DATETIME = new FormulaEngineTokenType("datetime");
@@ -69,7 +74,6 @@ public interface FormulaEngineElementTypes {
   IElementType LOCAL = new FormulaEngineTokenType("local");
   IElementType NUMBER_INTEGER = new FormulaEngineTokenType("NUMBER_INTEGER");
   IElementType OPERATOR_EQUALS = new FormulaEngineTokenType("=");
-  IElementType OUT = new FormulaEngineTokenType("out");
   IElementType REMOVE = new FormulaEngineTokenType("remove");
   IElementType RETURN = new FormulaEngineTokenType("return");
   IElementType RIGHT_BRACKET = new FormulaEngineTokenType("]");
@@ -96,11 +100,23 @@ public interface FormulaEngineElementTypes {
       else if (type == CONSTANT) {
         return new FormulaEngineConstantImpl(node);
       }
+      else if (type == CONTROL_STRUCTURE) {
+        return new FormulaEngineControlStructureImpl(node);
+      }
+      else if (type == CONTROL_STRUCTURE_BODY) {
+        return new FormulaEngineControlStructureBodyImpl(node);
+      }
+      else if (type == CONTROL_STRUCTURE_KEYWORD) {
+        return new FormulaEngineControlStructureKeywordImpl(node);
+      }
       else if (type == CUSTOM_FUNCTION_NAME) {
         return new FormulaEngineCustomFunctionNameImpl(node);
       }
       else if (type == DECLARATION) {
         return new FormulaEngineDeclarationImpl(node);
+      }
+      else if (type == EXPRESSION) {
+        return new FormulaEngineExpressionImpl(node);
       }
       else if (type == FUNCTION_ARGUMENT) {
         return new FormulaEngineFunctionArgumentImpl(node);

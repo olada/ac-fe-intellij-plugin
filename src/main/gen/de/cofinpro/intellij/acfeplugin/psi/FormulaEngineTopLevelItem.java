@@ -8,6 +8,9 @@ import com.intellij.psi.PsiElement;
 public interface FormulaEngineTopLevelItem extends PsiElement {
 
   @Nullable
+  FormulaEngineControlStructure getControlStructure();
+
+  @Nullable
   FormulaEngineFunctionDefinition getFunctionDefinition();
 
   @Nullable
