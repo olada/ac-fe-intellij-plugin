@@ -61,6 +61,7 @@ BuiltInFunctionName ::= attribute | status
     | dayplus | daydiff
     | elt
     | is_list | is_na
+    | kernel
     | len
     | load
     | remove

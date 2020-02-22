@@ -50,6 +50,7 @@ public interface FormulaEngineElementTypes {
   IElementType INTEGER = new FormulaEngineTokenType("integer");
   IElementType IS_LIST = new FormulaEngineTokenType("is_list");
   IElementType IS_NA = new FormulaEngineTokenType("is_na");
+  IElementType KERNEL = new FormulaEngineTokenType("kernel");
   IElementType KEYWORD_ELSE = new FormulaEngineTokenType("else");
   IElementType KEYWORD_FOR = new FormulaEngineTokenType("for");
   IElementType KEYWORD_IF = new FormulaEngineTokenType("if");

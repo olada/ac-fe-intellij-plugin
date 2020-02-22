@@ -63,6 +63,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   //     | dayplus | daydiff
   //     | elt
   //     | is_list | is_na
+  //     | kernel
   //     | len
   //     | load
   //     | remove
@@ -80,6 +81,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     if (!r) r = consumeToken(b, ELT);
     if (!r) r = consumeToken(b, IS_LIST);
     if (!r) r = consumeToken(b, IS_NA);
+    if (!r) r = consumeToken(b, KERNEL);
     if (!r) r = consumeToken(b, LEN);
     if (!r) r = consumeToken(b, LOAD);
     if (!r) r = consumeToken(b, REMOVE);

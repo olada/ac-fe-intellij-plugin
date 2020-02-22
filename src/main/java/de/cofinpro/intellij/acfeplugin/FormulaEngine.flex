@@ -81,6 +81,7 @@ NUMBER_INTEGER = [0-9]+
    "integer(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_INTEGER; }
    "is_list(" { yypushback(1); return FormulaEngineElementTypes.IS_LIST; }
    "is_na(" { yypushback(1); return FormulaEngineElementTypes.IS_NA; }
+   "kernel(" { yypushback(1); return FormulaEngineElementTypes.KERNEL; }
    "len(" { yypushback(1); return FormulaEngineElementTypes.LEN; }
    "load(" { yypushback(1); return FormulaEngineElementTypes.LOAD; }
    "remove(" { yypushback(1); return FormulaEngineElementTypes.REMOVE; }
