@@ -44,8 +44,10 @@ NUMBER_INTEGER = [0-9]+
     && { return FormulaEngineElementTypes.OPERATOR_AND; }
     "==" { return FormulaEngineElementTypes.OPERATOR_EQUAL; }
     "=" { return FormulaEngineElementTypes.OPERATOR_ASSIGNMENT; }
+    ">=" { return FormulaEngineElementTypes.OPERATOR_GREATERTHANEQUAL; }
     ">" { return FormulaEngineElementTypes.OPERATOR_GREATERTHAN; }
     "++" { return FormulaEngineElementTypes.OPERATOR_INCREMENT; }
+    "<=" { return FormulaEngineElementTypes.OPERATOR_LESSTHANEQUAL; }
     "<" { return FormulaEngineElementTypes.OPERATOR_LESSTHAN; }
     "%" { return FormulaEngineElementTypes.OPERATOR_MODULO; }
     "!" { return FormulaEngineElementTypes.OPERATOR_NEGATION; }

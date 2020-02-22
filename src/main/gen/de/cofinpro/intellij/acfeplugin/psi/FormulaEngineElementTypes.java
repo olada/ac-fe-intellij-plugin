@@ -93,8 +93,10 @@ public interface FormulaEngineElementTypes {
   IElementType OPERATOR_ASSIGNMENT = new FormulaEngineTokenType("=");
   IElementType OPERATOR_EQUAL = new FormulaEngineTokenType("==");
   IElementType OPERATOR_GREATERTHAN = new FormulaEngineTokenType(">");
+  IElementType OPERATOR_GREATERTHANEQUAL = new FormulaEngineTokenType(">=");
   IElementType OPERATOR_INCREMENT = new FormulaEngineTokenType("++");
   IElementType OPERATOR_LESSTHAN = new FormulaEngineTokenType("<");
+  IElementType OPERATOR_LESSTHANEQUAL = new FormulaEngineTokenType("<=");
   IElementType OPERATOR_MODULO = new FormulaEngineTokenType("%");
   IElementType OPERATOR_NEGATION = new FormulaEngineTokenType("!");
   IElementType OPERATOR_NOTEQUAL = new FormulaEngineTokenType("!=");
