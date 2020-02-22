@@ -44,4 +44,10 @@ public class FormulaEngineStatementImpl extends ASTWrapperPsiElement implements 
     return findChildByClass(FormulaEngineFunctionInvocation.class);
   }
 
+  @Override
+  @Nullable
+  public FormulaEngineReturnStatement getReturnStatement() {
+    return findChildByClass(FormulaEngineReturnStatement.class);
+  }
+
 }

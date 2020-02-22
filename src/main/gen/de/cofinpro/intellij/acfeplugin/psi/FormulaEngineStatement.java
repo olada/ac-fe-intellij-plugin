@@ -16,4 +16,7 @@ public interface FormulaEngineStatement extends PsiElement {
   @Nullable
   FormulaEngineFunctionInvocation getFunctionInvocation();
 
+  @Nullable
+  FormulaEngineReturnStatement getReturnStatement();
+
 }

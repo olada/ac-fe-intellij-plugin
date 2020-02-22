@@ -108,11 +108,11 @@ FunctionArguments ::= FunctionArgument (COMMA FunctionArgument)*
 FunctionArgument ::= Expression
 
 // Control Structures
-ControlStructure ::= (ControlStructureKeyword LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE) | For
-ControlStructureInFunction ::= (ControlStructureKeyword LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE ControlStructureInFunctionBody RIGHT_CURLY_BRACE) | For
-ControlStructureKeyword ::= KEYWORD_IF | KEYWORD_FOR | KEYWORD_WHILE
+ControlStructure ::= (ControlStructureKeyword LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE) | For | If
+//ControlStructureInFunction ::= (ControlStructureKeyword LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE ControlStructureInFunctionBody RIGHT_CURLY_BRACE) | For | If
+ControlStructureKeyword ::= KEYWORD_FOR | KEYWORD_WHILE
 ControlStructureBody ::= (ControlStructure | Statement)*
-ControlStructureInFunctionBody ::= (ControlStructureInFunction | Statement | (ReturnStatement ';'))*
+//ControlStructureInFunctionBody ::= (ControlStructureInFunction | Statement | (ReturnStatement ';'))*
 
 // Expressions
 Expression ::=  SingleExpression (Operator SingleExpression)*
@@ -141,16 +141,16 @@ BuiltInFunctionName ::= BUILT_IN_FUNC_ATTRIBUTE | BUILT_IN_FUNC_STATUS
     | BUILT_IN_FUNC_OUT
     | BUILT_IN_FUNC_REMOVE
 FunctionBody ::= FunctionBodyStatement*
-Statement ::= (FunctionInvocation | Assignment | Declaration) ';'
+Statement ::= (FunctionInvocation | Assignment | Declaration | ReturnStatement) ';'
 StatementWithoutEol ::= FunctionInvocation | Assignment | Declaration // This is a hack and has a better solution for sure..
-FunctionBodyStatement ::= ControlStructureInFunction | ((FunctionInvocation | Assignment | Declaration | ReturnStatement) SEMICOLON)
+FunctionBodyStatement ::= ControlStructure | ((FunctionInvocation | Assignment | Declaration | ReturnStatement) SEMICOLON)
 
 SeqForParenthesis ::= LEFT_PARENTHESIS Assignment SEMICOLON Expression SEMICOLON Assignment RIGHT_PARENTHESIS
 Seq ::= KEYWORD_SEQ SeqForParenthesis StatementWithoutEol
 For ::= KEYWORD_FOR SeqForParenthesis LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE
+If ::= KEYWORD_IF LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE (KEYWORD_ELSE LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE)?
 
 Declaration ::= Visibility? Type? IDENTIFIER
-//Assignment ::=  Declaration '=' (Constant | FunctionInvocation | ArrayAccess | IDENTIFIER)
 Assignment ::= (Declaration OPERATOR_ASSIGNMENT (Seq | Expression)) | IDENTIFIER IdentifierPostfix?
 
 ArrayAccess ::= IDENTIFIER (LEFT_BRACKET (NUMBER_INTEGER | IDENTIFIER) RIGHT_BRACKET)+

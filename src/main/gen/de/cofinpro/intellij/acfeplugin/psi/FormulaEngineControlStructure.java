@@ -19,4 +19,7 @@ public interface FormulaEngineControlStructure extends PsiElement {
   @Nullable
   FormulaEngineFor getFor();
 
+  @Nullable
+  FormulaEngineIf getIf();
+
 }

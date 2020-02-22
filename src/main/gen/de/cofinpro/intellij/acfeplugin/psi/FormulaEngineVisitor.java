@@ -35,14 +35,6 @@ public class FormulaEngineVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitControlStructureInFunction(@NotNull FormulaEngineControlStructureInFunction o) {
-    visitPsiElement(o);
-  }
-
-  public void visitControlStructureInFunctionBody(@NotNull FormulaEngineControlStructureInFunctionBody o) {
-    visitPsiElement(o);
-  }
-
   public void visitControlStructureKeyword(@NotNull FormulaEngineControlStructureKeyword o) {
     visitPsiElement(o);
   }
@@ -96,6 +88,10 @@ public class FormulaEngineVisitor extends PsiElementVisitor {
   }
 
   public void visitIdentifierPostfix(@NotNull FormulaEngineIdentifierPostfix o) {
+    visitPsiElement(o);
+  }
+
+  public void visitIf(@NotNull FormulaEngineIf o) {
     visitPsiElement(o);
   }
 

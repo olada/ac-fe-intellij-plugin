@@ -225,13 +225,14 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // (ControlStructureKeyword LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE) | For
+  // (ControlStructureKeyword LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE) | For | If
   public static boolean ControlStructure(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "ControlStructure")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, CONTROL_STRUCTURE, "<control structure>");
     r = ControlStructure_0(b, l + 1);
     if (!r) r = For(b, l + 1);
+    if (!r) r = If(b, l + 1);
     exit_section_(b, l, m, r, false, null);
     return r;
   }
@@ -275,77 +276,13 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // (ControlStructureKeyword LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE ControlStructureInFunctionBody RIGHT_CURLY_BRACE) | For
-  public static boolean ControlStructureInFunction(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "ControlStructureInFunction")) return false;
-    boolean r;
-    Marker m = enter_section_(b, l, _NONE_, CONTROL_STRUCTURE_IN_FUNCTION, "<control structure in function>");
-    r = ControlStructureInFunction_0(b, l + 1);
-    if (!r) r = For(b, l + 1);
-    exit_section_(b, l, m, r, false, null);
-    return r;
-  }
-
-  // ControlStructureKeyword LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE ControlStructureInFunctionBody RIGHT_CURLY_BRACE
-  private static boolean ControlStructureInFunction_0(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "ControlStructureInFunction_0")) return false;
-    boolean r;
-    Marker m = enter_section_(b);
-    r = ControlStructureKeyword(b, l + 1);
-    r = r && consumeToken(b, LEFT_PARENTHESIS);
-    r = r && Expression(b, l + 1);
-    r = r && consumeTokens(b, 0, RIGHT_PARENTHESIS, LEFT_CURLY_BRACE);
-    r = r && ControlStructureInFunctionBody(b, l + 1);
-    r = r && consumeToken(b, RIGHT_CURLY_BRACE);
-    exit_section_(b, m, null, r);
-    return r;
-  }
-
-  /* ********************************************************** */
-  // (ControlStructureInFunction | Statement | (ReturnStatement ';'))*
-  public static boolean ControlStructureInFunctionBody(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "ControlStructureInFunctionBody")) return false;
-    Marker m = enter_section_(b, l, _NONE_, CONTROL_STRUCTURE_IN_FUNCTION_BODY, "<control structure in function body>");
-    while (true) {
-      int c = current_position_(b);
-      if (!ControlStructureInFunctionBody_0(b, l + 1)) break;
-      if (!empty_element_parsed_guard_(b, "ControlStructureInFunctionBody", c)) break;
-    }
-    exit_section_(b, l, m, true, false, null);
-    return true;
-  }
-
-  // ControlStructureInFunction | Statement | (ReturnStatement ';')
-  private static boolean ControlStructureInFunctionBody_0(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "ControlStructureInFunctionBody_0")) return false;
-    boolean r;
-    Marker m = enter_section_(b);
-    r = ControlStructureInFunction(b, l + 1);
-    if (!r) r = Statement(b, l + 1);
-    if (!r) r = ControlStructureInFunctionBody_0_2(b, l + 1);
-    exit_section_(b, m, null, r);
-    return r;
-  }
-
-  // ReturnStatement ';'
-  private static boolean ControlStructureInFunctionBody_0_2(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "ControlStructureInFunctionBody_0_2")) return false;
-    boolean r;
-    Marker m = enter_section_(b);
-    r = ReturnStatement(b, l + 1);
-    r = r && consumeToken(b, SEMICOLON);
-    exit_section_(b, m, null, r);
-    return r;
-  }
-
-  /* ********************************************************** */
-  // KEYWORD_IF | KEYWORD_FOR | KEYWORD_WHILE
+  // KEYWORD_FOR | KEYWORD_WHILE
   public static boolean ControlStructureKeyword(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "ControlStructureKeyword")) return false;
+    if (!nextTokenIs(b, "<control structure keyword>", KEYWORD_FOR, KEYWORD_WHILE)) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, CONTROL_STRUCTURE_KEYWORD, "<control structure keyword>");
-    r = consumeToken(b, KEYWORD_IF);
-    if (!r) r = consumeToken(b, KEYWORD_FOR);
+    r = consumeToken(b, KEYWORD_FOR);
     if (!r) r = consumeToken(b, KEYWORD_WHILE);
     exit_section_(b, l, m, r, false, null);
     return r;
@@ -500,12 +437,12 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // ControlStructureInFunction | ((FunctionInvocation | Assignment | Declaration | ReturnStatement) SEMICOLON)
+  // ControlStructure | ((FunctionInvocation | Assignment | Declaration | ReturnStatement) SEMICOLON)
   public static boolean FunctionBodyStatement(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "FunctionBodyStatement")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, FUNCTION_BODY_STATEMENT, "<function body statement>");
-    r = ControlStructureInFunction(b, l + 1);
+    r = ControlStructure(b, l + 1);
     if (!r) r = FunctionBodyStatement_1(b, l + 1);
     exit_section_(b, l, m, r, false, null);
     return r;
@@ -648,6 +585,42 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     Marker m = enter_section_(b);
     r = consumeToken(b, OPERATOR_INCREMENT);
     exit_section_(b, m, IDENTIFIER_POSTFIX, r);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // KEYWORD_IF LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE (KEYWORD_ELSE LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE)?
+  public static boolean If(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "If")) return false;
+    if (!nextTokenIs(b, KEYWORD_IF)) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeTokens(b, 0, KEYWORD_IF, LEFT_PARENTHESIS);
+    r = r && Expression(b, l + 1);
+    r = r && consumeTokens(b, 0, RIGHT_PARENTHESIS, LEFT_CURLY_BRACE);
+    r = r && ControlStructureBody(b, l + 1);
+    r = r && consumeToken(b, RIGHT_CURLY_BRACE);
+    r = r && If_7(b, l + 1);
+    exit_section_(b, m, IF, r);
+    return r;
+  }
+
+  // (KEYWORD_ELSE LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE)?
+  private static boolean If_7(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "If_7")) return false;
+    If_7_0(b, l + 1);
+    return true;
+  }
+
+  // KEYWORD_ELSE LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE
+  private static boolean If_7_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "If_7_0")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeTokens(b, 0, KEYWORD_ELSE, LEFT_CURLY_BRACE);
+    r = r && ControlStructureBody(b, l + 1);
+    r = r && consumeToken(b, RIGHT_CURLY_BRACE);
+    exit_section_(b, m, null, r);
     return r;
   }
 
@@ -853,7 +826,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // (FunctionInvocation | Assignment | Declaration) ';'
+  // (FunctionInvocation | Assignment | Declaration | ReturnStatement) ';'
   public static boolean Statement(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Statement")) return false;
     boolean r;
@@ -864,13 +837,14 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     return r;
   }
 
-  // FunctionInvocation | Assignment | Declaration
+  // FunctionInvocation | Assignment | Declaration | ReturnStatement
   private static boolean Statement_0(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Statement_0")) return false;
     boolean r;
     r = FunctionInvocation(b, l + 1);
     if (!r) r = Assignment(b, l + 1);
     if (!r) r = Declaration(b, l + 1);
+    if (!r) r = ReturnStatement(b, l + 1);
     return r;
   }
 

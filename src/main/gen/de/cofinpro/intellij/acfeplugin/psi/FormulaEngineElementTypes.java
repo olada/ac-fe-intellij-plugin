@@ -15,8 +15,6 @@ public interface FormulaEngineElementTypes {
   IElementType CONSTANT = new FormulaEngineElementType("CONSTANT");
   IElementType CONTROL_STRUCTURE = new FormulaEngineElementType("CONTROL_STRUCTURE");
   IElementType CONTROL_STRUCTURE_BODY = new FormulaEngineElementType("CONTROL_STRUCTURE_BODY");
-  IElementType CONTROL_STRUCTURE_IN_FUNCTION = new FormulaEngineElementType("CONTROL_STRUCTURE_IN_FUNCTION");
-  IElementType CONTROL_STRUCTURE_IN_FUNCTION_BODY = new FormulaEngineElementType("CONTROL_STRUCTURE_IN_FUNCTION_BODY");
   IElementType CONTROL_STRUCTURE_KEYWORD = new FormulaEngineElementType("CONTROL_STRUCTURE_KEYWORD");
   IElementType CUSTOM_FUNCTION_NAME = new FormulaEngineElementType("CUSTOM_FUNCTION_NAME");
   IElementType DECLARATION = new FormulaEngineElementType("DECLARATION");
@@ -31,6 +29,7 @@ public interface FormulaEngineElementTypes {
   IElementType FUNCTION_PARAMETER = new FormulaEngineElementType("FUNCTION_PARAMETER");
   IElementType FUNCTION_PARAMETERS = new FormulaEngineElementType("FUNCTION_PARAMETERS");
   IElementType IDENTIFIER_POSTFIX = new FormulaEngineElementType("IDENTIFIER_POSTFIX");
+  IElementType IF = new FormulaEngineElementType("IF");
   IElementType LIST_CONTENTS = new FormulaEngineElementType("LIST_CONTENTS");
   IElementType LIST_LITERAL = new FormulaEngineElementType("LIST_LITERAL");
   IElementType NEGATED_EXPRESSION = new FormulaEngineElementType("NEGATED_EXPRESSION");
@@ -141,12 +140,6 @@ public interface FormulaEngineElementTypes {
       else if (type == CONTROL_STRUCTURE_BODY) {
         return new FormulaEngineControlStructureBodyImpl(node);
       }
-      else if (type == CONTROL_STRUCTURE_IN_FUNCTION) {
-        return new FormulaEngineControlStructureInFunctionImpl(node);
-      }
-      else if (type == CONTROL_STRUCTURE_IN_FUNCTION_BODY) {
-        return new FormulaEngineControlStructureInFunctionBodyImpl(node);
-      }
       else if (type == CONTROL_STRUCTURE_KEYWORD) {
         return new FormulaEngineControlStructureKeywordImpl(node);
       }
@@ -188,6 +181,9 @@ public interface FormulaEngineElementTypes {
       }
       else if (type == IDENTIFIER_POSTFIX) {
         return new FormulaEngineIdentifierPostfixImpl(node);
+      }
+      else if (type == IF) {
+        return new FormulaEngineIfImpl(node);
       }
       else if (type == LIST_CONTENTS) {
         return new FormulaEngineListContentsImpl(node);

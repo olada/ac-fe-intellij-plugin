@@ -11,7 +11,7 @@ public interface FormulaEngineFunctionBodyStatement extends PsiElement {
   FormulaEngineAssignment getAssignment();
 
   @Nullable
-  FormulaEngineControlStructureInFunction getControlStructureInFunction();
+  FormulaEngineControlStructure getControlStructure();
 
   @Nullable
   FormulaEngineDeclaration getDeclaration();

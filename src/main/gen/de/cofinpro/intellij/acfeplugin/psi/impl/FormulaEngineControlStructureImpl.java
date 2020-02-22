@@ -50,4 +50,10 @@ public class FormulaEngineControlStructureImpl extends ASTWrapperPsiElement impl
     return findChildByClass(FormulaEngineFor.class);
   }
 
+  @Override
+  @Nullable
+  public FormulaEngineIf getIf() {
+    return findChildByClass(FormulaEngineIf.class);
+  }
+
 }
