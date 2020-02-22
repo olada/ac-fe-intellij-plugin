@@ -70,10 +70,12 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   //     | date | datetime | str
   //     | dayplus | daydiff
   //     | elt
+  //     | hash_get | hash_put | hash_keys | hash_iskey
   //     | is_list | is_na
   //     | kernel
   //     | len
   //     | load
+  //     | out
   //     | remove
   public static boolean BuiltInFunctionName(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "BuiltInFunctionName")) return false;
@@ -87,11 +89,16 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     if (!r) r = consumeToken(b, DAYPLUS);
     if (!r) r = consumeToken(b, DAYDIFF);
     if (!r) r = consumeToken(b, ELT);
+    if (!r) r = consumeToken(b, HASH_GET);
+    if (!r) r = consumeToken(b, HASH_PUT);
+    if (!r) r = consumeToken(b, HASH_KEYS);
+    if (!r) r = consumeToken(b, HASH_ISKEY);
     if (!r) r = consumeToken(b, IS_LIST);
     if (!r) r = consumeToken(b, IS_NA);
     if (!r) r = consumeToken(b, KERNEL);
     if (!r) r = consumeToken(b, LEN);
     if (!r) r = consumeToken(b, LOAD);
+    if (!r) r = consumeToken(b, OUT);
     if (!r) r = consumeToken(b, REMOVE);
     exit_section_(b, l, m, r, false, null);
     return r;

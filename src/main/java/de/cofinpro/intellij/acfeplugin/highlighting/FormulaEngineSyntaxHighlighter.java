@@ -68,19 +68,23 @@ public class FormulaEngineSyntaxHighlighter extends SyntaxHighlighterBase {
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.DAYPLUS, INBUILT_FUNCTION_DAYPLUS_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.ELT, INBUILT_FUNCTION_ELT_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_FLOAT, INBUILT_FUNCTION_FLOAT_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.HASH_GET, INBUILT_FUNCTION_HASH_GET_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.HASH_ISKEY, INBUILT_FUNCTION_HASH_ISKEY_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.HASH_KEYS, INBUILT_FUNCTION_HASH_KEYS_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.HASH_PUT, INBUILT_FUNCTION_HASH_PUT_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_INTEGER, INBUILT_FUNCTION_INTEGER_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.IS_LIST, INBUILT_FUNCTION_IS_LIST_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.IS_NA, INBUILT_FUNCTION_IS_NA_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.KERNEL, INBUILT_FUNCTION_KERNEL_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.LEN, INBUILT_FUNCTION_LEN_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.LOAD, INBUILT_FUNCTION_LOAD_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.OUT, INBUILT_FUNCTION_OUT_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.REMOVE, INBUILT_FUNCTION_REMOVE_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.STATUS, INBUILT_FUNCTION_STATUS_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.STR, INBUILT_FUNCTION_STR_ATTR_KEY);
 
         // General Tokens
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.NUMBER_INTEGER, NUMBER_INTEGER);
-
     }
 
 

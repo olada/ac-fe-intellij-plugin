@@ -67,10 +67,12 @@ BuiltInFunctionName ::= attribute | status
     | date | datetime | str
     | dayplus | daydiff
     | elt
+    | hash_get | hash_put | hash_keys | hash_iskey
     | is_list | is_na
     | kernel
     | len
     | load
+    | out
     | remove
 FunctionBody ::= FunctionBodyStatement*
 Statement ::= (Assignment | Declaration | FunctionInvocation) ';'

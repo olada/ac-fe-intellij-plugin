@@ -46,6 +46,10 @@ public interface FormulaEngineElementTypes {
   IElementType FLOAT = new FormulaEngineTokenType("float");
   IElementType FUNCTION = new FormulaEngineTokenType("function");
   IElementType GLOBAL = new FormulaEngineTokenType("global");
+  IElementType HASH_GET = new FormulaEngineTokenType("hash_get");
+  IElementType HASH_ISKEY = new FormulaEngineTokenType("hash_iskey");
+  IElementType HASH_KEYS = new FormulaEngineTokenType("hash_keys");
+  IElementType HASH_PUT = new FormulaEngineTokenType("hash_put");
   IElementType IDENTIFIER = new FormulaEngineTokenType("IDENTIFIER");
   IElementType INTEGER = new FormulaEngineTokenType("integer");
   IElementType IS_LIST = new FormulaEngineTokenType("is_list");
@@ -65,6 +69,7 @@ public interface FormulaEngineElementTypes {
   IElementType LOCAL = new FormulaEngineTokenType("local");
   IElementType NUMBER_INTEGER = new FormulaEngineTokenType("NUMBER_INTEGER");
   IElementType OPERATOR_EQUALS = new FormulaEngineTokenType("=");
+  IElementType OUT = new FormulaEngineTokenType("out");
   IElementType REMOVE = new FormulaEngineTokenType("remove");
   IElementType RETURN = new FormulaEngineTokenType("return");
   IElementType RIGHT_BRACKET = new FormulaEngineTokenType("]");

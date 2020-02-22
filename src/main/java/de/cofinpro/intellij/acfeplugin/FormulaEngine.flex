@@ -76,11 +76,16 @@ NUMBER_INTEGER = [0-9]+
    "elt(" { yypushback(1); return FormulaEngineElementTypes.ELT; }
    "float(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_FLOAT; }
    "integer(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_INTEGER; }
+   "hash_get(" { yypushback(1); return FormulaEngineElementTypes.HASH_GET; }
+   "hash_iskey(" { yypushback(1); return FormulaEngineElementTypes.HASH_ISKEY; }
+   "hash_keys(" { yypushback(1); return FormulaEngineElementTypes.HASH_KEYS; }
+   "hash_put(" { yypushback(1); return FormulaEngineElementTypes.HASH_PUT; }
    "is_list(" { yypushback(1); return FormulaEngineElementTypes.IS_LIST; }
    "is_na(" { yypushback(1); return FormulaEngineElementTypes.IS_NA; }
    "kernel(" { yypushback(1); return FormulaEngineElementTypes.KERNEL; }
    "len(" { yypushback(1); return FormulaEngineElementTypes.LEN; }
    "load(" { yypushback(1); return FormulaEngineElementTypes.LOAD; }
+   "out(" { yypushback(1); return FormulaEngineElementTypes.OUT; }
    "remove(" { yypushback(1); return FormulaEngineElementTypes.REMOVE; }
    "status(" { yypushback(1); return FormulaEngineElementTypes.STATUS; }
    "str(" { yypushback(1); return FormulaEngineElementTypes.STR; }
