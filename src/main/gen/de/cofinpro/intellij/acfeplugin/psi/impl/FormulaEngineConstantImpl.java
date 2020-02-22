@@ -34,6 +34,12 @@ public class FormulaEngineConstantImpl extends ASTWrapperPsiElement implements F
 
   @Override
   @Nullable
+  public FormulaEngineStringLiteral getStringLiteral() {
+    return findChildByClass(FormulaEngineStringLiteral.class);
+  }
+
+  @Override
+  @Nullable
   public PsiElement getNumberInteger() {
     return findChildByType(NUMBER_INTEGER);
   }

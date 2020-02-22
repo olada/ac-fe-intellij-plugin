@@ -110,14 +110,14 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // BuiltInVariableName | NUMBER_INTEGER
+  // BuiltInVariableName | NUMBER_INTEGER | StringLiteral
   public static boolean Constant(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Constant")) return false;
-    if (!nextTokenIs(b, "<constant>", BUILT_IN_VAR_NA, NUMBER_INTEGER)) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, CONSTANT, "<constant>");
     r = BuiltInVariableName(b, l + 1);
     if (!r) r = consumeToken(b, NUMBER_INTEGER);
+    if (!r) r = StringLiteral(b, l + 1);
     exit_section_(b, l, m, r, false, null);
     return r;
   }

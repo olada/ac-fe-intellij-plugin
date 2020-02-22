@@ -11,6 +11,9 @@ public interface FormulaEngineConstant extends PsiElement {
   FormulaEngineBuiltInVariableName getBuiltInVariableName();
 
   @Nullable
+  FormulaEngineStringLiteral getStringLiteral();
+
+  @Nullable
   PsiElement getNumberInteger();
 
 }
