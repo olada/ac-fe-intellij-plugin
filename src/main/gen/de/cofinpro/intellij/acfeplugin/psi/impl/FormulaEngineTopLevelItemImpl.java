@@ -11,14 +11,14 @@ import static de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import de.cofinpro.intellij.acfeplugin.psi.*;
 
-public class FormulaEngineStatementImpl extends ASTWrapperPsiElement implements FormulaEngineStatement {
+public class FormulaEngineTopLevelItemImpl extends ASTWrapperPsiElement implements FormulaEngineTopLevelItem {
 
-  public FormulaEngineStatementImpl(@NotNull ASTNode node) {
+  public FormulaEngineTopLevelItemImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull FormulaEngineVisitor visitor) {
-    visitor.visitStatement(this);
+    visitor.visitTopLevelItem(this);
   }
 
   public void accept(@NotNull PsiElementVisitor visitor) {
@@ -28,20 +28,20 @@ public class FormulaEngineStatementImpl extends ASTWrapperPsiElement implements 
 
   @Override
   @Nullable
-  public FormulaEngineLocalAssignment getLocalAssignment() {
-    return findChildByClass(FormulaEngineLocalAssignment.class);
+  public FormulaEngineFunctionDefinition getFunctionDefinition() {
+    return findChildByClass(FormulaEngineFunctionDefinition.class);
   }
 
   @Override
   @Nullable
-  public FormulaEngineLocalDeclaration getLocalDeclaration() {
-    return findChildByClass(FormulaEngineLocalDeclaration.class);
+  public FormulaEngineGlobalAssignment getGlobalAssignment() {
+    return findChildByClass(FormulaEngineGlobalAssignment.class);
   }
 
   @Override
   @Nullable
-  public FormulaEngineReturnStatement getReturnStatement() {
-    return findChildByClass(FormulaEngineReturnStatement.class);
+  public FormulaEngineGlobalDeclaration getGlobalDeclaration() {
+    return findChildByClass(FormulaEngineGlobalDeclaration.class);
   }
 
 }

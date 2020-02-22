@@ -5,15 +5,15 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface FormulaEngineStatement extends PsiElement {
+public interface FormulaEngineTopLevelItem extends PsiElement {
 
   @Nullable
-  FormulaEngineLocalAssignment getLocalAssignment();
+  FormulaEngineFunctionDefinition getFunctionDefinition();
 
   @Nullable
-  FormulaEngineLocalDeclaration getLocalDeclaration();
+  FormulaEngineGlobalAssignment getGlobalAssignment();
 
   @Nullable
-  FormulaEngineReturnStatement getReturnStatement();
+  FormulaEngineGlobalDeclaration getGlobalDeclaration();
 
 }

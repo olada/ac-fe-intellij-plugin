@@ -27,6 +27,10 @@ public class FormulaEngineVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitDeclaration(@NotNull FormulaEngineDeclaration o) {
+    visitPsiElement(o);
+  }
+
   public void visitFunctionArguments(@NotNull FormulaEngineFunctionArguments o) {
     visitPsiElement(o);
   }
@@ -51,11 +55,31 @@ public class FormulaEngineVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitGlobalAssignment(@NotNull FormulaEngineGlobalAssignment o) {
+    visitPsiElement(o);
+  }
+
+  public void visitGlobalDeclaration(@NotNull FormulaEngineGlobalDeclaration o) {
+    visitPsiElement(o);
+  }
+
+  public void visitLocalAssignment(@NotNull FormulaEngineLocalAssignment o) {
+    visitPsiElement(o);
+  }
+
+  public void visitLocalDeclaration(@NotNull FormulaEngineLocalDeclaration o) {
+    visitPsiElement(o);
+  }
+
   public void visitReturnStatement(@NotNull FormulaEngineReturnStatement o) {
     visitPsiElement(o);
   }
 
   public void visitStatement(@NotNull FormulaEngineStatement o) {
+    visitPsiElement(o);
+  }
+
+  public void visitTopLevelItem(@NotNull FormulaEngineTopLevelItem o) {
     visitPsiElement(o);
   }
 

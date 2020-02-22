@@ -36,29 +36,21 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // VisibilityPrefix? TypePrefix IDENTIFIER '=' (Constant | FunctionInvocation)
+  // Declaration '=' (Constant | FunctionInvocation)
   public static boolean Assignment(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Assignment")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, ASSIGNMENT, "<assignment>");
-    r = Assignment_0(b, l + 1);
-    r = r && TypePrefix(b, l + 1);
-    r = r && consumeTokens(b, 0, IDENTIFIER, OPERATOR_EQUALS);
-    r = r && Assignment_4(b, l + 1);
+    r = Declaration(b, l + 1);
+    r = r && consumeToken(b, OPERATOR_EQUALS);
+    r = r && Assignment_2(b, l + 1);
     exit_section_(b, l, m, r, false, null);
     return r;
   }
 
-  // VisibilityPrefix?
-  private static boolean Assignment_0(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "Assignment_0")) return false;
-    VisibilityPrefix(b, l + 1);
-    return true;
-  }
-
   // Constant | FunctionInvocation
-  private static boolean Assignment_4(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "Assignment_4")) return false;
+  private static boolean Assignment_2(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "Assignment_2")) return false;
     boolean r;
     r = Constant(b, l + 1);
     if (!r) r = FunctionInvocation(b, l + 1);
@@ -130,6 +122,25 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     r = consumeToken(b, IDENTIFIER);
     exit_section_(b, m, CUSTOM_FUNCTION_NAME, r);
     return r;
+  }
+
+  /* ********************************************************** */
+  // TypePrefix? IDENTIFIER
+  public static boolean Declaration(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "Declaration")) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, DECLARATION, "<declaration>");
+    r = Declaration_0(b, l + 1);
+    r = r && consumeToken(b, IDENTIFIER);
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  // TypePrefix?
+  private static boolean Declaration_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "Declaration_0")) return false;
+    TypePrefix(b, l + 1);
+    return true;
   }
 
   /* ********************************************************** */
@@ -288,6 +299,72 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
+  // global Assignment ';'
+  public static boolean GlobalAssignment(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "GlobalAssignment")) return false;
+    if (!nextTokenIs(b, GLOBAL)) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeToken(b, GLOBAL);
+    r = r && Assignment(b, l + 1);
+    r = r && consumeToken(b, ";");
+    exit_section_(b, m, GLOBAL_ASSIGNMENT, r);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // global Declaration ';'
+  public static boolean GlobalDeclaration(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "GlobalDeclaration")) return false;
+    if (!nextTokenIs(b, GLOBAL)) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeToken(b, GLOBAL);
+    r = r && Declaration(b, l + 1);
+    r = r && consumeToken(b, ";");
+    exit_section_(b, m, GLOBAL_DECLARATION, r);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // local? Assignment
+  public static boolean LocalAssignment(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "LocalAssignment")) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, LOCAL_ASSIGNMENT, "<local assignment>");
+    r = LocalAssignment_0(b, l + 1);
+    r = r && Assignment(b, l + 1);
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  // local?
+  private static boolean LocalAssignment_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "LocalAssignment_0")) return false;
+    consumeToken(b, LOCAL);
+    return true;
+  }
+
+  /* ********************************************************** */
+  // local? Declaration
+  public static boolean LocalDeclaration(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "LocalDeclaration")) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, LOCAL_DECLARATION, "<local declaration>");
+    r = LocalDeclaration_0(b, l + 1);
+    r = r && Declaration(b, l + 1);
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  // local?
+  private static boolean LocalDeclaration_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "LocalDeclaration_0")) return false;
+    consumeToken(b, LOCAL);
+    return true;
+  }
+
+  /* ********************************************************** */
   // return IDENTIFIER
   public static boolean ReturnStatement(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "ReturnStatement")) return false;
@@ -300,7 +377,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // (Assignment | ReturnStatement) ';'
+  // (LocalAssignment | LocalDeclaration | ReturnStatement) ';'
   public static boolean Statement(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Statement")) return false;
     boolean r;
@@ -311,12 +388,27 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     return r;
   }
 
-  // Assignment | ReturnStatement
+  // LocalAssignment | LocalDeclaration | ReturnStatement
   private static boolean Statement_0(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Statement_0")) return false;
     boolean r;
-    r = Assignment(b, l + 1);
+    r = LocalAssignment(b, l + 1);
+    if (!r) r = LocalDeclaration(b, l + 1);
     if (!r) r = ReturnStatement(b, l + 1);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // FunctionDefinition | GlobalAssignment | GlobalDeclaration
+  public static boolean TopLevelItem(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "TopLevelItem")) return false;
+    if (!nextTokenIs(b, "<top level item>", FUNCTION, GLOBAL)) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, TOP_LEVEL_ITEM, "<top level item>");
+    r = FunctionDefinition(b, l + 1);
+    if (!r) r = GlobalAssignment(b, l + 1);
+    if (!r) r = GlobalDeclaration(b, l + 1);
+    exit_section_(b, l, m, r, false, null);
     return r;
   }
 
@@ -351,12 +443,12 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // FunctionDefinition*
+  // TopLevelItem*
   static boolean feFile(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "feFile")) return false;
     while (true) {
       int c = current_position_(b);
-      if (!FunctionDefinition(b, l + 1)) break;
+      if (!TopLevelItem(b, l + 1)) break;
       if (!empty_element_parsed_guard_(b, "feFile", c)) break;
     }
     return true;

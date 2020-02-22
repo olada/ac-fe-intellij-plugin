@@ -43,7 +43,9 @@
     ]
 }
 
-feFile ::= FunctionDefinition*
+feFile ::= TopLevelItem*
+
+TopLevelItem ::= FunctionDefinition | GlobalAssignment | GlobalDeclaration
 
 FunctionDefinition ::= function IDENTIFIER '(' FunctionParameters? ')' '{' FunctionBody '}'
 FunctionParameters ::= FunctionParameter (',' FunctionParameter)*
@@ -63,8 +65,15 @@ BuiltInFunctionName ::= attribute | status
     | load
     | remove
 FunctionBody ::= Statement*
-Statement ::= (Assignment | ReturnStatement) ';'
-Assignment ::= VisibilityPrefix? TypePrefix IDENTIFIER '=' (Constant | FunctionInvocation)
+Statement ::= (LocalAssignment | LocalDeclaration | ReturnStatement) ';'
+
+Declaration ::= TypePrefix? IDENTIFIER
+GlobalDeclaration ::= global Declaration ';'
+LocalDeclaration ::= local? Declaration
+
+GlobalAssignment ::= global Assignment ';'
+LocalAssignment ::= local? Assignment
+Assignment ::=  Declaration '=' (Constant | FunctionInvocation)
 ReturnStatement ::= return IDENTIFIER
 
 VisibilityPrefix ::= local | global

@@ -13,14 +13,20 @@ public interface FormulaEngineElementTypes {
   IElementType BUILT_IN_VARIABLE_NAME = new FormulaEngineElementType("BUILT_IN_VARIABLE_NAME");
   IElementType CONSTANT = new FormulaEngineElementType("CONSTANT");
   IElementType CUSTOM_FUNCTION_NAME = new FormulaEngineElementType("CUSTOM_FUNCTION_NAME");
+  IElementType DECLARATION = new FormulaEngineElementType("DECLARATION");
   IElementType FUNCTION_ARGUMENTS = new FormulaEngineElementType("FUNCTION_ARGUMENTS");
   IElementType FUNCTION_BODY = new FormulaEngineElementType("FUNCTION_BODY");
   IElementType FUNCTION_DEFINITION = new FormulaEngineElementType("FUNCTION_DEFINITION");
   IElementType FUNCTION_INVOCATION = new FormulaEngineElementType("FUNCTION_INVOCATION");
   IElementType FUNCTION_PARAMETER = new FormulaEngineElementType("FUNCTION_PARAMETER");
   IElementType FUNCTION_PARAMETERS = new FormulaEngineElementType("FUNCTION_PARAMETERS");
+  IElementType GLOBAL_ASSIGNMENT = new FormulaEngineElementType("GLOBAL_ASSIGNMENT");
+  IElementType GLOBAL_DECLARATION = new FormulaEngineElementType("GLOBAL_DECLARATION");
+  IElementType LOCAL_ASSIGNMENT = new FormulaEngineElementType("LOCAL_ASSIGNMENT");
+  IElementType LOCAL_DECLARATION = new FormulaEngineElementType("LOCAL_DECLARATION");
   IElementType RETURN_STATEMENT = new FormulaEngineElementType("RETURN_STATEMENT");
   IElementType STATEMENT = new FormulaEngineElementType("STATEMENT");
+  IElementType TOP_LEVEL_ITEM = new FormulaEngineElementType("TOP_LEVEL_ITEM");
   IElementType TYPE_PREFIX = new FormulaEngineElementType("TYPE_PREFIX");
   IElementType VISIBILITY_PREFIX = new FormulaEngineElementType("VISIBILITY_PREFIX");
 
@@ -85,6 +91,9 @@ public interface FormulaEngineElementTypes {
       else if (type == CUSTOM_FUNCTION_NAME) {
         return new FormulaEngineCustomFunctionNameImpl(node);
       }
+      else if (type == DECLARATION) {
+        return new FormulaEngineDeclarationImpl(node);
+      }
       else if (type == FUNCTION_ARGUMENTS) {
         return new FormulaEngineFunctionArgumentsImpl(node);
       }
@@ -103,11 +112,26 @@ public interface FormulaEngineElementTypes {
       else if (type == FUNCTION_PARAMETERS) {
         return new FormulaEngineFunctionParametersImpl(node);
       }
+      else if (type == GLOBAL_ASSIGNMENT) {
+        return new FormulaEngineGlobalAssignmentImpl(node);
+      }
+      else if (type == GLOBAL_DECLARATION) {
+        return new FormulaEngineGlobalDeclarationImpl(node);
+      }
+      else if (type == LOCAL_ASSIGNMENT) {
+        return new FormulaEngineLocalAssignmentImpl(node);
+      }
+      else if (type == LOCAL_DECLARATION) {
+        return new FormulaEngineLocalDeclarationImpl(node);
+      }
       else if (type == RETURN_STATEMENT) {
         return new FormulaEngineReturnStatementImpl(node);
       }
       else if (type == STATEMENT) {
         return new FormulaEngineStatementImpl(node);
+      }
+      else if (type == TOP_LEVEL_ITEM) {
+        return new FormulaEngineTopLevelItemImpl(node);
       }
       else if (type == TYPE_PREFIX) {
         return new FormulaEngineTypePrefixImpl(node);
