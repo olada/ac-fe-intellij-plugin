@@ -42,6 +42,7 @@ public interface FormulaEngineElementTypes {
   IElementType BUILT_IN_FUNC_DAYDIFF = new FormulaEngineTokenType("daydiff(");
   IElementType BUILT_IN_FUNC_DAYPLUS = new FormulaEngineTokenType("dayplus(");
   IElementType BUILT_IN_FUNC_ELT = new FormulaEngineTokenType("elt(");
+  IElementType BUILT_IN_FUNC_FIRST = new FormulaEngineTokenType("first(");
   IElementType BUILT_IN_FUNC_FLOAT = new FormulaEngineTokenType("float(");
   IElementType BUILT_IN_FUNC_HASH_GET = new FormulaEngineTokenType("hash_get(");
   IElementType BUILT_IN_FUNC_HASH_ISKEY = new FormulaEngineTokenType("hash_iskey(");
@@ -50,6 +51,7 @@ public interface FormulaEngineElementTypes {
   IElementType BUILT_IN_FUNC_INTEGER = new FormulaEngineTokenType("integer(");
   IElementType BUILT_IN_FUNC_IS_LIST = new FormulaEngineTokenType("is_list(");
   IElementType BUILT_IN_FUNC_IS_NA = new FormulaEngineTokenType("is_na(");
+  IElementType BUILT_IN_FUNC_IS_STRING = new FormulaEngineTokenType("is_string(");
   IElementType BUILT_IN_FUNC_KERNEL = new FormulaEngineTokenType("kernel(");
   IElementType BUILT_IN_FUNC_LEN = new FormulaEngineTokenType("len(");
   IElementType BUILT_IN_FUNC_LOAD = new FormulaEngineTokenType("load(");
