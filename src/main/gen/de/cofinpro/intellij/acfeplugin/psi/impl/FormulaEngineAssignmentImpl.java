@@ -50,4 +50,10 @@ public class FormulaEngineAssignmentImpl extends ASTWrapperPsiElement implements
     return findChildByClass(FormulaEngineVisibilityPrefix.class);
   }
 
+  @Override
+  @Nullable
+  public PsiElement getIdentifier() {
+    return findChildByType(IDENTIFIER);
+  }
+
 }

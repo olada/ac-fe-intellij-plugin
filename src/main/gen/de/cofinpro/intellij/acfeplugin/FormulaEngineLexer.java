@@ -757,7 +757,7 @@ public class FormulaEngineLexer implements FlexLexer {
             // fall through
           case 71: break;
           case 21: 
-            { yypushback(1); return FormulaEngineElementTypes.ELT;
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_ELT;
             } 
             // fall through
           case 72: break;
@@ -772,12 +772,12 @@ public class FormulaEngineLexer implements FlexLexer {
             // fall through
           case 74: break;
           case 24: 
-            { yypushback(1); return FormulaEngineElementTypes.LEN;
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_LEN;
             } 
             // fall through
           case 75: break;
           case 25: 
-            { yypushback(1); return FormulaEngineElementTypes.STR;
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STR;
             } 
             // fall through
           case 76: break;
@@ -797,12 +797,12 @@ public class FormulaEngineLexer implements FlexLexer {
             // fall through
           case 79: break;
           case 29: 
-            { yypushback(1); return FormulaEngineElementTypes.LOAD;
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_LOAD;
             } 
             // fall through
           case 80: break;
           case 30: 
-            { yypushback(1); return FormulaEngineElementTypes.DATE;
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DATE;
             } 
             // fall through
           case 81: break;
@@ -817,7 +817,7 @@ public class FormulaEngineLexer implements FlexLexer {
             // fall through
           case 83: break;
           case 33: 
-            { yypushback(1); return FormulaEngineElementTypes.IS_NA;
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_NA;
             } 
             // fall through
           case 84: break;
@@ -842,17 +842,17 @@ public class FormulaEngineLexer implements FlexLexer {
             // fall through
           case 88: break;
           case 38: 
-            { yypushback(1); return FormulaEngineElementTypes.REMOVE;
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_REMOVE;
             } 
             // fall through
           case 89: break;
           case 39: 
-            { yypushback(1); return FormulaEngineElementTypes.STATUS;
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STATUS;
             } 
             // fall through
           case 90: break;
           case 40: 
-            { yypushback(1); return FormulaEngineElementTypes.KERNEL;
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_KERNEL;
             } 
             // fall through
           case 91: break;
@@ -867,47 +867,47 @@ public class FormulaEngineLexer implements FlexLexer {
             // fall through
           case 93: break;
           case 43: 
-            { yypushback(1); return FormulaEngineElementTypes.IS_LIST;
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_LIST;
             } 
             // fall through
           case 94: break;
           case 44: 
-            { yypushback(1); return FormulaEngineElementTypes.DAYDIFF;
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DAYDIFF;
             } 
             // fall through
           case 95: break;
           case 45: 
-            { yypushback(1); return FormulaEngineElementTypes.DAYPLUS;
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DAYPLUS;
             } 
             // fall through
           case 96: break;
           case 46: 
-            { yypushback(1); return FormulaEngineElementTypes.DATETIME;
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DATETIME;
             } 
             // fall through
           case 97: break;
           case 47: 
-            { yypushback(1); return FormulaEngineElementTypes.HASH_GET;
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_GET;
             } 
             // fall through
           case 98: break;
           case 48: 
-            { yypushback(1); return FormulaEngineElementTypes.HASH_PUT;
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_PUT;
             } 
             // fall through
           case 99: break;
           case 49: 
-            { yypushback(1); return FormulaEngineElementTypes.ATTRIBUTE;
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_ATTRIBUTE;
             } 
             // fall through
           case 100: break;
           case 50: 
-            { yypushback(1); return FormulaEngineElementTypes.HASH_KEYS;
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_KEYS;
             } 
             // fall through
           case 101: break;
           case 51: 
-            { yypushback(1); return FormulaEngineElementTypes.HASH_ISKEY;
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_ISKEY;
             } 
             // fall through
           case 102: break;

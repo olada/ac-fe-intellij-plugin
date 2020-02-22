@@ -36,7 +36,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // VisibilityPrefix? Declaration '=' (Constant | FunctionInvocation)
+  // VisibilityPrefix? Declaration '=' (Constant | FunctionInvocation | IDENTIFIER)
   public static boolean Assignment(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Assignment")) return false;
     boolean r;
@@ -56,52 +56,53 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     return true;
   }
 
-  // Constant | FunctionInvocation
+  // Constant | FunctionInvocation | IDENTIFIER
   private static boolean Assignment_3(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Assignment_3")) return false;
     boolean r;
     r = Constant(b, l + 1);
     if (!r) r = FunctionInvocation(b, l + 1);
+    if (!r) r = consumeToken(b, IDENTIFIER);
     return r;
   }
 
   /* ********************************************************** */
-  // attribute | status
-  //     | date | datetime | str | BUILT_IN_FUNC_FLOAT | BUILT_IN_FUNC_INTEGER
-  //     | dayplus | daydiff
-  //     | elt
-  //     | hash_get | hash_put | hash_keys | hash_iskey
-  //     | is_list | is_na
-  //     | kernel
-  //     | len
-  //     | load
+  // BUILT_IN_FUNC_ATTRIBUTE | BUILT_IN_FUNC_STATUS
+  //     | BUILT_IN_FUNC_DATE | BUILT_IN_FUNC_DATETIME | BUILT_IN_FUNC_STR | BUILT_IN_FUNC_FLOAT | BUILT_IN_FUNC_INTEGER
+  //     | BUILT_IN_FUNC_DAYDIFF | BUILT_IN_FUNC_DAYPLUS
+  //     | BUILT_IN_FUNC_ELT
+  //     | BUILT_IN_FUNC_HASH_GET | BUILT_IN_FUNC_HASH_PUT | BUILT_IN_FUNC_HASH_ISKEY | BUILT_IN_FUNC_HASH_KEYS
+  //     | BUILT_IN_FUNC_IS_LIST | BUILT_IN_FUNC_IS_NA
+  //     | BUILT_IN_FUNC_KERNEL
+  //     | BUILT_IN_FUNC_LEN
+  //     | BUILT_IN_FUNC_LOAD
   //     | BUILT_IN_FUNC_OUT
-  //     | remove
+  //     | BUILT_IN_FUNC_REMOVE
   public static boolean BuiltInFunctionName(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "BuiltInFunctionName")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, BUILT_IN_FUNCTION_NAME, "<built in function name>");
-    r = consumeToken(b, ATTRIBUTE);
-    if (!r) r = consumeToken(b, STATUS);
-    if (!r) r = consumeToken(b, DATE);
-    if (!r) r = consumeToken(b, DATETIME);
-    if (!r) r = consumeToken(b, STR);
+    r = consumeToken(b, BUILT_IN_FUNC_ATTRIBUTE);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_STATUS);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_DATE);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_DATETIME);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_STR);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_FLOAT);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_INTEGER);
-    if (!r) r = consumeToken(b, DAYPLUS);
-    if (!r) r = consumeToken(b, DAYDIFF);
-    if (!r) r = consumeToken(b, ELT);
-    if (!r) r = consumeToken(b, HASH_GET);
-    if (!r) r = consumeToken(b, HASH_PUT);
-    if (!r) r = consumeToken(b, HASH_KEYS);
-    if (!r) r = consumeToken(b, HASH_ISKEY);
-    if (!r) r = consumeToken(b, IS_LIST);
-    if (!r) r = consumeToken(b, IS_NA);
-    if (!r) r = consumeToken(b, KERNEL);
-    if (!r) r = consumeToken(b, LEN);
-    if (!r) r = consumeToken(b, LOAD);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_DAYDIFF);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_DAYPLUS);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_ELT);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_HASH_GET);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_HASH_PUT);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_HASH_ISKEY);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_HASH_KEYS);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_IS_LIST);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_IS_NA);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_KERNEL);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_LEN);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_LOAD);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_OUT);
-    if (!r) r = consumeToken(b, REMOVE);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_REMOVE);
     exit_section_(b, l, m, r, false, null);
     return r;
   }
@@ -303,7 +304,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // (Assignment | Declaration | ReturnStatement) ';'
+  // (Assignment | Declaration | FunctionInvocation | ReturnStatement) ';'
   public static boolean FunctionBodyStatement(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "FunctionBodyStatement")) return false;
     boolean r;
@@ -314,12 +315,13 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     return r;
   }
 
-  // Assignment | Declaration | ReturnStatement
+  // Assignment | Declaration | FunctionInvocation | ReturnStatement
   private static boolean FunctionBodyStatement_0(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "FunctionBodyStatement_0")) return false;
     boolean r;
     r = Assignment(b, l + 1);
     if (!r) r = Declaration(b, l + 1);
+    if (!r) r = FunctionInvocation(b, l + 1);
     if (!r) r = ReturnStatement(b, l + 1);
     return r;
   }

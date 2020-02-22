@@ -68,27 +68,27 @@ NUMBER_INTEGER = [0-9]+
     "\$NA" { return FormulaEngineElementTypes.BUILT_IN_VAR_NA; }
 
     // Built-in Functions (use parenthesis for matching but don't include the parenthesis in the token)
-   "attribute(" { yypushback(1); return FormulaEngineElementTypes.ATTRIBUTE; }
-   "date(" { yypushback(1); return FormulaEngineElementTypes.DATE; }
-   "datetime(" { yypushback(1); return FormulaEngineElementTypes.DATETIME; }
-   "daydiff(" { yypushback(1); return FormulaEngineElementTypes.DAYDIFF; }
-   "dayplus(" { yypushback(1); return FormulaEngineElementTypes.DAYPLUS; }
-   "elt(" { yypushback(1); return FormulaEngineElementTypes.ELT; }
+   "attribute(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_ATTRIBUTE; }
+   "date(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DATE; }
+   "datetime(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DATETIME; }
+   "daydiff(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DAYDIFF; }
+   "dayplus(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DAYPLUS; }
+   "elt(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_ELT; }
    "float(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_FLOAT; }
    "integer(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_INTEGER; }
-   "hash_get(" { yypushback(1); return FormulaEngineElementTypes.HASH_GET; }
-   "hash_iskey(" { yypushback(1); return FormulaEngineElementTypes.HASH_ISKEY; }
-   "hash_keys(" { yypushback(1); return FormulaEngineElementTypes.HASH_KEYS; }
-   "hash_put(" { yypushback(1); return FormulaEngineElementTypes.HASH_PUT; }
-   "is_list(" { yypushback(1); return FormulaEngineElementTypes.IS_LIST; }
-   "is_na(" { yypushback(1); return FormulaEngineElementTypes.IS_NA; }
-   "kernel(" { yypushback(1); return FormulaEngineElementTypes.KERNEL; }
-   "len(" { yypushback(1); return FormulaEngineElementTypes.LEN; }
-   "load(" { yypushback(1); return FormulaEngineElementTypes.LOAD; }
+   "hash_get(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_GET; }
+   "hash_iskey(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_ISKEY; }
+   "hash_keys(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_KEYS; }
+   "hash_put(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_PUT; }
+   "is_list(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_LIST; }
+   "is_na(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_NA; }
+   "kernel(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_KERNEL; }
+   "len(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_LEN; }
+   "load(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_LOAD; }
    "out(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_OUT; }
-   "remove(" { yypushback(1); return FormulaEngineElementTypes.REMOVE; }
-   "status(" { yypushback(1); return FormulaEngineElementTypes.STATUS; }
-   "str(" { yypushback(1); return FormulaEngineElementTypes.STR; }
+   "remove(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_REMOVE; }
+   "status(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STATUS; }
+   "str(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STR; }
 
    {COMMENT_SINGLE_LINE} { return FormulaEngineElementTypes.LINE_COMMENT; }
    {BLOCK_COMMENT} { return FormulaEngineElementTypes.BLOCK_COMMENT; }
