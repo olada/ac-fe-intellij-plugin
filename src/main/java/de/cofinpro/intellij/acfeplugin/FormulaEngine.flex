@@ -50,9 +50,6 @@ NUMBER_INTEGER = [0-9]+
     "||" { return FormulaEngineElementTypes.OPERATOR_OR; }
     "+" { return FormulaEngineElementTypes.OPERATOR_PLUS; }
 
-    "function" { return FormulaEngineElementTypes.KEYWORD_FUNCTION; }
-    "return" { return FormulaEngineElementTypes.KEYWORD_RETURN; }
-
     // Visibility
     "local" { return FormulaEngineElementTypes.VISIBILITY_LOCAL; }
     "global" { return FormulaEngineElementTypes.VISIBILITY_GLOBAL; }
@@ -68,7 +65,10 @@ NUMBER_INTEGER = [0-9]+
     // Keywords
     "else" { return FormulaEngineElementTypes.KEYWORD_ELSE; }
     "for" { return FormulaEngineElementTypes.KEYWORD_FOR; }
+    "function" { return FormulaEngineElementTypes.KEYWORD_FUNCTION; }
     "if" { return FormulaEngineElementTypes.KEYWORD_IF; }
+    "return" { return FormulaEngineElementTypes.KEYWORD_RETURN; }
+    "seq" { return FormulaEngineElementTypes.KEYWORD_SEQ; }
     "while" { return FormulaEngineElementTypes.KEYWORD_WHILE; }
 
     // Built-in Variables

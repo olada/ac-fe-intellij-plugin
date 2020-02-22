@@ -77,6 +77,7 @@ public interface FormulaEngineElementTypes {
   IElementType KEYWORD_FUNCTION = new FormulaEngineTokenType("function");
   IElementType KEYWORD_IF = new FormulaEngineTokenType("if");
   IElementType KEYWORD_RETURN = new FormulaEngineTokenType("return");
+  IElementType KEYWORD_SEQ = new FormulaEngineTokenType("seq");
   IElementType KEYWORD_WHILE = new FormulaEngineTokenType("while");
   IElementType LEFT_BRACKET = new FormulaEngineTokenType("[");
   IElementType LEFT_CURLY_BRACE = new FormulaEngineTokenType("{");

@@ -28,6 +28,7 @@ public class FormulaEngineHighlighterColors {
     public static final TextAttributesKey ELSE_ATTR_KEY = createTextAttributesKey("FE_ELSE", KEYWORD);
     public static final TextAttributesKey FOR_ATTR_KEY = createTextAttributesKey("FE_FOR", KEYWORD);
     public static final TextAttributesKey IF_ATTR_KEY = createTextAttributesKey("FE_IF", KEYWORD);
+    public static final TextAttributesKey SEQ_ATTR_KEY = createTextAttributesKey("FE_SEQ", KEYWORD);
     public static final TextAttributesKey WHILE_ATTR_KEY = createTextAttributesKey("FE_WHILE", KEYWORD);
 
     // Strings

@@ -51,6 +51,7 @@ public class FormulaEngineSyntaxHighlighter extends SyntaxHighlighterBase {
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.KEYWORD_FOR, FOR_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.KEYWORD_FUNCTION, FUNCTION_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.KEYWORD_IF, IF_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.KEYWORD_SEQ, SEQ_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.KEYWORD_WHILE, WHILE_ATTR_KEY);
 
         // Strings

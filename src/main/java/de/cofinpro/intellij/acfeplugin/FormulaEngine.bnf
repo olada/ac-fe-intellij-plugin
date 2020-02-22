@@ -34,6 +34,7 @@
             KEYWORD_FUNCTION = 'function'
             KEYWORD_IF = 'if'
             KEYWORD_RETURN = 'return'
+            KEYWORD_SEQ = 'seq'
             KEYWORD_WHILE = 'while'
 
             TYPE_INTEGER = 'integer'
