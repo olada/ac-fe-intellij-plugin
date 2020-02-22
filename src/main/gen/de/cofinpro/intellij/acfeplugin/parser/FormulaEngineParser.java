@@ -461,13 +461,58 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // LEFT_BRACKET RIGHT_BRACKET
+  // (Expression (COMMA Expression)*)?
+  public static boolean ListContents(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "ListContents")) return false;
+    Marker m = enter_section_(b, l, _NONE_, LIST_CONTENTS, "<list contents>");
+    ListContents_0(b, l + 1);
+    exit_section_(b, l, m, true, false, null);
+    return true;
+  }
+
+  // Expression (COMMA Expression)*
+  private static boolean ListContents_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "ListContents_0")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = Expression(b, l + 1);
+    r = r && ListContents_0_1(b, l + 1);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  // (COMMA Expression)*
+  private static boolean ListContents_0_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "ListContents_0_1")) return false;
+    while (true) {
+      int c = current_position_(b);
+      if (!ListContents_0_1_0(b, l + 1)) break;
+      if (!empty_element_parsed_guard_(b, "ListContents_0_1", c)) break;
+    }
+    return true;
+  }
+
+  // COMMA Expression
+  private static boolean ListContents_0_1_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "ListContents_0_1_0")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeToken(b, COMMA);
+    r = r && Expression(b, l + 1);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // LEFT_BRACKET ListContents RIGHT_BRACKET
   public static boolean ListLiteral(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "ListLiteral")) return false;
     if (!nextTokenIs(b, LEFT_BRACKET)) return false;
     boolean r;
     Marker m = enter_section_(b);
-    r = consumeTokens(b, 0, LEFT_BRACKET, RIGHT_BRACKET);
+    r = consumeToken(b, LEFT_BRACKET);
+    r = r && ListContents(b, l + 1);
+    r = r && consumeToken(b, RIGHT_BRACKET);
     exit_section_(b, m, LIST_LITERAL, r);
     return r;
   }
@@ -509,14 +554,14 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // OPERATOR_AND | OPERATOR_EQUAL
+  // OPERATOR_AND | OPERATOR_EQUAL | OPERATOR_OR
   public static boolean Operator(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Operator")) return false;
-    if (!nextTokenIs(b, "<operator>", OPERATOR_AND, OPERATOR_EQUAL)) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, OPERATOR, "<operator>");
     r = consumeToken(b, OPERATOR_AND);
     if (!r) r = consumeToken(b, OPERATOR_EQUAL);
+    if (!r) r = consumeToken(b, OPERATOR_OR);
     exit_section_(b, l, m, r, false, null);
     return r;
   }

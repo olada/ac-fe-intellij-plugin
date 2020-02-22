@@ -5,9 +5,9 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface FormulaEngineListLiteral extends PsiElement {
+public interface FormulaEngineListContents extends PsiElement {
 
   @NotNull
-  FormulaEngineListContents getListContents();
+  List<FormulaEngineExpression> getExpressionList();
 
 }

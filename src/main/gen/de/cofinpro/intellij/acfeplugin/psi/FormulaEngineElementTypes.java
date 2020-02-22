@@ -26,6 +26,7 @@ public interface FormulaEngineElementTypes {
   IElementType FUNCTION_INVOCATION = new FormulaEngineElementType("FUNCTION_INVOCATION");
   IElementType FUNCTION_PARAMETER = new FormulaEngineElementType("FUNCTION_PARAMETER");
   IElementType FUNCTION_PARAMETERS = new FormulaEngineElementType("FUNCTION_PARAMETERS");
+  IElementType LIST_CONTENTS = new FormulaEngineElementType("LIST_CONTENTS");
   IElementType LIST_LITERAL = new FormulaEngineElementType("LIST_LITERAL");
   IElementType NEGATED_EXPRESSION = new FormulaEngineElementType("NEGATED_EXPRESSION");
   IElementType OPERATOR = new FormulaEngineElementType("OPERATOR");
@@ -81,6 +82,7 @@ public interface FormulaEngineElementTypes {
   IElementType OPERATOR_ASSIGNMENT = new FormulaEngineTokenType("=");
   IElementType OPERATOR_EQUAL = new FormulaEngineTokenType("==");
   IElementType OPERATOR_NEGATION = new FormulaEngineTokenType("!");
+  IElementType OPERATOR_OR = new FormulaEngineTokenType("||");
   IElementType RIGHT_BRACKET = new FormulaEngineTokenType("]");
   IElementType RIGHT_CURLY_BRACE = new FormulaEngineTokenType("}");
   IElementType RIGHT_PARENTHESIS = new FormulaEngineTokenType(")");
@@ -152,6 +154,9 @@ public interface FormulaEngineElementTypes {
       }
       else if (type == FUNCTION_PARAMETERS) {
         return new FormulaEngineFunctionParametersImpl(node);
+      }
+      else if (type == LIST_CONTENTS) {
+        return new FormulaEngineListContentsImpl(node);
       }
       else if (type == LIST_LITERAL) {
         return new FormulaEngineListLiteralImpl(node);

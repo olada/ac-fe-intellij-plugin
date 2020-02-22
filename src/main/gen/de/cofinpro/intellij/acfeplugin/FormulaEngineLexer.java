@@ -55,10 +55,10 @@ public class FormulaEngineLexer implements FlexLexer {
 
   /* The ZZ_CMAP_A table has 256 entries */
   static final char ZZ_CMAP_A[] = zzUnpackCMap(
-    "\11\0\1\1\1\6\1\0\1\1\1\6\22\0\1\1\1\22\1\7\1\0\1\45\1\0\1\20\1\4\1\12\1\13"+
-    "\1\11\1\0\1\55\2\0\1\10\12\3\3\0\1\21\3\0\1\47\14\2\1\46\14\2\1\16\1\5\1\17"+
-    "\1\0\1\52\1\0\1\35\1\37\1\26\1\41\1\33\1\23\1\36\1\44\1\30\1\2\1\53\1\34\1"+
-    "\50\1\25\1\31\1\51\1\2\1\32\1\40\1\27\1\24\1\54\1\43\1\2\1\42\1\2\1\14\1\0"+
+    "\11\0\1\1\1\6\1\0\1\1\1\6\22\0\1\1\1\22\1\7\1\0\1\46\1\0\1\20\1\4\1\12\1\13"+
+    "\1\11\1\0\1\56\2\0\1\10\12\3\3\0\1\21\3\0\1\50\14\2\1\47\14\2\1\16\1\5\1\17"+
+    "\1\0\1\53\1\0\1\36\1\40\1\27\1\42\1\34\1\24\1\37\1\45\1\31\1\2\1\54\1\35\1"+
+    "\51\1\26\1\32\1\52\1\2\1\33\1\41\1\30\1\25\1\55\1\44\1\2\1\43\1\2\1\14\1\23"+
     "\1\15\202\0");
 
   /** 
@@ -69,20 +69,20 @@ public class FormulaEngineLexer implements FlexLexer {
   private static final String ZZ_ACTION_PACKED_0 =
     "\2\0\1\1\1\2\1\3\1\4\1\5\1\6\1\1"+
     "\1\7\1\10\1\11\1\12\1\13\1\14\1\1\1\15"+
-    "\1\16\14\3\1\1\1\3\1\17\2\5\2\6\1\20"+
-    "\1\0\1\21\1\22\4\3\1\23\20\3\1\0\1\3"+
-    "\1\0\2\3\1\24\14\3\1\25\11\3\1\26\1\3"+
-    "\1\27\7\3\1\30\2\3\1\31\1\32\1\33\2\3"+
-    "\1\34\2\3\1\35\2\3\1\36\10\3\1\37\6\3"+
-    "\1\40\1\41\4\3\1\42\3\3\1\43\3\3\1\44"+
-    "\1\45\1\3\1\46\2\3\1\47\2\3\1\50\1\51"+
-    "\12\3\1\52\2\3\1\53\1\3\1\54\7\3\1\55"+
-    "\1\56\1\57\1\60\3\3\1\61\1\62\6\3\1\63"+
-    "\1\3\1\64\1\65\1\3\1\66\1\67\1\3\1\70"+
-    "\1\71";
+    "\1\16\1\1\14\3\1\1\1\3\1\17\2\5\2\6"+
+    "\1\20\1\0\1\21\1\22\1\23\4\3\1\24\20\3"+
+    "\1\0\1\3\1\0\2\3\1\25\14\3\1\26\11\3"+
+    "\1\27\1\3\1\30\7\3\1\31\2\3\1\32\1\33"+
+    "\1\34\2\3\1\35\2\3\1\36\2\3\1\37\10\3"+
+    "\1\40\6\3\1\41\1\42\4\3\1\43\3\3\1\44"+
+    "\3\3\1\45\1\46\1\3\1\47\2\3\1\50\2\3"+
+    "\1\51\1\52\12\3\1\53\2\3\1\54\1\3\1\55"+
+    "\7\3\1\56\1\57\1\60\1\61\3\3\1\62\1\63"+
+    "\6\3\1\64\1\3\1\65\1\66\1\3\1\67\1\70"+
+    "\1\3\1\71\1\72";
 
   private static int [] zzUnpackAction() {
-    int [] result = new int[203];
+    int [] result = new int[205];
     int offset = 0;
     offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
     return result;
@@ -107,35 +107,35 @@ public class FormulaEngineLexer implements FlexLexer {
   private static final int [] ZZ_ROWMAP = zzUnpackRowMap();
 
   private static final String ZZ_ROWMAP_PACKED_0 =
-    "\0\0\0\56\0\134\0\134\0\212\0\270\0\346\0\u0114"+
-    "\0\u0142\0\134\0\134\0\134\0\134\0\134\0\134\0\u0170"+
-    "\0\u019e\0\134\0\u01cc\0\u01fa\0\u0228\0\u0256\0\u0284\0\u02b2"+
-    "\0\u02e0\0\u030e\0\u033c\0\u036a\0\u0398\0\u03c6\0\u03f4\0\u0422"+
-    "\0\134\0\134\0\u0450\0\u047e\0\134\0\u04ac\0\u04da\0\134"+
-    "\0\134\0\u0508\0\u0536\0\u0564\0\u0592\0\212\0\u05c0\0\u05ee"+
-    "\0\u061c\0\u064a\0\u0678\0\u06a6\0\u06d4\0\u0702\0\u0730\0\u075e"+
-    "\0\u078c\0\u07ba\0\u07e8\0\u0816\0\u0844\0\u0872\0\u08a0\0\u08ce"+
-    "\0\u08fc\0\u092a\0\u0958\0\212\0\u0986\0\u09b4\0\u09e2\0\u0a10"+
-    "\0\u0a3e\0\u0a6c\0\u0a9a\0\u0ac8\0\u0af6\0\u0b24\0\u0b52\0\u0b80"+
-    "\0\212\0\u0bae\0\u0bdc\0\u0c0a\0\u0c38\0\u0c66\0\u0c94\0\u0cc2"+
-    "\0\u0cf0\0\u0d1e\0\134\0\u0d4c\0\134\0\u0d7a\0\u0da8\0\u0dd6"+
-    "\0\u0e04\0\u0e32\0\u0e60\0\u0e8e\0\134\0\u0ebc\0\u0eea\0\134"+
-    "\0\212\0\212\0\u0f18\0\u0f46\0\134\0\u0f74\0\u0fa2\0\134"+
-    "\0\u0fd0\0\u0ffe\0\212\0\u102c\0\u105a\0\u1088\0\u10b6\0\u10e4"+
-    "\0\u1112\0\u1140\0\u116e\0\u119c\0\u11ca\0\u11f8\0\u1226\0\u1254"+
-    "\0\u1282\0\u12b0\0\212\0\134\0\u12de\0\u130c\0\u133a\0\u1368"+
-    "\0\134\0\u1396\0\u13c4\0\u13f2\0\212\0\u1420\0\u144e\0\u147c"+
-    "\0\134\0\134\0\u14aa\0\134\0\u14d8\0\u1506\0\212\0\u1534"+
-    "\0\u1562\0\212\0\212\0\u1590\0\u15be\0\u15ec\0\u161a\0\u1648"+
-    "\0\u1676\0\u16a4\0\u16d2\0\u1700\0\u172e\0\u175c\0\u178a\0\u17b8"+
-    "\0\134\0\u17e6\0\134\0\u1814\0\u1842\0\u1870\0\u189e\0\u18cc"+
-    "\0\u18fa\0\u1928\0\134\0\212\0\134\0\134\0\u1956\0\u1984"+
-    "\0\u19b2\0\134\0\134\0\u19e0\0\u1a0e\0\u1a3c\0\u1a6a\0\u1a98"+
-    "\0\u1ac6\0\134\0\u1af4\0\134\0\134\0\u1b22\0\134\0\134"+
-    "\0\u1b50\0\134\0\134";
+    "\0\0\0\57\0\136\0\136\0\215\0\274\0\353\0\u011a"+
+    "\0\u0149\0\136\0\136\0\136\0\136\0\136\0\136\0\u0178"+
+    "\0\u01a7\0\136\0\u01d6\0\u0205\0\u0234\0\u0263\0\u0292\0\u02c1"+
+    "\0\u02f0\0\u031f\0\u034e\0\u037d\0\u03ac\0\u03db\0\u040a\0\u0439"+
+    "\0\u0468\0\136\0\136\0\u0497\0\u04c6\0\136\0\u04f5\0\u0524"+
+    "\0\136\0\136\0\136\0\u0553\0\u0582\0\u05b1\0\u05e0\0\215"+
+    "\0\u060f\0\u063e\0\u066d\0\u069c\0\u06cb\0\u06fa\0\u0729\0\u0758"+
+    "\0\u0787\0\u07b6\0\u07e5\0\u0814\0\u0843\0\u0872\0\u08a1\0\u08d0"+
+    "\0\u08ff\0\u092e\0\u095d\0\u098c\0\u09bb\0\215\0\u09ea\0\u0a19"+
+    "\0\u0a48\0\u0a77\0\u0aa6\0\u0ad5\0\u0b04\0\u0b33\0\u0b62\0\u0b91"+
+    "\0\u0bc0\0\u0bef\0\215\0\u0c1e\0\u0c4d\0\u0c7c\0\u0cab\0\u0cda"+
+    "\0\u0d09\0\u0d38\0\u0d67\0\u0d96\0\136\0\u0dc5\0\136\0\u0df4"+
+    "\0\u0e23\0\u0e52\0\u0e81\0\u0eb0\0\u0edf\0\u0f0e\0\136\0\u0f3d"+
+    "\0\u0f6c\0\136\0\215\0\215\0\u0f9b\0\u0fca\0\136\0\u0ff9"+
+    "\0\u1028\0\136\0\u1057\0\u1086\0\215\0\u10b5\0\u10e4\0\u1113"+
+    "\0\u1142\0\u1171\0\u11a0\0\u11cf\0\u11fe\0\u122d\0\u125c\0\u128b"+
+    "\0\u12ba\0\u12e9\0\u1318\0\u1347\0\215\0\136\0\u1376\0\u13a5"+
+    "\0\u13d4\0\u1403\0\136\0\u1432\0\u1461\0\u1490\0\215\0\u14bf"+
+    "\0\u14ee\0\u151d\0\136\0\136\0\u154c\0\136\0\u157b\0\u15aa"+
+    "\0\215\0\u15d9\0\u1608\0\215\0\215\0\u1637\0\u1666\0\u1695"+
+    "\0\u16c4\0\u16f3\0\u1722\0\u1751\0\u1780\0\u17af\0\u17de\0\u180d"+
+    "\0\u183c\0\u186b\0\136\0\u189a\0\136\0\u18c9\0\u18f8\0\u1927"+
+    "\0\u1956\0\u1985\0\u19b4\0\u19e3\0\136\0\215\0\136\0\136"+
+    "\0\u1a12\0\u1a41\0\u1a70\0\136\0\136\0\u1a9f\0\u1ace\0\u1afd"+
+    "\0\u1b2c\0\u1b5b\0\u1b8a\0\136\0\u1bb9\0\136\0\136\0\u1be8"+
+    "\0\136\0\136\0\u1c17\0\136\0\136";
 
   private static int [] zzUnpackRowMap() {
-    int [] result = new int[203];
+    int [] result = new int[205];
     int offset = 0;
     offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
     return result;
@@ -160,159 +160,159 @@ public class FormulaEngineLexer implements FlexLexer {
   private static final String ZZ_TRANS_PACKED_0 =
     "\1\3\1\4\1\5\1\6\1\7\1\3\1\4\1\10"+
     "\1\11\1\3\1\12\1\13\1\14\1\15\1\16\1\17"+
-    "\1\20\1\21\1\22\1\23\4\5\1\24\1\25\1\26"+
-    "\1\27\1\30\1\31\1\32\1\5\1\33\1\34\1\5"+
-    "\1\35\1\36\1\37\5\5\1\40\1\5\1\41\56\3"+
-    "\60\0\2\5\17\0\22\5\1\0\7\5\4\0\1\6"+
-    "\52\0\4\7\1\42\1\43\1\0\47\7\5\10\1\44"+
-    "\1\0\1\45\46\10\10\0\1\46\1\47\64\0\1\50"+
-    "\56\0\1\51\36\0\2\5\17\0\1\5\1\52\3\5"+
-    "\1\53\1\54\2\5\1\55\10\5\1\0\7\5\3\0"+
-    "\2\5\17\0\1\56\1\5\1\57\12\5\1\60\4\5"+
-    "\1\0\7\5\3\0\2\5\17\0\1\5\1\61\20\5"+
-    "\1\0\7\5\3\0\2\5\17\0\10\5\1\62\11\5"+
-    "\1\0\7\5\3\0\2\5\17\0\11\5\1\63\10\5"+
-    "\1\0\7\5\3\0\2\5\17\0\5\5\1\64\1\65"+
-    "\1\5\1\66\11\5\1\0\7\5\3\0\2\5\17\0"+
-    "\2\5\1\67\1\5\1\70\15\5\1\0\7\5\3\0"+
-    "\2\5\17\0\11\5\1\71\10\5\1\0\7\5\3\0"+
-    "\2\5\17\0\4\5\1\72\15\5\1\0\7\5\3\0"+
-    "\2\5\17\0\5\5\1\73\4\5\1\74\7\5\1\0"+
-    "\7\5\3\0\2\5\17\0\21\5\1\75\1\0\7\5"+
-    "\3\0\2\5\17\0\12\5\1\76\7\5\1\0\7\5"+
-    "\47\0\1\77\11\0\2\5\17\0\10\5\1\100\11\5"+
-    "\1\0\7\5\1\0\56\7\56\10\6\46\1\0\47\46"+
-    "\11\47\1\101\44\47\2\0\2\5\17\0\2\5\1\102"+
-    "\17\5\1\0\7\5\3\0\2\5\17\0\7\5\1\103"+
-    "\12\5\1\0\7\5\3\0\2\5\17\0\7\5\1\104"+
-    "\12\5\1\0\7\5\3\0\2\5\17\0\6\5\1\105"+
-    "\13\5\1\0\7\5\3\0\2\5\17\0\4\5\1\106"+
-    "\15\5\1\0\7\5\3\0\2\5\17\0\22\5\1\0"+
-    "\4\5\1\107\2\5\3\0\2\5\17\0\4\5\1\110"+
-    "\15\5\1\0\7\5\3\0\2\5\17\0\4\5\1\111"+
-    "\15\5\1\0\2\5\1\112\4\5\3\0\2\5\17\0"+
-    "\4\5\1\113\10\5\1\114\4\5\1\0\7\5\3\0"+
-    "\2\5\17\0\15\5\1\115\4\5\1\0\7\5\3\0"+
-    "\2\5\17\0\3\5\1\116\6\5\1\117\7\5\1\0"+
-    "\7\5\3\0\2\5\17\0\2\5\1\120\17\5\1\0"+
-    "\7\5\3\0\2\5\17\0\17\5\1\121\2\5\1\0"+
-    "\7\5\3\0\2\5\17\0\4\5\1\122\15\5\1\0"+
-    "\7\5\3\0\2\5\17\0\6\5\1\123\13\5\1\0"+
-    "\7\5\3\0\2\5\17\0\7\5\1\124\2\5\1\125"+
-    "\7\5\1\0\7\5\3\0\2\5\17\0\3\5\1\126"+
-    "\16\5\1\0\7\5\3\0\2\5\17\0\4\5\1\127"+
-    "\12\5\1\130\2\5\1\0\7\5\3\0\2\5\17\0"+
-    "\5\5\1\131\14\5\1\0\7\5\3\0\2\5\17\0"+
-    "\15\5\1\132\4\5\1\0\7\5\50\0\1\133\10\0"+
-    "\2\5\17\0\7\5\1\134\12\5\1\0\7\5\1\0"+
-    "\10\47\1\135\1\101\44\47\2\0\2\5\17\0\3\5"+
-    "\1\136\16\5\1\0\7\5\3\0\2\5\17\0\15\5"+
-    "\1\137\4\5\1\0\7\5\3\0\2\5\17\0\12\5"+
-    "\1\140\7\5\1\0\7\5\3\0\2\5\17\0\10\5"+
-    "\1\141\11\5\1\0\7\5\3\0\2\5\17\0\2\5"+
-    "\1\142\6\5\1\143\3\5\1\144\4\5\1\0\7\5"+
-    "\3\0\2\5\6\0\1\145\10\0\22\5\1\0\7\5"+
-    "\3\0\2\5\17\0\1\5\1\146\20\5\1\0\7\5"+
-    "\3\0\2\5\17\0\6\5\1\147\13\5\1\0\7\5"+
-    "\3\0\2\5\6\0\1\150\10\0\22\5\1\0\7\5"+
-    "\3\0\2\5\17\0\10\5\1\151\11\5\1\0\7\5"+
-    "\3\0\2\5\17\0\4\5\1\152\15\5\1\0\7\5"+
-    "\3\0\2\5\17\0\12\5\1\153\7\5\1\0\7\5"+
-    "\3\0\2\5\17\0\16\5\1\154\3\5\1\0\7\5"+
-    "\3\0\2\5\6\0\1\155\10\0\22\5\1\0\7\5"+
-    "\3\0\2\5\17\0\7\5\1\156\12\5\1\0\7\5"+
-    "\3\0\2\5\17\0\14\5\1\157\5\5\1\0\7\5"+
-    "\3\0\2\5\6\0\1\160\10\0\5\5\1\161\14\5"+
-    "\1\0\7\5\3\0\2\5\17\0\4\5\1\162\15\5"+
-    "\1\0\7\5\3\0\2\5\17\0\4\5\1\163\15\5"+
-    "\1\0\7\5\3\0\2\5\17\0\10\5\1\164\11\5"+
-    "\1\0\7\5\3\0\2\5\17\0\16\5\1\165\3\5"+
-    "\1\0\3\5\1\166\3\5\3\0\2\5\17\0\11\5"+
-    "\1\167\10\5\1\0\7\5\3\0\2\5\17\0\21\5"+
-    "\1\170\1\0\7\5\3\0\2\5\17\0\2\5\1\171"+
-    "\17\5\1\0\7\5\3\0\2\5\17\0\4\5\1\172"+
-    "\15\5\1\0\7\5\3\0\2\5\17\0\4\5\1\173"+
-    "\15\5\1\0\7\5\3\0\2\5\17\0\4\5\1\174"+
-    "\15\5\1\0\7\5\3\0\2\5\17\0\13\5\1\175"+
-    "\6\5\1\0\7\5\3\0\2\5\17\0\12\5\1\176"+
-    "\7\5\1\0\7\5\3\0\2\5\17\0\5\5\1\177"+
-    "\14\5\1\0\7\5\3\0\2\5\17\0\4\5\1\200"+
-    "\15\5\1\0\7\5\3\0\2\5\17\0\7\5\1\201"+
-    "\12\5\1\0\7\5\3\0\2\5\17\0\22\5\1\0"+
-    "\6\5\1\202\3\0\2\5\17\0\11\5\1\203\10\5"+
-    "\1\0\7\5\3\0\2\5\6\0\1\204\10\0\22\5"+
-    "\1\0\7\5\3\0\2\5\17\0\5\5\1\205\14\5"+
-    "\1\0\7\5\3\0\2\5\17\0\12\5\1\206\7\5"+
-    "\1\0\7\5\3\0\2\5\17\0\2\5\1\207\17\5"+
-    "\1\0\7\5\3\0\2\5\17\0\1\5\1\210\20\5"+
-    "\1\0\7\5\3\0\2\5\6\0\1\211\10\0\4\5"+
-    "\1\212\15\5\1\0\7\5\3\0\2\5\17\0\5\5"+
-    "\1\213\14\5\1\0\7\5\3\0\2\5\17\0\11\5"+
-    "\1\214\10\5\1\0\7\5\3\0\2\5\17\0\10\5"+
-    "\1\215\11\5\1\0\7\5\3\0\2\5\17\0\22\5"+
-    "\1\0\4\5\1\216\2\5\3\0\2\5\17\0\10\5"+
-    "\1\217\11\5\1\0\7\5\3\0\2\5\17\0\5\5"+
-    "\1\220\14\5\1\0\7\5\3\0\2\5\6\0\1\221"+
-    "\10\0\22\5\1\0\7\5\3\0\2\5\6\0\1\222"+
-    "\10\0\22\5\1\0\7\5\3\0\2\5\17\0\10\5"+
-    "\1\223\11\5\1\0\7\5\3\0\2\5\6\0\1\224"+
-    "\10\0\22\5\1\0\7\5\3\0\2\5\17\0\15\5"+
-    "\1\225\4\5\1\0\7\5\3\0\2\5\17\0\7\5"+
-    "\1\226\12\5\1\0\7\5\3\0\2\5\17\0\2\5"+
-    "\1\227\17\5\1\0\7\5\3\0\2\5\17\0\10\5"+
-    "\1\230\11\5\1\0\7\5\3\0\2\5\17\0\14\5"+
-    "\1\231\5\5\1\0\7\5\3\0\2\5\17\0\11\5"+
-    "\1\232\10\5\1\0\7\5\3\0\2\5\17\0\13\5"+
-    "\1\233\6\5\1\0\7\5\3\0\2\5\17\0\15\5"+
-    "\1\234\4\5\1\0\7\5\3\0\2\5\17\0\5\5"+
-    "\1\235\14\5\1\0\7\5\3\0\2\5\17\0\1\236"+
-    "\21\5\1\0\7\5\3\0\2\5\17\0\1\5\1\237"+
-    "\20\5\1\0\7\5\3\0\2\5\17\0\5\5\1\240"+
-    "\5\5\1\241\6\5\1\0\3\5\1\242\1\5\1\243"+
-    "\1\5\3\0\2\5\17\0\11\5\1\244\10\5\1\0"+
-    "\7\5\3\0\2\5\17\0\6\5\1\245\13\5\1\0"+
-    "\7\5\3\0\2\5\17\0\7\5\1\246\12\5\1\0"+
-    "\7\5\3\0\2\5\17\0\4\5\1\247\15\5\1\0"+
-    "\7\5\3\0\2\5\17\0\5\5\1\250\14\5\1\0"+
-    "\7\5\3\0\2\5\6\0\1\251\10\0\22\5\1\0"+
-    "\7\5\3\0\2\5\17\0\1\5\1\252\20\5\1\0"+
-    "\7\5\3\0\2\5\6\0\1\253\10\0\22\5\1\0"+
-    "\7\5\3\0\2\5\17\0\22\5\1\0\2\5\1\254"+
-    "\4\5\3\0\2\5\17\0\1\255\21\5\1\0\7\5"+
-    "\3\0\2\5\17\0\15\5\1\256\4\5\1\0\7\5"+
-    "\3\0\2\5\17\0\15\5\1\257\4\5\1\0\7\5"+
-    "\3\0\2\5\17\0\10\5\1\260\11\5\1\0\7\5"+
-    "\3\0\2\5\17\0\1\5\1\261\20\5\1\0\7\5"+
-    "\3\0\2\5\17\0\10\5\1\262\11\5\1\0\7\5"+
-    "\3\0\2\5\6\0\1\263\10\0\22\5\1\0\7\5"+
-    "\3\0\2\5\17\0\2\5\1\264\17\5\1\0\7\5"+
-    "\3\0\2\5\6\0\1\265\10\0\22\5\1\0\7\5"+
-    "\3\0\2\5\6\0\1\266\10\0\22\5\1\0\7\5"+
-    "\3\0\2\5\17\0\2\5\1\267\17\5\1\0\7\5"+
-    "\3\0\2\5\17\0\4\5\1\270\15\5\1\0\7\5"+
-    "\3\0\2\5\17\0\10\5\1\271\11\5\1\0\7\5"+
-    "\3\0\2\5\6\0\1\272\10\0\22\5\1\0\7\5"+
-    "\3\0\2\5\6\0\1\273\10\0\22\5\1\0\7\5"+
-    "\3\0\2\5\17\0\22\5\1\0\5\5\1\274\1\5"+
-    "\3\0\2\5\17\0\4\5\1\275\15\5\1\0\7\5"+
-    "\3\0\2\5\17\0\4\5\1\276\15\5\1\0\7\5"+
-    "\3\0\2\5\17\0\17\5\1\277\2\5\1\0\7\5"+
-    "\3\0\2\5\17\0\13\5\1\300\6\5\1\0\7\5"+
-    "\3\0\2\5\17\0\10\5\1\301\11\5\1\0\7\5"+
-    "\3\0\2\5\6\0\1\302\10\0\22\5\1\0\7\5"+
-    "\3\0\2\5\17\0\10\5\1\303\11\5\1\0\7\5"+
-    "\3\0\2\5\6\0\1\304\10\0\22\5\1\0\7\5"+
-    "\3\0\2\5\6\0\1\305\10\0\22\5\1\0\7\5"+
-    "\3\0\2\5\17\0\15\5\1\306\4\5\1\0\7\5"+
-    "\3\0\2\5\6\0\1\307\10\0\22\5\1\0\7\5"+
-    "\3\0\2\5\6\0\1\310\10\0\22\5\1\0\7\5"+
-    "\3\0\2\5\17\0\17\5\1\311\2\5\1\0\7\5"+
-    "\3\0\2\5\6\0\1\312\10\0\22\5\1\0\7\5"+
-    "\3\0\2\5\6\0\1\313\10\0\22\5\1\0\7\5"+
-    "\1\0";
+    "\1\20\1\21\1\22\1\23\1\24\4\5\1\25\1\26"+
+    "\1\27\1\30\1\31\1\32\1\33\1\5\1\34\1\35"+
+    "\1\5\1\36\1\37\1\40\5\5\1\41\1\5\1\42"+
+    "\57\3\61\0\2\5\20\0\22\5\1\0\7\5\4\0"+
+    "\1\6\53\0\4\7\1\43\1\44\1\0\50\7\5\10"+
+    "\1\45\1\0\1\46\47\10\10\0\1\47\1\50\65\0"+
+    "\1\51\57\0\1\52\60\0\1\53\35\0\2\5\20\0"+
+    "\1\5\1\54\3\5\1\55\1\56\2\5\1\57\10\5"+
+    "\1\0\7\5\3\0\2\5\20\0\1\60\1\5\1\61"+
+    "\12\5\1\62\4\5\1\0\7\5\3\0\2\5\20\0"+
+    "\1\5\1\63\20\5\1\0\7\5\3\0\2\5\20\0"+
+    "\10\5\1\64\11\5\1\0\7\5\3\0\2\5\20\0"+
+    "\11\5\1\65\10\5\1\0\7\5\3\0\2\5\20\0"+
+    "\5\5\1\66\1\67\1\5\1\70\11\5\1\0\7\5"+
+    "\3\0\2\5\20\0\2\5\1\71\1\5\1\72\15\5"+
+    "\1\0\7\5\3\0\2\5\20\0\11\5\1\73\10\5"+
+    "\1\0\7\5\3\0\2\5\20\0\4\5\1\74\15\5"+
+    "\1\0\7\5\3\0\2\5\20\0\5\5\1\75\4\5"+
+    "\1\76\7\5\1\0\7\5\3\0\2\5\20\0\21\5"+
+    "\1\77\1\0\7\5\3\0\2\5\20\0\12\5\1\100"+
+    "\7\5\1\0\7\5\50\0\1\101\11\0\2\5\20\0"+
+    "\10\5\1\102\11\5\1\0\7\5\1\0\57\7\57\10"+
+    "\6\47\1\0\50\47\11\50\1\103\45\50\2\0\2\5"+
+    "\20\0\2\5\1\104\17\5\1\0\7\5\3\0\2\5"+
+    "\20\0\7\5\1\105\12\5\1\0\7\5\3\0\2\5"+
+    "\20\0\7\5\1\106\12\5\1\0\7\5\3\0\2\5"+
+    "\20\0\6\5\1\107\13\5\1\0\7\5\3\0\2\5"+
+    "\20\0\4\5\1\110\15\5\1\0\7\5\3\0\2\5"+
+    "\20\0\22\5\1\0\4\5\1\111\2\5\3\0\2\5"+
+    "\20\0\4\5\1\112\15\5\1\0\7\5\3\0\2\5"+
+    "\20\0\4\5\1\113\15\5\1\0\2\5\1\114\4\5"+
+    "\3\0\2\5\20\0\4\5\1\115\10\5\1\116\4\5"+
+    "\1\0\7\5\3\0\2\5\20\0\15\5\1\117\4\5"+
+    "\1\0\7\5\3\0\2\5\20\0\3\5\1\120\6\5"+
+    "\1\121\7\5\1\0\7\5\3\0\2\5\20\0\2\5"+
+    "\1\122\17\5\1\0\7\5\3\0\2\5\20\0\17\5"+
+    "\1\123\2\5\1\0\7\5\3\0\2\5\20\0\4\5"+
+    "\1\124\15\5\1\0\7\5\3\0\2\5\20\0\6\5"+
+    "\1\125\13\5\1\0\7\5\3\0\2\5\20\0\7\5"+
+    "\1\126\2\5\1\127\7\5\1\0\7\5\3\0\2\5"+
+    "\20\0\3\5\1\130\16\5\1\0\7\5\3\0\2\5"+
+    "\20\0\4\5\1\131\12\5\1\132\2\5\1\0\7\5"+
+    "\3\0\2\5\20\0\5\5\1\133\14\5\1\0\7\5"+
+    "\3\0\2\5\20\0\15\5\1\134\4\5\1\0\7\5"+
+    "\51\0\1\135\10\0\2\5\20\0\7\5\1\136\12\5"+
+    "\1\0\7\5\1\0\10\50\1\137\1\103\45\50\2\0"+
+    "\2\5\20\0\3\5\1\140\16\5\1\0\7\5\3\0"+
+    "\2\5\20\0\15\5\1\141\4\5\1\0\7\5\3\0"+
+    "\2\5\20\0\12\5\1\142\7\5\1\0\7\5\3\0"+
+    "\2\5\20\0\10\5\1\143\11\5\1\0\7\5\3\0"+
+    "\2\5\20\0\2\5\1\144\6\5\1\145\3\5\1\146"+
+    "\4\5\1\0\7\5\3\0\2\5\6\0\1\147\11\0"+
+    "\22\5\1\0\7\5\3\0\2\5\20\0\1\5\1\150"+
+    "\20\5\1\0\7\5\3\0\2\5\20\0\6\5\1\151"+
+    "\13\5\1\0\7\5\3\0\2\5\6\0\1\152\11\0"+
+    "\22\5\1\0\7\5\3\0\2\5\20\0\10\5\1\153"+
+    "\11\5\1\0\7\5\3\0\2\5\20\0\4\5\1\154"+
+    "\15\5\1\0\7\5\3\0\2\5\20\0\12\5\1\155"+
+    "\7\5\1\0\7\5\3\0\2\5\20\0\16\5\1\156"+
+    "\3\5\1\0\7\5\3\0\2\5\6\0\1\157\11\0"+
+    "\22\5\1\0\7\5\3\0\2\5\20\0\7\5\1\160"+
+    "\12\5\1\0\7\5\3\0\2\5\20\0\14\5\1\161"+
+    "\5\5\1\0\7\5\3\0\2\5\6\0\1\162\11\0"+
+    "\5\5\1\163\14\5\1\0\7\5\3\0\2\5\20\0"+
+    "\4\5\1\164\15\5\1\0\7\5\3\0\2\5\20\0"+
+    "\4\5\1\165\15\5\1\0\7\5\3\0\2\5\20\0"+
+    "\10\5\1\166\11\5\1\0\7\5\3\0\2\5\20\0"+
+    "\16\5\1\167\3\5\1\0\3\5\1\170\3\5\3\0"+
+    "\2\5\20\0\11\5\1\171\10\5\1\0\7\5\3\0"+
+    "\2\5\20\0\21\5\1\172\1\0\7\5\3\0\2\5"+
+    "\20\0\2\5\1\173\17\5\1\0\7\5\3\0\2\5"+
+    "\20\0\4\5\1\174\15\5\1\0\7\5\3\0\2\5"+
+    "\20\0\4\5\1\175\15\5\1\0\7\5\3\0\2\5"+
+    "\20\0\4\5\1\176\15\5\1\0\7\5\3\0\2\5"+
+    "\20\0\13\5\1\177\6\5\1\0\7\5\3\0\2\5"+
+    "\20\0\12\5\1\200\7\5\1\0\7\5\3\0\2\5"+
+    "\20\0\5\5\1\201\14\5\1\0\7\5\3\0\2\5"+
+    "\20\0\4\5\1\202\15\5\1\0\7\5\3\0\2\5"+
+    "\20\0\7\5\1\203\12\5\1\0\7\5\3\0\2\5"+
+    "\20\0\22\5\1\0\6\5\1\204\3\0\2\5\20\0"+
+    "\11\5\1\205\10\5\1\0\7\5\3\0\2\5\6\0"+
+    "\1\206\11\0\22\5\1\0\7\5\3\0\2\5\20\0"+
+    "\5\5\1\207\14\5\1\0\7\5\3\0\2\5\20\0"+
+    "\12\5\1\210\7\5\1\0\7\5\3\0\2\5\20\0"+
+    "\2\5\1\211\17\5\1\0\7\5\3\0\2\5\20\0"+
+    "\1\5\1\212\20\5\1\0\7\5\3\0\2\5\6\0"+
+    "\1\213\11\0\4\5\1\214\15\5\1\0\7\5\3\0"+
+    "\2\5\20\0\5\5\1\215\14\5\1\0\7\5\3\0"+
+    "\2\5\20\0\11\5\1\216\10\5\1\0\7\5\3\0"+
+    "\2\5\20\0\10\5\1\217\11\5\1\0\7\5\3\0"+
+    "\2\5\20\0\22\5\1\0\4\5\1\220\2\5\3\0"+
+    "\2\5\20\0\10\5\1\221\11\5\1\0\7\5\3\0"+
+    "\2\5\20\0\5\5\1\222\14\5\1\0\7\5\3\0"+
+    "\2\5\6\0\1\223\11\0\22\5\1\0\7\5\3\0"+
+    "\2\5\6\0\1\224\11\0\22\5\1\0\7\5\3\0"+
+    "\2\5\20\0\10\5\1\225\11\5\1\0\7\5\3\0"+
+    "\2\5\6\0\1\226\11\0\22\5\1\0\7\5\3\0"+
+    "\2\5\20\0\15\5\1\227\4\5\1\0\7\5\3\0"+
+    "\2\5\20\0\7\5\1\230\12\5\1\0\7\5\3\0"+
+    "\2\5\20\0\2\5\1\231\17\5\1\0\7\5\3\0"+
+    "\2\5\20\0\10\5\1\232\11\5\1\0\7\5\3\0"+
+    "\2\5\20\0\14\5\1\233\5\5\1\0\7\5\3\0"+
+    "\2\5\20\0\11\5\1\234\10\5\1\0\7\5\3\0"+
+    "\2\5\20\0\13\5\1\235\6\5\1\0\7\5\3\0"+
+    "\2\5\20\0\15\5\1\236\4\5\1\0\7\5\3\0"+
+    "\2\5\20\0\5\5\1\237\14\5\1\0\7\5\3\0"+
+    "\2\5\20\0\1\240\21\5\1\0\7\5\3\0\2\5"+
+    "\20\0\1\5\1\241\20\5\1\0\7\5\3\0\2\5"+
+    "\20\0\5\5\1\242\5\5\1\243\6\5\1\0\3\5"+
+    "\1\244\1\5\1\245\1\5\3\0\2\5\20\0\11\5"+
+    "\1\246\10\5\1\0\7\5\3\0\2\5\20\0\6\5"+
+    "\1\247\13\5\1\0\7\5\3\0\2\5\20\0\7\5"+
+    "\1\250\12\5\1\0\7\5\3\0\2\5\20\0\4\5"+
+    "\1\251\15\5\1\0\7\5\3\0\2\5\20\0\5\5"+
+    "\1\252\14\5\1\0\7\5\3\0\2\5\6\0\1\253"+
+    "\11\0\22\5\1\0\7\5\3\0\2\5\20\0\1\5"+
+    "\1\254\20\5\1\0\7\5\3\0\2\5\6\0\1\255"+
+    "\11\0\22\5\1\0\7\5\3\0\2\5\20\0\22\5"+
+    "\1\0\2\5\1\256\4\5\3\0\2\5\20\0\1\257"+
+    "\21\5\1\0\7\5\3\0\2\5\20\0\15\5\1\260"+
+    "\4\5\1\0\7\5\3\0\2\5\20\0\15\5\1\261"+
+    "\4\5\1\0\7\5\3\0\2\5\20\0\10\5\1\262"+
+    "\11\5\1\0\7\5\3\0\2\5\20\0\1\5\1\263"+
+    "\20\5\1\0\7\5\3\0\2\5\20\0\10\5\1\264"+
+    "\11\5\1\0\7\5\3\0\2\5\6\0\1\265\11\0"+
+    "\22\5\1\0\7\5\3\0\2\5\20\0\2\5\1\266"+
+    "\17\5\1\0\7\5\3\0\2\5\6\0\1\267\11\0"+
+    "\22\5\1\0\7\5\3\0\2\5\6\0\1\270\11\0"+
+    "\22\5\1\0\7\5\3\0\2\5\20\0\2\5\1\271"+
+    "\17\5\1\0\7\5\3\0\2\5\20\0\4\5\1\272"+
+    "\15\5\1\0\7\5\3\0\2\5\20\0\10\5\1\273"+
+    "\11\5\1\0\7\5\3\0\2\5\6\0\1\274\11\0"+
+    "\22\5\1\0\7\5\3\0\2\5\6\0\1\275\11\0"+
+    "\22\5\1\0\7\5\3\0\2\5\20\0\22\5\1\0"+
+    "\5\5\1\276\1\5\3\0\2\5\20\0\4\5\1\277"+
+    "\15\5\1\0\7\5\3\0\2\5\20\0\4\5\1\300"+
+    "\15\5\1\0\7\5\3\0\2\5\20\0\17\5\1\301"+
+    "\2\5\1\0\7\5\3\0\2\5\20\0\13\5\1\302"+
+    "\6\5\1\0\7\5\3\0\2\5\20\0\10\5\1\303"+
+    "\11\5\1\0\7\5\3\0\2\5\6\0\1\304\11\0"+
+    "\22\5\1\0\7\5\3\0\2\5\20\0\10\5\1\305"+
+    "\11\5\1\0\7\5\3\0\2\5\6\0\1\306\11\0"+
+    "\22\5\1\0\7\5\3\0\2\5\6\0\1\307\11\0"+
+    "\22\5\1\0\7\5\3\0\2\5\20\0\15\5\1\310"+
+    "\4\5\1\0\7\5\3\0\2\5\6\0\1\311\11\0"+
+    "\22\5\1\0\7\5\3\0\2\5\6\0\1\312\11\0"+
+    "\22\5\1\0\7\5\3\0\2\5\20\0\17\5\1\313"+
+    "\2\5\1\0\7\5\3\0\2\5\6\0\1\314\11\0"+
+    "\22\5\1\0\7\5\3\0\2\5\6\0\1\315\11\0"+
+    "\22\5\1\0\7\5\1\0";
 
   private static int [] zzUnpackTrans() {
-    int [] result = new int[7038];
+    int [] result = new int[7238];
     int offset = 0;
     offset = zzUnpackTrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -350,8 +350,8 @@ public class FormulaEngineLexer implements FlexLexer {
   private static final int [] ZZ_ATTRIBUTE = zzUnpackAttribute();
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
-    "\2\0\2\11\5\1\6\11\2\1\1\11\16\1\2\11"+
-    "\2\1\1\11\1\1\1\0\2\11\25\1\1\0\1\1"+
+    "\2\0\2\11\5\1\6\11\2\1\1\11\17\1\2\11"+
+    "\2\1\1\11\1\1\1\0\3\11\25\1\1\0\1\1"+
     "\1\0\31\1\1\11\1\1\1\11\7\1\1\11\2\1"+
     "\1\11\4\1\1\11\2\1\1\11\23\1\1\11\4\1"+
     "\1\11\7\1\2\11\1\1\1\11\24\1\1\11\1\1"+
@@ -359,7 +359,7 @@ public class FormulaEngineLexer implements FlexLexer {
     "\1\11\1\1\2\11\1\1\2\11\1\1\2\11";
 
   private static int [] zzUnpackAttribute() {
-    int [] result = new int[203];
+    int [] result = new int[205];
     int offset = 0;
     offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
     return result;
@@ -676,287 +676,292 @@ public class FormulaEngineLexer implements FlexLexer {
             { return TokenType.BAD_CHARACTER;
             } 
             // fall through
-          case 58: break;
+          case 59: break;
           case 2: 
             { return TokenType.WHITE_SPACE;
             } 
             // fall through
-          case 59: break;
+          case 60: break;
           case 3: 
             { return FormulaEngineElementTypes.IDENTIFIER;
             } 
             // fall through
-          case 60: break;
+          case 61: break;
           case 4: 
             { return FormulaEngineElementTypes.NUMBER_INTEGER;
             } 
             // fall through
-          case 61: break;
+          case 62: break;
           case 5: 
             { return FormulaEngineElementTypes.SINGLE_QUOTED_STRING;
             } 
             // fall through
-          case 62: break;
+          case 63: break;
           case 6: 
             { return FormulaEngineElementTypes.DOUBLE_QUOTED_STRING;
             } 
             // fall through
-          case 63: break;
+          case 64: break;
           case 7: 
             { return FormulaEngineElementTypes.LEFT_PARENTHESIS;
             } 
             // fall through
-          case 64: break;
+          case 65: break;
           case 8: 
             { return FormulaEngineElementTypes.RIGHT_PARENTHESIS;
             } 
             // fall through
-          case 65: break;
+          case 66: break;
           case 9: 
             { return FormulaEngineElementTypes.LEFT_CURLY_BRACE;
             } 
             // fall through
-          case 66: break;
+          case 67: break;
           case 10: 
             { return FormulaEngineElementTypes.RIGHT_CURLY_BRACE;
             } 
             // fall through
-          case 67: break;
+          case 68: break;
           case 11: 
             { return FormulaEngineElementTypes.LEFT_BRACKET;
             } 
             // fall through
-          case 68: break;
+          case 69: break;
           case 12: 
             { return FormulaEngineElementTypes.RIGHT_BRACKET;
             } 
             // fall through
-          case 69: break;
+          case 70: break;
           case 13: 
             { return FormulaEngineElementTypes.OPERATOR_ASSIGNMENT;
             } 
             // fall through
-          case 70: break;
+          case 71: break;
           case 14: 
             { return FormulaEngineElementTypes.OPERATOR_NEGATION;
             } 
             // fall through
-          case 71: break;
+          case 72: break;
           case 15: 
             { return FormulaEngineElementTypes.COMMA;
             } 
             // fall through
-          case 72: break;
+          case 73: break;
           case 16: 
             { return FormulaEngineElementTypes.LINE_COMMENT;
             } 
             // fall through
-          case 73: break;
+          case 74: break;
           case 17: 
             { return FormulaEngineElementTypes.OPERATOR_AND;
             } 
             // fall through
-          case 74: break;
+          case 75: break;
           case 18: 
             { return FormulaEngineElementTypes.OPERATOR_EQUAL;
             } 
             // fall through
-          case 75: break;
-          case 19: 
-            { return FormulaEngineElementTypes.KEYWORD_IF;
-            } 
-            // fall through
           case 76: break;
-          case 20: 
-            { return FormulaEngineElementTypes.KEYWORD_FOR;
+          case 19: 
+            { return FormulaEngineElementTypes.OPERATOR_OR;
             } 
             // fall through
           case 77: break;
-          case 21: 
-            { return FormulaEngineElementTypes.TYPE_ANY;
+          case 20: 
+            { return FormulaEngineElementTypes.KEYWORD_IF;
             } 
             // fall through
           case 78: break;
-          case 22: 
-            { return FormulaEngineElementTypes.BUILT_IN_VAR_NA;
+          case 21: 
+            { return FormulaEngineElementTypes.KEYWORD_FOR;
             } 
             // fall through
           case 79: break;
-          case 23: 
-            { return FormulaEngineElementTypes.BLOCK_COMMENT;
+          case 22: 
+            { return FormulaEngineElementTypes.TYPE_ANY;
             } 
             // fall through
           case 80: break;
-          case 24: 
-            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_OUT;
+          case 23: 
+            { return FormulaEngineElementTypes.BUILT_IN_VAR_NA;
             } 
             // fall through
           case 81: break;
-          case 25: 
-            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_ELT;
+          case 24: 
+            { return FormulaEngineElementTypes.BLOCK_COMMENT;
             } 
             // fall through
           case 82: break;
-          case 26: 
-            { return FormulaEngineElementTypes.KEYWORD_ELSE;
+          case 25: 
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_OUT;
             } 
             // fall through
           case 83: break;
-          case 27: 
-            { return FormulaEngineElementTypes.TYPE_LIST;
+          case 26: 
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_ELT;
             } 
             // fall through
           case 84: break;
-          case 28: 
-            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_LEN;
+          case 27: 
+            { return FormulaEngineElementTypes.KEYWORD_ELSE;
             } 
             // fall through
           case 85: break;
-          case 29: 
-            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STR;
+          case 28: 
+            { return FormulaEngineElementTypes.TYPE_LIST;
             } 
             // fall through
           case 86: break;
-          case 30: 
-            { return FormulaEngineElementTypes.TYPE_DICT;
+          case 29: 
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_LEN;
             } 
             // fall through
           case 87: break;
-          case 31: 
-            { return FormulaEngineElementTypes.TYPE_FLOAT;
+          case 30: 
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STR;
             } 
             // fall through
           case 88: break;
-          case 32: 
-            { return FormulaEngineElementTypes.VISIBILITY_LOCAL;
+          case 31: 
+            { return FormulaEngineElementTypes.TYPE_DICT;
             } 
             // fall through
           case 89: break;
-          case 33: 
-            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_LOAD;
+          case 32: 
+            { return FormulaEngineElementTypes.TYPE_FLOAT;
             } 
             // fall through
           case 90: break;
-          case 34: 
-            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DATE;
+          case 33: 
+            { return FormulaEngineElementTypes.VISIBILITY_LOCAL;
             } 
             // fall through
           case 91: break;
-          case 35: 
-            { return FormulaEngineElementTypes.KEYWORD_WHILE;
+          case 34: 
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_LOAD;
             } 
             // fall through
           case 92: break;
-          case 36: 
-            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_FIRST;
+          case 35: 
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DATE;
             } 
             // fall through
           case 93: break;
-          case 37: 
-            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_FLOAT;
+          case 36: 
+            { return FormulaEngineElementTypes.KEYWORD_WHILE;
             } 
             // fall through
           case 94: break;
-          case 38: 
-            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_NA;
+          case 37: 
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_FIRST;
             } 
             // fall through
           case 95: break;
-          case 39: 
-            { return FormulaEngineElementTypes.KEYWORD_RETURN;
+          case 38: 
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_FLOAT;
             } 
             // fall through
           case 96: break;
-          case 40: 
-            { return FormulaEngineElementTypes.VISIBILITY_GLOBAL;
+          case 39: 
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_NA;
             } 
             // fall through
           case 97: break;
-          case 41: 
-            { return FormulaEngineElementTypes.TYPE_STRING;
+          case 40: 
+            { return FormulaEngineElementTypes.KEYWORD_RETURN;
             } 
             // fall through
           case 98: break;
-          case 42: 
-            { return FormulaEngineElementTypes.TYPE_INTEGER;
+          case 41: 
+            { return FormulaEngineElementTypes.VISIBILITY_GLOBAL;
             } 
             // fall through
           case 99: break;
-          case 43: 
-            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_REMOVE;
+          case 42: 
+            { return FormulaEngineElementTypes.TYPE_STRING;
             } 
             // fall through
           case 100: break;
-          case 44: 
-            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STATUS;
+          case 43: 
+            { return FormulaEngineElementTypes.TYPE_INTEGER;
             } 
             // fall through
           case 101: break;
-          case 45: 
-            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_KERNEL;
+          case 44: 
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_REMOVE;
             } 
             // fall through
           case 102: break;
-          case 46: 
-            { return FormulaEngineElementTypes.KEYWORD_FUNCTION;
+          case 45: 
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STATUS;
             } 
             // fall through
           case 103: break;
-          case 47: 
-            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_INTEGER;
+          case 46: 
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_KERNEL;
             } 
             // fall through
           case 104: break;
-          case 48: 
-            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_LIST;
+          case 47: 
+            { return FormulaEngineElementTypes.KEYWORD_FUNCTION;
             } 
             // fall through
           case 105: break;
-          case 49: 
-            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DAYDIFF;
+          case 48: 
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_INTEGER;
             } 
             // fall through
           case 106: break;
-          case 50: 
-            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DAYPLUS;
+          case 49: 
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_LIST;
             } 
             // fall through
           case 107: break;
-          case 51: 
-            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DATETIME;
+          case 50: 
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DAYDIFF;
             } 
             // fall through
           case 108: break;
-          case 52: 
-            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_GET;
+          case 51: 
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DAYPLUS;
             } 
             // fall through
           case 109: break;
-          case 53: 
-            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_PUT;
+          case 52: 
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DATETIME;
             } 
             // fall through
           case 110: break;
-          case 54: 
-            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_STRING;
+          case 53: 
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_GET;
             } 
             // fall through
           case 111: break;
-          case 55: 
-            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_ATTRIBUTE;
+          case 54: 
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_PUT;
             } 
             // fall through
           case 112: break;
-          case 56: 
-            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_KEYS;
+          case 55: 
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_STRING;
             } 
             // fall through
           case 113: break;
-          case 57: 
-            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_ISKEY;
+          case 56: 
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_ATTRIBUTE;
             } 
             // fall through
           case 114: break;
+          case 57: 
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_KEYS;
+            } 
+            // fall through
+          case 115: break;
+          case 58: 
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_ISKEY;
+            } 
+            // fall through
+          case 116: break;
           default:
             zzScanError(ZZ_NO_MATCH);
           }
