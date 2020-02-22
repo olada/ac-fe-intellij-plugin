@@ -23,6 +23,7 @@
             OPERATOR_ASSIGNMENT = '='
             OPERATOR_AND = '&&'
             OPERATOR_EQUAL = '=='
+            OPERATOR_GREATERTHAN = '>'
             OPERATOR_INCREMENT = '++'
             OPERATOR_LESSTHAN = '<'
             OPERATOR_MODULO = '%'
@@ -117,7 +118,7 @@ ControlStructureInFunctionBody ::= (ControlStructureInFunction | Statement | (Re
 Expression ::=  SingleExpression (Operator SingleExpression)*
 SingleExpression ::= FunctionInvocation | Constant | NegatedExpression | ArrayAccess | IDENTIFIER IdentifierPostfix?
 NegatedExpression ::= OPERATOR_NEGATION SingleExpression | OPERATOR_NEGATION LEFT_PARENTHESIS SingleExpression RIGHT_PARENTHESIS
-Operator ::= OPERATOR_AND | OPERATOR_EQUAL | OPERATOR_LESSTHAN | OPERATOR_MODULO | OPERATOR_NOTEQUAL | OPERATOR_OR | OPERATOR_PLUS
+Operator ::= OPERATOR_AND | OPERATOR_EQUAL | OPERATOR_GREATERTHAN | OPERATOR_LESSTHAN | OPERATOR_MODULO | OPERATOR_NOTEQUAL | OPERATOR_OR | OPERATOR_PLUS
 
 StringLiteral ::= SingleStringLiteral (OPERATOR_PLUS Expression)* | SingleStringLiteral (OPERATOR_PLUS SingleStringLiteral)*
 SingleStringLiteral ::= SINGLE_QUOTED_STRING | DOUBLE_QUOTED_STRING
