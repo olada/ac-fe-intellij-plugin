@@ -27,21 +27,27 @@ public class FormulaEngineControlStructureInFunctionImpl extends ASTWrapperPsiEl
   }
 
   @Override
-  @NotNull
+  @Nullable
   public FormulaEngineControlStructureInFunctionBody getControlStructureInFunctionBody() {
-    return findNotNullChildByClass(FormulaEngineControlStructureInFunctionBody.class);
+    return findChildByClass(FormulaEngineControlStructureInFunctionBody.class);
   }
 
   @Override
-  @NotNull
+  @Nullable
   public FormulaEngineControlStructureKeyword getControlStructureKeyword() {
-    return findNotNullChildByClass(FormulaEngineControlStructureKeyword.class);
+    return findChildByClass(FormulaEngineControlStructureKeyword.class);
   }
 
   @Override
-  @NotNull
+  @Nullable
   public FormulaEngineExpression getExpression() {
-    return findNotNullChildByClass(FormulaEngineExpression.class);
+    return findChildByClass(FormulaEngineExpression.class);
+  }
+
+  @Override
+  @Nullable
+  public FormulaEngineFor getFor() {
+    return findChildByClass(FormulaEngineFor.class);
   }
 
 }

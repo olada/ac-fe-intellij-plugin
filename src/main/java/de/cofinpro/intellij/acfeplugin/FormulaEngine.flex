@@ -104,6 +104,7 @@ NUMBER_INTEGER = [0-9]+
 
    "," { return FormulaEngineElementTypes.COMMA; }
    ";" { return FormulaEngineElementTypes.SEMICOLON; }
+   "-" { return FormulaEngineElementTypes.MINUS; }
 
    {COMMENT_SINGLE_LINE} { return FormulaEngineElementTypes.LINE_COMMENT; }
    {BLOCK_COMMENT} { return FormulaEngineElementTypes.BLOCK_COMMENT; }

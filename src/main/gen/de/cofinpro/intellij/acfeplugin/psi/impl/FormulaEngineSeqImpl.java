@@ -28,14 +28,8 @@ public class FormulaEngineSeqImpl extends ASTWrapperPsiElement implements Formul
 
   @Override
   @NotNull
-  public List<FormulaEngineAssignment> getAssignmentList() {
-    return PsiTreeUtil.getChildrenOfTypeAsList(this, FormulaEngineAssignment.class);
-  }
-
-  @Override
-  @NotNull
-  public FormulaEngineExpression getExpression() {
-    return findNotNullChildByClass(FormulaEngineExpression.class);
+  public FormulaEngineSeqForParenthesis getSeqForParenthesis() {
+    return findNotNullChildByClass(FormulaEngineSeqForParenthesis.class);
   }
 
   @Override

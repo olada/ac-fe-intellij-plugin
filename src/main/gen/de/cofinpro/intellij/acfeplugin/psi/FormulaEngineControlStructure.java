@@ -7,13 +7,16 @@ import com.intellij.psi.PsiElement;
 
 public interface FormulaEngineControlStructure extends PsiElement {
 
-  @NotNull
+  @Nullable
   FormulaEngineControlStructureBody getControlStructureBody();
 
-  @NotNull
+  @Nullable
   FormulaEngineControlStructureKeyword getControlStructureKeyword();
 
-  @NotNull
+  @Nullable
   FormulaEngineExpression getExpression();
+
+  @Nullable
+  FormulaEngineFor getFor();
 
 }

@@ -193,32 +193,61 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // BuiltInVariableName | NUMBER_INTEGER | StringLiteral | ListLiteral
+  // BuiltInVariableName | MINUS? NUMBER_INTEGER | StringLiteral | ListLiteral
   public static boolean Constant(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Constant")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, CONSTANT, "<constant>");
     r = BuiltInVariableName(b, l + 1);
-    if (!r) r = consumeToken(b, NUMBER_INTEGER);
+    if (!r) r = Constant_1(b, l + 1);
     if (!r) r = StringLiteral(b, l + 1);
     if (!r) r = ListLiteral(b, l + 1);
     exit_section_(b, l, m, r, false, null);
     return r;
   }
 
+  // MINUS? NUMBER_INTEGER
+  private static boolean Constant_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "Constant_1")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = Constant_1_0(b, l + 1);
+    r = r && consumeToken(b, NUMBER_INTEGER);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  // MINUS?
+  private static boolean Constant_1_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "Constant_1_0")) return false;
+    consumeToken(b, MINUS);
+    return true;
+  }
+
   /* ********************************************************** */
-  // ControlStructureKeyword LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE
+  // (ControlStructureKeyword LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE) | For
   public static boolean ControlStructure(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "ControlStructure")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, CONTROL_STRUCTURE, "<control structure>");
+    r = ControlStructure_0(b, l + 1);
+    if (!r) r = For(b, l + 1);
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  // ControlStructureKeyword LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE
+  private static boolean ControlStructure_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "ControlStructure_0")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
     r = ControlStructureKeyword(b, l + 1);
     r = r && consumeToken(b, LEFT_PARENTHESIS);
     r = r && Expression(b, l + 1);
     r = r && consumeTokens(b, 0, RIGHT_PARENTHESIS, LEFT_CURLY_BRACE);
     r = r && ControlStructureBody(b, l + 1);
     r = r && consumeToken(b, RIGHT_CURLY_BRACE);
-    exit_section_(b, l, m, r, false, null);
+    exit_section_(b, m, null, r);
     return r;
   }
 
@@ -246,18 +275,29 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // ControlStructureKeyword LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE ControlStructureInFunctionBody RIGHT_CURLY_BRACE
+  // (ControlStructureKeyword LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE ControlStructureInFunctionBody RIGHT_CURLY_BRACE) | For
   public static boolean ControlStructureInFunction(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "ControlStructureInFunction")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, CONTROL_STRUCTURE_IN_FUNCTION, "<control structure in function>");
+    r = ControlStructureInFunction_0(b, l + 1);
+    if (!r) r = For(b, l + 1);
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  // ControlStructureKeyword LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE ControlStructureInFunctionBody RIGHT_CURLY_BRACE
+  private static boolean ControlStructureInFunction_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "ControlStructureInFunction_0")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
     r = ControlStructureKeyword(b, l + 1);
     r = r && consumeToken(b, LEFT_PARENTHESIS);
     r = r && Expression(b, l + 1);
     r = r && consumeTokens(b, 0, RIGHT_PARENTHESIS, LEFT_CURLY_BRACE);
     r = r && ControlStructureInFunctionBody(b, l + 1);
     r = r && consumeToken(b, RIGHT_CURLY_BRACE);
-    exit_section_(b, l, m, r, false, null);
+    exit_section_(b, m, null, r);
     return r;
   }
 
@@ -381,6 +421,22 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     r = Operator(b, l + 1);
     r = r && SingleExpression(b, l + 1);
     exit_section_(b, m, null, r);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // KEYWORD_FOR SeqForParenthesis LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE
+  public static boolean For(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "For")) return false;
+    if (!nextTokenIs(b, KEYWORD_FOR)) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeToken(b, KEYWORD_FOR);
+    r = r && SeqForParenthesis(b, l + 1);
+    r = r && consumeToken(b, LEFT_CURLY_BRACE);
+    r = r && ControlStructureBody(b, l + 1);
+    r = r && consumeToken(b, RIGHT_CURLY_BRACE);
+    exit_section_(b, m, FOR, r);
     return r;
   }
 
@@ -717,21 +773,34 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // KEYWORD_SEQ LEFT_PARENTHESIS Assignment SEMICOLON Expression SEMICOLON Assignment RIGHT_PARENTHESIS StatementWithoutEol
+  // KEYWORD_SEQ SeqForParenthesis StatementWithoutEol
   public static boolean Seq(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Seq")) return false;
     if (!nextTokenIs(b, KEYWORD_SEQ)) return false;
     boolean r;
     Marker m = enter_section_(b);
-    r = consumeTokens(b, 0, KEYWORD_SEQ, LEFT_PARENTHESIS);
+    r = consumeToken(b, KEYWORD_SEQ);
+    r = r && SeqForParenthesis(b, l + 1);
+    r = r && StatementWithoutEol(b, l + 1);
+    exit_section_(b, m, SEQ, r);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // LEFT_PARENTHESIS Assignment SEMICOLON Expression SEMICOLON Assignment RIGHT_PARENTHESIS
+  public static boolean SeqForParenthesis(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "SeqForParenthesis")) return false;
+    if (!nextTokenIs(b, LEFT_PARENTHESIS)) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeToken(b, LEFT_PARENTHESIS);
     r = r && Assignment(b, l + 1);
     r = r && consumeToken(b, SEMICOLON);
     r = r && Expression(b, l + 1);
     r = r && consumeToken(b, SEMICOLON);
     r = r && Assignment(b, l + 1);
     r = r && consumeToken(b, RIGHT_PARENTHESIS);
-    r = r && StatementWithoutEol(b, l + 1);
-    exit_section_(b, m, SEQ, r);
+    exit_section_(b, m, SEQ_FOR_PARENTHESIS, r);
     return r;
   }
 

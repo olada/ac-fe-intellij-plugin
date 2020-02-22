@@ -84,6 +84,7 @@
 
             COMMA = ','
             SEMICOLON = ';'
+            MINUS = '-'
 
             IDENTIFIER = 'regexp:[a-zA-Z_][a-zA-Z0-9_]*'
             LINE_COMMENT='regexp://.*'
@@ -106,12 +107,13 @@ FunctionArguments ::= FunctionArgument (COMMA FunctionArgument)*
 FunctionArgument ::= Expression
 
 // Control Structures
-ControlStructure ::= ControlStructureKeyword LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE
-ControlStructureInFunction ::= ControlStructureKeyword LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE ControlStructureInFunctionBody RIGHT_CURLY_BRACE
+ControlStructure ::= (ControlStructureKeyword LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE) | For
+ControlStructureInFunction ::= (ControlStructureKeyword LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE ControlStructureInFunctionBody RIGHT_CURLY_BRACE) | For
 ControlStructureKeyword ::= KEYWORD_IF | KEYWORD_FOR | KEYWORD_WHILE
 ControlStructureBody ::= (ControlStructure | Statement)*
 ControlStructureInFunctionBody ::= (ControlStructureInFunction | Statement | (ReturnStatement ';'))*
 
+// Expressions
 Expression ::=  SingleExpression (Operator SingleExpression)*
 SingleExpression ::= FunctionInvocation | Constant | NegatedExpression | ArrayAccess | IDENTIFIER IdentifierPostfix?
 NegatedExpression ::= OPERATOR_NEGATION SingleExpression | OPERATOR_NEGATION LEFT_PARENTHESIS SingleExpression RIGHT_PARENTHESIS
@@ -142,7 +144,9 @@ Statement ::= (FunctionInvocation | Assignment | Declaration) ';'
 StatementWithoutEol ::= FunctionInvocation | Assignment | Declaration // This is a hack and has a better solution for sure..
 FunctionBodyStatement ::= ControlStructureInFunction | ((FunctionInvocation | Assignment | Declaration | ReturnStatement) SEMICOLON)
 
-Seq ::= KEYWORD_SEQ LEFT_PARENTHESIS Assignment SEMICOLON Expression SEMICOLON Assignment RIGHT_PARENTHESIS StatementWithoutEol
+SeqForParenthesis ::= LEFT_PARENTHESIS Assignment SEMICOLON Expression SEMICOLON Assignment RIGHT_PARENTHESIS
+Seq ::= KEYWORD_SEQ SeqForParenthesis StatementWithoutEol
+For ::= KEYWORD_FOR SeqForParenthesis LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE
 
 Declaration ::= Visibility? Type? IDENTIFIER
 //Assignment ::=  Declaration '=' (Constant | FunctionInvocation | ArrayAccess | IDENTIFIER)
@@ -156,5 +160,5 @@ ReturnStatement ::= KEYWORD_RETURN IDENTIFIER
 Visibility ::= VISIBILITY_GLOBAL | VISIBILITY_LOCAL
 Type ::= TYPE_INTEGER | TYPE_FLOAT | TYPE_DATE | TYPE_STRING | TYPE_LIST | TYPE_DICT | TYPE_ANY
 
-Constant ::= BuiltInVariableName | NUMBER_INTEGER | StringLiteral | ListLiteral
+Constant ::= BuiltInVariableName | MINUS? NUMBER_INTEGER | StringLiteral | ListLiteral
 BuiltInVariableName ::= BUILT_IN_VAR_NA | BUILT_IN_VAR_TODAY

@@ -21,6 +21,7 @@ public interface FormulaEngineElementTypes {
   IElementType CUSTOM_FUNCTION_NAME = new FormulaEngineElementType("CUSTOM_FUNCTION_NAME");
   IElementType DECLARATION = new FormulaEngineElementType("DECLARATION");
   IElementType EXPRESSION = new FormulaEngineElementType("EXPRESSION");
+  IElementType FOR = new FormulaEngineElementType("FOR");
   IElementType FUNCTION_ARGUMENT = new FormulaEngineElementType("FUNCTION_ARGUMENT");
   IElementType FUNCTION_ARGUMENTS = new FormulaEngineElementType("FUNCTION_ARGUMENTS");
   IElementType FUNCTION_BODY = new FormulaEngineElementType("FUNCTION_BODY");
@@ -36,6 +37,7 @@ public interface FormulaEngineElementTypes {
   IElementType OPERATOR = new FormulaEngineElementType("OPERATOR");
   IElementType RETURN_STATEMENT = new FormulaEngineElementType("RETURN_STATEMENT");
   IElementType SEQ = new FormulaEngineElementType("SEQ");
+  IElementType SEQ_FOR_PARENTHESIS = new FormulaEngineElementType("SEQ_FOR_PARENTHESIS");
   IElementType SINGLE_EXPRESSION = new FormulaEngineElementType("SINGLE_EXPRESSION");
   IElementType SINGLE_STRING_LITERAL = new FormulaEngineElementType("SINGLE_STRING_LITERAL");
   IElementType STATEMENT = new FormulaEngineElementType("STATEMENT");
@@ -86,6 +88,7 @@ public interface FormulaEngineElementTypes {
   IElementType LEFT_CURLY_BRACE = new FormulaEngineTokenType("{");
   IElementType LEFT_PARENTHESIS = new FormulaEngineTokenType("(");
   IElementType LINE_COMMENT = new FormulaEngineTokenType("LINE_COMMENT");
+  IElementType MINUS = new FormulaEngineTokenType("-");
   IElementType NUMBER_INTEGER = new FormulaEngineTokenType("NUMBER_INTEGER");
   IElementType OPERATOR_AND = new FormulaEngineTokenType("&&");
   IElementType OPERATOR_ASSIGNMENT = new FormulaEngineTokenType("=");
@@ -155,6 +158,9 @@ public interface FormulaEngineElementTypes {
       else if (type == EXPRESSION) {
         return new FormulaEngineExpressionImpl(node);
       }
+      else if (type == FOR) {
+        return new FormulaEngineForImpl(node);
+      }
       else if (type == FUNCTION_ARGUMENT) {
         return new FormulaEngineFunctionArgumentImpl(node);
       }
@@ -199,6 +205,9 @@ public interface FormulaEngineElementTypes {
       }
       else if (type == SEQ) {
         return new FormulaEngineSeqImpl(node);
+      }
+      else if (type == SEQ_FOR_PARENTHESIS) {
+        return new FormulaEngineSeqForParenthesisImpl(node);
       }
       else if (type == SINGLE_EXPRESSION) {
         return new FormulaEngineSingleExpressionImpl(node);

@@ -59,6 +59,10 @@ public class FormulaEngineVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitFor(@NotNull FormulaEngineFor o) {
+    visitPsiElement(o);
+  }
+
   public void visitFunctionArgument(@NotNull FormulaEngineFunctionArgument o) {
     visitPsiElement(o);
   }
@@ -116,6 +120,10 @@ public class FormulaEngineVisitor extends PsiElementVisitor {
   }
 
   public void visitSeq(@NotNull FormulaEngineSeq o) {
+    visitPsiElement(o);
+  }
+
+  public void visitSeqForParenthesis(@NotNull FormulaEngineSeqForParenthesis o) {
     visitPsiElement(o);
   }
 

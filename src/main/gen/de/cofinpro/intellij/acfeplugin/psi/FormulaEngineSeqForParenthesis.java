@@ -5,12 +5,12 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface FormulaEngineSeq extends PsiElement {
+public interface FormulaEngineSeqForParenthesis extends PsiElement {
 
   @NotNull
-  FormulaEngineSeqForParenthesis getSeqForParenthesis();
+  List<FormulaEngineAssignment> getAssignmentList();
 
   @NotNull
-  FormulaEngineStatementWithoutEol getStatementWithoutEol();
+  FormulaEngineExpression getExpression();
 
 }

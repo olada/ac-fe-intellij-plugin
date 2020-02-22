@@ -11,14 +11,14 @@ import static de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import de.cofinpro.intellij.acfeplugin.psi.*;
 
-public class FormulaEngineControlStructureImpl extends ASTWrapperPsiElement implements FormulaEngineControlStructure {
+public class FormulaEngineForImpl extends ASTWrapperPsiElement implements FormulaEngineFor {
 
-  public FormulaEngineControlStructureImpl(@NotNull ASTNode node) {
+  public FormulaEngineForImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull FormulaEngineVisitor visitor) {
-    visitor.visitControlStructure(this);
+    visitor.visitFor(this);
   }
 
   public void accept(@NotNull PsiElementVisitor visitor) {
@@ -27,27 +27,15 @@ public class FormulaEngineControlStructureImpl extends ASTWrapperPsiElement impl
   }
 
   @Override
-  @Nullable
+  @NotNull
   public FormulaEngineControlStructureBody getControlStructureBody() {
-    return findChildByClass(FormulaEngineControlStructureBody.class);
+    return findNotNullChildByClass(FormulaEngineControlStructureBody.class);
   }
 
   @Override
-  @Nullable
-  public FormulaEngineControlStructureKeyword getControlStructureKeyword() {
-    return findChildByClass(FormulaEngineControlStructureKeyword.class);
-  }
-
-  @Override
-  @Nullable
-  public FormulaEngineExpression getExpression() {
-    return findChildByClass(FormulaEngineExpression.class);
-  }
-
-  @Override
-  @Nullable
-  public FormulaEngineFor getFor() {
-    return findChildByClass(FormulaEngineFor.class);
+  @NotNull
+  public FormulaEngineSeqForParenthesis getSeqForParenthesis() {
+    return findNotNullChildByClass(FormulaEngineSeqForParenthesis.class);
   }
 
 }
