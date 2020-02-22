@@ -8,6 +8,9 @@ import com.intellij.psi.PsiElement;
 public interface FormulaEngineStringLiteral extends PsiElement {
 
   @NotNull
+  List<FormulaEngineExpression> getExpressionList();
+
+  @NotNull
   List<FormulaEngineSingleStringLiteral> getSingleStringLiteralList();
 
 }

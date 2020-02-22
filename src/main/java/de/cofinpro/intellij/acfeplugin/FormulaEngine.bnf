@@ -113,7 +113,7 @@ SingleExpression ::= FunctionInvocation | Constant | NegatedExpression | ArrayAc
 NegatedExpression ::= OPERATOR_NEGATION SingleExpression | OPERATOR_NEGATION LEFT_PARENTHESIS SingleExpression RIGHT_PARENTHESIS
 Operator ::= OPERATOR_AND | OPERATOR_EQUAL | OPERATOR_MODULO | OPERATOR_NOTEQUAL | OPERATOR_OR
 
-StringLiteral ::= SingleStringLiteral (OPERATOR_PLUS SingleStringLiteral)*
+StringLiteral ::= SingleStringLiteral (OPERATOR_PLUS Expression)* | SingleStringLiteral (OPERATOR_PLUS SingleStringLiteral)*
 SingleStringLiteral ::= SINGLE_QUOTED_STRING | DOUBLE_QUOTED_STRING
 ListLiteral ::= LEFT_BRACKET ListContents RIGHT_BRACKET
 ListContents ::= (Expression (COMMA Expression)*)?

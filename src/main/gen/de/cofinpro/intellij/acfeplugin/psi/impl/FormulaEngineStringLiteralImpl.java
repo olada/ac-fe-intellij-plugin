@@ -28,6 +28,12 @@ public class FormulaEngineStringLiteralImpl extends ASTWrapperPsiElement impleme
 
   @Override
   @NotNull
+  public List<FormulaEngineExpression> getExpressionList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, FormulaEngineExpression.class);
+  }
+
+  @Override
+  @NotNull
   public List<FormulaEngineSingleStringLiteral> getSingleStringLiteralList() {
     return PsiTreeUtil.getChildrenOfTypeAsList(this, FormulaEngineSingleStringLiteral.class);
   }

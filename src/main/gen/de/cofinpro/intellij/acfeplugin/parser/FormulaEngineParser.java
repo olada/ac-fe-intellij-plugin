@@ -705,32 +705,76 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // SingleStringLiteral (OPERATOR_PLUS SingleStringLiteral)*
+  // SingleStringLiteral (OPERATOR_PLUS Expression)* | SingleStringLiteral (OPERATOR_PLUS SingleStringLiteral)*
   public static boolean StringLiteral(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "StringLiteral")) return false;
     if (!nextTokenIs(b, "<string literal>", DOUBLE_QUOTED_STRING, SINGLE_QUOTED_STRING)) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, STRING_LITERAL, "<string literal>");
-    r = SingleStringLiteral(b, l + 1);
-    r = r && StringLiteral_1(b, l + 1);
+    r = StringLiteral_0(b, l + 1);
+    if (!r) r = StringLiteral_1(b, l + 1);
     exit_section_(b, l, m, r, false, null);
     return r;
   }
 
-  // (OPERATOR_PLUS SingleStringLiteral)*
-  private static boolean StringLiteral_1(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "StringLiteral_1")) return false;
+  // SingleStringLiteral (OPERATOR_PLUS Expression)*
+  private static boolean StringLiteral_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "StringLiteral_0")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = SingleStringLiteral(b, l + 1);
+    r = r && StringLiteral_0_1(b, l + 1);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  // (OPERATOR_PLUS Expression)*
+  private static boolean StringLiteral_0_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "StringLiteral_0_1")) return false;
     while (true) {
       int c = current_position_(b);
-      if (!StringLiteral_1_0(b, l + 1)) break;
-      if (!empty_element_parsed_guard_(b, "StringLiteral_1", c)) break;
+      if (!StringLiteral_0_1_0(b, l + 1)) break;
+      if (!empty_element_parsed_guard_(b, "StringLiteral_0_1", c)) break;
+    }
+    return true;
+  }
+
+  // OPERATOR_PLUS Expression
+  private static boolean StringLiteral_0_1_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "StringLiteral_0_1_0")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeToken(b, OPERATOR_PLUS);
+    r = r && Expression(b, l + 1);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  // SingleStringLiteral (OPERATOR_PLUS SingleStringLiteral)*
+  private static boolean StringLiteral_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "StringLiteral_1")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = SingleStringLiteral(b, l + 1);
+    r = r && StringLiteral_1_1(b, l + 1);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  // (OPERATOR_PLUS SingleStringLiteral)*
+  private static boolean StringLiteral_1_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "StringLiteral_1_1")) return false;
+    while (true) {
+      int c = current_position_(b);
+      if (!StringLiteral_1_1_0(b, l + 1)) break;
+      if (!empty_element_parsed_guard_(b, "StringLiteral_1_1", c)) break;
     }
     return true;
   }
 
   // OPERATOR_PLUS SingleStringLiteral
-  private static boolean StringLiteral_1_0(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "StringLiteral_1_0")) return false;
+  private static boolean StringLiteral_1_1_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "StringLiteral_1_1_0")) return false;
     boolean r;
     Marker m = enter_section_(b);
     r = consumeToken(b, OPERATOR_PLUS);
