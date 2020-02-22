@@ -7,4 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public interface FormulaEngineFunctionArguments extends PsiElement {
 
+  @NotNull
+  List<FormulaEngineFunctionArgument> getFunctionArgumentList();
+
 }

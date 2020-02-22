@@ -14,6 +14,7 @@ public interface FormulaEngineElementTypes {
   IElementType CONSTANT = new FormulaEngineElementType("CONSTANT");
   IElementType CUSTOM_FUNCTION_NAME = new FormulaEngineElementType("CUSTOM_FUNCTION_NAME");
   IElementType DECLARATION = new FormulaEngineElementType("DECLARATION");
+  IElementType FUNCTION_ARGUMENT = new FormulaEngineElementType("FUNCTION_ARGUMENT");
   IElementType FUNCTION_ARGUMENTS = new FormulaEngineElementType("FUNCTION_ARGUMENTS");
   IElementType FUNCTION_BODY = new FormulaEngineElementType("FUNCTION_BODY");
   IElementType FUNCTION_BODY_STATEMENT = new FormulaEngineElementType("FUNCTION_BODY_STATEMENT");
@@ -23,6 +24,7 @@ public interface FormulaEngineElementTypes {
   IElementType FUNCTION_PARAMETERS = new FormulaEngineElementType("FUNCTION_PARAMETERS");
   IElementType RETURN_STATEMENT = new FormulaEngineElementType("RETURN_STATEMENT");
   IElementType STATEMENT = new FormulaEngineElementType("STATEMENT");
+  IElementType STRING_LITERAL = new FormulaEngineElementType("STRING_LITERAL");
   IElementType TOP_LEVEL_ITEM = new FormulaEngineElementType("TOP_LEVEL_ITEM");
   IElementType TYPE_PREFIX = new FormulaEngineElementType("TYPE_PREFIX");
   IElementType VISIBILITY_PREFIX = new FormulaEngineElementType("VISIBILITY_PREFIX");
@@ -38,6 +40,7 @@ public interface FormulaEngineElementTypes {
   IElementType DAYDIFF = new FormulaEngineTokenType("daydiff");
   IElementType DAYPLUS = new FormulaEngineTokenType("dayplus");
   IElementType DICT = new FormulaEngineTokenType("dict");
+  IElementType DOUBLE_QUOTED_STRING = new FormulaEngineTokenType("DOUBLE_QUOTED_STRING");
   IElementType DOUBLE_QUOTED_STRING_LITERAL = new FormulaEngineTokenType("double quoted string literal");
   IElementType ELT = new FormulaEngineTokenType("elt");
   IElementType FLOAT = new FormulaEngineTokenType("float");
@@ -67,6 +70,7 @@ public interface FormulaEngineElementTypes {
   IElementType RIGHT_BRACKET = new FormulaEngineTokenType("]");
   IElementType RIGHT_CURLY_BRACE = new FormulaEngineTokenType("}");
   IElementType RIGHT_PARENTHESIS = new FormulaEngineTokenType(")");
+  IElementType SINGLE_QUOTED_STRING = new FormulaEngineTokenType("SINGLE_QUOTED_STRING");
   IElementType SINGLE_QUOTED_STRING_LITERAL = new FormulaEngineTokenType("single quoted string literal");
   IElementType STATUS = new FormulaEngineTokenType("status");
   IElementType STR = new FormulaEngineTokenType("str");
@@ -92,6 +96,9 @@ public interface FormulaEngineElementTypes {
       }
       else if (type == DECLARATION) {
         return new FormulaEngineDeclarationImpl(node);
+      }
+      else if (type == FUNCTION_ARGUMENT) {
+        return new FormulaEngineFunctionArgumentImpl(node);
       }
       else if (type == FUNCTION_ARGUMENTS) {
         return new FormulaEngineFunctionArgumentsImpl(node);
@@ -119,6 +126,9 @@ public interface FormulaEngineElementTypes {
       }
       else if (type == STATEMENT) {
         return new FormulaEngineStatementImpl(node);
+      }
+      else if (type == STRING_LITERAL) {
+        return new FormulaEngineStringLiteralImpl(node);
       }
       else if (type == TOP_LEVEL_ITEM) {
         return new FormulaEngineTopLevelItemImpl(node);

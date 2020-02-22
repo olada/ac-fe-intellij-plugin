@@ -647,12 +647,12 @@ public class FormulaEngineLexer implements FlexLexer {
             // fall through
           case 50: break;
           case 5: 
-            { return FormulaEngineElementTypes.SINGLE_QUOTED_STRING_LITERAL;
+            { return FormulaEngineElementTypes.SINGLE_QUOTED_STRING;
             } 
             // fall through
           case 51: break;
           case 6: 
-            { return FormulaEngineElementTypes.DOUBLE_QUOTED_STRING_LITERAL;
+            { return FormulaEngineElementTypes.DOUBLE_QUOTED_STRING;
             } 
             // fall through
           case 52: break;

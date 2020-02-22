@@ -135,13 +135,13 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // VisibilityPrefix? TypePrefix IDENTIFIER
+  // VisibilityPrefix? TypePrefix? IDENTIFIER
   public static boolean Declaration(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Declaration")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, DECLARATION, "<declaration>");
     r = Declaration_0(b, l + 1);
-    r = r && TypePrefix(b, l + 1);
+    r = r && Declaration_1(b, l + 1);
     r = r && consumeToken(b, IDENTIFIER);
     exit_section_(b, l, m, r, false, null);
     return r;
@@ -154,20 +154,38 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     return true;
   }
 
+  // TypePrefix?
+  private static boolean Declaration_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "Declaration_1")) return false;
+    TypePrefix(b, l + 1);
+    return true;
+  }
+
   /* ********************************************************** */
-  // IDENTIFIER (',' IDENTIFIER)*
-  public static boolean FunctionArguments(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "FunctionArguments")) return false;
-    if (!nextTokenIs(b, IDENTIFIER)) return false;
+  // StringLiteral | IDENTIFIER
+  public static boolean FunctionArgument(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "FunctionArgument")) return false;
     boolean r;
-    Marker m = enter_section_(b);
-    r = consumeToken(b, IDENTIFIER);
-    r = r && FunctionArguments_1(b, l + 1);
-    exit_section_(b, m, FUNCTION_ARGUMENTS, r);
+    Marker m = enter_section_(b, l, _NONE_, FUNCTION_ARGUMENT, "<function argument>");
+    r = StringLiteral(b, l + 1);
+    if (!r) r = consumeToken(b, IDENTIFIER);
+    exit_section_(b, l, m, r, false, null);
     return r;
   }
 
-  // (',' IDENTIFIER)*
+  /* ********************************************************** */
+  // FunctionArgument (',' FunctionArgument)*
+  public static boolean FunctionArguments(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "FunctionArguments")) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, FUNCTION_ARGUMENTS, "<function arguments>");
+    r = FunctionArgument(b, l + 1);
+    r = r && FunctionArguments_1(b, l + 1);
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  // (',' FunctionArgument)*
   private static boolean FunctionArguments_1(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "FunctionArguments_1")) return false;
     while (true) {
@@ -178,13 +196,13 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     return true;
   }
 
-  // ',' IDENTIFIER
+  // ',' FunctionArgument
   private static boolean FunctionArguments_1_0(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "FunctionArguments_1_0")) return false;
     boolean r;
     Marker m = enter_section_(b);
     r = consumeToken(b, ",");
-    r = r && consumeToken(b, IDENTIFIER);
+    r = r && FunctionArgument(b, l + 1);
     exit_section_(b, m, null, r);
     return r;
   }
@@ -362,6 +380,19 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     r = Assignment(b, l + 1);
     if (!r) r = Declaration(b, l + 1);
     if (!r) r = FunctionInvocation(b, l + 1);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // SINGLE_QUOTED_STRING | DOUBLE_QUOTED_STRING
+  public static boolean StringLiteral(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "StringLiteral")) return false;
+    if (!nextTokenIs(b, "<string literal>", DOUBLE_QUOTED_STRING, SINGLE_QUOTED_STRING)) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, STRING_LITERAL, "<string literal>");
+    r = consumeToken(b, SINGLE_QUOTED_STRING);
+    if (!r) r = consumeToken(b, DOUBLE_QUOTED_STRING);
+    exit_section_(b, l, m, r, false, null);
     return r;
   }
 

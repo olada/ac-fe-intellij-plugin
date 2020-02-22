@@ -88,8 +88,8 @@ NUMBER_INTEGER = [0-9]+
    {COMMENT_SINGLE_LINE} { return FormulaEngineElementTypes.LINE_COMMENT; }
    {BLOCK_COMMENT} { return FormulaEngineElementTypes.BLOCK_COMMENT; }
 
-   {QUOTED_LITERAL} { return FormulaEngineElementTypes.SINGLE_QUOTED_STRING_LITERAL; }
-   {DOUBLE_QUOTED_LITERAL} { return FormulaEngineElementTypes.DOUBLE_QUOTED_STRING_LITERAL; }
+   {QUOTED_LITERAL} { return FormulaEngineElementTypes.SINGLE_QUOTED_STRING; }
+   {DOUBLE_QUOTED_LITERAL} { return FormulaEngineElementTypes.DOUBLE_QUOTED_STRING; }
 
    {NUMBER_INTEGER} { return FormulaEngineElementTypes.NUMBER_INTEGER; }
 

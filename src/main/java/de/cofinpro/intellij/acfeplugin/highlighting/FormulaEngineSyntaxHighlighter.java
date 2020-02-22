@@ -50,8 +50,8 @@ public class FormulaEngineSyntaxHighlighter extends SyntaxHighlighterBase {
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.KEYWORD_WHILE, WHILE_ATTR_KEY);
 
         // Strings
-        safeMap(ATTRIBUTES, FormulaEngineElementTypes.DOUBLE_QUOTED_STRING_LITERAL, STRINGS_DOUBLE_QUOTED);
-        safeMap(ATTRIBUTES, FormulaEngineElementTypes.SINGLE_QUOTED_STRING_LITERAL, STRINGS_SINGLE_QUOTED);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.DOUBLE_QUOTED_STRING, STRINGS_DOUBLE_QUOTED);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.SINGLE_QUOTED_STRING, STRINGS_SINGLE_QUOTED);
 
         // Comments
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.LINE_COMMENT, COMMENT_SINGLE_LINE);

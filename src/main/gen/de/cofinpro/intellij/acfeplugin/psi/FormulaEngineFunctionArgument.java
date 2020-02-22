@@ -5,15 +5,12 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface FormulaEngineDeclaration extends PsiElement {
+public interface FormulaEngineFunctionArgument extends PsiElement {
 
   @Nullable
-  FormulaEngineTypePrefix getTypePrefix();
+  FormulaEngineStringLiteral getStringLiteral();
 
   @Nullable
-  FormulaEngineVisibilityPrefix getVisibilityPrefix();
-
-  @NotNull
   PsiElement getIdentifier();
 
 }

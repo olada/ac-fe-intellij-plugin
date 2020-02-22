@@ -34,6 +34,8 @@
 
             DOUBLE_QUOTED_STRING_LITERAL = 'double quoted string literal'
             SINGLE_QUOTED_STRING_LITERAL = 'single quoted string literal'
+            DOUBLE_QUOTED_STRING="regexp:\"([^\\\"\r\n]|\\[^\r\n])*\"?"
+            SINGLE_QUOTED_STRING="regexp:'([^\\\'\r\n]|\\[^\r\n])*'?"
 
             IDENTIFIER = 'regexp:[a-zA-Z_][a-zA-Z0-9_]*'
             LINE_COMMENT='regexp://.*'
@@ -53,7 +55,11 @@ FunctionParameters ::= FunctionParameter (',' FunctionParameter)*
 FunctionParameter ::= TypePrefix? IDENTIFIER
 
 
-FunctionArguments ::= IDENTIFIER (',' IDENTIFIER)*
+FunctionArguments ::= FunctionArgument (',' FunctionArgument)*
+FunctionArgument ::= StringLiteral | IDENTIFIER
+
+StringLiteral ::= SINGLE_QUOTED_STRING | DOUBLE_QUOTED_STRING
+
 FunctionInvocation ::= (BuiltInFunctionName | CustomFunctionName) '(' FunctionArguments? ')'
 CustomFunctionName ::= IDENTIFIER
 
@@ -71,7 +77,7 @@ Statement ::= (Assignment | Declaration | FunctionInvocation) ';'
 FunctionBodyStatement ::= (Assignment | Declaration | ReturnStatement) ';'
 
 
-Declaration ::= VisibilityPrefix? TypePrefix IDENTIFIER
+Declaration ::= VisibilityPrefix? TypePrefix? IDENTIFIER
 Assignment ::=  VisibilityPrefix? Declaration '=' (Constant | FunctionInvocation)
 
 ReturnStatement ::= return IDENTIFIER
