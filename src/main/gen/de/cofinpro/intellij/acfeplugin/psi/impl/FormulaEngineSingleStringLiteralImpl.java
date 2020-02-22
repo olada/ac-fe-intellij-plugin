@@ -11,14 +11,14 @@ import static de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import de.cofinpro.intellij.acfeplugin.psi.*;
 
-public class FormulaEngineStringLiteralImpl extends ASTWrapperPsiElement implements FormulaEngineStringLiteral {
+public class FormulaEngineSingleStringLiteralImpl extends ASTWrapperPsiElement implements FormulaEngineSingleStringLiteral {
 
-  public FormulaEngineStringLiteralImpl(@NotNull ASTNode node) {
+  public FormulaEngineSingleStringLiteralImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull FormulaEngineVisitor visitor) {
-    visitor.visitStringLiteral(this);
+    visitor.visitSingleStringLiteral(this);
   }
 
   public void accept(@NotNull PsiElementVisitor visitor) {
@@ -27,9 +27,15 @@ public class FormulaEngineStringLiteralImpl extends ASTWrapperPsiElement impleme
   }
 
   @Override
-  @NotNull
-  public List<FormulaEngineSingleStringLiteral> getSingleStringLiteralList() {
-    return PsiTreeUtil.getChildrenOfTypeAsList(this, FormulaEngineSingleStringLiteral.class);
+  @Nullable
+  public PsiElement getDoubleQuotedString() {
+    return findChildByType(DOUBLE_QUOTED_STRING);
+  }
+
+  @Override
+  @Nullable
+  public PsiElement getSingleQuotedString() {
+    return findChildByType(SINGLE_QUOTED_STRING);
   }
 
 }

@@ -5,9 +5,9 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface FormulaEngineStringLiteral extends PsiElement {
+public interface FormulaEngineArrayAccess extends PsiElement {
 
   @NotNull
-  List<FormulaEngineSingleStringLiteral> getSingleStringLiteralList();
+  PsiElement getIdentifier();
 
 }

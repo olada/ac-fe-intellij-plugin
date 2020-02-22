@@ -25,6 +25,7 @@
             OPERATOR_EQUAL = '=='
             OPERATOR_NEGATION = '!'
             OPERATOR_OR = '||'
+            OPERATOR_PLUS = '+'
 
             KEYWORD_ELSE = 'else'
             KEYWORD_FOR = 'for'
@@ -99,15 +100,18 @@ FunctionArgument ::= Expression
 
 // Control Structures
 ControlStructure ::= ControlStructureKeyword LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE
+ControlStructureInFunction ::= ControlStructureKeyword LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE ControlStructureInFunctionBody RIGHT_CURLY_BRACE
 ControlStructureKeyword ::= KEYWORD_IF | KEYWORD_FOR | KEYWORD_WHILE
 ControlStructureBody ::= (ControlStructure | Statement)*
+ControlStructureInFunctionBody ::= (ControlStructureInFunction | Statement | (ReturnStatement ';'))*
 
 Expression ::=  SingleExpression (Operator SingleExpression)*
 SingleExpression ::= FunctionInvocation | Constant | NegatedExpression | IDENTIFIER
 NegatedExpression ::= OPERATOR_NEGATION SingleExpression | OPERATOR_NEGATION LEFT_PARENTHESIS SingleExpression RIGHT_PARENTHESIS
 Operator ::= OPERATOR_AND | OPERATOR_EQUAL | OPERATOR_OR
 
-StringLiteral ::= SINGLE_QUOTED_STRING | DOUBLE_QUOTED_STRING
+StringLiteral ::= SingleStringLiteral (OPERATOR_PLUS SingleStringLiteral)*
+SingleStringLiteral ::= SINGLE_QUOTED_STRING | DOUBLE_QUOTED_STRING
 ListLiteral ::= LEFT_BRACKET ListContents RIGHT_BRACKET
 ListContents ::= (Expression (COMMA Expression)*)?
 
@@ -127,11 +131,13 @@ BuiltInFunctionName ::= BUILT_IN_FUNC_ATTRIBUTE | BUILT_IN_FUNC_STATUS
     | BUILT_IN_FUNC_OUT
     | BUILT_IN_FUNC_REMOVE
 FunctionBody ::= FunctionBodyStatement*
-Statement ::= (Assignment | Declaration | FunctionInvocation) ';'
-FunctionBodyStatement ::= ControlStructure | ((FunctionInvocation | Assignment | Declaration | ReturnStatement) ';')
+Statement ::= (FunctionInvocation | Assignment | Declaration) ';'
+FunctionBodyStatement ::= ControlStructureInFunction | ((FunctionInvocation | Assignment | Declaration | ReturnStatement) ';')
 
 Declaration ::= Visibility? Type? IDENTIFIER
-Assignment ::=  Visibility? Declaration '=' (Constant | FunctionInvocation | IDENTIFIER)
+Assignment ::=  Declaration '=' (Constant | FunctionInvocation | ArrayAccess | IDENTIFIER)
+
+ArrayAccess ::= IDENTIFIER (LEFT_BRACKET NUMBER_INTEGER RIGHT_BRACKET)+
 
 ReturnStatement ::= KEYWORD_RETURN IDENTIFIER
 

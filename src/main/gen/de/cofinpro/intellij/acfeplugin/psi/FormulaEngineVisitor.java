@@ -7,6 +7,10 @@ import com.intellij.psi.PsiElement;
 
 public class FormulaEngineVisitor extends PsiElementVisitor {
 
+  public void visitArrayAccess(@NotNull FormulaEngineArrayAccess o) {
+    visitPsiElement(o);
+  }
+
   public void visitAssignment(@NotNull FormulaEngineAssignment o) {
     visitPsiElement(o);
   }
@@ -28,6 +32,14 @@ public class FormulaEngineVisitor extends PsiElementVisitor {
   }
 
   public void visitControlStructureBody(@NotNull FormulaEngineControlStructureBody o) {
+    visitPsiElement(o);
+  }
+
+  public void visitControlStructureInFunction(@NotNull FormulaEngineControlStructureInFunction o) {
+    visitPsiElement(o);
+  }
+
+  public void visitControlStructureInFunctionBody(@NotNull FormulaEngineControlStructureInFunctionBody o) {
     visitPsiElement(o);
   }
 
@@ -100,6 +112,10 @@ public class FormulaEngineVisitor extends PsiElementVisitor {
   }
 
   public void visitSingleExpression(@NotNull FormulaEngineSingleExpression o) {
+    visitPsiElement(o);
+  }
+
+  public void visitSingleStringLiteral(@NotNull FormulaEngineSingleStringLiteral o) {
     visitPsiElement(o);
   }
 

@@ -46,6 +46,7 @@ NUMBER_INTEGER = [0-9]+
     "=" { return FormulaEngineElementTypes.OPERATOR_ASSIGNMENT; }
     "!" { return FormulaEngineElementTypes.OPERATOR_NEGATION; }
     "||" { return FormulaEngineElementTypes.OPERATOR_OR; }
+    "+" { return FormulaEngineElementTypes.OPERATOR_PLUS; }
 
     "function" { return FormulaEngineElementTypes.KEYWORD_FUNCTION; }
     "return" { return FormulaEngineElementTypes.KEYWORD_RETURN; }

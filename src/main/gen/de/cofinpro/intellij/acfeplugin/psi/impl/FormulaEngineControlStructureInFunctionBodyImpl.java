@@ -11,14 +11,14 @@ import static de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import de.cofinpro.intellij.acfeplugin.psi.*;
 
-public class FormulaEngineAssignmentImpl extends ASTWrapperPsiElement implements FormulaEngineAssignment {
+public class FormulaEngineControlStructureInFunctionBodyImpl extends ASTWrapperPsiElement implements FormulaEngineControlStructureInFunctionBody {
 
-  public FormulaEngineAssignmentImpl(@NotNull ASTNode node) {
+  public FormulaEngineControlStructureInFunctionBodyImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull FormulaEngineVisitor visitor) {
-    visitor.visitAssignment(this);
+    visitor.visitControlStructureInFunctionBody(this);
   }
 
   public void accept(@NotNull PsiElementVisitor visitor) {
@@ -27,33 +27,21 @@ public class FormulaEngineAssignmentImpl extends ASTWrapperPsiElement implements
   }
 
   @Override
-  @Nullable
-  public FormulaEngineArrayAccess getArrayAccess() {
-    return findChildByClass(FormulaEngineArrayAccess.class);
-  }
-
-  @Override
-  @Nullable
-  public FormulaEngineConstant getConstant() {
-    return findChildByClass(FormulaEngineConstant.class);
+  @NotNull
+  public List<FormulaEngineControlStructureInFunction> getControlStructureInFunctionList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, FormulaEngineControlStructureInFunction.class);
   }
 
   @Override
   @NotNull
-  public FormulaEngineDeclaration getDeclaration() {
-    return findNotNullChildByClass(FormulaEngineDeclaration.class);
+  public List<FormulaEngineReturnStatement> getReturnStatementList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, FormulaEngineReturnStatement.class);
   }
 
   @Override
-  @Nullable
-  public FormulaEngineFunctionInvocation getFunctionInvocation() {
-    return findChildByClass(FormulaEngineFunctionInvocation.class);
-  }
-
-  @Override
-  @Nullable
-  public PsiElement getIdentifier() {
-    return findChildByType(IDENTIFIER);
+  @NotNull
+  public List<FormulaEngineStatement> getStatementList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, FormulaEngineStatement.class);
   }
 
 }

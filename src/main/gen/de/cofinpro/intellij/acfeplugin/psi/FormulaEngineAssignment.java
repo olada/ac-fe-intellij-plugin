@@ -8,6 +8,9 @@ import com.intellij.psi.PsiElement;
 public interface FormulaEngineAssignment extends PsiElement {
 
   @Nullable
+  FormulaEngineArrayAccess getArrayAccess();
+
+  @Nullable
   FormulaEngineConstant getConstant();
 
   @NotNull
@@ -15,9 +18,6 @@ public interface FormulaEngineAssignment extends PsiElement {
 
   @Nullable
   FormulaEngineFunctionInvocation getFunctionInvocation();
-
-  @Nullable
-  FormulaEngineVisibility getVisibility();
 
   @Nullable
   PsiElement getIdentifier();

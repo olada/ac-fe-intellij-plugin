@@ -34,8 +34,8 @@ public class FormulaEngineFunctionBodyStatementImpl extends ASTWrapperPsiElement
 
   @Override
   @Nullable
-  public FormulaEngineControlStructure getControlStructure() {
-    return findChildByClass(FormulaEngineControlStructure.class);
+  public FormulaEngineControlStructureInFunction getControlStructureInFunction() {
+    return findChildByClass(FormulaEngineControlStructureInFunction.class);
   }
 
   @Override

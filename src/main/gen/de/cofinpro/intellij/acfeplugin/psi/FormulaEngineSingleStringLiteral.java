@@ -5,9 +5,12 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface FormulaEngineStringLiteral extends PsiElement {
+public interface FormulaEngineSingleStringLiteral extends PsiElement {
 
-  @NotNull
-  List<FormulaEngineSingleStringLiteral> getSingleStringLiteralList();
+  @Nullable
+  PsiElement getDoubleQuotedString();
+
+  @Nullable
+  PsiElement getSingleQuotedString();
 
 }

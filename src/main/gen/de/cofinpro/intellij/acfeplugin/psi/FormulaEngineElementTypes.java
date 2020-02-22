@@ -8,12 +8,15 @@ import de.cofinpro.intellij.acfeplugin.psi.impl.*;
 
 public interface FormulaEngineElementTypes {
 
+  IElementType ARRAY_ACCESS = new FormulaEngineElementType("ARRAY_ACCESS");
   IElementType ASSIGNMENT = new FormulaEngineElementType("ASSIGNMENT");
   IElementType BUILT_IN_FUNCTION_NAME = new FormulaEngineElementType("BUILT_IN_FUNCTION_NAME");
   IElementType BUILT_IN_VARIABLE_NAME = new FormulaEngineElementType("BUILT_IN_VARIABLE_NAME");
   IElementType CONSTANT = new FormulaEngineElementType("CONSTANT");
   IElementType CONTROL_STRUCTURE = new FormulaEngineElementType("CONTROL_STRUCTURE");
   IElementType CONTROL_STRUCTURE_BODY = new FormulaEngineElementType("CONTROL_STRUCTURE_BODY");
+  IElementType CONTROL_STRUCTURE_IN_FUNCTION = new FormulaEngineElementType("CONTROL_STRUCTURE_IN_FUNCTION");
+  IElementType CONTROL_STRUCTURE_IN_FUNCTION_BODY = new FormulaEngineElementType("CONTROL_STRUCTURE_IN_FUNCTION_BODY");
   IElementType CONTROL_STRUCTURE_KEYWORD = new FormulaEngineElementType("CONTROL_STRUCTURE_KEYWORD");
   IElementType CUSTOM_FUNCTION_NAME = new FormulaEngineElementType("CUSTOM_FUNCTION_NAME");
   IElementType DECLARATION = new FormulaEngineElementType("DECLARATION");
@@ -32,6 +35,7 @@ public interface FormulaEngineElementTypes {
   IElementType OPERATOR = new FormulaEngineElementType("OPERATOR");
   IElementType RETURN_STATEMENT = new FormulaEngineElementType("RETURN_STATEMENT");
   IElementType SINGLE_EXPRESSION = new FormulaEngineElementType("SINGLE_EXPRESSION");
+  IElementType SINGLE_STRING_LITERAL = new FormulaEngineElementType("SINGLE_STRING_LITERAL");
   IElementType STATEMENT = new FormulaEngineElementType("STATEMENT");
   IElementType STRING_LITERAL = new FormulaEngineElementType("STRING_LITERAL");
   IElementType TOP_LEVEL_ITEM = new FormulaEngineElementType("TOP_LEVEL_ITEM");
@@ -83,6 +87,7 @@ public interface FormulaEngineElementTypes {
   IElementType OPERATOR_EQUAL = new FormulaEngineTokenType("==");
   IElementType OPERATOR_NEGATION = new FormulaEngineTokenType("!");
   IElementType OPERATOR_OR = new FormulaEngineTokenType("||");
+  IElementType OPERATOR_PLUS = new FormulaEngineTokenType("+");
   IElementType RIGHT_BRACKET = new FormulaEngineTokenType("]");
   IElementType RIGHT_CURLY_BRACE = new FormulaEngineTokenType("}");
   IElementType RIGHT_PARENTHESIS = new FormulaEngineTokenType(")");
@@ -101,7 +106,10 @@ public interface FormulaEngineElementTypes {
   class Factory {
     public static PsiElement createElement(ASTNode node) {
       IElementType type = node.getElementType();
-      if (type == ASSIGNMENT) {
+      if (type == ARRAY_ACCESS) {
+        return new FormulaEngineArrayAccessImpl(node);
+      }
+      else if (type == ASSIGNMENT) {
         return new FormulaEngineAssignmentImpl(node);
       }
       else if (type == BUILT_IN_FUNCTION_NAME) {
@@ -118,6 +126,12 @@ public interface FormulaEngineElementTypes {
       }
       else if (type == CONTROL_STRUCTURE_BODY) {
         return new FormulaEngineControlStructureBodyImpl(node);
+      }
+      else if (type == CONTROL_STRUCTURE_IN_FUNCTION) {
+        return new FormulaEngineControlStructureInFunctionImpl(node);
+      }
+      else if (type == CONTROL_STRUCTURE_IN_FUNCTION_BODY) {
+        return new FormulaEngineControlStructureInFunctionBodyImpl(node);
       }
       else if (type == CONTROL_STRUCTURE_KEYWORD) {
         return new FormulaEngineControlStructureKeywordImpl(node);
@@ -172,6 +186,9 @@ public interface FormulaEngineElementTypes {
       }
       else if (type == SINGLE_EXPRESSION) {
         return new FormulaEngineSingleExpressionImpl(node);
+      }
+      else if (type == SINGLE_STRING_LITERAL) {
+        return new FormulaEngineSingleStringLiteralImpl(node);
       }
       else if (type == STATEMENT) {
         return new FormulaEngineStatementImpl(node);
