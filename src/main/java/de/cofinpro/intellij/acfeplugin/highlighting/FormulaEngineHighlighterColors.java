@@ -34,6 +34,7 @@ public class FormulaEngineHighlighterColors {
 
     // Comments
     public static final TextAttributesKey COMMENT_SINGLE_LINE = createTextAttributesKey("FE_COMMENT_SINGLE_LINE", DefaultLanguageHighlighterColors.LINE_COMMENT);
+    public static final TextAttributesKey COMMENT_BLOCK = createTextAttributesKey("FE_COMMENT_BLOCK", DefaultLanguageHighlighterColors.BLOCK_COMMENT);
 
 
     // Built in Variables

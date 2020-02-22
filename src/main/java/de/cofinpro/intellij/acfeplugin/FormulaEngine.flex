@@ -29,6 +29,7 @@ DOUBLE_QUOTED_LITERAL=\"([^\\\"\r\n]|{ESCAPE_SEQUENCE}|(\\[\r\n]))*?(\"|\\)?
 ESCAPE_SEQUENCE=\\[^\r\n]
 
 COMMENT_SINGLE_LINE = "/""/"[^\r\n]*
+BLOCK_COMMENT=[/][*][^*]*[*]+([^/*][^*]*[*]+)*[/]
 
 NUMBER_INTEGER = [0-9]+
 
@@ -87,6 +88,7 @@ NUMBER_INTEGER = [0-9]+
    "str(" { yypushback(1); return FormulaEngineElementTypes.STR; }
 
    {COMMENT_SINGLE_LINE} { return FormulaEngineElementTypes.LINE_COMMENT; }
+   {BLOCK_COMMENT} { return FormulaEngineElementTypes.BLOCK_COMMENT; }
 
    {DOUBLE_QUOTED_LITERAL} { return FormulaEngineElementTypes.DOUBLE_QUOTED_STRING_LITERAL; }
 
