@@ -79,6 +79,10 @@ public class FormulaEngineVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitListLiteral(@NotNull FormulaEngineListLiteral o) {
+    visitPsiElement(o);
+  }
+
   public void visitReturnStatement(@NotNull FormulaEngineReturnStatement o) {
     visitPsiElement(o);
   }

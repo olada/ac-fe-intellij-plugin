@@ -66,6 +66,7 @@ Expression ::= '!'? IDENTIFIER
 ControlStructureBody ::= (ControlStructure | Statement)*
 
 StringLiteral ::= SINGLE_QUOTED_STRING | DOUBLE_QUOTED_STRING
+ListLiteral ::= LEFT_BRACKET RIGHT_BRACKET
 
 FunctionInvocation ::= (BuiltInFunctionName | CustomFunctionName) '(' FunctionArguments? ')'
 CustomFunctionName ::= IDENTIFIER
@@ -94,5 +95,5 @@ ReturnStatement ::= return IDENTIFIER
 VisibilityPrefix ::= local | global
 TypePrefix ::= integer | float | date | string | list | dict | any
 
-Constant ::= BuiltInVariableName | NUMBER_INTEGER | StringLiteral
+Constant ::= BuiltInVariableName | NUMBER_INTEGER | StringLiteral | ListLiteral
 BuiltInVariableName ::= BUILT_IN_VAR_NA

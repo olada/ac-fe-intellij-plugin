@@ -26,6 +26,7 @@ public interface FormulaEngineElementTypes {
   IElementType FUNCTION_INVOCATION = new FormulaEngineElementType("FUNCTION_INVOCATION");
   IElementType FUNCTION_PARAMETER = new FormulaEngineElementType("FUNCTION_PARAMETER");
   IElementType FUNCTION_PARAMETERS = new FormulaEngineElementType("FUNCTION_PARAMETERS");
+  IElementType LIST_LITERAL = new FormulaEngineElementType("LIST_LITERAL");
   IElementType RETURN_STATEMENT = new FormulaEngineElementType("RETURN_STATEMENT");
   IElementType STATEMENT = new FormulaEngineElementType("STATEMENT");
   IElementType STRING_LITERAL = new FormulaEngineElementType("STRING_LITERAL");
@@ -141,6 +142,9 @@ public interface FormulaEngineElementTypes {
       }
       else if (type == FUNCTION_PARAMETERS) {
         return new FormulaEngineFunctionParametersImpl(node);
+      }
+      else if (type == LIST_LITERAL) {
+        return new FormulaEngineListLiteralImpl(node);
       }
       else if (type == RETURN_STATEMENT) {
         return new FormulaEngineReturnStatementImpl(node);
