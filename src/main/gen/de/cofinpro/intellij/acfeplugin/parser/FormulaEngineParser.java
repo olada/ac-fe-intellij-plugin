@@ -718,7 +718,8 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // OPERATOR_AND | OPERATOR_EQUAL | OPERATOR_GREATERTHANEQUAL | OPERATOR_GREATERTHAN | OPERATOR_LESSTHANEQUAL | OPERATOR_LESSTHAN | OPERATOR_MODULO | OPERATOR_NOTEQUAL | OPERATOR_OR | OPERATOR_PLUS
+  // OPERATOR_AND | OPERATOR_EQUAL | OPERATOR_GREATERTHANEQUAL | OPERATOR_GREATERTHAN | OPERATOR_LESSTHANEQUAL | OPERATOR_LESSTHAN
+  //              | OPERATOR_MODULO | OPERATOR_NOTEQUAL | OPERATOR_OR | OPERATOR_PLUS | OPERATOR_MULTIPLY
   public static boolean Operator(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Operator")) return false;
     boolean r;
@@ -733,6 +734,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     if (!r) r = consumeToken(b, OPERATOR_NOTEQUAL);
     if (!r) r = consumeToken(b, OPERATOR_OR);
     if (!r) r = consumeToken(b, OPERATOR_PLUS);
+    if (!r) r = consumeToken(b, OPERATOR_MULTIPLY);
     exit_section_(b, l, m, r, false, null);
     return r;
   }

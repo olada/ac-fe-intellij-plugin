@@ -53,6 +53,7 @@ NUMBER_INTEGER = [0-9]+
     "!" { return FormulaEngineElementTypes.OPERATOR_NEGATION; }
     "!=" { return FormulaEngineElementTypes.OPERATOR_NOTEQUAL; }
     "||" { return FormulaEngineElementTypes.OPERATOR_OR; }
+    "*" { return FormulaEngineElementTypes.OPERATOR_MULTIPLY; }
     "+" { return FormulaEngineElementTypes.OPERATOR_PLUS; }
 
     // Visibility

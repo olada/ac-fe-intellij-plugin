@@ -98,6 +98,7 @@ public interface FormulaEngineElementTypes {
   IElementType OPERATOR_LESSTHAN = new FormulaEngineTokenType("<");
   IElementType OPERATOR_LESSTHANEQUAL = new FormulaEngineTokenType("<=");
   IElementType OPERATOR_MODULO = new FormulaEngineTokenType("%");
+  IElementType OPERATOR_MULTIPLY = new FormulaEngineTokenType("*");
   IElementType OPERATOR_NEGATION = new FormulaEngineTokenType("!");
   IElementType OPERATOR_NOTEQUAL = new FormulaEngineTokenType("!=");
   IElementType OPERATOR_OR = new FormulaEngineTokenType("||");
