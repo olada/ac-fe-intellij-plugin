@@ -17,6 +17,9 @@ public interface FormulaEngineSingleExpression extends PsiElement {
   FormulaEngineFunctionInvocation getFunctionInvocation();
 
   @Nullable
+  FormulaEngineIdentifierPostfix getIdentifierPostfix();
+
+  @Nullable
   FormulaEngineNegatedExpression getNegatedExpression();
 
   @Nullable

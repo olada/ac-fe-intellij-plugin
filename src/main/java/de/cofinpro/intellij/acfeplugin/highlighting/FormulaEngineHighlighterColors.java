@@ -73,4 +73,5 @@ public class FormulaEngineHighlighterColors {
 
     // General Tokens
     public static final TextAttributesKey NUMBER_INTEGER = createTextAttributesKey("FE_NUMBER_INTEGER", DefaultLanguageHighlighterColors.NUMBER);
+    public static final TextAttributesKey SEMICOLON = createTextAttributesKey("FE_SEMICOLON", DefaultLanguageHighlighterColors.SEMICOLON);
 }

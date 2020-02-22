@@ -29,14 +29,17 @@ public interface FormulaEngineElementTypes {
   IElementType FUNCTION_INVOCATION = new FormulaEngineElementType("FUNCTION_INVOCATION");
   IElementType FUNCTION_PARAMETER = new FormulaEngineElementType("FUNCTION_PARAMETER");
   IElementType FUNCTION_PARAMETERS = new FormulaEngineElementType("FUNCTION_PARAMETERS");
+  IElementType IDENTIFIER_POSTFIX = new FormulaEngineElementType("IDENTIFIER_POSTFIX");
   IElementType LIST_CONTENTS = new FormulaEngineElementType("LIST_CONTENTS");
   IElementType LIST_LITERAL = new FormulaEngineElementType("LIST_LITERAL");
   IElementType NEGATED_EXPRESSION = new FormulaEngineElementType("NEGATED_EXPRESSION");
   IElementType OPERATOR = new FormulaEngineElementType("OPERATOR");
   IElementType RETURN_STATEMENT = new FormulaEngineElementType("RETURN_STATEMENT");
+  IElementType SEQ = new FormulaEngineElementType("SEQ");
   IElementType SINGLE_EXPRESSION = new FormulaEngineElementType("SINGLE_EXPRESSION");
   IElementType SINGLE_STRING_LITERAL = new FormulaEngineElementType("SINGLE_STRING_LITERAL");
   IElementType STATEMENT = new FormulaEngineElementType("STATEMENT");
+  IElementType STATEMENT_WITHOUT_EOL = new FormulaEngineElementType("STATEMENT_WITHOUT_EOL");
   IElementType STRING_LITERAL = new FormulaEngineElementType("STRING_LITERAL");
   IElementType TOP_LEVEL_ITEM = new FormulaEngineElementType("TOP_LEVEL_ITEM");
   IElementType TYPE = new FormulaEngineElementType("TYPE");
@@ -87,6 +90,8 @@ public interface FormulaEngineElementTypes {
   IElementType OPERATOR_AND = new FormulaEngineTokenType("&&");
   IElementType OPERATOR_ASSIGNMENT = new FormulaEngineTokenType("=");
   IElementType OPERATOR_EQUAL = new FormulaEngineTokenType("==");
+  IElementType OPERATOR_INCREMENT = new FormulaEngineTokenType("++");
+  IElementType OPERATOR_LESSTHAN = new FormulaEngineTokenType("<");
   IElementType OPERATOR_MODULO = new FormulaEngineTokenType("%");
   IElementType OPERATOR_NEGATION = new FormulaEngineTokenType("!");
   IElementType OPERATOR_NOTEQUAL = new FormulaEngineTokenType("!=");
@@ -95,6 +100,7 @@ public interface FormulaEngineElementTypes {
   IElementType RIGHT_BRACKET = new FormulaEngineTokenType("]");
   IElementType RIGHT_CURLY_BRACE = new FormulaEngineTokenType("}");
   IElementType RIGHT_PARENTHESIS = new FormulaEngineTokenType(")");
+  IElementType SEMICOLON = new FormulaEngineTokenType(";");
   IElementType SINGLE_QUOTED_STRING = new FormulaEngineTokenType("SINGLE_QUOTED_STRING");
   IElementType SINGLE_QUOTED_STRING_LITERAL = new FormulaEngineTokenType("single quoted string literal");
   IElementType TYPE_ANY = new FormulaEngineTokenType("any");
@@ -173,6 +179,9 @@ public interface FormulaEngineElementTypes {
       else if (type == FUNCTION_PARAMETERS) {
         return new FormulaEngineFunctionParametersImpl(node);
       }
+      else if (type == IDENTIFIER_POSTFIX) {
+        return new FormulaEngineIdentifierPostfixImpl(node);
+      }
       else if (type == LIST_CONTENTS) {
         return new FormulaEngineListContentsImpl(node);
       }
@@ -188,6 +197,9 @@ public interface FormulaEngineElementTypes {
       else if (type == RETURN_STATEMENT) {
         return new FormulaEngineReturnStatementImpl(node);
       }
+      else if (type == SEQ) {
+        return new FormulaEngineSeqImpl(node);
+      }
       else if (type == SINGLE_EXPRESSION) {
         return new FormulaEngineSingleExpressionImpl(node);
       }
@@ -196,6 +208,9 @@ public interface FormulaEngineElementTypes {
       }
       else if (type == STATEMENT) {
         return new FormulaEngineStatementImpl(node);
+      }
+      else if (type == STATEMENT_WITHOUT_EOL) {
+        return new FormulaEngineStatementWithoutEolImpl(node);
       }
       else if (type == STRING_LITERAL) {
         return new FormulaEngineStringLiteralImpl(node);

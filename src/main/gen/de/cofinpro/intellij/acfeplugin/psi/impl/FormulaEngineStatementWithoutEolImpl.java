@@ -11,14 +11,14 @@ import static de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import de.cofinpro.intellij.acfeplugin.psi.*;
 
-public class FormulaEngineSingleExpressionImpl extends ASTWrapperPsiElement implements FormulaEngineSingleExpression {
+public class FormulaEngineStatementWithoutEolImpl extends ASTWrapperPsiElement implements FormulaEngineStatementWithoutEol {
 
-  public FormulaEngineSingleExpressionImpl(@NotNull ASTNode node) {
+  public FormulaEngineStatementWithoutEolImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull FormulaEngineVisitor visitor) {
-    visitor.visitSingleExpression(this);
+    visitor.visitStatementWithoutEol(this);
   }
 
   public void accept(@NotNull PsiElementVisitor visitor) {
@@ -28,38 +28,20 @@ public class FormulaEngineSingleExpressionImpl extends ASTWrapperPsiElement impl
 
   @Override
   @Nullable
-  public FormulaEngineArrayAccess getArrayAccess() {
-    return findChildByClass(FormulaEngineArrayAccess.class);
+  public FormulaEngineAssignment getAssignment() {
+    return findChildByClass(FormulaEngineAssignment.class);
   }
 
   @Override
   @Nullable
-  public FormulaEngineConstant getConstant() {
-    return findChildByClass(FormulaEngineConstant.class);
+  public FormulaEngineDeclaration getDeclaration() {
+    return findChildByClass(FormulaEngineDeclaration.class);
   }
 
   @Override
   @Nullable
   public FormulaEngineFunctionInvocation getFunctionInvocation() {
     return findChildByClass(FormulaEngineFunctionInvocation.class);
-  }
-
-  @Override
-  @Nullable
-  public FormulaEngineIdentifierPostfix getIdentifierPostfix() {
-    return findChildByClass(FormulaEngineIdentifierPostfix.class);
-  }
-
-  @Override
-  @Nullable
-  public FormulaEngineNegatedExpression getNegatedExpression() {
-    return findChildByClass(FormulaEngineNegatedExpression.class);
-  }
-
-  @Override
-  @Nullable
-  public PsiElement getIdentifier() {
-    return findChildByType(IDENTIFIER);
   }
 
 }

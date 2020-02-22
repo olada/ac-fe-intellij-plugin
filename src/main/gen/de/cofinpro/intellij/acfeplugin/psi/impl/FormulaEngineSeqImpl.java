@@ -11,14 +11,14 @@ import static de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import de.cofinpro.intellij.acfeplugin.psi.*;
 
-public class FormulaEngineAssignmentImpl extends ASTWrapperPsiElement implements FormulaEngineAssignment {
+public class FormulaEngineSeqImpl extends ASTWrapperPsiElement implements FormulaEngineSeq {
 
-  public FormulaEngineAssignmentImpl(@NotNull ASTNode node) {
+  public FormulaEngineSeqImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull FormulaEngineVisitor visitor) {
-    visitor.visitAssignment(this);
+    visitor.visitSeq(this);
   }
 
   public void accept(@NotNull PsiElementVisitor visitor) {
@@ -27,33 +27,21 @@ public class FormulaEngineAssignmentImpl extends ASTWrapperPsiElement implements
   }
 
   @Override
-  @Nullable
-  public FormulaEngineDeclaration getDeclaration() {
-    return findChildByClass(FormulaEngineDeclaration.class);
+  @NotNull
+  public List<FormulaEngineAssignment> getAssignmentList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, FormulaEngineAssignment.class);
   }
 
   @Override
-  @Nullable
+  @NotNull
   public FormulaEngineExpression getExpression() {
-    return findChildByClass(FormulaEngineExpression.class);
+    return findNotNullChildByClass(FormulaEngineExpression.class);
   }
 
   @Override
-  @Nullable
-  public FormulaEngineIdentifierPostfix getIdentifierPostfix() {
-    return findChildByClass(FormulaEngineIdentifierPostfix.class);
-  }
-
-  @Override
-  @Nullable
-  public FormulaEngineSeq getSeq() {
-    return findChildByClass(FormulaEngineSeq.class);
-  }
-
-  @Override
-  @Nullable
-  public PsiElement getIdentifier() {
-    return findChildByType(IDENTIFIER);
+  @NotNull
+  public FormulaEngineStatementWithoutEol getStatementWithoutEol() {
+    return findNotNullChildByClass(FormulaEngineStatementWithoutEol.class);
   }
 
 }

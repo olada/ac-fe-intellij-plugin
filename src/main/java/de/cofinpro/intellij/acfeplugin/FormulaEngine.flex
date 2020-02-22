@@ -44,6 +44,8 @@ NUMBER_INTEGER = [0-9]+
     && { return FormulaEngineElementTypes.OPERATOR_AND; }
     "==" { return FormulaEngineElementTypes.OPERATOR_EQUAL; }
     "=" { return FormulaEngineElementTypes.OPERATOR_ASSIGNMENT; }
+    "++" { return FormulaEngineElementTypes.OPERATOR_INCREMENT; }
+    "<" { return FormulaEngineElementTypes.OPERATOR_LESSTHAN; }
     "%" { return FormulaEngineElementTypes.OPERATOR_MODULO; }
     "!" { return FormulaEngineElementTypes.OPERATOR_NEGATION; }
     "!=" { return FormulaEngineElementTypes.OPERATOR_NOTEQUAL; }
@@ -101,6 +103,7 @@ NUMBER_INTEGER = [0-9]+
    "str(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STR; }
 
    "," { return FormulaEngineElementTypes.COMMA; }
+   ";" { return FormulaEngineElementTypes.SEMICOLON; }
 
    {COMMENT_SINGLE_LINE} { return FormulaEngineElementTypes.LINE_COMMENT; }
    {BLOCK_COMMENT} { return FormulaEngineElementTypes.BLOCK_COMMENT; }
