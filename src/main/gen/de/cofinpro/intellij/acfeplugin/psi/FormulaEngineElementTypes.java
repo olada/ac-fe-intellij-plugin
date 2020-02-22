@@ -85,6 +85,7 @@ public interface FormulaEngineElementTypes {
   IElementType OPERATOR_AND = new FormulaEngineTokenType("&&");
   IElementType OPERATOR_ASSIGNMENT = new FormulaEngineTokenType("=");
   IElementType OPERATOR_EQUAL = new FormulaEngineTokenType("==");
+  IElementType OPERATOR_MODULO = new FormulaEngineTokenType("%");
   IElementType OPERATOR_NEGATION = new FormulaEngineTokenType("!");
   IElementType OPERATOR_OR = new FormulaEngineTokenType("||");
   IElementType OPERATOR_PLUS = new FormulaEngineTokenType("+");

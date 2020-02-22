@@ -74,26 +74,15 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // Declaration '=' (Constant | FunctionInvocation | ArrayAccess | IDENTIFIER)
+  // Declaration OPERATOR_ASSIGNMENT Expression
   public static boolean Assignment(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Assignment")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, ASSIGNMENT, "<assignment>");
     r = Declaration(b, l + 1);
     r = r && consumeToken(b, OPERATOR_ASSIGNMENT);
-    r = r && Assignment_2(b, l + 1);
+    r = r && Expression(b, l + 1);
     exit_section_(b, l, m, r, false, null);
-    return r;
-  }
-
-  // Constant | FunctionInvocation | ArrayAccess | IDENTIFIER
-  private static boolean Assignment_2(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "Assignment_2")) return false;
-    boolean r;
-    r = Constant(b, l + 1);
-    if (!r) r = FunctionInvocation(b, l + 1);
-    if (!r) r = ArrayAccess(b, l + 1);
-    if (!r) r = consumeToken(b, IDENTIFIER);
     return r;
   }
 
@@ -638,13 +627,14 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // OPERATOR_AND | OPERATOR_EQUAL | OPERATOR_OR
+  // OPERATOR_AND | OPERATOR_EQUAL | OPERATOR_MODULO | OPERATOR_OR
   public static boolean Operator(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Operator")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, OPERATOR, "<operator>");
     r = consumeToken(b, OPERATOR_AND);
     if (!r) r = consumeToken(b, OPERATOR_EQUAL);
+    if (!r) r = consumeToken(b, OPERATOR_MODULO);
     if (!r) r = consumeToken(b, OPERATOR_OR);
     exit_section_(b, l, m, r, false, null);
     return r;
@@ -663,7 +653,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // FunctionInvocation | Constant | NegatedExpression | IDENTIFIER
+  // FunctionInvocation | Constant | NegatedExpression | ArrayAccess | IDENTIFIER
   public static boolean SingleExpression(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "SingleExpression")) return false;
     boolean r;
@@ -671,6 +661,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     r = FunctionInvocation(b, l + 1);
     if (!r) r = Constant(b, l + 1);
     if (!r) r = NegatedExpression(b, l + 1);
+    if (!r) r = ArrayAccess(b, l + 1);
     if (!r) r = consumeToken(b, IDENTIFIER);
     exit_section_(b, l, m, r, false, null);
     return r;

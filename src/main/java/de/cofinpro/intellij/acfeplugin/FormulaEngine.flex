@@ -44,6 +44,7 @@ NUMBER_INTEGER = [0-9]+
     && { return FormulaEngineElementTypes.OPERATOR_AND; }
     "==" { return FormulaEngineElementTypes.OPERATOR_EQUAL; }
     "=" { return FormulaEngineElementTypes.OPERATOR_ASSIGNMENT; }
+    "%" { return FormulaEngineElementTypes.OPERATOR_MODULO; }
     "!" { return FormulaEngineElementTypes.OPERATOR_NEGATION; }
     "||" { return FormulaEngineElementTypes.OPERATOR_OR; }
     "+" { return FormulaEngineElementTypes.OPERATOR_PLUS; }

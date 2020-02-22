@@ -23,6 +23,7 @@
             OPERATOR_ASSIGNMENT = '='
             OPERATOR_AND = '&&'
             OPERATOR_EQUAL = '=='
+            OPERATOR_MODULO = '%'
             OPERATOR_NEGATION = '!'
             OPERATOR_OR = '||'
             OPERATOR_PLUS = '+'
@@ -106,9 +107,9 @@ ControlStructureBody ::= (ControlStructure | Statement)*
 ControlStructureInFunctionBody ::= (ControlStructureInFunction | Statement | (ReturnStatement ';'))*
 
 Expression ::=  SingleExpression (Operator SingleExpression)*
-SingleExpression ::= FunctionInvocation | Constant | NegatedExpression | IDENTIFIER
+SingleExpression ::= FunctionInvocation | Constant | NegatedExpression | ArrayAccess | IDENTIFIER
 NegatedExpression ::= OPERATOR_NEGATION SingleExpression | OPERATOR_NEGATION LEFT_PARENTHESIS SingleExpression RIGHT_PARENTHESIS
-Operator ::= OPERATOR_AND | OPERATOR_EQUAL | OPERATOR_OR
+Operator ::= OPERATOR_AND | OPERATOR_EQUAL | OPERATOR_MODULO | OPERATOR_OR
 
 StringLiteral ::= SingleStringLiteral (OPERATOR_PLUS SingleStringLiteral)*
 SingleStringLiteral ::= SINGLE_QUOTED_STRING | DOUBLE_QUOTED_STRING
@@ -135,7 +136,8 @@ Statement ::= (FunctionInvocation | Assignment | Declaration) ';'
 FunctionBodyStatement ::= ControlStructureInFunction | ((FunctionInvocation | Assignment | Declaration | ReturnStatement) ';')
 
 Declaration ::= Visibility? Type? IDENTIFIER
-Assignment ::=  Declaration '=' (Constant | FunctionInvocation | ArrayAccess | IDENTIFIER)
+//Assignment ::=  Declaration '=' (Constant | FunctionInvocation | ArrayAccess | IDENTIFIER)
+Assignment ::=  Declaration OPERATOR_ASSIGNMENT Expression
 
 ArrayAccess ::= IDENTIFIER (LEFT_BRACKET NUMBER_INTEGER RIGHT_BRACKET)+
 

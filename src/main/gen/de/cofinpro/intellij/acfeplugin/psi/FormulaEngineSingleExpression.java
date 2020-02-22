@@ -8,6 +8,9 @@ import com.intellij.psi.PsiElement;
 public interface FormulaEngineSingleExpression extends PsiElement {
 
   @Nullable
+  FormulaEngineArrayAccess getArrayAccess();
+
+  @Nullable
   FormulaEngineConstant getConstant();
 
   @Nullable

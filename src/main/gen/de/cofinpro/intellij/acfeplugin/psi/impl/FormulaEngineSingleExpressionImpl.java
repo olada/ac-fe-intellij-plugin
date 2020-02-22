@@ -28,6 +28,12 @@ public class FormulaEngineSingleExpressionImpl extends ASTWrapperPsiElement impl
 
   @Override
   @Nullable
+  public FormulaEngineArrayAccess getArrayAccess() {
+    return findChildByClass(FormulaEngineArrayAccess.class);
+  }
+
+  @Override
+  @Nullable
   public FormulaEngineConstant getConstant() {
     return findChildByClass(FormulaEngineConstant.class);
   }
