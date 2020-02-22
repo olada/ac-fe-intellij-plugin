@@ -33,6 +33,7 @@
             BUILT_IN_FUNC_INTEGER = 'integer('
 
             DOUBLE_QUOTED_STRING_LITERAL = 'double quoted string literal'
+            SINGLE_QUOTED_STRING_LITERAL = 'single quoted string literal'
 
             IDENTIFIER = 'regexp:[a-zA-Z_][a-zA-Z0-9_]*'
             LINE_COMMENT='regexp://.*'
@@ -45,7 +46,7 @@
 
 feFile ::= TopLevelItem*
 
-TopLevelItem ::= FunctionDefinition | GlobalAssignment | GlobalDeclaration
+TopLevelItem ::= FunctionDefinition | Statement
 
 FunctionDefinition ::= function IDENTIFIER '(' FunctionParameters? ')' '{' FunctionBody '}'
 FunctionParameters ::= FunctionParameter (',' FunctionParameter)*
@@ -65,16 +66,14 @@ BuiltInFunctionName ::= attribute | status
     | len
     | load
     | remove
-FunctionBody ::= Statement*
-Statement ::= (LocalAssignment | LocalDeclaration | ReturnStatement) ';'
+FunctionBody ::= FunctionBodyStatement*
+Statement ::= (Assignment | Declaration | FunctionInvocation) ';'
+FunctionBodyStatement ::= (Assignment | Declaration | ReturnStatement) ';'
 
-Declaration ::= TypePrefix? IDENTIFIER
-GlobalDeclaration ::= global Declaration ';'
-LocalDeclaration ::= local? Declaration
 
-GlobalAssignment ::= global Assignment ';'
-LocalAssignment ::= local? Assignment
-Assignment ::=  Declaration '=' (Constant | FunctionInvocation)
+Declaration ::= VisibilityPrefix? TypePrefix IDENTIFIER
+Assignment ::=  VisibilityPrefix? Declaration '=' (Constant | FunctionInvocation)
+
 ReturnStatement ::= return IDENTIFIER
 
 VisibilityPrefix ::= local | global

@@ -17,10 +17,7 @@ import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementTypes;
 %eof{  return;
 %eof}
 
-CRLF=\R
 WHITE_SPACE= " " | [\ \n\t\f\r]
-END_OF_LINE_COMMENT=("//")[^\r\n]*
-KEY_CHARACTER=[^:=\ \n\t\f\\] | "\\ "
 IDENTIFIER=[a-zA-Z_][a-zA-Z0-9_]*
 
 // taken from Python.flex in OSS
@@ -28,7 +25,7 @@ QUOTED_LITERAL="'" ([^\\\'\r\n] | {ESCAPE_SEQUENCE} | (\\[\r\n]))* ("'"|\\)?
 DOUBLE_QUOTED_LITERAL=\"([^\\\"\r\n]|{ESCAPE_SEQUENCE}|(\\[\r\n]))*?(\"|\\)?
 ESCAPE_SEQUENCE=\\[^\r\n]
 
-COMMENT_SINGLE_LINE = "/""/"[^\r\n]*
+COMMENT_SINGLE_LINE = ("//")[^\r\n]*
 BLOCK_COMMENT=[/][*][^*]*[*]+([^/*][^*]*[*]+)*[/]
 
 NUMBER_INTEGER = [0-9]+
@@ -91,6 +88,7 @@ NUMBER_INTEGER = [0-9]+
    {COMMENT_SINGLE_LINE} { return FormulaEngineElementTypes.LINE_COMMENT; }
    {BLOCK_COMMENT} { return FormulaEngineElementTypes.BLOCK_COMMENT; }
 
+   {QUOTED_LITERAL} { return FormulaEngineElementTypes.SINGLE_QUOTED_STRING_LITERAL; }
    {DOUBLE_QUOTED_LITERAL} { return FormulaEngineElementTypes.DOUBLE_QUOTED_STRING_LITERAL; }
 
    {NUMBER_INTEGER} { return FormulaEngineElementTypes.NUMBER_INTEGER; }

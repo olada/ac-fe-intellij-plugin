@@ -7,8 +7,11 @@ import com.intellij.psi.PsiElement;
 
 public interface FormulaEngineDeclaration extends PsiElement {
 
-  @Nullable
+  @NotNull
   FormulaEngineTypePrefix getTypePrefix();
+
+  @Nullable
+  FormulaEngineVisibilityPrefix getVisibilityPrefix();
 
   @NotNull
   PsiElement getIdentifier();

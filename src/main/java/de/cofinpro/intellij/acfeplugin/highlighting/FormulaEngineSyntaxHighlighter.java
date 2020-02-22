@@ -51,6 +51,7 @@ public class FormulaEngineSyntaxHighlighter extends SyntaxHighlighterBase {
 
         // Strings
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.DOUBLE_QUOTED_STRING_LITERAL, STRINGS_DOUBLE_QUOTED);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.SINGLE_QUOTED_STRING_LITERAL, STRINGS_SINGLE_QUOTED);
 
         // Comments
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.LINE_COMMENT, COMMENT_SINGLE_LINE);

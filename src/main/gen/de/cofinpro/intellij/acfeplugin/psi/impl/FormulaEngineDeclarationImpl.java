@@ -27,9 +27,15 @@ public class FormulaEngineDeclarationImpl extends ASTWrapperPsiElement implement
   }
 
   @Override
-  @Nullable
+  @NotNull
   public FormulaEngineTypePrefix getTypePrefix() {
-    return findChildByClass(FormulaEngineTypePrefix.class);
+    return findNotNullChildByClass(FormulaEngineTypePrefix.class);
+  }
+
+  @Override
+  @Nullable
+  public FormulaEngineVisibilityPrefix getVisibilityPrefix() {
+    return findChildByClass(FormulaEngineVisibilityPrefix.class);
   }
 
   @Override

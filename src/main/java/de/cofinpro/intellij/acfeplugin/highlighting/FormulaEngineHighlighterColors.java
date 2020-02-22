@@ -31,6 +31,7 @@ public class FormulaEngineHighlighterColors {
 
     // Strings
     public static final TextAttributesKey STRINGS_DOUBLE_QUOTED = createTextAttributesKey("FE_STRING_DOUBLE_QUOTE", DefaultLanguageHighlighterColors.STRING);
+    public static final TextAttributesKey STRINGS_SINGLE_QUOTED = createTextAttributesKey("FE_STRING_SINGLE_QUOTE", DefaultLanguageHighlighterColors.STRING);
 
     // Comments
     public static final TextAttributesKey COMMENT_SINGLE_LINE = createTextAttributesKey("FE_COMMENT_SINGLE_LINE", DefaultLanguageHighlighterColors.LINE_COMMENT);

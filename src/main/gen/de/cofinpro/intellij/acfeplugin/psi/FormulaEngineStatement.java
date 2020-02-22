@@ -8,12 +8,12 @@ import com.intellij.psi.PsiElement;
 public interface FormulaEngineStatement extends PsiElement {
 
   @Nullable
-  FormulaEngineLocalAssignment getLocalAssignment();
+  FormulaEngineAssignment getAssignment();
 
   @Nullable
-  FormulaEngineLocalDeclaration getLocalDeclaration();
+  FormulaEngineDeclaration getDeclaration();
 
   @Nullable
-  FormulaEngineReturnStatement getReturnStatement();
+  FormulaEngineFunctionInvocation getFunctionInvocation();
 
 }

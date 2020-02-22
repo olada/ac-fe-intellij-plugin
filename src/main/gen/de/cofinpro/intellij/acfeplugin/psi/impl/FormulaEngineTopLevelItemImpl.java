@@ -34,14 +34,8 @@ public class FormulaEngineTopLevelItemImpl extends ASTWrapperPsiElement implemen
 
   @Override
   @Nullable
-  public FormulaEngineGlobalAssignment getGlobalAssignment() {
-    return findChildByClass(FormulaEngineGlobalAssignment.class);
-  }
-
-  @Override
-  @Nullable
-  public FormulaEngineGlobalDeclaration getGlobalDeclaration() {
-    return findChildByClass(FormulaEngineGlobalDeclaration.class);
+  public FormulaEngineStatement getStatement() {
+    return findChildByClass(FormulaEngineStatement.class);
   }
 
 }

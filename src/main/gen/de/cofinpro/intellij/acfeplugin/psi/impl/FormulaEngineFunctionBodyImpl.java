@@ -28,8 +28,8 @@ public class FormulaEngineFunctionBodyImpl extends ASTWrapperPsiElement implemen
 
   @Override
   @NotNull
-  public List<FormulaEngineStatement> getStatementList() {
-    return PsiTreeUtil.getChildrenOfTypeAsList(this, FormulaEngineStatement.class);
+  public List<FormulaEngineFunctionBodyStatement> getFunctionBodyStatementList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, FormulaEngineFunctionBodyStatement.class);
   }
 
 }

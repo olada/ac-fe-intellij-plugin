@@ -28,20 +28,20 @@ public class FormulaEngineStatementImpl extends ASTWrapperPsiElement implements 
 
   @Override
   @Nullable
-  public FormulaEngineLocalAssignment getLocalAssignment() {
-    return findChildByClass(FormulaEngineLocalAssignment.class);
+  public FormulaEngineAssignment getAssignment() {
+    return findChildByClass(FormulaEngineAssignment.class);
   }
 
   @Override
   @Nullable
-  public FormulaEngineLocalDeclaration getLocalDeclaration() {
-    return findChildByClass(FormulaEngineLocalDeclaration.class);
+  public FormulaEngineDeclaration getDeclaration() {
+    return findChildByClass(FormulaEngineDeclaration.class);
   }
 
   @Override
   @Nullable
-  public FormulaEngineReturnStatement getReturnStatement() {
-    return findChildByClass(FormulaEngineReturnStatement.class);
+  public FormulaEngineFunctionInvocation getFunctionInvocation() {
+    return findChildByClass(FormulaEngineFunctionInvocation.class);
   }
 
 }

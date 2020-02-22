@@ -36,21 +36,29 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // Declaration '=' (Constant | FunctionInvocation)
+  // VisibilityPrefix? Declaration '=' (Constant | FunctionInvocation)
   public static boolean Assignment(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Assignment")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, ASSIGNMENT, "<assignment>");
-    r = Declaration(b, l + 1);
+    r = Assignment_0(b, l + 1);
+    r = r && Declaration(b, l + 1);
     r = r && consumeToken(b, OPERATOR_EQUALS);
-    r = r && Assignment_2(b, l + 1);
+    r = r && Assignment_3(b, l + 1);
     exit_section_(b, l, m, r, false, null);
     return r;
   }
 
+  // VisibilityPrefix?
+  private static boolean Assignment_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "Assignment_0")) return false;
+    VisibilityPrefix(b, l + 1);
+    return true;
+  }
+
   // Constant | FunctionInvocation
-  private static boolean Assignment_2(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "Assignment_2")) return false;
+  private static boolean Assignment_3(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "Assignment_3")) return false;
     boolean r;
     r = Constant(b, l + 1);
     if (!r) r = FunctionInvocation(b, l + 1);
@@ -127,21 +135,22 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // TypePrefix? IDENTIFIER
+  // VisibilityPrefix? TypePrefix IDENTIFIER
   public static boolean Declaration(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Declaration")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, DECLARATION, "<declaration>");
     r = Declaration_0(b, l + 1);
+    r = r && TypePrefix(b, l + 1);
     r = r && consumeToken(b, IDENTIFIER);
     exit_section_(b, l, m, r, false, null);
     return r;
   }
 
-  // TypePrefix?
+  // VisibilityPrefix?
   private static boolean Declaration_0(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Declaration_0")) return false;
-    TypePrefix(b, l + 1);
+    VisibilityPrefix(b, l + 1);
     return true;
   }
 
@@ -181,17 +190,39 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // Statement*
+  // FunctionBodyStatement*
   public static boolean FunctionBody(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "FunctionBody")) return false;
     Marker m = enter_section_(b, l, _NONE_, FUNCTION_BODY, "<function body>");
     while (true) {
       int c = current_position_(b);
-      if (!Statement(b, l + 1)) break;
+      if (!FunctionBodyStatement(b, l + 1)) break;
       if (!empty_element_parsed_guard_(b, "FunctionBody", c)) break;
     }
     exit_section_(b, l, m, true, false, null);
     return true;
+  }
+
+  /* ********************************************************** */
+  // (Assignment | Declaration | ReturnStatement) ';'
+  public static boolean FunctionBodyStatement(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "FunctionBodyStatement")) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, FUNCTION_BODY_STATEMENT, "<function body statement>");
+    r = FunctionBodyStatement_0(b, l + 1);
+    r = r && consumeToken(b, ";");
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  // Assignment | Declaration | ReturnStatement
+  private static boolean FunctionBodyStatement_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "FunctionBodyStatement_0")) return false;
+    boolean r;
+    r = Assignment(b, l + 1);
+    if (!r) r = Declaration(b, l + 1);
+    if (!r) r = ReturnStatement(b, l + 1);
+    return r;
   }
 
   /* ********************************************************** */
@@ -301,72 +332,6 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // global Assignment ';'
-  public static boolean GlobalAssignment(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "GlobalAssignment")) return false;
-    if (!nextTokenIs(b, GLOBAL)) return false;
-    boolean r;
-    Marker m = enter_section_(b);
-    r = consumeToken(b, GLOBAL);
-    r = r && Assignment(b, l + 1);
-    r = r && consumeToken(b, ";");
-    exit_section_(b, m, GLOBAL_ASSIGNMENT, r);
-    return r;
-  }
-
-  /* ********************************************************** */
-  // global Declaration ';'
-  public static boolean GlobalDeclaration(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "GlobalDeclaration")) return false;
-    if (!nextTokenIs(b, GLOBAL)) return false;
-    boolean r;
-    Marker m = enter_section_(b);
-    r = consumeToken(b, GLOBAL);
-    r = r && Declaration(b, l + 1);
-    r = r && consumeToken(b, ";");
-    exit_section_(b, m, GLOBAL_DECLARATION, r);
-    return r;
-  }
-
-  /* ********************************************************** */
-  // local? Assignment
-  public static boolean LocalAssignment(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "LocalAssignment")) return false;
-    boolean r;
-    Marker m = enter_section_(b, l, _NONE_, LOCAL_ASSIGNMENT, "<local assignment>");
-    r = LocalAssignment_0(b, l + 1);
-    r = r && Assignment(b, l + 1);
-    exit_section_(b, l, m, r, false, null);
-    return r;
-  }
-
-  // local?
-  private static boolean LocalAssignment_0(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "LocalAssignment_0")) return false;
-    consumeToken(b, LOCAL);
-    return true;
-  }
-
-  /* ********************************************************** */
-  // local? Declaration
-  public static boolean LocalDeclaration(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "LocalDeclaration")) return false;
-    boolean r;
-    Marker m = enter_section_(b, l, _NONE_, LOCAL_DECLARATION, "<local declaration>");
-    r = LocalDeclaration_0(b, l + 1);
-    r = r && Declaration(b, l + 1);
-    exit_section_(b, l, m, r, false, null);
-    return r;
-  }
-
-  // local?
-  private static boolean LocalDeclaration_0(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "LocalDeclaration_0")) return false;
-    consumeToken(b, LOCAL);
-    return true;
-  }
-
-  /* ********************************************************** */
   // return IDENTIFIER
   public static boolean ReturnStatement(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "ReturnStatement")) return false;
@@ -379,7 +344,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // (LocalAssignment | LocalDeclaration | ReturnStatement) ';'
+  // (Assignment | Declaration | FunctionInvocation) ';'
   public static boolean Statement(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Statement")) return false;
     boolean r;
@@ -390,26 +355,24 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     return r;
   }
 
-  // LocalAssignment | LocalDeclaration | ReturnStatement
+  // Assignment | Declaration | FunctionInvocation
   private static boolean Statement_0(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Statement_0")) return false;
     boolean r;
-    r = LocalAssignment(b, l + 1);
-    if (!r) r = LocalDeclaration(b, l + 1);
-    if (!r) r = ReturnStatement(b, l + 1);
+    r = Assignment(b, l + 1);
+    if (!r) r = Declaration(b, l + 1);
+    if (!r) r = FunctionInvocation(b, l + 1);
     return r;
   }
 
   /* ********************************************************** */
-  // FunctionDefinition | GlobalAssignment | GlobalDeclaration
+  // FunctionDefinition | Statement
   public static boolean TopLevelItem(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "TopLevelItem")) return false;
-    if (!nextTokenIs(b, "<top level item>", FUNCTION, GLOBAL)) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, TOP_LEVEL_ITEM, "<top level item>");
     r = FunctionDefinition(b, l + 1);
-    if (!r) r = GlobalAssignment(b, l + 1);
-    if (!r) r = GlobalDeclaration(b, l + 1);
+    if (!r) r = Statement(b, l + 1);
     exit_section_(b, l, m, r, false, null);
     return r;
   }

@@ -16,4 +16,7 @@ public interface FormulaEngineAssignment extends PsiElement {
   @Nullable
   FormulaEngineFunctionInvocation getFunctionInvocation();
 
+  @Nullable
+  FormulaEngineVisibilityPrefix getVisibilityPrefix();
+
 }

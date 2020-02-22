@@ -11,9 +11,6 @@ public interface FormulaEngineTopLevelItem extends PsiElement {
   FormulaEngineFunctionDefinition getFunctionDefinition();
 
   @Nullable
-  FormulaEngineGlobalAssignment getGlobalAssignment();
-
-  @Nullable
-  FormulaEngineGlobalDeclaration getGlobalDeclaration();
+  FormulaEngineStatement getStatement();
 
 }
