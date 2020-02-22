@@ -41,22 +41,25 @@ NUMBER_INTEGER = [0-9]+
     "[" { return FormulaEngineElementTypes.LEFT_BRACKET; }
     "]" { return FormulaEngineElementTypes.RIGHT_BRACKET; }
 
-    "=" { return FormulaEngineElementTypes.OPERATOR_EQUALS; }
+    && { return FormulaEngineElementTypes.OPERATOR_AND; }
+    "==" { return FormulaEngineElementTypes.OPERATOR_EQUAL; }
+    "=" { return FormulaEngineElementTypes.OPERATOR_ASSIGNMENT; }
+    "!" { return FormulaEngineElementTypes.OPERATOR_NEGATION; }
 
-    "function" { return FormulaEngineElementTypes.FUNCTION; }
-    "return" { return FormulaEngineElementTypes.RETURN; }
+    "function" { return FormulaEngineElementTypes.KEYWORD_FUNCTION; }
+    "return" { return FormulaEngineElementTypes.KEYWORD_RETURN; }
 
     // Visibility
-    "local" { return FormulaEngineElementTypes.LOCAL; }
-    "global" { return FormulaEngineElementTypes.GLOBAL; }
+    "local" { return FormulaEngineElementTypes.VISIBILITY_LOCAL; }
+    "global" { return FormulaEngineElementTypes.VISIBILITY_GLOBAL; }
 
     // Data Types
-    "float" { return FormulaEngineElementTypes.FLOAT; }
-    "integer" { return FormulaEngineElementTypes.INTEGER; }
-    "string" { return FormulaEngineElementTypes.STRING; }
-    "list" { return FormulaEngineElementTypes.LIST; }
-    "dict" { return FormulaEngineElementTypes.DICT; }
-    "any" { return FormulaEngineElementTypes.ANY; }
+    "float" { return FormulaEngineElementTypes.TYPE_FLOAT; }
+    "integer" { return FormulaEngineElementTypes.TYPE_INTEGER; }
+    "string" { return FormulaEngineElementTypes.TYPE_STRING; }
+    "list" { return FormulaEngineElementTypes.TYPE_LIST; }
+    "dict" { return FormulaEngineElementTypes.TYPE_DICT; }
+    "any" { return FormulaEngineElementTypes.TYPE_ANY; }
 
     // Keywords
     "else" { return FormulaEngineElementTypes.KEYWORD_ELSE; }
@@ -91,6 +94,8 @@ NUMBER_INTEGER = [0-9]+
    "remove(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_REMOVE; }
    "status(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STATUS; }
    "str(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STR; }
+
+   "," { return FormulaEngineElementTypes.COMMA; }
 
    {COMMENT_SINGLE_LINE} { return FormulaEngineElementTypes.LINE_COMMENT; }
    {BLOCK_COMMENT} { return FormulaEngineElementTypes.BLOCK_COMMENT; }

@@ -8,7 +8,7 @@ import com.intellij.psi.PsiElement;
 public interface FormulaEngineFunctionParameter extends PsiElement {
 
   @Nullable
-  FormulaEngineTypePrefix getTypePrefix();
+  FormulaEngineType getType();
 
   @NotNull
   PsiElement getIdentifier();

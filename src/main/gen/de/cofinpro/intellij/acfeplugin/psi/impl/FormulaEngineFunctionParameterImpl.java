@@ -28,8 +28,8 @@ public class FormulaEngineFunctionParameterImpl extends ASTWrapperPsiElement imp
 
   @Override
   @Nullable
-  public FormulaEngineTypePrefix getTypePrefix() {
-    return findChildByClass(FormulaEngineTypePrefix.class);
+  public FormulaEngineType getType() {
+    return findChildByClass(FormulaEngineType.class);
   }
 
   @Override

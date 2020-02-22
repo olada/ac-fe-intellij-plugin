@@ -46,8 +46,8 @@ public class FormulaEngineAssignmentImpl extends ASTWrapperPsiElement implements
 
   @Override
   @Nullable
-  public FormulaEngineVisibilityPrefix getVisibilityPrefix() {
-    return findChildByClass(FormulaEngineVisibilityPrefix.class);
+  public FormulaEngineVisibility getVisibility() {
+    return findChildByClass(FormulaEngineVisibility.class);
   }
 
   @Override

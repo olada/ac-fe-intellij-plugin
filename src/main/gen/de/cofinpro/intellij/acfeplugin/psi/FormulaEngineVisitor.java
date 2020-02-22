@@ -83,7 +83,19 @@ public class FormulaEngineVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitNegatedExpression(@NotNull FormulaEngineNegatedExpression o) {
+    visitPsiElement(o);
+  }
+
+  public void visitOperator(@NotNull FormulaEngineOperator o) {
+    visitPsiElement(o);
+  }
+
   public void visitReturnStatement(@NotNull FormulaEngineReturnStatement o) {
+    visitPsiElement(o);
+  }
+
+  public void visitSingleExpression(@NotNull FormulaEngineSingleExpression o) {
     visitPsiElement(o);
   }
 
@@ -99,11 +111,11 @@ public class FormulaEngineVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitTypePrefix(@NotNull FormulaEngineTypePrefix o) {
+  public void visitType(@NotNull FormulaEngineType o) {
     visitPsiElement(o);
   }
 
-  public void visitVisibilityPrefix(@NotNull FormulaEngineVisibilityPrefix o) {
+  public void visitVisibility(@NotNull FormulaEngineVisibility o) {
     visitPsiElement(o);
   }
 

@@ -11,14 +11,14 @@ import static de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import de.cofinpro.intellij.acfeplugin.psi.*;
 
-public class FormulaEngineDeclarationImpl extends ASTWrapperPsiElement implements FormulaEngineDeclaration {
+public class FormulaEngineSingleExpressionImpl extends ASTWrapperPsiElement implements FormulaEngineSingleExpression {
 
-  public FormulaEngineDeclarationImpl(@NotNull ASTNode node) {
+  public FormulaEngineSingleExpressionImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull FormulaEngineVisitor visitor) {
-    visitor.visitDeclaration(this);
+    visitor.visitSingleExpression(this);
   }
 
   public void accept(@NotNull PsiElementVisitor visitor) {
@@ -28,20 +28,26 @@ public class FormulaEngineDeclarationImpl extends ASTWrapperPsiElement implement
 
   @Override
   @Nullable
-  public FormulaEngineType getType() {
-    return findChildByClass(FormulaEngineType.class);
+  public FormulaEngineConstant getConstant() {
+    return findChildByClass(FormulaEngineConstant.class);
   }
 
   @Override
   @Nullable
-  public FormulaEngineVisibility getVisibility() {
-    return findChildByClass(FormulaEngineVisibility.class);
+  public FormulaEngineFunctionInvocation getFunctionInvocation() {
+    return findChildByClass(FormulaEngineFunctionInvocation.class);
   }
 
   @Override
-  @NotNull
+  @Nullable
+  public FormulaEngineNegatedExpression getNegatedExpression() {
+    return findChildByClass(FormulaEngineNegatedExpression.class);
+  }
+
+  @Override
+  @Nullable
   public PsiElement getIdentifier() {
-    return findNotNullChildByType(IDENTIFIER);
+    return findChildByType(IDENTIFIER);
   }
 
 }

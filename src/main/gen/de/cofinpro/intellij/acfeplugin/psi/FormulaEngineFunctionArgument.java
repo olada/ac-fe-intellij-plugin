@@ -7,10 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public interface FormulaEngineFunctionArgument extends PsiElement {
 
-  @Nullable
-  FormulaEngineStringLiteral getStringLiteral();
-
-  @Nullable
-  PsiElement getIdentifier();
+  @NotNull
+  FormulaEngineExpression getExpression();
 
 }

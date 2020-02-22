@@ -11,14 +11,14 @@ import static de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import de.cofinpro.intellij.acfeplugin.psi.*;
 
-public class FormulaEngineDeclarationImpl extends ASTWrapperPsiElement implements FormulaEngineDeclaration {
+public class FormulaEngineNegatedExpressionImpl extends ASTWrapperPsiElement implements FormulaEngineNegatedExpression {
 
-  public FormulaEngineDeclarationImpl(@NotNull ASTNode node) {
+  public FormulaEngineNegatedExpressionImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull FormulaEngineVisitor visitor) {
-    visitor.visitDeclaration(this);
+    visitor.visitNegatedExpression(this);
   }
 
   public void accept(@NotNull PsiElementVisitor visitor) {
@@ -27,21 +27,9 @@ public class FormulaEngineDeclarationImpl extends ASTWrapperPsiElement implement
   }
 
   @Override
-  @Nullable
-  public FormulaEngineType getType() {
-    return findChildByClass(FormulaEngineType.class);
-  }
-
-  @Override
-  @Nullable
-  public FormulaEngineVisibility getVisibility() {
-    return findChildByClass(FormulaEngineVisibility.class);
-  }
-
-  @Override
   @NotNull
-  public PsiElement getIdentifier() {
-    return findNotNullChildByType(IDENTIFIER);
+  public FormulaEngineSingleExpression getSingleExpression() {
+    return findNotNullChildByClass(FormulaEngineSingleExpression.class);
   }
 
 }

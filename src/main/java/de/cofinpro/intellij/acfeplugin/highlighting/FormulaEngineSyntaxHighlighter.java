@@ -33,20 +33,23 @@ public class FormulaEngineSyntaxHighlighter extends SyntaxHighlighterBase {
     protected static final Map<IElementType, TextAttributesKey> ATTRIBUTES = new HashMap<>();
 
     static {
-        safeMap(ATTRIBUTES, FormulaEngineElementTypes.FUNCTION, FUNCTION_ATTR_KEY);
+        // Types
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.TYPE_DATE, DATE_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.TYPE_FLOAT, FLOAT_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.TYPE_INTEGER, INTEGER_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.TYPE_STRING, STRING_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.TYPE_LIST, LIST_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.TYPE_DICT, DICT_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.TYPE_ANY, ANY_ATTR_KEY);
+
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.VISIBILITY_LOCAL, LOCAL_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.VISIBILITY_GLOBAL, GLOBAL_ATTR_KEY);
 
         // Keywords
-        safeMap(ATTRIBUTES, FormulaEngineElementTypes.FLOAT, FLOAT_ATTR_KEY);
-        safeMap(ATTRIBUTES, FormulaEngineElementTypes.INTEGER, INTEGER_ATTR_KEY);
-        safeMap(ATTRIBUTES, FormulaEngineElementTypes.STRING, STRING_ATTR_KEY);
-        safeMap(ATTRIBUTES, FormulaEngineElementTypes.LIST, LIST_ATTR_KEY);
-        safeMap(ATTRIBUTES, FormulaEngineElementTypes.DICT, DICT_ATTR_KEY);
-        safeMap(ATTRIBUTES, FormulaEngineElementTypes.ANY, ANY_ATTR_KEY);
-        safeMap(ATTRIBUTES, FormulaEngineElementTypes.LOCAL, LOCAL_ATTR_KEY);
-        safeMap(ATTRIBUTES, FormulaEngineElementTypes.GLOBAL, GLOBAL_ATTR_KEY);
-        safeMap(ATTRIBUTES, FormulaEngineElementTypes.RETURN, RETURN_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.KEYWORD_RETURN, RETURN_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.KEYWORD_ELSE, ELSE_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.KEYWORD_FOR, FOR_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.KEYWORD_FUNCTION, FUNCTION_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.KEYWORD_IF, IF_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.KEYWORD_WHILE, WHILE_ATTR_KEY);
 
@@ -58,12 +61,15 @@ public class FormulaEngineSyntaxHighlighter extends SyntaxHighlighterBase {
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.LINE_COMMENT, COMMENT_SINGLE_LINE);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BLOCK_COMMENT, COMMENT_BLOCK);
 
+        // Operators
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.OPERATOR_AND, OPERATOR_AND);
+
         // Built in variables
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_VAR_NA, INBUILT_VARIABLE_NA_ATTR_KEY);
 
         // Built in functions
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_ATTRIBUTE, INBUILT_FUNCTION_ATTRIBUTE_ATTR_KEY);
-        safeMap(ATTRIBUTES, FormulaEngineElementTypes.DATE, INBUILT_FUNCTION_DATE_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_DATE, INBUILT_FUNCTION_DATE_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_DATETIME, INBUILT_FUNCTION_DATETIME_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_DAYDIFF, INBUILT_FUNCTION_DAYDIFF_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_DAYPLUS, INBUILT_FUNCTION_DAYPLUS_ATTR_KEY);

@@ -27,15 +27,9 @@ public class FormulaEngineFunctionArgumentImpl extends ASTWrapperPsiElement impl
   }
 
   @Override
-  @Nullable
-  public FormulaEngineStringLiteral getStringLiteral() {
-    return findChildByClass(FormulaEngineStringLiteral.class);
-  }
-
-  @Override
-  @Nullable
-  public PsiElement getIdentifier() {
-    return findChildByType(IDENTIFIER);
+  @NotNull
+  public FormulaEngineExpression getExpression() {
+    return findNotNullChildByClass(FormulaEngineExpression.class);
   }
 
 }

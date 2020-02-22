@@ -28,8 +28,14 @@ public class FormulaEngineExpressionImpl extends ASTWrapperPsiElement implements
 
   @Override
   @NotNull
-  public PsiElement getIdentifier() {
-    return findNotNullChildByType(IDENTIFIER);
+  public List<FormulaEngineOperator> getOperatorList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, FormulaEngineOperator.class);
+  }
+
+  @Override
+  @NotNull
+  public List<FormulaEngineSingleExpression> getSingleExpressionList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, FormulaEngineSingleExpression.class);
   }
 
 }

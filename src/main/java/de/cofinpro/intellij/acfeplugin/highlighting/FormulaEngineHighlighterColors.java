@@ -11,6 +11,7 @@ public class FormulaEngineHighlighterColors {
     public static final TextAttributesKey FUNCTION_ATTR_KEY = createTextAttributesKey("FE_FUNCTION", FUNCTION_DECLARATION);
 
     // Data Types
+    public static final TextAttributesKey DATE_ATTR_KEY = createTextAttributesKey("FE_DATE", KEYWORD);
     public static final TextAttributesKey INTEGER_ATTR_KEY = createTextAttributesKey("FE_INTEGER", KEYWORD);
     public static final TextAttributesKey FLOAT_ATTR_KEY = createTextAttributesKey("FE_FLOAT", KEYWORD);
     public static final TextAttributesKey STRING_ATTR_KEY = createTextAttributesKey("FE_STRING", KEYWORD);
@@ -37,6 +38,8 @@ public class FormulaEngineHighlighterColors {
     public static final TextAttributesKey COMMENT_SINGLE_LINE = createTextAttributesKey("FE_COMMENT_SINGLE_LINE", DefaultLanguageHighlighterColors.LINE_COMMENT);
     public static final TextAttributesKey COMMENT_BLOCK = createTextAttributesKey("FE_COMMENT_BLOCK", DefaultLanguageHighlighterColors.BLOCK_COMMENT);
 
+    // Operators
+    public static final TextAttributesKey OPERATOR_AND = createTextAttributesKey("FE_OPERATOR_AND", DefaultLanguageHighlighterColors.OPERATION_SIGN);
 
     // Built in Variables
     public static final TextAttributesKey INBUILT_VARIABLE_NA_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_NA", DefaultLanguageHighlighterColors.STATIC_FIELD);

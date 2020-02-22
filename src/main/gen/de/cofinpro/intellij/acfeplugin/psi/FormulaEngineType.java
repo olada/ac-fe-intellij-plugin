@@ -5,12 +5,6 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface FormulaEngineExpression extends PsiElement {
-
-  @NotNull
-  List<FormulaEngineOperator> getOperatorList();
-
-  @NotNull
-  List<FormulaEngineSingleExpression> getSingleExpressionList();
+public interface FormulaEngineType extends PsiElement {
 
 }

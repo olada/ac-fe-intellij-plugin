@@ -11,14 +11,14 @@ import static de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import de.cofinpro.intellij.acfeplugin.psi.*;
 
-public class FormulaEngineVisibilityPrefixImpl extends ASTWrapperPsiElement implements FormulaEngineVisibilityPrefix {
+public class FormulaEngineOperatorImpl extends ASTWrapperPsiElement implements FormulaEngineOperator {
 
-  public FormulaEngineVisibilityPrefixImpl(@NotNull ASTNode node) {
+  public FormulaEngineOperatorImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull FormulaEngineVisitor visitor) {
-    visitor.visitVisibilityPrefix(this);
+    visitor.visitOperator(this);
   }
 
   public void accept(@NotNull PsiElementVisitor visitor) {
