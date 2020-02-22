@@ -66,6 +66,7 @@ public class FormulaEngineSyntaxHighlighter extends SyntaxHighlighterBase {
 
         // Built in variables
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_VAR_NA, INBUILT_VARIABLE_NA_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_VAR_TODAY, INBUILT_VARIABLE_TODAY_ATTR_KEY);
 
         // Built in functions
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_ATTRIBUTE, INBUILT_FUNCTION_ATTRIBUTE_ATTR_KEY);

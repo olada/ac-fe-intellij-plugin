@@ -131,14 +131,15 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // BUILT_IN_VAR_NA
+  // BUILT_IN_VAR_NA | BUILT_IN_VAR_TODAY
   public static boolean BuiltInVariableName(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "BuiltInVariableName")) return false;
-    if (!nextTokenIs(b, BUILT_IN_VAR_NA)) return false;
+    if (!nextTokenIs(b, "<built in variable name>", BUILT_IN_VAR_NA, BUILT_IN_VAR_TODAY)) return false;
     boolean r;
-    Marker m = enter_section_(b);
+    Marker m = enter_section_(b, l, _NONE_, BUILT_IN_VARIABLE_NAME, "<built in variable name>");
     r = consumeToken(b, BUILT_IN_VAR_NA);
-    exit_section_(b, m, BUILT_IN_VARIABLE_NAME, r);
+    if (!r) r = consumeToken(b, BUILT_IN_VAR_TODAY);
+    exit_section_(b, l, m, r, false, null);
     return r;
   }
 
@@ -627,7 +628,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // OPERATOR_AND | OPERATOR_EQUAL | OPERATOR_MODULO | OPERATOR_OR
+  // OPERATOR_AND | OPERATOR_EQUAL | OPERATOR_MODULO | OPERATOR_NOTEQUAL | OPERATOR_OR
   public static boolean Operator(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Operator")) return false;
     boolean r;
@@ -635,6 +636,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     r = consumeToken(b, OPERATOR_AND);
     if (!r) r = consumeToken(b, OPERATOR_EQUAL);
     if (!r) r = consumeToken(b, OPERATOR_MODULO);
+    if (!r) r = consumeToken(b, OPERATOR_NOTEQUAL);
     if (!r) r = consumeToken(b, OPERATOR_OR);
     exit_section_(b, l, m, r, false, null);
     return r;

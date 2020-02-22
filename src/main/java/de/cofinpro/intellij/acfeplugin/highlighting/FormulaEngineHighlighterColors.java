@@ -43,6 +43,7 @@ public class FormulaEngineHighlighterColors {
 
     // Built in Variables
     public static final TextAttributesKey INBUILT_VARIABLE_NA_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_NA", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_VARIABLE_TODAY_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_TODAY", DefaultLanguageHighlighterColors.STATIC_FIELD);
 
     // Built in Functions
     public static final TextAttributesKey INBUILT_FUNCTION_ATTRIBUTE_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_ATTRIBUTE", DefaultLanguageHighlighterColors.STATIC_FIELD);

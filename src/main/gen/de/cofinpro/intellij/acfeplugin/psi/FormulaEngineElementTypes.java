@@ -67,6 +67,7 @@ public interface FormulaEngineElementTypes {
   IElementType BUILT_IN_FUNC_STATUS = new FormulaEngineTokenType("status");
   IElementType BUILT_IN_FUNC_STR = new FormulaEngineTokenType("str");
   IElementType BUILT_IN_VAR_NA = new FormulaEngineTokenType("$NA");
+  IElementType BUILT_IN_VAR_TODAY = new FormulaEngineTokenType("$TODAY");
   IElementType COMMA = new FormulaEngineTokenType(",");
   IElementType DOUBLE_QUOTED_STRING = new FormulaEngineTokenType("DOUBLE_QUOTED_STRING");
   IElementType DOUBLE_QUOTED_STRING_LITERAL = new FormulaEngineTokenType("double quoted string literal");
@@ -87,6 +88,7 @@ public interface FormulaEngineElementTypes {
   IElementType OPERATOR_EQUAL = new FormulaEngineTokenType("==");
   IElementType OPERATOR_MODULO = new FormulaEngineTokenType("%");
   IElementType OPERATOR_NEGATION = new FormulaEngineTokenType("!");
+  IElementType OPERATOR_NOTEQUAL = new FormulaEngineTokenType("!=");
   IElementType OPERATOR_OR = new FormulaEngineTokenType("||");
   IElementType OPERATOR_PLUS = new FormulaEngineTokenType("+");
   IElementType RIGHT_BRACKET = new FormulaEngineTokenType("]");

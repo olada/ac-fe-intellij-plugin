@@ -25,6 +25,7 @@
             OPERATOR_EQUAL = '=='
             OPERATOR_MODULO = '%'
             OPERATOR_NEGATION = '!'
+            OPERATOR_NOTEQUAL = '!='
             OPERATOR_OR = '||'
             OPERATOR_PLUS = '+'
 
@@ -47,6 +48,7 @@
             VISIBILITY_LOCAL = 'local'
 
             BUILT_IN_VAR_NA = '$NA'
+            BUILT_IN_VAR_TODAY = '$TODAY'
 
             BUILT_IN_FUNC_ATTRIBUTE = 'attribute'
             BUILT_IN_FUNC_DATE = 'date'
@@ -109,7 +111,7 @@ ControlStructureInFunctionBody ::= (ControlStructureInFunction | Statement | (Re
 Expression ::=  SingleExpression (Operator SingleExpression)*
 SingleExpression ::= FunctionInvocation | Constant | NegatedExpression | ArrayAccess | IDENTIFIER
 NegatedExpression ::= OPERATOR_NEGATION SingleExpression | OPERATOR_NEGATION LEFT_PARENTHESIS SingleExpression RIGHT_PARENTHESIS
-Operator ::= OPERATOR_AND | OPERATOR_EQUAL | OPERATOR_MODULO | OPERATOR_OR
+Operator ::= OPERATOR_AND | OPERATOR_EQUAL | OPERATOR_MODULO | OPERATOR_NOTEQUAL | OPERATOR_OR
 
 StringLiteral ::= SingleStringLiteral (OPERATOR_PLUS SingleStringLiteral)*
 SingleStringLiteral ::= SINGLE_QUOTED_STRING | DOUBLE_QUOTED_STRING
@@ -147,4 +149,4 @@ Visibility ::= VISIBILITY_GLOBAL | VISIBILITY_LOCAL
 Type ::= TYPE_INTEGER | TYPE_FLOAT | TYPE_DATE | TYPE_STRING | TYPE_LIST | TYPE_DICT | TYPE_ANY
 
 Constant ::= BuiltInVariableName | NUMBER_INTEGER | StringLiteral | ListLiteral
-BuiltInVariableName ::= BUILT_IN_VAR_NA
+BuiltInVariableName ::= BUILT_IN_VAR_NA | BUILT_IN_VAR_TODAY

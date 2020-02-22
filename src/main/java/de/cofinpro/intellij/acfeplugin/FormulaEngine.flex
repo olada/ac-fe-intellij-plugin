@@ -46,6 +46,7 @@ NUMBER_INTEGER = [0-9]+
     "=" { return FormulaEngineElementTypes.OPERATOR_ASSIGNMENT; }
     "%" { return FormulaEngineElementTypes.OPERATOR_MODULO; }
     "!" { return FormulaEngineElementTypes.OPERATOR_NEGATION; }
+    "!=" { return FormulaEngineElementTypes.OPERATOR_NOTEQUAL; }
     "||" { return FormulaEngineElementTypes.OPERATOR_OR; }
     "+" { return FormulaEngineElementTypes.OPERATOR_PLUS; }
 
@@ -72,6 +73,7 @@ NUMBER_INTEGER = [0-9]+
 
     // Built-in Variables
     "\$NA" { return FormulaEngineElementTypes.BUILT_IN_VAR_NA; }
+    "\$TODAY" { return FormulaEngineElementTypes.BUILT_IN_VAR_NA; }
 
     // Built-in Functions (use parenthesis for matching but don't include the parenthesis in the token)
    "attribute(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_ATTRIBUTE; }
