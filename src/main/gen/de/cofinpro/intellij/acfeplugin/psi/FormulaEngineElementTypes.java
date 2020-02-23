@@ -10,6 +10,7 @@ public interface FormulaEngineElementTypes {
 
   IElementType ARRAY_ACCESS = new FormulaEngineElementType("ARRAY_ACCESS");
   IElementType ASSIGNMENT = new FormulaEngineElementType("ASSIGNMENT");
+  IElementType ASSIGNMENT_OPERATOR = new FormulaEngineElementType("ASSIGNMENT_OPERATOR");
   IElementType BUILT_IN_FUNCTION_NAME = new FormulaEngineElementType("BUILT_IN_FUNCTION_NAME");
   IElementType BUILT_IN_VARIABLE_NAME = new FormulaEngineElementType("BUILT_IN_VARIABLE_NAME");
   IElementType CALCULATION_EXPRESSION = new FormulaEngineElementType("CALCULATION_EXPRESSION");
@@ -108,6 +109,7 @@ public interface FormulaEngineElementTypes {
   IElementType LINE_COMMENT = new FormulaEngineTokenType("LINE_COMMENT");
   IElementType MINUS = new FormulaEngineTokenType("-");
   IElementType NUMBER_INTEGER = new FormulaEngineTokenType("NUMBER_INTEGER");
+  IElementType OPERATOR_ADDASSIGNMENT = new FormulaEngineTokenType("+=");
   IElementType OPERATOR_AND = new FormulaEngineTokenType("&&");
   IElementType OPERATOR_ASSIGNMENT = new FormulaEngineTokenType("=");
   IElementType OPERATOR_DECREMENT = new FormulaEngineTokenType("--");
@@ -124,6 +126,7 @@ public interface FormulaEngineElementTypes {
   IElementType OPERATOR_NOTEQUAL = new FormulaEngineTokenType("!=");
   IElementType OPERATOR_OR = new FormulaEngineTokenType("||");
   IElementType OPERATOR_PLUS = new FormulaEngineTokenType("+");
+  IElementType OPERATOR_SUBTRACTASSIGNMENT = new FormulaEngineTokenType("-=");
   IElementType QUESIONMARK = new FormulaEngineTokenType("?");
   IElementType RIGHT_BRACKET = new FormulaEngineTokenType("]");
   IElementType RIGHT_CURLY_BRACE = new FormulaEngineTokenType("}");
@@ -149,6 +152,9 @@ public interface FormulaEngineElementTypes {
       }
       else if (type == ASSIGNMENT) {
         return new FormulaEngineAssignmentImpl(node);
+      }
+      else if (type == ASSIGNMENT_OPERATOR) {
+        return new FormulaEngineAssignmentOperatorImpl(node);
       }
       else if (type == BUILT_IN_FUNCTION_NAME) {
         return new FormulaEngineBuiltInFunctionNameImpl(node);

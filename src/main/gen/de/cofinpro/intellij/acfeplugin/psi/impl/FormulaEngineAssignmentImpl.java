@@ -28,6 +28,12 @@ public class FormulaEngineAssignmentImpl extends ASTWrapperPsiElement implements
 
   @Override
   @Nullable
+  public FormulaEngineAssignmentOperator getAssignmentOperator() {
+    return findChildByClass(FormulaEngineAssignmentOperator.class);
+  }
+
+  @Override
+  @Nullable
   public FormulaEngineDeclaration getDeclaration() {
     return findChildByClass(FormulaEngineDeclaration.class);
   }

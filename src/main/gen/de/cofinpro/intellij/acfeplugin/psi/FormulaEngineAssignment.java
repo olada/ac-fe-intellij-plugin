@@ -8,6 +8,9 @@ import com.intellij.psi.PsiElement;
 public interface FormulaEngineAssignment extends PsiElement {
 
   @Nullable
+  FormulaEngineAssignmentOperator getAssignmentOperator();
+
+  @Nullable
   FormulaEngineDeclaration getDeclaration();
 
   @Nullable

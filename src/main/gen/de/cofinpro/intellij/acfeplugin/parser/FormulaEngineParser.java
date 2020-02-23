@@ -90,7 +90,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // (Declaration OPERATOR_ASSIGNMENT (Seq | Expression)) | IDENTIFIER PostfixOperator
+  // (Declaration AssignmentOperator (Seq | Expression)) | IDENTIFIER PostfixOperator
   public static boolean Assignment(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Assignment")) return false;
     boolean r;
@@ -101,13 +101,13 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     return r;
   }
 
-  // Declaration OPERATOR_ASSIGNMENT (Seq | Expression)
+  // Declaration AssignmentOperator (Seq | Expression)
   private static boolean Assignment_0(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Assignment_0")) return false;
     boolean r;
     Marker m = enter_section_(b);
     r = Declaration(b, l + 1);
-    r = r && consumeToken(b, OPERATOR_ASSIGNMENT);
+    r = r && AssignmentOperator(b, l + 1);
     r = r && Assignment_0_2(b, l + 1);
     exit_section_(b, m, null, r);
     return r;
@@ -130,6 +130,19 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     r = consumeToken(b, IDENTIFIER);
     r = r && PostfixOperator(b, l + 1);
     exit_section_(b, m, null, r);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // OPERATOR_ADDASSIGNMENT | OPERATOR_SUBTRACTASSIGNMENT | OPERATOR_ASSIGNMENT
+  public static boolean AssignmentOperator(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "AssignmentOperator")) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, ASSIGNMENT_OPERATOR, "<assignment operator>");
+    r = consumeToken(b, OPERATOR_ADDASSIGNMENT);
+    if (!r) r = consumeToken(b, OPERATOR_SUBTRACTASSIGNMENT);
+    if (!r) r = consumeToken(b, OPERATOR_ASSIGNMENT);
+    exit_section_(b, l, m, r, false, null);
     return r;
   }
 

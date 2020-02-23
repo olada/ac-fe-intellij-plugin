@@ -56,7 +56,9 @@ NUMBER_INTEGER = [0-9]+
     "!=" { return FormulaEngineElementTypes.OPERATOR_NOTEQUAL; }
     "||" { return FormulaEngineElementTypes.OPERATOR_OR; }
     "*" { return FormulaEngineElementTypes.OPERATOR_MULTIPLY; }
+    "+=" { return FormulaEngineElementTypes.OPERATOR_ADDASSIGNMENT; }
     "+" { return FormulaEngineElementTypes.OPERATOR_PLUS; }
+    "-=" { return FormulaEngineElementTypes.OPERATOR_SUBTRACTASSIGNMENT; }
 
     // Visibility
     "local" { return FormulaEngineElementTypes.VISIBILITY_LOCAL; }
