@@ -67,21 +67,21 @@ public class FormulaEngineLexer implements FlexLexer {
   private static final int [] ZZ_ACTION = zzUnpackAction();
 
   private static final String ZZ_ACTION_PACKED_0 =
-    "\2\0\1\1\1\2\1\3\1\4\1\5\1\6\1\1"+
-    "\1\7\1\10\1\11\1\12\1\13\1\14\1\15\1\1"+
-    "\1\16\1\17\1\20\1\21\1\22\1\23\1\24\1\1"+
-    "\14\3\1\1\1\3\1\25\1\26\2\5\2\6\1\27"+
-    "\1\0\1\30\1\31\1\32\1\33\1\34\1\35\1\36"+
-    "\1\37\13\3\1\40\12\3\2\0\1\3\1\0\6\3"+
-    "\1\41\2\3\1\42\12\3\1\43\5\3\1\44\1\0"+
-    "\1\3\1\45\2\3\1\46\1\47\1\50\11\3\1\51"+
-    "\1\52\3\3\1\53\4\3\1\54\2\3\1\0\1\3"+
-    "\1\55\1\56\2\3\1\57\12\3\1\60\3\3\1\61"+
-    "\1\3\1\0\2\3\1\62\1\63\1\64\3\3\1\65"+
-    "\1\3\1\66\2\3\1\67\12\3\1\70\2\3\1\71"+
-    "\1\72\7\3\1\73\1\3\1\74\1\75\1\76\2\3"+
-    "\1\77\1\100\6\3\1\101\1\102\1\3\1\103\1\3"+
-    "\1\104\1\105\1\3\1\106\1\107";
+    "\2\0\1\1\1\2\1\3\1\4\1\5\1\6\1\7"+
+    "\1\10\1\11\1\12\1\13\1\14\1\15\1\16\1\1"+
+    "\1\17\1\20\1\21\1\22\1\23\1\24\1\25\1\1"+
+    "\14\3\1\1\1\3\1\26\1\27\2\5\2\6\1\30"+
+    "\1\0\1\31\1\32\1\33\1\34\1\35\1\36\1\37"+
+    "\1\40\13\3\1\41\12\3\2\0\1\3\1\0\6\3"+
+    "\1\42\2\3\1\43\12\3\1\44\5\3\1\45\1\0"+
+    "\1\3\1\46\2\3\1\47\1\50\1\51\11\3\1\52"+
+    "\1\53\3\3\1\54\4\3\1\55\2\3\1\0\1\3"+
+    "\1\56\1\57\2\3\1\60\12\3\1\61\3\3\1\62"+
+    "\1\3\1\0\2\3\1\63\1\64\1\65\3\3\1\66"+
+    "\1\3\1\67\2\3\1\70\12\3\1\71\2\3\1\72"+
+    "\1\73\7\3\1\74\1\3\1\75\1\76\1\77\2\3"+
+    "\1\100\1\101\6\3\1\102\1\103\1\3\1\104\1\3"+
+    "\1\105\1\106\1\3\1\107\1\110";
 
   private static int [] zzUnpackAction() {
     int [] result = new int[223];
@@ -684,357 +684,362 @@ public class FormulaEngineLexer implements FlexLexer {
             { return TokenType.BAD_CHARACTER;
             } 
             // fall through
-          case 72: break;
+          case 73: break;
           case 2: 
             { return TokenType.WHITE_SPACE;
             } 
             // fall through
-          case 73: break;
+          case 74: break;
           case 3: 
             { return FormulaEngineElementTypes.IDENTIFIER;
             } 
             // fall through
-          case 74: break;
+          case 75: break;
           case 4: 
             { return FormulaEngineElementTypes.NUMBER_INTEGER;
             } 
             // fall through
-          case 75: break;
+          case 76: break;
           case 5: 
             { return FormulaEngineElementTypes.SINGLE_QUOTED_STRING;
             } 
             // fall through
-          case 76: break;
+          case 77: break;
           case 6: 
             { return FormulaEngineElementTypes.DOUBLE_QUOTED_STRING;
             } 
             // fall through
-          case 77: break;
-          case 7: 
-            { return FormulaEngineElementTypes.OPERATOR_MULTIPLY;
-            } 
-            // fall through
           case 78: break;
-          case 8: 
-            { return FormulaEngineElementTypes.LEFT_PARENTHESIS;
+          case 7: 
+            { return FormulaEngineElementTypes.OPERATOR_DIVIDE;
             } 
             // fall through
           case 79: break;
-          case 9: 
-            { return FormulaEngineElementTypes.RIGHT_PARENTHESIS;
+          case 8: 
+            { return FormulaEngineElementTypes.OPERATOR_MULTIPLY;
             } 
             // fall through
           case 80: break;
-          case 10: 
-            { return FormulaEngineElementTypes.LEFT_CURLY_BRACE;
+          case 9: 
+            { return FormulaEngineElementTypes.LEFT_PARENTHESIS;
             } 
             // fall through
           case 81: break;
-          case 11: 
-            { return FormulaEngineElementTypes.RIGHT_CURLY_BRACE;
+          case 10: 
+            { return FormulaEngineElementTypes.RIGHT_PARENTHESIS;
             } 
             // fall through
           case 82: break;
-          case 12: 
-            { return FormulaEngineElementTypes.LEFT_BRACKET;
+          case 11: 
+            { return FormulaEngineElementTypes.LEFT_CURLY_BRACE;
             } 
             // fall through
           case 83: break;
-          case 13: 
-            { return FormulaEngineElementTypes.RIGHT_BRACKET;
+          case 12: 
+            { return FormulaEngineElementTypes.RIGHT_CURLY_BRACE;
             } 
             // fall through
           case 84: break;
-          case 14: 
-            { return FormulaEngineElementTypes.OPERATOR_ASSIGNMENT;
+          case 13: 
+            { return FormulaEngineElementTypes.LEFT_BRACKET;
             } 
             // fall through
           case 85: break;
-          case 15: 
-            { return FormulaEngineElementTypes.MINUS;
+          case 14: 
+            { return FormulaEngineElementTypes.RIGHT_BRACKET;
             } 
             // fall through
           case 86: break;
-          case 16: 
-            { return FormulaEngineElementTypes.OPERATOR_GREATERTHAN;
+          case 15: 
+            { return FormulaEngineElementTypes.OPERATOR_ASSIGNMENT;
             } 
             // fall through
           case 87: break;
-          case 17: 
-            { return FormulaEngineElementTypes.OPERATOR_PLUS;
+          case 16: 
+            { return FormulaEngineElementTypes.MINUS;
             } 
             // fall through
           case 88: break;
-          case 18: 
-            { return FormulaEngineElementTypes.OPERATOR_LESSTHAN;
+          case 17: 
+            { return FormulaEngineElementTypes.OPERATOR_GREATERTHAN;
             } 
             // fall through
           case 89: break;
-          case 19: 
-            { return FormulaEngineElementTypes.OPERATOR_MODULO;
+          case 18: 
+            { return FormulaEngineElementTypes.OPERATOR_PLUS;
             } 
             // fall through
           case 90: break;
-          case 20: 
-            { return FormulaEngineElementTypes.OPERATOR_NEGATION;
+          case 19: 
+            { return FormulaEngineElementTypes.OPERATOR_LESSTHAN;
             } 
             // fall through
           case 91: break;
-          case 21: 
-            { return FormulaEngineElementTypes.COMMA;
+          case 20: 
+            { return FormulaEngineElementTypes.OPERATOR_MODULO;
             } 
             // fall through
           case 92: break;
-          case 22: 
-            { return FormulaEngineElementTypes.SEMICOLON;
+          case 21: 
+            { return FormulaEngineElementTypes.OPERATOR_NEGATION;
             } 
             // fall through
           case 93: break;
-          case 23: 
-            { return FormulaEngineElementTypes.LINE_COMMENT;
+          case 22: 
+            { return FormulaEngineElementTypes.COMMA;
             } 
             // fall through
           case 94: break;
-          case 24: 
-            { return FormulaEngineElementTypes.OPERATOR_AND;
+          case 23: 
+            { return FormulaEngineElementTypes.SEMICOLON;
             } 
             // fall through
           case 95: break;
-          case 25: 
-            { return FormulaEngineElementTypes.OPERATOR_EQUAL;
+          case 24: 
+            { return FormulaEngineElementTypes.LINE_COMMENT;
             } 
             // fall through
           case 96: break;
-          case 26: 
-            { return FormulaEngineElementTypes.OPERATOR_DECREMENT;
+          case 25: 
+            { return FormulaEngineElementTypes.OPERATOR_AND;
             } 
             // fall through
           case 97: break;
-          case 27: 
-            { return FormulaEngineElementTypes.OPERATOR_GREATERTHANEQUAL;
+          case 26: 
+            { return FormulaEngineElementTypes.OPERATOR_EQUAL;
             } 
             // fall through
           case 98: break;
-          case 28: 
-            { return FormulaEngineElementTypes.OPERATOR_INCREMENT;
+          case 27: 
+            { return FormulaEngineElementTypes.OPERATOR_DECREMENT;
             } 
             // fall through
           case 99: break;
-          case 29: 
-            { return FormulaEngineElementTypes.OPERATOR_LESSTHANEQUAL;
+          case 28: 
+            { return FormulaEngineElementTypes.OPERATOR_GREATERTHANEQUAL;
             } 
             // fall through
           case 100: break;
-          case 30: 
-            { return FormulaEngineElementTypes.OPERATOR_NOTEQUAL;
+          case 29: 
+            { return FormulaEngineElementTypes.OPERATOR_INCREMENT;
             } 
             // fall through
           case 101: break;
-          case 31: 
-            { return FormulaEngineElementTypes.OPERATOR_OR;
+          case 30: 
+            { return FormulaEngineElementTypes.OPERATOR_LESSTHANEQUAL;
             } 
             // fall through
           case 102: break;
-          case 32: 
-            { return FormulaEngineElementTypes.KEYWORD_IF;
+          case 31: 
+            { return FormulaEngineElementTypes.OPERATOR_NOTEQUAL;
             } 
             // fall through
           case 103: break;
-          case 33: 
-            { return FormulaEngineElementTypes.TYPE_ANY;
+          case 32: 
+            { return FormulaEngineElementTypes.OPERATOR_OR;
             } 
             // fall through
           case 104: break;
-          case 34: 
-            { return FormulaEngineElementTypes.KEYWORD_FOR;
+          case 33: 
+            { return FormulaEngineElementTypes.KEYWORD_IF;
             } 
             // fall through
           case 105: break;
-          case 35: 
-            { return FormulaEngineElementTypes.KEYWORD_SEQ;
+          case 34: 
+            { return FormulaEngineElementTypes.TYPE_ANY;
             } 
             // fall through
           case 106: break;
-          case 36: 
-            { return FormulaEngineElementTypes.BUILT_IN_VAR_NA;
+          case 35: 
+            { return FormulaEngineElementTypes.KEYWORD_FOR;
             } 
             // fall through
           case 107: break;
-          case 37: 
-            { return FormulaEngineElementTypes.BLOCK_COMMENT;
+          case 36: 
+            { return FormulaEngineElementTypes.KEYWORD_SEQ;
             } 
             // fall through
           case 108: break;
-          case 38: 
-            { return FormulaEngineElementTypes.TYPE_LIST;
+          case 37: 
+            { return FormulaEngineElementTypes.BUILT_IN_VAR_NA;
             } 
             // fall through
           case 109: break;
-          case 39: 
-            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_LEN;
+          case 38: 
+            { return FormulaEngineElementTypes.BLOCK_COMMENT;
             } 
             // fall through
           case 110: break;
-          case 40: 
-            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_OUT;
+          case 39: 
+            { return FormulaEngineElementTypes.TYPE_LIST;
             } 
             // fall through
           case 111: break;
-          case 41: 
-            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_ELT;
+          case 40: 
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_LEN;
             } 
             // fall through
           case 112: break;
-          case 42: 
-            { return FormulaEngineElementTypes.KEYWORD_ELSE;
+          case 41: 
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_OUT;
             } 
             // fall through
           case 113: break;
-          case 43: 
-            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STR;
+          case 42: 
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_ELT;
             } 
             // fall through
           case 114: break;
-          case 44: 
-            { return FormulaEngineElementTypes.TYPE_DICT;
+          case 43: 
+            { return FormulaEngineElementTypes.KEYWORD_ELSE;
             } 
             // fall through
           case 115: break;
-          case 45: 
-            { return FormulaEngineElementTypes.VISIBILITY_LOCAL;
+          case 44: 
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STR;
             } 
             // fall through
           case 116: break;
-          case 46: 
-            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_LOAD;
+          case 45: 
+            { return FormulaEngineElementTypes.TYPE_DICT;
             } 
             // fall through
           case 117: break;
-          case 47: 
-            { return FormulaEngineElementTypes.TYPE_FLOAT;
+          case 46: 
+            { return FormulaEngineElementTypes.VISIBILITY_LOCAL;
             } 
             // fall through
           case 118: break;
-          case 48: 
-            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DATE;
+          case 47: 
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_LOAD;
             } 
             // fall through
           case 119: break;
-          case 49: 
-            { return FormulaEngineElementTypes.KEYWORD_WHILE;
+          case 48: 
+            { return FormulaEngineElementTypes.TYPE_FLOAT;
             } 
             // fall through
           case 120: break;
-          case 50: 
-            { return FormulaEngineElementTypes.VISIBILITY_GLOBAL;
+          case 49: 
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DATE;
             } 
             // fall through
           case 121: break;
-          case 51: 
-            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_FLOAT;
+          case 50: 
+            { return FormulaEngineElementTypes.KEYWORD_WHILE;
             } 
             // fall through
           case 122: break;
-          case 52: 
-            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_FIRST;
+          case 51: 
+            { return FormulaEngineElementTypes.VISIBILITY_GLOBAL;
             } 
             // fall through
           case 123: break;
-          case 53: 
-            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_NA;
+          case 52: 
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_FLOAT;
             } 
             // fall through
           case 124: break;
-          case 54: 
-            { return FormulaEngineElementTypes.KEYWORD_RETURN;
+          case 53: 
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_FIRST;
             } 
             // fall through
           case 125: break;
-          case 55: 
-            { return FormulaEngineElementTypes.TYPE_STRING;
+          case 54: 
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_NA;
             } 
             // fall through
           case 126: break;
-          case 56: 
-            { return FormulaEngineElementTypes.TYPE_INTEGER;
+          case 55: 
+            { return FormulaEngineElementTypes.KEYWORD_RETURN;
             } 
             // fall through
           case 127: break;
-          case 57: 
-            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_REMOVE;
+          case 56: 
+            { return FormulaEngineElementTypes.TYPE_STRING;
             } 
             // fall through
           case 128: break;
-          case 58: 
-            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STATUS;
+          case 57: 
+            { return FormulaEngineElementTypes.TYPE_INTEGER;
             } 
             // fall through
           case 129: break;
-          case 59: 
-            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_KERNEL;
+          case 58: 
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_REMOVE;
             } 
             // fall through
           case 130: break;
-          case 60: 
-            { return FormulaEngineElementTypes.KEYWORD_FUNCTION;
+          case 59: 
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STATUS;
             } 
             // fall through
           case 131: break;
-          case 61: 
-            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_INTEGER;
+          case 60: 
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_KERNEL;
             } 
             // fall through
           case 132: break;
-          case 62: 
-            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_LIST;
+          case 61: 
+            { return FormulaEngineElementTypes.KEYWORD_FUNCTION;
             } 
             // fall through
           case 133: break;
-          case 63: 
-            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DAYDIFF;
+          case 62: 
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_INTEGER;
             } 
             // fall through
           case 134: break;
-          case 64: 
-            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DAYPLUS;
+          case 63: 
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_LIST;
             } 
             // fall through
           case 135: break;
-          case 65: 
-            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DATETIME;
+          case 64: 
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DAYDIFF;
             } 
             // fall through
           case 136: break;
-          case 66: 
-            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_GET;
+          case 65: 
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DAYPLUS;
             } 
             // fall through
           case 137: break;
-          case 67: 
-            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_PUT;
+          case 66: 
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DATETIME;
             } 
             // fall through
           case 138: break;
-          case 68: 
-            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_ATTRIBUTE;
+          case 67: 
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_GET;
             } 
             // fall through
           case 139: break;
-          case 69: 
-            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_STRING;
+          case 68: 
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_PUT;
             } 
             // fall through
           case 140: break;
-          case 70: 
-            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_KEYS;
+          case 69: 
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_ATTRIBUTE;
             } 
             // fall through
           case 141: break;
-          case 71: 
-            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_ISKEY;
+          case 70: 
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_STRING;
             } 
             // fall through
           case 142: break;
+          case 71: 
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_KEYS;
+            } 
+            // fall through
+          case 143: break;
+          case 72: 
+            { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_ISKEY;
+            } 
+            // fall through
+          case 144: break;
           default:
             zzScanError(ZZ_NO_MATCH);
           }
