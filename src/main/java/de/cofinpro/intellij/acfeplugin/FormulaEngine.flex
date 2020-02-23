@@ -116,6 +116,7 @@ NUMBER_INTEGER = [0-9]+
 
    "," { return FormulaEngineElementTypes.COMMA; }
    ";" { return FormulaEngineElementTypes.SEMICOLON; }
+   ":" { return FormulaEngineElementTypes.COLON; }
    "-" { return FormulaEngineElementTypes.MINUS; }
 
    {COMMENT_SINGLE_LINE} { return FormulaEngineElementTypes.LINE_COMMENT; }
