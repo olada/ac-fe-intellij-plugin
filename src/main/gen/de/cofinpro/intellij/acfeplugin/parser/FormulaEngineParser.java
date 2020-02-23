@@ -135,7 +135,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
 
   /* ********************************************************** */
   // BUILT_IN_FUNC_ATTRIBUTE | BUILT_IN_FUNC_STATUS
-  //     | BUILT_IN_FUNC_DATE | BUILT_IN_FUNC_DATETIME | BUILT_IN_FUNC_STR | BUILT_IN_FUNC_FLOAT | BUILT_IN_FUNC_INTEGER
+  //     | BUILT_IN_FUNC_DATE | BUILT_IN_FUNC_DATETIME | BUILT_IN_FUNC_STR | BUILT_IN_FUNC_FLOAT | BUILT_IN_FUNC_INTEGER | BUILT_IN_FUNC_STRING
   //     | BUILT_IN_FUNC_DAYDIFF | BUILT_IN_FUNC_DAYPLUS
   //     | BUILT_IN_FUNC_ELT
   //     | BUILT_IN_FUNC_FIRST
@@ -157,6 +157,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_STR);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_FLOAT);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_INTEGER);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_STRING);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_DAYDIFF);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_DAYPLUS);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_ELT);
