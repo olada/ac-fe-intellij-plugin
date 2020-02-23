@@ -51,6 +51,12 @@ public class FormulaEngineLeafExpressionImpl extends FormulaEngineExpressionImpl
 
   @Override
   @Nullable
+  public FormulaEnginePrefixOperator getPrefixOperator() {
+    return findChildByClass(FormulaEnginePrefixOperator.class);
+  }
+
+  @Override
+  @Nullable
   public PsiElement getIdentifier() {
     return findChildByType(IDENTIFIER);
   }

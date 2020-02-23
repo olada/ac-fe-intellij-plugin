@@ -143,6 +143,10 @@ public class FormulaEngineVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitPrefixOperator(@NotNull FormulaEnginePrefixOperator o) {
+    visitPsiElement(o);
+  }
+
   public void visitReturnStatement(@NotNull FormulaEngineReturnStatement o) {
     visitPsiElement(o);
   }

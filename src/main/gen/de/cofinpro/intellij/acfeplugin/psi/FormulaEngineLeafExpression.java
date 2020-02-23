@@ -20,6 +20,9 @@ public interface FormulaEngineLeafExpression extends FormulaEngineExpression {
   FormulaEnginePostfixOperator getPostfixOperator();
 
   @Nullable
+  FormulaEnginePrefixOperator getPrefixOperator();
+
+  @Nullable
   PsiElement getIdentifier();
 
 }

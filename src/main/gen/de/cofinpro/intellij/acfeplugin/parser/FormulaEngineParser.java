@@ -738,6 +738,19 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
+  // OPERATOR_INCREMENT | OPERATOR_DECREMENT
+  public static boolean PrefixOperator(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "PrefixOperator")) return false;
+    if (!nextTokenIs(b, "<prefix operator>", OPERATOR_DECREMENT, OPERATOR_INCREMENT)) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, PREFIX_OPERATOR, "<prefix operator>");
+    r = consumeToken(b, OPERATOR_INCREMENT);
+    if (!r) r = consumeToken(b, OPERATOR_DECREMENT);
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  /* ********************************************************** */
   // KEYWORD_RETURN Expression
   public static boolean ReturnStatement(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "ReturnStatement")) return false;
@@ -1159,7 +1172,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     return r;
   }
 
-  // FunctionInvocation | Constant  | ArrayAccess | IDENTIFIER PostfixOperator?
+  // FunctionInvocation | Constant  | ArrayAccess | PrefixOperator IDENTIFIER | IDENTIFIER PostfixOperator | IDENTIFIER
   public static boolean LeafExpression(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "LeafExpression")) return false;
     boolean r;
@@ -1168,26 +1181,32 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     if (!r) r = Constant(b, l + 1);
     if (!r) r = ArrayAccess(b, l + 1);
     if (!r) r = LeafExpression_3(b, l + 1);
+    if (!r) r = LeafExpression_4(b, l + 1);
+    if (!r) r = consumeTokenSmart(b, IDENTIFIER);
     exit_section_(b, l, m, r, false, null);
     return r;
   }
 
-  // IDENTIFIER PostfixOperator?
+  // PrefixOperator IDENTIFIER
   private static boolean LeafExpression_3(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "LeafExpression_3")) return false;
     boolean r;
     Marker m = enter_section_(b);
-    r = consumeTokenSmart(b, IDENTIFIER);
-    r = r && LeafExpression_3_1(b, l + 1);
+    r = PrefixOperator(b, l + 1);
+    r = r && consumeToken(b, IDENTIFIER);
     exit_section_(b, m, null, r);
     return r;
   }
 
-  // PostfixOperator?
-  private static boolean LeafExpression_3_1(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "LeafExpression_3_1")) return false;
-    PostfixOperator(b, l + 1);
-    return true;
+  // IDENTIFIER PostfixOperator
+  private static boolean LeafExpression_4(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "LeafExpression_4")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeTokenSmart(b, IDENTIFIER);
+    r = r && PostfixOperator(b, l + 1);
+    exit_section_(b, m, null, r);
+    return r;
   }
 
   public static boolean ParenthesisExpression(PsiBuilder b, int l) {

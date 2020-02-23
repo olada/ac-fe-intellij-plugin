@@ -42,6 +42,7 @@ public interface FormulaEngineElementTypes {
   IElementType NEGATED_EXPRESSION = new FormulaEngineElementType("NEGATED_EXPRESSION");
   IElementType PARENTHESIS_EXPRESSION = new FormulaEngineElementType("PARENTHESIS_EXPRESSION");
   IElementType POSTFIX_OPERATOR = new FormulaEngineElementType("POSTFIX_OPERATOR");
+  IElementType PREFIX_OPERATOR = new FormulaEngineElementType("PREFIX_OPERATOR");
   IElementType RETURN_STATEMENT = new FormulaEngineElementType("RETURN_STATEMENT");
   IElementType SEQ = new FormulaEngineElementType("SEQ");
   IElementType SEQ_FOR_PARENTHESIS = new FormulaEngineElementType("SEQ_FOR_PARENTHESIS");
@@ -241,6 +242,9 @@ public interface FormulaEngineElementTypes {
       }
       else if (type == POSTFIX_OPERATOR) {
         return new FormulaEnginePostfixOperatorImpl(node);
+      }
+      else if (type == PREFIX_OPERATOR) {
+        return new FormulaEnginePrefixOperatorImpl(node);
       }
       else if (type == RETURN_STATEMENT) {
         return new FormulaEngineReturnStatementImpl(node);
