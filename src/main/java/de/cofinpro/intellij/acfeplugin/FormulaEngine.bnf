@@ -171,7 +171,7 @@ FunctionBodyStatement ::= ControlStructure | ((FunctionInvocation | Assignment |
 SeqForParenthesis ::= LEFT_PARENTHESIS Assignment SEMICOLON Expression SEMICOLON Assignment RIGHT_PARENTHESIS
 Seq ::= KEYWORD_SEQ SeqForParenthesis StatementWithoutEol
 For ::= KEYWORD_FOR SeqForParenthesis LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE
-If ::= KEYWORD_IF LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE (KEYWORD_ELSE LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE)?
+If ::= KEYWORD_IF LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE (KEYWORD_ELSE KEYWORD_IF LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE)* (KEYWORD_ELSE LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE)?
 
 Declaration ::= Visibility? Type? IDENTIFIER
 Assignment ::= (Declaration OPERATOR_ASSIGNMENT (Seq | Expression)) | IDENTIFIER PostfixOperator

@@ -34,8 +34,8 @@ public class FormulaEngineIfImpl extends ASTWrapperPsiElement implements Formula
 
   @Override
   @NotNull
-  public FormulaEngineExpression getExpression() {
-    return findNotNullChildByClass(FormulaEngineExpression.class);
+  public List<FormulaEngineExpression> getExpressionList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, FormulaEngineExpression.class);
   }
 
 }

@@ -11,6 +11,6 @@ public interface FormulaEngineIf extends PsiElement {
   List<FormulaEngineControlStructureBody> getControlStructureBodyList();
 
   @NotNull
-  FormulaEngineExpression getExpression();
+  List<FormulaEngineExpression> getExpressionList();
 
 }
