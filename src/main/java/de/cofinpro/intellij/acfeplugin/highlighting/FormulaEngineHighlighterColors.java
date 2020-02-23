@@ -27,6 +27,7 @@ public class FormulaEngineHighlighterColors {
     public static final TextAttributesKey AND_ATTR_KEY = createTextAttributesKey("FE_AND", KEYWORD);
     public static final TextAttributesKey BREAK_ATTR_KEY = createTextAttributesKey("FE_BREAK", KEYWORD);
     public static final TextAttributesKey CASE_ATTR_KEY = createTextAttributesKey("FE_CASE", KEYWORD);
+    public static final TextAttributesKey DEFAULT_ATTR_KEY = createTextAttributesKey("FE_DEFAULT", KEYWORD);
     public static final TextAttributesKey DO_ATTR_KEY = createTextAttributesKey("FE_DO", KEYWORD);
     public static final TextAttributesKey RETURN_ATTR_KEY = createTextAttributesKey("FE_RETURN", KEYWORD);
     public static final TextAttributesKey ELSE_ATTR_KEY = createTextAttributesKey("FE_ELSE", KEYWORD);
@@ -76,6 +77,7 @@ public class FormulaEngineHighlighterColors {
     public static final TextAttributesKey INBUILT_FUNCTION_REMOVE_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_REMOVE", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_STATUS_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_STATUS", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_STR_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_STR", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_FUNCTION_STRING_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_STRING", DefaultLanguageHighlighterColors.STATIC_FIELD);
 
     // General Tokens
     public static final TextAttributesKey NUMBER_INTEGER = createTextAttributesKey("FE_NUMBER_INTEGER", DefaultLanguageHighlighterColors.NUMBER);

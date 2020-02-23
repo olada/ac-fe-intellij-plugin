@@ -41,6 +41,7 @@
             KEYWORD_AND = 'and'
             KEYWORD_BREAK = 'break'
             KEYWORD_CASE = 'case'
+            KEYWORD_DEFAULT = 'default'
             KEYWORD_DO = 'do'
             KEYWORD_ELSE = 'else'
             KEYWORD_FOR = 'for'
@@ -88,6 +89,7 @@
             BUILT_IN_FUNC_REMOVE = 'remove'
             BUILT_IN_FUNC_STATUS = 'status'
             BUILT_IN_FUNC_STR = 'str'
+            BUILT_IN_FUNC_STRING = 'string'
             BUILT_IN_FUNC_OUT = 'out'
 
             DOUBLE_QUOTED_STRING_LITERAL = 'double quoted string literal'
@@ -99,6 +101,7 @@
             COLON = ':'
             SEMICOLON = ';'
             MINUS = '-'
+            QUESIONMARK = '?'
 
             IDENTIFIER = 'regexp:[a-zA-Z_][a-zA-Z0-9_]*'
             LINE_COMMENT='regexp://.*'
@@ -123,23 +126,26 @@ FunctionArguments ::= FunctionArgument (COMMA FunctionArgument)*
 FunctionArgument ::= Expression
 
 // Control Structures
-ControlStructure ::= (ControlStructureKeyword LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE) | For | If
-//ControlStructureInFunction ::= (ControlStructureKeyword LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE ControlStructureInFunctionBody RIGHT_CURLY_BRACE) | For | If
+ControlStructure ::= (ControlStructureKeyword LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE) | For | If | Switch | DoWhile
 ControlStructureKeyword ::= KEYWORD_FOR | KEYWORD_WHILE
 ControlStructureBody ::= (ControlStructure | Statement)*
-//ControlStructureInFunctionBody ::= (ControlStructureInFunction | Statement | (ReturnStatement ';'))*
+
+Switch ::= KEYWORD_SWITCH LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE (KEYWORD_CASE Constant COLON (ControlStructureBody (KEYWORD_BREAK SEMICOLON)?))* (KEYWORD_DEFAULT Constant COLON (ControlStructureBody (KEYWORD_BREAK SEMICOLON)?))?
+DoWhile ::= KEYWORD_DO LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE KEYWORD_WHILE LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS SEMICOLON
 
 // Expressions
 Expression ::= NegatedExpression
     | CombinationExpression
     | ComparisonExpression
     | CalculationExpression
+    | ShortIfExpression
     | LeafExpression
     | ParenthesisExpression
 NegatedExpression ::= OPERATOR_NEGATION Expression
 CombinationExpression ::= Expression CombinationOperator Expression
 ComparisonExpression ::= Expression ComparisonOperator Expression
 CalculationExpression ::= Expression CalculationOperator Expression
+ShortIfExpression ::= Expression QUESIONMARK Expression COLON Expression
 LeafExpression ::= FunctionInvocation | Constant  | ArrayAccess | IDENTIFIER PostfixOperator?
 ParenthesisExpression ::= LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS
 

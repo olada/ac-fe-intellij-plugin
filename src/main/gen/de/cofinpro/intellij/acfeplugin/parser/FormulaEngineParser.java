@@ -37,7 +37,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
 
   public static final TokenSet[] EXTENDS_SETS_ = new TokenSet[] {
     create_token_set_(CALCULATION_EXPRESSION, COMBINATION_EXPRESSION, COMPARISON_EXPRESSION, EXPRESSION,
-      LEAF_EXPRESSION, NEGATED_EXPRESSION, PARENTHESIS_EXPRESSION),
+      LEAF_EXPRESSION, NEGATED_EXPRESSION, PARENTHESIS_EXPRESSION, SHORT_IF_EXPRESSION),
   };
 
   /* ********************************************************** */
@@ -268,7 +268,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // (ControlStructureKeyword LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE) | For | If
+  // (ControlStructureKeyword LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE) | For | If | Switch | DoWhile
   public static boolean ControlStructure(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "ControlStructure")) return false;
     boolean r;
@@ -276,6 +276,8 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     r = ControlStructure_0(b, l + 1);
     if (!r) r = For(b, l + 1);
     if (!r) r = If(b, l + 1);
+    if (!r) r = Switch(b, l + 1);
+    if (!r) r = DoWhile(b, l + 1);
     exit_section_(b, l, m, r, false, null);
     return r;
   }
@@ -368,6 +370,22 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     if (!recursion_guard_(b, l, "Declaration_1")) return false;
     Type(b, l + 1);
     return true;
+  }
+
+  /* ********************************************************** */
+  // KEYWORD_DO LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE KEYWORD_WHILE LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS SEMICOLON
+  public static boolean DoWhile(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "DoWhile")) return false;
+    if (!nextTokenIs(b, KEYWORD_DO)) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeTokens(b, 0, KEYWORD_DO, LEFT_CURLY_BRACE);
+    r = r && ControlStructureBody(b, l + 1);
+    r = r && consumeTokens(b, 0, RIGHT_CURLY_BRACE, KEYWORD_WHILE, LEFT_PARENTHESIS);
+    r = r && Expression(b, l + 1, -1);
+    r = r && consumeTokens(b, 0, RIGHT_PARENTHESIS, SEMICOLON);
+    exit_section_(b, m, DO_WHILE, r);
+    return r;
   }
 
   /* ********************************************************** */
@@ -891,6 +909,122 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
+  // KEYWORD_SWITCH LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE (KEYWORD_CASE Constant COLON (ControlStructureBody (KEYWORD_BREAK SEMICOLON)?))* (KEYWORD_DEFAULT Constant COLON (ControlStructureBody (KEYWORD_BREAK SEMICOLON)?))?
+  public static boolean Switch(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "Switch")) return false;
+    if (!nextTokenIs(b, KEYWORD_SWITCH)) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeTokens(b, 0, KEYWORD_SWITCH, LEFT_PARENTHESIS);
+    r = r && Expression(b, l + 1, -1);
+    r = r && consumeTokens(b, 0, RIGHT_PARENTHESIS, LEFT_CURLY_BRACE);
+    r = r && Switch_5(b, l + 1);
+    r = r && Switch_6(b, l + 1);
+    exit_section_(b, m, SWITCH, r);
+    return r;
+  }
+
+  // (KEYWORD_CASE Constant COLON (ControlStructureBody (KEYWORD_BREAK SEMICOLON)?))*
+  private static boolean Switch_5(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "Switch_5")) return false;
+    while (true) {
+      int c = current_position_(b);
+      if (!Switch_5_0(b, l + 1)) break;
+      if (!empty_element_parsed_guard_(b, "Switch_5", c)) break;
+    }
+    return true;
+  }
+
+  // KEYWORD_CASE Constant COLON (ControlStructureBody (KEYWORD_BREAK SEMICOLON)?)
+  private static boolean Switch_5_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "Switch_5_0")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeToken(b, KEYWORD_CASE);
+    r = r && Constant(b, l + 1);
+    r = r && consumeToken(b, COLON);
+    r = r && Switch_5_0_3(b, l + 1);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  // ControlStructureBody (KEYWORD_BREAK SEMICOLON)?
+  private static boolean Switch_5_0_3(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "Switch_5_0_3")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = ControlStructureBody(b, l + 1);
+    r = r && Switch_5_0_3_1(b, l + 1);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  // (KEYWORD_BREAK SEMICOLON)?
+  private static boolean Switch_5_0_3_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "Switch_5_0_3_1")) return false;
+    Switch_5_0_3_1_0(b, l + 1);
+    return true;
+  }
+
+  // KEYWORD_BREAK SEMICOLON
+  private static boolean Switch_5_0_3_1_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "Switch_5_0_3_1_0")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeTokens(b, 0, KEYWORD_BREAK, SEMICOLON);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  // (KEYWORD_DEFAULT Constant COLON (ControlStructureBody (KEYWORD_BREAK SEMICOLON)?))?
+  private static boolean Switch_6(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "Switch_6")) return false;
+    Switch_6_0(b, l + 1);
+    return true;
+  }
+
+  // KEYWORD_DEFAULT Constant COLON (ControlStructureBody (KEYWORD_BREAK SEMICOLON)?)
+  private static boolean Switch_6_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "Switch_6_0")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeToken(b, KEYWORD_DEFAULT);
+    r = r && Constant(b, l + 1);
+    r = r && consumeToken(b, COLON);
+    r = r && Switch_6_0_3(b, l + 1);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  // ControlStructureBody (KEYWORD_BREAK SEMICOLON)?
+  private static boolean Switch_6_0_3(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "Switch_6_0_3")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = ControlStructureBody(b, l + 1);
+    r = r && Switch_6_0_3_1(b, l + 1);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  // (KEYWORD_BREAK SEMICOLON)?
+  private static boolean Switch_6_0_3_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "Switch_6_0_3_1")) return false;
+    Switch_6_0_3_1_0(b, l + 1);
+    return true;
+  }
+
+  // KEYWORD_BREAK SEMICOLON
+  private static boolean Switch_6_0_3_1_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "Switch_6_0_3_1_0")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeTokens(b, 0, KEYWORD_BREAK, SEMICOLON);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  /* ********************************************************** */
   // FunctionDefinition | ControlStructure | Statement
   public static boolean TopLevelItem(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "TopLevelItem")) return false;
@@ -952,8 +1086,9 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   // 1: BINARY(CombinationExpression)
   // 2: BINARY(ComparisonExpression)
   // 3: BINARY(CalculationExpression)
-  // 4: ATOM(LeafExpression)
-  // 5: PREFIX(ParenthesisExpression)
+  // 4: BINARY(ShortIfExpression)
+  // 5: ATOM(LeafExpression)
+  // 6: PREFIX(ParenthesisExpression)
   public static boolean Expression(PsiBuilder b, int l, int g) {
     if (!recursion_guard_(b, l, "Expression")) return false;
     addVariant(b, "<expression>");
@@ -985,6 +1120,11 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
         r = Expression(b, l, 3);
         exit_section_(b, l, m, CALCULATION_EXPRESSION, r, true, null);
       }
+      else if (g < 4 && consumeTokenSmart(b, QUESIONMARK)) {
+        r = report_error_(b, Expression(b, l, 4));
+        r = ShortIfExpression_1(b, l + 1) && r;
+        exit_section_(b, l, m, SHORT_IF_EXPRESSION, r, true, null);
+      }
       else {
         exit_section_(b, l, m, null, false, false, null);
         break;
@@ -1003,6 +1143,17 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     r = p && Expression(b, l, 0);
     exit_section_(b, l, m, NEGATED_EXPRESSION, r, p, null);
     return r || p;
+  }
+
+  // COLON Expression
+  private static boolean ShortIfExpression_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "ShortIfExpression_1")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeToken(b, COLON);
+    r = r && Expression(b, l + 1, -1);
+    exit_section_(b, m, null, r);
+    return r;
   }
 
   // FunctionInvocation | Constant  | ArrayAccess | IDENTIFIER PostfixOperator?

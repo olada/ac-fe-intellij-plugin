@@ -24,6 +24,7 @@ public interface FormulaEngineElementTypes {
   IElementType CONTROL_STRUCTURE_KEYWORD = new FormulaEngineElementType("CONTROL_STRUCTURE_KEYWORD");
   IElementType CUSTOM_FUNCTION_NAME = new FormulaEngineElementType("CUSTOM_FUNCTION_NAME");
   IElementType DECLARATION = new FormulaEngineElementType("DECLARATION");
+  IElementType DO_WHILE = new FormulaEngineElementType("DO_WHILE");
   IElementType EXPRESSION = new FormulaEngineElementType("EXPRESSION");
   IElementType FOR = new FormulaEngineElementType("FOR");
   IElementType FUNCTION_ARGUMENT = new FormulaEngineElementType("FUNCTION_ARGUMENT");
@@ -44,10 +45,12 @@ public interface FormulaEngineElementTypes {
   IElementType RETURN_STATEMENT = new FormulaEngineElementType("RETURN_STATEMENT");
   IElementType SEQ = new FormulaEngineElementType("SEQ");
   IElementType SEQ_FOR_PARENTHESIS = new FormulaEngineElementType("SEQ_FOR_PARENTHESIS");
+  IElementType SHORT_IF_EXPRESSION = new FormulaEngineElementType("SHORT_IF_EXPRESSION");
   IElementType SINGLE_STRING_LITERAL = new FormulaEngineElementType("SINGLE_STRING_LITERAL");
   IElementType STATEMENT = new FormulaEngineElementType("STATEMENT");
   IElementType STATEMENT_WITHOUT_EOL = new FormulaEngineElementType("STATEMENT_WITHOUT_EOL");
   IElementType STRING_LITERAL = new FormulaEngineElementType("STRING_LITERAL");
+  IElementType SWITCH = new FormulaEngineElementType("SWITCH");
   IElementType TOP_LEVEL_ITEM = new FormulaEngineElementType("TOP_LEVEL_ITEM");
   IElementType TYPE = new FormulaEngineElementType("TYPE");
   IElementType VISIBILITY = new FormulaEngineElementType("VISIBILITY");
@@ -76,6 +79,7 @@ public interface FormulaEngineElementTypes {
   IElementType BUILT_IN_FUNC_REMOVE = new FormulaEngineTokenType("remove");
   IElementType BUILT_IN_FUNC_STATUS = new FormulaEngineTokenType("status");
   IElementType BUILT_IN_FUNC_STR = new FormulaEngineTokenType("str");
+  IElementType BUILT_IN_FUNC_STRING = new FormulaEngineTokenType("string");
   IElementType BUILT_IN_VAR_NA = new FormulaEngineTokenType("$NA");
   IElementType BUILT_IN_VAR_TODAY = new FormulaEngineTokenType("$TODAY");
   IElementType COLON = new FormulaEngineTokenType(":");
@@ -86,6 +90,7 @@ public interface FormulaEngineElementTypes {
   IElementType KEYWORD_AND = new FormulaEngineTokenType("and");
   IElementType KEYWORD_BREAK = new FormulaEngineTokenType("break");
   IElementType KEYWORD_CASE = new FormulaEngineTokenType("case");
+  IElementType KEYWORD_DEFAULT = new FormulaEngineTokenType("default");
   IElementType KEYWORD_DO = new FormulaEngineTokenType("do");
   IElementType KEYWORD_ELSE = new FormulaEngineTokenType("else");
   IElementType KEYWORD_FOR = new FormulaEngineTokenType("for");
@@ -118,6 +123,7 @@ public interface FormulaEngineElementTypes {
   IElementType OPERATOR_NOTEQUAL = new FormulaEngineTokenType("!=");
   IElementType OPERATOR_OR = new FormulaEngineTokenType("||");
   IElementType OPERATOR_PLUS = new FormulaEngineTokenType("+");
+  IElementType QUESIONMARK = new FormulaEngineTokenType("?");
   IElementType RIGHT_BRACKET = new FormulaEngineTokenType("]");
   IElementType RIGHT_CURLY_BRACE = new FormulaEngineTokenType("}");
   IElementType RIGHT_PARENTHESIS = new FormulaEngineTokenType(")");
@@ -130,7 +136,7 @@ public interface FormulaEngineElementTypes {
   IElementType TYPE_FLOAT = new FormulaEngineTokenType("TYPE_FLOAT");
   IElementType TYPE_INTEGER = new FormulaEngineTokenType("TYPE_INTEGER");
   IElementType TYPE_LIST = new FormulaEngineTokenType("list");
-  IElementType TYPE_STRING = new FormulaEngineTokenType("string");
+  IElementType TYPE_STRING = new FormulaEngineTokenType("TYPE_STRING");
   IElementType VISIBILITY_GLOBAL = new FormulaEngineTokenType("global");
   IElementType VISIBILITY_LOCAL = new FormulaEngineTokenType("local");
 
@@ -184,6 +190,9 @@ public interface FormulaEngineElementTypes {
       }
       else if (type == DECLARATION) {
         return new FormulaEngineDeclarationImpl(node);
+      }
+      else if (type == DO_WHILE) {
+        return new FormulaEngineDoWhileImpl(node);
       }
       else if (type == FOR) {
         return new FormulaEngineForImpl(node);
@@ -242,6 +251,9 @@ public interface FormulaEngineElementTypes {
       else if (type == SEQ_FOR_PARENTHESIS) {
         return new FormulaEngineSeqForParenthesisImpl(node);
       }
+      else if (type == SHORT_IF_EXPRESSION) {
+        return new FormulaEngineShortIfExpressionImpl(node);
+      }
       else if (type == SINGLE_STRING_LITERAL) {
         return new FormulaEngineSingleStringLiteralImpl(node);
       }
@@ -253,6 +265,9 @@ public interface FormulaEngineElementTypes {
       }
       else if (type == STRING_LITERAL) {
         return new FormulaEngineStringLiteralImpl(node);
+      }
+      else if (type == SWITCH) {
+        return new FormulaEngineSwitchImpl(node);
       }
       else if (type == TOP_LEVEL_ITEM) {
         return new FormulaEngineTopLevelItemImpl(node);

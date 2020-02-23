@@ -71,6 +71,10 @@ public class FormulaEngineVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitDoWhile(@NotNull FormulaEngineDoWhile o) {
+    visitPsiElement(o);
+  }
+
   public void visitExpression(@NotNull FormulaEngineExpression o) {
     visitPsiElement(o);
   }
@@ -151,6 +155,10 @@ public class FormulaEngineVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitShortIfExpression(@NotNull FormulaEngineShortIfExpression o) {
+    visitExpression(o);
+  }
+
   public void visitSingleStringLiteral(@NotNull FormulaEngineSingleStringLiteral o) {
     visitPsiElement(o);
   }
@@ -164,6 +172,10 @@ public class FormulaEngineVisitor extends PsiElementVisitor {
   }
 
   public void visitStringLiteral(@NotNull FormulaEngineStringLiteral o) {
+    visitPsiElement(o);
+  }
+
+  public void visitSwitch(@NotNull FormulaEngineSwitch o) {
     visitPsiElement(o);
   }
 

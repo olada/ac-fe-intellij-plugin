@@ -40,6 +40,12 @@ public class FormulaEngineControlStructureImpl extends ASTWrapperPsiElement impl
 
   @Override
   @Nullable
+  public FormulaEngineDoWhile getDoWhile() {
+    return findChildByClass(FormulaEngineDoWhile.class);
+  }
+
+  @Override
+  @Nullable
   public FormulaEngineExpression getExpression() {
     return findChildByClass(FormulaEngineExpression.class);
   }
@@ -54,6 +60,12 @@ public class FormulaEngineControlStructureImpl extends ASTWrapperPsiElement impl
   @Nullable
   public FormulaEngineIf getIf() {
     return findChildByClass(FormulaEngineIf.class);
+  }
+
+  @Override
+  @Nullable
+  public FormulaEngineSwitch getSwitch() {
+    return findChildByClass(FormulaEngineSwitch.class);
   }
 
 }

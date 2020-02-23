@@ -74,6 +74,7 @@ NUMBER_INTEGER = [0-9]+
     "and" { return FormulaEngineElementTypes.KEYWORD_AND; }
     "break" { return FormulaEngineElementTypes.KEYWORD_BREAK; }
     "case" { return FormulaEngineElementTypes.KEYWORD_CASE; }
+    "default" { return FormulaEngineElementTypes.KEYWORD_DEFAULT; }
     "do" { return FormulaEngineElementTypes.KEYWORD_DO; }
     "else" { return FormulaEngineElementTypes.KEYWORD_ELSE; }
     "for" { return FormulaEngineElementTypes.KEYWORD_FOR; }
@@ -113,11 +114,13 @@ NUMBER_INTEGER = [0-9]+
    "remove(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_REMOVE; }
    "status(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STATUS; }
    "str(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STR; }
+   "string(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STRING; }
 
    "," { return FormulaEngineElementTypes.COMMA; }
    ";" { return FormulaEngineElementTypes.SEMICOLON; }
    ":" { return FormulaEngineElementTypes.COLON; }
    "-" { return FormulaEngineElementTypes.MINUS; }
+   "?" { return FormulaEngineElementTypes.QUESIONMARK; }
 
    {COMMENT_SINGLE_LINE} { return FormulaEngineElementTypes.LINE_COMMENT; }
    {BLOCK_COMMENT} { return FormulaEngineElementTypes.BLOCK_COMMENT; }

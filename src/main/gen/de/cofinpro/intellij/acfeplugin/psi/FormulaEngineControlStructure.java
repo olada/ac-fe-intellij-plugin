@@ -14,6 +14,9 @@ public interface FormulaEngineControlStructure extends PsiElement {
   FormulaEngineControlStructureKeyword getControlStructureKeyword();
 
   @Nullable
+  FormulaEngineDoWhile getDoWhile();
+
+  @Nullable
   FormulaEngineExpression getExpression();
 
   @Nullable
@@ -21,5 +24,8 @@ public interface FormulaEngineControlStructure extends PsiElement {
 
   @Nullable
   FormulaEngineIf getIf();
+
+  @Nullable
+  FormulaEngineSwitch getSwitch();
 
 }
