@@ -72,6 +72,9 @@ NUMBER_INTEGER = [0-9]+
 
     // Keywords
     "and" { return FormulaEngineElementTypes.KEYWORD_AND; }
+    "break" { return FormulaEngineElementTypes.KEYWORD_BREAK; }
+    "case" { return FormulaEngineElementTypes.KEYWORD_CASE; }
+    "do" { return FormulaEngineElementTypes.KEYWORD_DO; }
     "else" { return FormulaEngineElementTypes.KEYWORD_ELSE; }
     "for" { return FormulaEngineElementTypes.KEYWORD_FOR; }
     "function" { return FormulaEngineElementTypes.KEYWORD_FUNCTION; }
@@ -79,6 +82,7 @@ NUMBER_INTEGER = [0-9]+
     "or" { return FormulaEngineElementTypes.KEYWORD_OR; }
     "return" { return FormulaEngineElementTypes.KEYWORD_RETURN; }
     "seq" { return FormulaEngineElementTypes.KEYWORD_SEQ; }
+    "switch" { return FormulaEngineElementTypes.KEYWORD_SWITCH; }
     "while" { return FormulaEngineElementTypes.KEYWORD_WHILE; }
 
     // Built-in Variables

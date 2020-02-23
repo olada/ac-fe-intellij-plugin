@@ -47,13 +47,17 @@ public class FormulaEngineSyntaxHighlighter extends SyntaxHighlighterBase {
 
         // Keywords
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.KEYWORD_AND, AND_ATTR_KEY);
-        safeMap(ATTRIBUTES, FormulaEngineElementTypes.KEYWORD_RETURN, RETURN_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.KEYWORD_BREAK, BREAK_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.KEYWORD_CASE, CASE_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.KEYWORD_DO, DO_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.KEYWORD_ELSE, ELSE_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.KEYWORD_FOR, FOR_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.KEYWORD_FUNCTION, FUNCTION_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.KEYWORD_IF, IF_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.KEYWORD_OR, OR_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.KEYWORD_RETURN, RETURN_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.KEYWORD_SEQ, SEQ_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.KEYWORD_SWITCH, SWITCH_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.KEYWORD_WHILE, WHILE_ATTR_KEY);
 
         // Strings

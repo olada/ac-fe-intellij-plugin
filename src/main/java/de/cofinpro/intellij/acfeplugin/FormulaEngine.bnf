@@ -39,6 +39,9 @@
             OPERATOR_PLUS = '+'
 
             KEYWORD_AND = 'and'
+            KEYWORD_BREAK = 'break'
+            KEYWORD_CASE = 'case'
+            KEYWORD_DO = 'do'
             KEYWORD_ELSE = 'else'
             KEYWORD_FOR = 'for'
             KEYWORD_FUNCTION = 'function'
@@ -46,6 +49,7 @@
             KEYWORD_OR = 'or'
             KEYWORD_RETURN = 'return'
             KEYWORD_SEQ = 'seq'
+            KEYWORD_SWITCH = 'switch'
             KEYWORD_WHILE = 'while'
 
             TYPE_INTEGER = 'integer'

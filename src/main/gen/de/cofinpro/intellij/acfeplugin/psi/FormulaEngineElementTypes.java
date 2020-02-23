@@ -83,6 +83,9 @@ public interface FormulaEngineElementTypes {
   IElementType DOUBLE_QUOTED_STRING_LITERAL = new FormulaEngineTokenType("double quoted string literal");
   IElementType IDENTIFIER = new FormulaEngineTokenType("IDENTIFIER");
   IElementType KEYWORD_AND = new FormulaEngineTokenType("and");
+  IElementType KEYWORD_BREAK = new FormulaEngineTokenType("break");
+  IElementType KEYWORD_CASE = new FormulaEngineTokenType("case");
+  IElementType KEYWORD_DO = new FormulaEngineTokenType("do");
   IElementType KEYWORD_ELSE = new FormulaEngineTokenType("else");
   IElementType KEYWORD_FOR = new FormulaEngineTokenType("for");
   IElementType KEYWORD_FUNCTION = new FormulaEngineTokenType("function");
@@ -90,6 +93,7 @@ public interface FormulaEngineElementTypes {
   IElementType KEYWORD_OR = new FormulaEngineTokenType("or");
   IElementType KEYWORD_RETURN = new FormulaEngineTokenType("return");
   IElementType KEYWORD_SEQ = new FormulaEngineTokenType("seq");
+  IElementType KEYWORD_SWITCH = new FormulaEngineTokenType("switch");
   IElementType KEYWORD_WHILE = new FormulaEngineTokenType("while");
   IElementType LEFT_BRACKET = new FormulaEngineTokenType("[");
   IElementType LEFT_CURLY_BRACE = new FormulaEngineTokenType("{");
