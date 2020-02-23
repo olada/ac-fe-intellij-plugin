@@ -8,12 +8,15 @@ import com.intellij.psi.PsiElement;
 public interface FormulaEngineDeclaration extends PsiElement {
 
   @Nullable
+  FormulaEngineArrayAccess getArrayAccess();
+
+  @Nullable
   FormulaEngineType getType();
 
   @Nullable
   FormulaEngineVisibility getVisibility();
 
-  @NotNull
+  @Nullable
   PsiElement getIdentifier();
 
 }

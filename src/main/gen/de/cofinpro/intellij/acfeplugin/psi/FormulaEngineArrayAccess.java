@@ -7,4 +7,10 @@ import com.intellij.psi.PsiElement;
 
 public interface FormulaEngineArrayAccess extends PsiElement {
 
+  @NotNull
+  List<FormulaEngineExpression> getExpressionList();
+
+  @NotNull
+  PsiElement getIdentifier();
+
 }

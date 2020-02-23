@@ -41,7 +41,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   };
 
   /* ********************************************************** */
-  // IDENTIFIER (LEFT_BRACKET (NUMBER_INTEGER | IDENTIFIER) RIGHT_BRACKET)+
+  // IDENTIFIER (LEFT_BRACKET Expression RIGHT_BRACKET)+
   public static boolean ArrayAccess(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "ArrayAccess")) return false;
     if (!nextTokenIs(b, IDENTIFIER)) return false;
@@ -53,7 +53,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     return r;
   }
 
-  // (LEFT_BRACKET (NUMBER_INTEGER | IDENTIFIER) RIGHT_BRACKET)+
+  // (LEFT_BRACKET Expression RIGHT_BRACKET)+
   private static boolean ArrayAccess_1(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "ArrayAccess_1")) return false;
     boolean r;
@@ -68,24 +68,15 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     return r;
   }
 
-  // LEFT_BRACKET (NUMBER_INTEGER | IDENTIFIER) RIGHT_BRACKET
+  // LEFT_BRACKET Expression RIGHT_BRACKET
   private static boolean ArrayAccess_1_0(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "ArrayAccess_1_0")) return false;
     boolean r;
     Marker m = enter_section_(b);
     r = consumeToken(b, LEFT_BRACKET);
-    r = r && ArrayAccess_1_0_1(b, l + 1);
+    r = r && Expression(b, l + 1, -1);
     r = r && consumeToken(b, RIGHT_BRACKET);
     exit_section_(b, m, null, r);
-    return r;
-  }
-
-  // NUMBER_INTEGER | IDENTIFIER
-  private static boolean ArrayAccess_1_0_1(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "ArrayAccess_1_0_1")) return false;
-    boolean r;
-    r = consumeToken(b, NUMBER_INTEGER);
-    if (!r) r = consumeToken(b, IDENTIFIER);
     return r;
   }
 
@@ -332,28 +323,39 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // Visibility? Type? IDENTIFIER
+  // ArrayAccess | Visibility? Type? IDENTIFIER
   public static boolean Declaration(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Declaration")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, DECLARATION, "<declaration>");
-    r = Declaration_0(b, l + 1);
-    r = r && Declaration_1(b, l + 1);
-    r = r && consumeToken(b, IDENTIFIER);
+    r = ArrayAccess(b, l + 1);
+    if (!r) r = Declaration_1(b, l + 1);
     exit_section_(b, l, m, r, false, null);
     return r;
   }
 
+  // Visibility? Type? IDENTIFIER
+  private static boolean Declaration_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "Declaration_1")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = Declaration_1_0(b, l + 1);
+    r = r && Declaration_1_1(b, l + 1);
+    r = r && consumeToken(b, IDENTIFIER);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
   // Visibility?
-  private static boolean Declaration_0(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "Declaration_0")) return false;
+  private static boolean Declaration_1_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "Declaration_1_0")) return false;
     Visibility(b, l + 1);
     return true;
   }
 
   // Type?
-  private static boolean Declaration_1(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "Declaration_1")) return false;
+  private static boolean Declaration_1_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "Declaration_1_1")) return false;
     Type(b, l + 1);
     return true;
   }
