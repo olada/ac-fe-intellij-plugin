@@ -14,7 +14,7 @@ public interface FormulaEngineAssignment extends PsiElement {
   FormulaEngineExpression getExpression();
 
   @Nullable
-  FormulaEngineIdentifierPostfix getIdentifierPostfix();
+  FormulaEnginePostfixOperator getPostfixOperator();
 
   @Nullable
   FormulaEngineSeq getSeq();

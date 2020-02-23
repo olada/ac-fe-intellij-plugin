@@ -5,7 +5,7 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface FormulaEngineNegatedExpression extends FormulaEngineExpression {
+public interface FormulaEngineParenthesisExpression extends FormulaEngineExpression {
 
   @Nullable
   FormulaEngineExpression getExpression();

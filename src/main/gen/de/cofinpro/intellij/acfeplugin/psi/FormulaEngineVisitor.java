@@ -23,6 +23,30 @@ public class FormulaEngineVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitCalculationExpression(@NotNull FormulaEngineCalculationExpression o) {
+    visitExpression(o);
+  }
+
+  public void visitCalculationOperator(@NotNull FormulaEngineCalculationOperator o) {
+    visitPsiElement(o);
+  }
+
+  public void visitComparisonExpression(@NotNull FormulaEngineComparisonExpression o) {
+    visitExpression(o);
+  }
+
+  public void visitComparisonOperator(@NotNull FormulaEngineComparisonOperator o) {
+    visitPsiElement(o);
+  }
+
+  public void visitConditionExpression(@NotNull FormulaEngineConditionExpression o) {
+    visitExpression(o);
+  }
+
+  public void visitConditionOperator(@NotNull FormulaEngineConditionOperator o) {
+    visitPsiElement(o);
+  }
+
   public void visitConstant(@NotNull FormulaEngineConstant o) {
     visitPsiElement(o);
   }
@@ -87,12 +111,12 @@ public class FormulaEngineVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitIdentifierPostfix(@NotNull FormulaEngineIdentifierPostfix o) {
+  public void visitIf(@NotNull FormulaEngineIf o) {
     visitPsiElement(o);
   }
 
-  public void visitIf(@NotNull FormulaEngineIf o) {
-    visitPsiElement(o);
+  public void visitLeafExpression(@NotNull FormulaEngineLeafExpression o) {
+    visitExpression(o);
   }
 
   public void visitListContents(@NotNull FormulaEngineListContents o) {
@@ -104,10 +128,14 @@ public class FormulaEngineVisitor extends PsiElementVisitor {
   }
 
   public void visitNegatedExpression(@NotNull FormulaEngineNegatedExpression o) {
-    visitPsiElement(o);
+    visitExpression(o);
   }
 
-  public void visitOperator(@NotNull FormulaEngineOperator o) {
+  public void visitParenthesisExpression(@NotNull FormulaEngineParenthesisExpression o) {
+    visitExpression(o);
+  }
+
+  public void visitPostfixOperator(@NotNull FormulaEnginePostfixOperator o) {
     visitPsiElement(o);
   }
 
@@ -120,10 +148,6 @@ public class FormulaEngineVisitor extends PsiElementVisitor {
   }
 
   public void visitSeqForParenthesis(@NotNull FormulaEngineSeqForParenthesis o) {
-    visitPsiElement(o);
-  }
-
-  public void visitSingleExpression(@NotNull FormulaEngineSingleExpression o) {
     visitPsiElement(o);
   }
 

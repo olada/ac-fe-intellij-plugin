@@ -5,7 +5,7 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface FormulaEngineSingleExpression extends PsiElement {
+public interface FormulaEngineLeafExpression extends FormulaEngineExpression {
 
   @Nullable
   FormulaEngineArrayAccess getArrayAccess();
@@ -17,10 +17,7 @@ public interface FormulaEngineSingleExpression extends PsiElement {
   FormulaEngineFunctionInvocation getFunctionInvocation();
 
   @Nullable
-  FormulaEngineIdentifierPostfix getIdentifierPostfix();
-
-  @Nullable
-  FormulaEngineNegatedExpression getNegatedExpression();
+  FormulaEnginePostfixOperator getPostfixOperator();
 
   @Nullable
   PsiElement getIdentifier();

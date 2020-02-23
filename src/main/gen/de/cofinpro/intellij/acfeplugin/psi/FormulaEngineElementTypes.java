@@ -12,6 +12,12 @@ public interface FormulaEngineElementTypes {
   IElementType ASSIGNMENT = new FormulaEngineElementType("ASSIGNMENT");
   IElementType BUILT_IN_FUNCTION_NAME = new FormulaEngineElementType("BUILT_IN_FUNCTION_NAME");
   IElementType BUILT_IN_VARIABLE_NAME = new FormulaEngineElementType("BUILT_IN_VARIABLE_NAME");
+  IElementType CALCULATION_EXPRESSION = new FormulaEngineElementType("CALCULATION_EXPRESSION");
+  IElementType CALCULATION_OPERATOR = new FormulaEngineElementType("CALCULATION_OPERATOR");
+  IElementType COMPARISON_EXPRESSION = new FormulaEngineElementType("COMPARISON_EXPRESSION");
+  IElementType COMPARISON_OPERATOR = new FormulaEngineElementType("COMPARISON_OPERATOR");
+  IElementType CONDITION_EXPRESSION = new FormulaEngineElementType("CONDITION_EXPRESSION");
+  IElementType CONDITION_OPERATOR = new FormulaEngineElementType("CONDITION_OPERATOR");
   IElementType CONSTANT = new FormulaEngineElementType("CONSTANT");
   IElementType CONTROL_STRUCTURE = new FormulaEngineElementType("CONTROL_STRUCTURE");
   IElementType CONTROL_STRUCTURE_BODY = new FormulaEngineElementType("CONTROL_STRUCTURE_BODY");
@@ -28,16 +34,16 @@ public interface FormulaEngineElementTypes {
   IElementType FUNCTION_INVOCATION = new FormulaEngineElementType("FUNCTION_INVOCATION");
   IElementType FUNCTION_PARAMETER = new FormulaEngineElementType("FUNCTION_PARAMETER");
   IElementType FUNCTION_PARAMETERS = new FormulaEngineElementType("FUNCTION_PARAMETERS");
-  IElementType IDENTIFIER_POSTFIX = new FormulaEngineElementType("IDENTIFIER_POSTFIX");
   IElementType IF = new FormulaEngineElementType("IF");
+  IElementType LEAF_EXPRESSION = new FormulaEngineElementType("LEAF_EXPRESSION");
   IElementType LIST_CONTENTS = new FormulaEngineElementType("LIST_CONTENTS");
   IElementType LIST_LITERAL = new FormulaEngineElementType("LIST_LITERAL");
   IElementType NEGATED_EXPRESSION = new FormulaEngineElementType("NEGATED_EXPRESSION");
-  IElementType OPERATOR = new FormulaEngineElementType("OPERATOR");
+  IElementType PARENTHESIS_EXPRESSION = new FormulaEngineElementType("PARENTHESIS_EXPRESSION");
+  IElementType POSTFIX_OPERATOR = new FormulaEngineElementType("POSTFIX_OPERATOR");
   IElementType RETURN_STATEMENT = new FormulaEngineElementType("RETURN_STATEMENT");
   IElementType SEQ = new FormulaEngineElementType("SEQ");
   IElementType SEQ_FOR_PARENTHESIS = new FormulaEngineElementType("SEQ_FOR_PARENTHESIS");
-  IElementType SINGLE_EXPRESSION = new FormulaEngineElementType("SINGLE_EXPRESSION");
   IElementType SINGLE_STRING_LITERAL = new FormulaEngineElementType("SINGLE_STRING_LITERAL");
   IElementType STATEMENT = new FormulaEngineElementType("STATEMENT");
   IElementType STATEMENT_WITHOUT_EOL = new FormulaEngineElementType("STATEMENT_WITHOUT_EOL");
@@ -91,6 +97,8 @@ public interface FormulaEngineElementTypes {
   IElementType NUMBER_INTEGER = new FormulaEngineTokenType("NUMBER_INTEGER");
   IElementType OPERATOR_AND = new FormulaEngineTokenType("&&");
   IElementType OPERATOR_ASSIGNMENT = new FormulaEngineTokenType("=");
+  IElementType OPERATOR_DECREMENT = new FormulaEngineTokenType("--");
+  IElementType OPERATOR_DIVIDE = new FormulaEngineTokenType("/");
   IElementType OPERATOR_EQUAL = new FormulaEngineTokenType("==");
   IElementType OPERATOR_GREATERTHAN = new FormulaEngineTokenType(">");
   IElementType OPERATOR_GREATERTHANEQUAL = new FormulaEngineTokenType(">=");
@@ -134,6 +142,24 @@ public interface FormulaEngineElementTypes {
       else if (type == BUILT_IN_VARIABLE_NAME) {
         return new FormulaEngineBuiltInVariableNameImpl(node);
       }
+      else if (type == CALCULATION_EXPRESSION) {
+        return new FormulaEngineCalculationExpressionImpl(node);
+      }
+      else if (type == CALCULATION_OPERATOR) {
+        return new FormulaEngineCalculationOperatorImpl(node);
+      }
+      else if (type == COMPARISON_EXPRESSION) {
+        return new FormulaEngineComparisonExpressionImpl(node);
+      }
+      else if (type == COMPARISON_OPERATOR) {
+        return new FormulaEngineComparisonOperatorImpl(node);
+      }
+      else if (type == CONDITION_EXPRESSION) {
+        return new FormulaEngineConditionExpressionImpl(node);
+      }
+      else if (type == CONDITION_OPERATOR) {
+        return new FormulaEngineConditionOperatorImpl(node);
+      }
       else if (type == CONSTANT) {
         return new FormulaEngineConstantImpl(node);
       }
@@ -151,9 +177,6 @@ public interface FormulaEngineElementTypes {
       }
       else if (type == DECLARATION) {
         return new FormulaEngineDeclarationImpl(node);
-      }
-      else if (type == EXPRESSION) {
-        return new FormulaEngineExpressionImpl(node);
       }
       else if (type == FOR) {
         return new FormulaEngineForImpl(node);
@@ -182,11 +205,11 @@ public interface FormulaEngineElementTypes {
       else if (type == FUNCTION_PARAMETERS) {
         return new FormulaEngineFunctionParametersImpl(node);
       }
-      else if (type == IDENTIFIER_POSTFIX) {
-        return new FormulaEngineIdentifierPostfixImpl(node);
-      }
       else if (type == IF) {
         return new FormulaEngineIfImpl(node);
+      }
+      else if (type == LEAF_EXPRESSION) {
+        return new FormulaEngineLeafExpressionImpl(node);
       }
       else if (type == LIST_CONTENTS) {
         return new FormulaEngineListContentsImpl(node);
@@ -197,8 +220,11 @@ public interface FormulaEngineElementTypes {
       else if (type == NEGATED_EXPRESSION) {
         return new FormulaEngineNegatedExpressionImpl(node);
       }
-      else if (type == OPERATOR) {
-        return new FormulaEngineOperatorImpl(node);
+      else if (type == PARENTHESIS_EXPRESSION) {
+        return new FormulaEngineParenthesisExpressionImpl(node);
+      }
+      else if (type == POSTFIX_OPERATOR) {
+        return new FormulaEnginePostfixOperatorImpl(node);
       }
       else if (type == RETURN_STATEMENT) {
         return new FormulaEngineReturnStatementImpl(node);
@@ -208,9 +234,6 @@ public interface FormulaEngineElementTypes {
       }
       else if (type == SEQ_FOR_PARENTHESIS) {
         return new FormulaEngineSeqForParenthesisImpl(node);
-      }
-      else if (type == SINGLE_EXPRESSION) {
-        return new FormulaEngineSingleExpressionImpl(node);
       }
       else if (type == SINGLE_STRING_LITERAL) {
         return new FormulaEngineSingleStringLiteralImpl(node);

@@ -8,17 +8,16 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
 import static de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementTypes.*;
-import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import de.cofinpro.intellij.acfeplugin.psi.*;
 
-public class FormulaEngineSingleExpressionImpl extends ASTWrapperPsiElement implements FormulaEngineSingleExpression {
+public class FormulaEngineLeafExpressionImpl extends FormulaEngineExpressionImpl implements FormulaEngineLeafExpression {
 
-  public FormulaEngineSingleExpressionImpl(@NotNull ASTNode node) {
+  public FormulaEngineLeafExpressionImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull FormulaEngineVisitor visitor) {
-    visitor.visitSingleExpression(this);
+    visitor.visitLeafExpression(this);
   }
 
   public void accept(@NotNull PsiElementVisitor visitor) {
@@ -46,14 +45,8 @@ public class FormulaEngineSingleExpressionImpl extends ASTWrapperPsiElement impl
 
   @Override
   @Nullable
-  public FormulaEngineIdentifierPostfix getIdentifierPostfix() {
-    return findChildByClass(FormulaEngineIdentifierPostfix.class);
-  }
-
-  @Override
-  @Nullable
-  public FormulaEngineNegatedExpression getNegatedExpression() {
-    return findChildByClass(FormulaEngineNegatedExpression.class);
+  public FormulaEnginePostfixOperator getPostfixOperator() {
+    return findChildByClass(FormulaEnginePostfixOperator.class);
   }
 
   @Override

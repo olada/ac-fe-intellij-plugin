@@ -11,14 +11,14 @@ import static de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import de.cofinpro.intellij.acfeplugin.psi.*;
 
-public abstract class FormulaEngineExpressionImpl extends ASTWrapperPsiElement implements FormulaEngineExpression {
+public class FormulaEnginePostfixOperatorImpl extends ASTWrapperPsiElement implements FormulaEnginePostfixOperator {
 
-  public FormulaEngineExpressionImpl(@NotNull ASTNode node) {
+  public FormulaEnginePostfixOperatorImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull FormulaEngineVisitor visitor) {
-    visitor.visitExpression(this);
+    visitor.visitPostfixOperator(this);
   }
 
   public void accept(@NotNull PsiElementVisitor visitor) {

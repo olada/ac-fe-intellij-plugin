@@ -8,10 +8,9 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
 import static de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementTypes.*;
-import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import de.cofinpro.intellij.acfeplugin.psi.*;
 
-public class FormulaEngineNegatedExpressionImpl extends ASTWrapperPsiElement implements FormulaEngineNegatedExpression {
+public class FormulaEngineNegatedExpressionImpl extends FormulaEngineExpressionImpl implements FormulaEngineNegatedExpression {
 
   public FormulaEngineNegatedExpressionImpl(@NotNull ASTNode node) {
     super(node);
@@ -27,9 +26,9 @@ public class FormulaEngineNegatedExpressionImpl extends ASTWrapperPsiElement imp
   }
 
   @Override
-  @NotNull
-  public FormulaEngineSingleExpression getSingleExpression() {
-    return findNotNullChildByClass(FormulaEngineSingleExpression.class);
+  @Nullable
+  public FormulaEngineExpression getExpression() {
+    return findChildByClass(FormulaEngineExpression.class);
   }
 
 }
