@@ -8,6 +8,6 @@ import com.intellij.psi.PsiElement;
 public interface FormulaEngineReturnStatement extends PsiElement {
 
   @NotNull
-  PsiElement getIdentifier();
+  FormulaEngineExpression getExpression();
 
 }

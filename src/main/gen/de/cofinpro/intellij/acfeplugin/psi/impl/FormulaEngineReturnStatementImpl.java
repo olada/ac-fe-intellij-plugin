@@ -28,8 +28,8 @@ public class FormulaEngineReturnStatementImpl extends ASTWrapperPsiElement imple
 
   @Override
   @NotNull
-  public PsiElement getIdentifier() {
-    return findNotNullChildByType(IDENTIFIER);
+  public FormulaEngineExpression getExpression() {
+    return findNotNullChildByClass(FormulaEngineExpression.class);
   }
 
 }
