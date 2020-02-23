@@ -35,6 +35,7 @@ public class FormulaEngineSyntaxHighlighter extends SyntaxHighlighterBase {
     static {
         // Types
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.TYPE_DATE, DATE_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.TYPE_DATETIME, DATETIME_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.TYPE_FLOAT, FLOAT_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.TYPE_INTEGER, INTEGER_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.TYPE_STRING, STRING_ATTR_KEY);

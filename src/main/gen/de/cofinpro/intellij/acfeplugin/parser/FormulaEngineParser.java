@@ -1043,7 +1043,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // TYPE_INTEGER | TYPE_FLOAT | TYPE_DATE | TYPE_STRING | TYPE_LIST | TYPE_DICT | TYPE_ANY
+  // TYPE_INTEGER | TYPE_FLOAT | TYPE_DATE | TYPE_DATETIME | TYPE_STRING | TYPE_LIST | TYPE_DICT | TYPE_ANY
   public static boolean Type(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Type")) return false;
     boolean r;
@@ -1051,6 +1051,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     r = consumeToken(b, TYPE_INTEGER);
     if (!r) r = consumeToken(b, TYPE_FLOAT);
     if (!r) r = consumeToken(b, TYPE_DATE);
+    if (!r) r = consumeToken(b, TYPE_DATETIME);
     if (!r) r = consumeToken(b, TYPE_STRING);
     if (!r) r = consumeToken(b, TYPE_LIST);
     if (!r) r = consumeToken(b, TYPE_DICT);

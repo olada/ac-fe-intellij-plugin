@@ -65,6 +65,8 @@ NUMBER_INTEGER = [0-9]+
     "global" { return FormulaEngineElementTypes.VISIBILITY_GLOBAL; }
 
     // Data Types
+    "datetime" { return FormulaEngineElementTypes.TYPE_DATETIME; }
+    "date" { return FormulaEngineElementTypes.TYPE_DATE; }
     "float" { return FormulaEngineElementTypes.TYPE_FLOAT; }
     "integer" { return FormulaEngineElementTypes.TYPE_INTEGER; }
     "string" { return FormulaEngineElementTypes.TYPE_STRING; }

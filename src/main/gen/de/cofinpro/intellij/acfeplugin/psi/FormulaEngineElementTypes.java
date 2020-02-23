@@ -136,6 +136,7 @@ public interface FormulaEngineElementTypes {
   IElementType SINGLE_QUOTED_STRING_LITERAL = new FormulaEngineTokenType("single quoted string literal");
   IElementType TYPE_ANY = new FormulaEngineTokenType("any");
   IElementType TYPE_DATE = new FormulaEngineTokenType("TYPE_DATE");
+  IElementType TYPE_DATETIME = new FormulaEngineTokenType("TYPE_DATETIME");
   IElementType TYPE_DICT = new FormulaEngineTokenType("dict");
   IElementType TYPE_FLOAT = new FormulaEngineTokenType("TYPE_FLOAT");
   IElementType TYPE_INTEGER = new FormulaEngineTokenType("TYPE_INTEGER");

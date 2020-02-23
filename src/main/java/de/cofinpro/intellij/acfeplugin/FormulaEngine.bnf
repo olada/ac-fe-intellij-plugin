@@ -58,6 +58,7 @@
             TYPE_INTEGER = 'integer'
             TYPE_FLOAT = 'float'
             TYPE_DATE = 'date'
+            TYPE_DATETIME = 'datetime'
             TYPE_STRING = 'string'
             TYPE_LIST = 'list'
             TYPE_DICT = 'dict'
@@ -196,7 +197,7 @@ ArrayAccess ::= IDENTIFIER (LEFT_BRACKET Expression RIGHT_BRACKET)+
 ReturnStatement ::= KEYWORD_RETURN Expression
 
 Visibility ::= VISIBILITY_GLOBAL | VISIBILITY_LOCAL
-Type ::= TYPE_INTEGER | TYPE_FLOAT | TYPE_DATE | TYPE_STRING | TYPE_LIST | TYPE_DICT | TYPE_ANY
+Type ::= TYPE_INTEGER | TYPE_FLOAT | TYPE_DATE | TYPE_DATETIME | TYPE_STRING | TYPE_LIST | TYPE_DICT | TYPE_ANY
 
 Constant ::= BuiltInVariableName | MINUS? NUMBER_INTEGER | StringLiteral | ListLiteral
 BuiltInVariableName ::= BUILT_IN_VAR_NA | BUILT_IN_VAR_TODAY

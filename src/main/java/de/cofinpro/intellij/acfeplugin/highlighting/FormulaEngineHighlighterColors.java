@@ -12,6 +12,7 @@ public class FormulaEngineHighlighterColors {
 
     // Data Types
     public static final TextAttributesKey DATE_ATTR_KEY = createTextAttributesKey("FE_DATE", KEYWORD);
+    public static final TextAttributesKey DATETIME_ATTR_KEY = createTextAttributesKey("FE_DATETIME", KEYWORD);
     public static final TextAttributesKey INTEGER_ATTR_KEY = createTextAttributesKey("FE_INTEGER", KEYWORD);
     public static final TextAttributesKey FLOAT_ATTR_KEY = createTextAttributesKey("FE_FLOAT", KEYWORD);
     public static final TextAttributesKey STRING_ATTR_KEY = createTextAttributesKey("FE_STRING", KEYWORD);
