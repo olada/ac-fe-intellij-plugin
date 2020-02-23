@@ -14,10 +14,10 @@ public interface FormulaEngineElementTypes {
   IElementType BUILT_IN_VARIABLE_NAME = new FormulaEngineElementType("BUILT_IN_VARIABLE_NAME");
   IElementType CALCULATION_EXPRESSION = new FormulaEngineElementType("CALCULATION_EXPRESSION");
   IElementType CALCULATION_OPERATOR = new FormulaEngineElementType("CALCULATION_OPERATOR");
+  IElementType COMBINATION_EXPRESSION = new FormulaEngineElementType("COMBINATION_EXPRESSION");
+  IElementType COMBINATION_OPERATOR = new FormulaEngineElementType("COMBINATION_OPERATOR");
   IElementType COMPARISON_EXPRESSION = new FormulaEngineElementType("COMPARISON_EXPRESSION");
   IElementType COMPARISON_OPERATOR = new FormulaEngineElementType("COMPARISON_OPERATOR");
-  IElementType CONDITION_EXPRESSION = new FormulaEngineElementType("CONDITION_EXPRESSION");
-  IElementType CONDITION_OPERATOR = new FormulaEngineElementType("CONDITION_OPERATOR");
   IElementType CONSTANT = new FormulaEngineElementType("CONSTANT");
   IElementType CONTROL_STRUCTURE = new FormulaEngineElementType("CONTROL_STRUCTURE");
   IElementType CONTROL_STRUCTURE_BODY = new FormulaEngineElementType("CONTROL_STRUCTURE_BODY");
@@ -82,10 +82,12 @@ public interface FormulaEngineElementTypes {
   IElementType DOUBLE_QUOTED_STRING = new FormulaEngineTokenType("DOUBLE_QUOTED_STRING");
   IElementType DOUBLE_QUOTED_STRING_LITERAL = new FormulaEngineTokenType("double quoted string literal");
   IElementType IDENTIFIER = new FormulaEngineTokenType("IDENTIFIER");
+  IElementType KEYWORD_AND = new FormulaEngineTokenType("and");
   IElementType KEYWORD_ELSE = new FormulaEngineTokenType("else");
   IElementType KEYWORD_FOR = new FormulaEngineTokenType("for");
   IElementType KEYWORD_FUNCTION = new FormulaEngineTokenType("function");
   IElementType KEYWORD_IF = new FormulaEngineTokenType("if");
+  IElementType KEYWORD_OR = new FormulaEngineTokenType("or");
   IElementType KEYWORD_RETURN = new FormulaEngineTokenType("return");
   IElementType KEYWORD_SEQ = new FormulaEngineTokenType("seq");
   IElementType KEYWORD_WHILE = new FormulaEngineTokenType("while");
@@ -148,17 +150,17 @@ public interface FormulaEngineElementTypes {
       else if (type == CALCULATION_OPERATOR) {
         return new FormulaEngineCalculationOperatorImpl(node);
       }
+      else if (type == COMBINATION_EXPRESSION) {
+        return new FormulaEngineCombinationExpressionImpl(node);
+      }
+      else if (type == COMBINATION_OPERATOR) {
+        return new FormulaEngineCombinationOperatorImpl(node);
+      }
       else if (type == COMPARISON_EXPRESSION) {
         return new FormulaEngineComparisonExpressionImpl(node);
       }
       else if (type == COMPARISON_OPERATOR) {
         return new FormulaEngineComparisonOperatorImpl(node);
-      }
-      else if (type == CONDITION_EXPRESSION) {
-        return new FormulaEngineConditionExpressionImpl(node);
-      }
-      else if (type == CONDITION_OPERATOR) {
-        return new FormulaEngineConditionOperatorImpl(node);
       }
       else if (type == CONSTANT) {
         return new FormulaEngineConstantImpl(node);

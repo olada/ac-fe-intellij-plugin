@@ -71,10 +71,12 @@ NUMBER_INTEGER = [0-9]+
     "any" { return FormulaEngineElementTypes.TYPE_ANY; }
 
     // Keywords
+    "and" { return FormulaEngineElementTypes.KEYWORD_AND; }
     "else" { return FormulaEngineElementTypes.KEYWORD_ELSE; }
     "for" { return FormulaEngineElementTypes.KEYWORD_FOR; }
     "function" { return FormulaEngineElementTypes.KEYWORD_FUNCTION; }
     "if" { return FormulaEngineElementTypes.KEYWORD_IF; }
+    "or" { return FormulaEngineElementTypes.KEYWORD_OR; }
     "return" { return FormulaEngineElementTypes.KEYWORD_RETURN; }
     "seq" { return FormulaEngineElementTypes.KEYWORD_SEQ; }
     "while" { return FormulaEngineElementTypes.KEYWORD_WHILE; }

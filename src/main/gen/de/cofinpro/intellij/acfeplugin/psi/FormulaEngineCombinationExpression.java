@@ -5,10 +5,10 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface FormulaEngineConditionExpression extends FormulaEngineExpression {
+public interface FormulaEngineCombinationExpression extends FormulaEngineExpression {
 
   @NotNull
-  FormulaEngineConditionOperator getConditionOperator();
+  FormulaEngineCombinationOperator getCombinationOperator();
 
   @NotNull
   List<FormulaEngineExpression> getExpressionList();

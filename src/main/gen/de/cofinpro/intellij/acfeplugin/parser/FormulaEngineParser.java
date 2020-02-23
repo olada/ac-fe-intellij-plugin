@@ -36,7 +36,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   public static final TokenSet[] EXTENDS_SETS_ = new TokenSet[] {
-    create_token_set_(CALCULATION_EXPRESSION, COMPARISON_EXPRESSION, CONDITION_EXPRESSION, EXPRESSION,
+    create_token_set_(CALCULATION_EXPRESSION, COMBINATION_EXPRESSION, COMPARISON_EXPRESSION, EXPRESSION,
       LEAF_EXPRESSION, NEGATED_EXPRESSION, PARENTHESIS_EXPRESSION),
   };
 
@@ -206,6 +206,20 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
+  // OPERATOR_AND | OPERATOR_OR | KEYWORD_AND | KEYWORD_OR
+  public static boolean CombinationOperator(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "CombinationOperator")) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, COMBINATION_OPERATOR, "<combination operator>");
+    r = consumeToken(b, OPERATOR_AND);
+    if (!r) r = consumeToken(b, OPERATOR_OR);
+    if (!r) r = consumeToken(b, KEYWORD_AND);
+    if (!r) r = consumeToken(b, KEYWORD_OR);
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  /* ********************************************************** */
   // OPERATOR_EQUAL | OPERATOR_NOTEQUAL | OPERATOR_GREATERTHANEQUAL | OPERATOR_GREATERTHAN | OPERATOR_LESSTHANEQUAL | OPERATOR_LESSTHAN
   public static boolean ComparisonOperator(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "ComparisonOperator")) return false;
@@ -217,19 +231,6 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     if (!r) r = consumeToken(b, OPERATOR_GREATERTHAN);
     if (!r) r = consumeToken(b, OPERATOR_LESSTHANEQUAL);
     if (!r) r = consumeToken(b, OPERATOR_LESSTHAN);
-    exit_section_(b, l, m, r, false, null);
-    return r;
-  }
-
-  /* ********************************************************** */
-  // OPERATOR_AND | OPERATOR_OR
-  public static boolean ConditionOperator(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "ConditionOperator")) return false;
-    if (!nextTokenIs(b, "<condition operator>", OPERATOR_AND, OPERATOR_OR)) return false;
-    boolean r;
-    Marker m = enter_section_(b, l, _NONE_, CONDITION_OPERATOR, "<condition operator>");
-    r = consumeToken(b, OPERATOR_AND);
-    if (!r) r = consumeToken(b, OPERATOR_OR);
     exit_section_(b, l, m, r, false, null);
     return r;
   }
@@ -921,7 +922,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   // Expression root: Expression
   // Operator priority table:
   // 0: PREFIX(NegatedExpression)
-  // 1: BINARY(ConditionExpression)
+  // 1: BINARY(CombinationExpression)
   // 2: BINARY(ComparisonExpression)
   // 3: BINARY(CalculationExpression)
   // 4: ATOM(LeafExpression)
@@ -945,9 +946,9 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     boolean r = true;
     while (true) {
       Marker m = enter_section_(b, l, _LEFT_, null);
-      if (g < 1 && ConditionOperator(b, l + 1)) {
+      if (g < 1 && CombinationOperator(b, l + 1)) {
         r = Expression(b, l, 1);
-        exit_section_(b, l, m, CONDITION_EXPRESSION, r, true, null);
+        exit_section_(b, l, m, COMBINATION_EXPRESSION, r, true, null);
       }
       else if (g < 2 && ComparisonOperator(b, l + 1)) {
         r = Expression(b, l, 2);

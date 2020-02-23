@@ -31,19 +31,19 @@ public class FormulaEngineVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitCombinationExpression(@NotNull FormulaEngineCombinationExpression o) {
+    visitExpression(o);
+  }
+
+  public void visitCombinationOperator(@NotNull FormulaEngineCombinationOperator o) {
+    visitPsiElement(o);
+  }
+
   public void visitComparisonExpression(@NotNull FormulaEngineComparisonExpression o) {
     visitExpression(o);
   }
 
   public void visitComparisonOperator(@NotNull FormulaEngineComparisonOperator o) {
-    visitPsiElement(o);
-  }
-
-  public void visitConditionExpression(@NotNull FormulaEngineConditionExpression o) {
-    visitExpression(o);
-  }
-
-  public void visitConditionOperator(@NotNull FormulaEngineConditionOperator o) {
     visitPsiElement(o);
   }
 

@@ -24,10 +24,12 @@ public class FormulaEngineHighlighterColors {
     public static final TextAttributesKey GLOBAL_ATTR_KEY = createTextAttributesKey("FE_GLOBAL", KEYWORD);
 
     // Keywords
+    public static final TextAttributesKey AND_ATTR_KEY = createTextAttributesKey("FE_AND", KEYWORD);
     public static final TextAttributesKey RETURN_ATTR_KEY = createTextAttributesKey("FE_RETURN", KEYWORD);
     public static final TextAttributesKey ELSE_ATTR_KEY = createTextAttributesKey("FE_ELSE", KEYWORD);
     public static final TextAttributesKey FOR_ATTR_KEY = createTextAttributesKey("FE_FOR", KEYWORD);
     public static final TextAttributesKey IF_ATTR_KEY = createTextAttributesKey("FE_IF", KEYWORD);
+    public static final TextAttributesKey OR_ATTR_KEY = createTextAttributesKey("FE_OR", KEYWORD);
     public static final TextAttributesKey SEQ_ATTR_KEY = createTextAttributesKey("FE_SEQ", KEYWORD);
     public static final TextAttributesKey WHILE_ATTR_KEY = createTextAttributesKey("FE_WHILE", KEYWORD);
 

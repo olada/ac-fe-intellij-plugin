@@ -10,14 +10,14 @@ import com.intellij.psi.util.PsiTreeUtil;
 import static de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementTypes.*;
 import de.cofinpro.intellij.acfeplugin.psi.*;
 
-public class FormulaEngineConditionExpressionImpl extends FormulaEngineExpressionImpl implements FormulaEngineConditionExpression {
+public class FormulaEngineCombinationExpressionImpl extends FormulaEngineExpressionImpl implements FormulaEngineCombinationExpression {
 
-  public FormulaEngineConditionExpressionImpl(@NotNull ASTNode node) {
+  public FormulaEngineCombinationExpressionImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull FormulaEngineVisitor visitor) {
-    visitor.visitConditionExpression(this);
+    visitor.visitCombinationExpression(this);
   }
 
   public void accept(@NotNull PsiElementVisitor visitor) {
@@ -27,8 +27,8 @@ public class FormulaEngineConditionExpressionImpl extends FormulaEngineExpressio
 
   @Override
   @NotNull
-  public FormulaEngineConditionOperator getConditionOperator() {
-    return findNotNullChildByClass(FormulaEngineConditionOperator.class);
+  public FormulaEngineCombinationOperator getCombinationOperator() {
+    return findNotNullChildByClass(FormulaEngineCombinationOperator.class);
   }
 
   @Override
