@@ -794,7 +794,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // (FunctionInvocation | Assignment | Declaration | ReturnStatement | KEYWORD_BREAK) ';'
+  // (FunctionInvocation | Assignment | Declaration | ReturnStatement | KEYWORD_BREAK) SEMICOLON
   public static boolean Statement(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Statement")) return false;
     boolean r;
@@ -818,7 +818,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // FunctionInvocation | Assignment | Declaration
+  // FunctionInvocation | Assignment | Declaration | BuiltInVariableName
   public static boolean StatementWithoutEol(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "StatementWithoutEol")) return false;
     boolean r;
@@ -826,6 +826,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     r = FunctionInvocation(b, l + 1);
     if (!r) r = Assignment(b, l + 1);
     if (!r) r = Declaration(b, l + 1);
+    if (!r) r = BuiltInVariableName(b, l + 1);
     exit_section_(b, l, m, r, false, null);
     return r;
   }

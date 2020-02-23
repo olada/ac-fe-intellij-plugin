@@ -11,6 +11,9 @@ public interface FormulaEngineStatementWithoutEol extends PsiElement {
   FormulaEngineAssignment getAssignment();
 
   @Nullable
+  FormulaEngineBuiltInVariableName getBuiltInVariableName();
+
+  @Nullable
   FormulaEngineDeclaration getDeclaration();
 
   @Nullable
