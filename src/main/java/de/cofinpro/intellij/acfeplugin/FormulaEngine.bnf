@@ -177,7 +177,7 @@ BuiltInFunctionName ::= BUILT_IN_FUNC_ATTRIBUTE | BUILT_IN_FUNC_STATUS
 FunctionBody ::= FunctionBodyStatement*
 Statement ::= (FunctionInvocation | Assignment | Declaration | ReturnStatement) ';'
 StatementWithoutEol ::= FunctionInvocation | Assignment | Declaration // This is a hack and has a better solution for sure..
-FunctionBodyStatement ::= ControlStructure | ((FunctionInvocation | Assignment | Declaration | ReturnStatement) SEMICOLON)
+FunctionBodyStatement ::= FunctionDefinition | ControlStructure | ((FunctionInvocation | Assignment | Declaration | ReturnStatement) SEMICOLON)
 
 SeqForParenthesis ::= LEFT_PARENTHESIS Assignment SEMICOLON Expression SEMICOLON Assignment RIGHT_PARENTHESIS
 Seq ::= KEYWORD_SEQ SeqForParenthesis StatementWithoutEol

@@ -465,31 +465,32 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // ControlStructure | ((FunctionInvocation | Assignment | Declaration | ReturnStatement) SEMICOLON)
+  // FunctionDefinition | ControlStructure | ((FunctionInvocation | Assignment | Declaration | ReturnStatement) SEMICOLON)
   public static boolean FunctionBodyStatement(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "FunctionBodyStatement")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, FUNCTION_BODY_STATEMENT, "<function body statement>");
-    r = ControlStructure(b, l + 1);
-    if (!r) r = FunctionBodyStatement_1(b, l + 1);
+    r = FunctionDefinition(b, l + 1);
+    if (!r) r = ControlStructure(b, l + 1);
+    if (!r) r = FunctionBodyStatement_2(b, l + 1);
     exit_section_(b, l, m, r, false, null);
     return r;
   }
 
   // (FunctionInvocation | Assignment | Declaration | ReturnStatement) SEMICOLON
-  private static boolean FunctionBodyStatement_1(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "FunctionBodyStatement_1")) return false;
+  private static boolean FunctionBodyStatement_2(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "FunctionBodyStatement_2")) return false;
     boolean r;
     Marker m = enter_section_(b);
-    r = FunctionBodyStatement_1_0(b, l + 1);
+    r = FunctionBodyStatement_2_0(b, l + 1);
     r = r && consumeToken(b, SEMICOLON);
     exit_section_(b, m, null, r);
     return r;
   }
 
   // FunctionInvocation | Assignment | Declaration | ReturnStatement
-  private static boolean FunctionBodyStatement_1_0(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "FunctionBodyStatement_1_0")) return false;
+  private static boolean FunctionBodyStatement_2_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "FunctionBodyStatement_2_0")) return false;
     boolean r;
     r = FunctionInvocation(b, l + 1);
     if (!r) r = Assignment(b, l + 1);
