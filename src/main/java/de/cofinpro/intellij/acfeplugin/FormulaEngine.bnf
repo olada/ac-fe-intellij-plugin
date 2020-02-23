@@ -126,10 +126,10 @@ FunctionArguments ::= FunctionArgument (COMMA FunctionArgument)*
 FunctionArgument ::= Expression
 
 // Control Structures
-ControlStructure ::= (ControlStructureKeyword LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE) | For | If | Switch | DoWhile
-ControlStructureKeyword ::= KEYWORD_FOR | KEYWORD_WHILE
+ControlStructure ::= While | For | DoWhile | If | Switch
 ControlStructureBody ::= (ControlStructure | Statement)*
 
+While ::= KEYWORD_WHILE LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE
 Switch ::= KEYWORD_SWITCH LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE (KEYWORD_CASE Constant COLON (ControlStructureBody (KEYWORD_BREAK SEMICOLON)?))* (KEYWORD_DEFAULT Constant COLON (ControlStructureBody (KEYWORD_BREAK SEMICOLON)?))? RIGHT_CURLY_BRACE
 DoWhile ::= KEYWORD_DO LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE KEYWORD_WHILE LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS SEMICOLON
 
@@ -176,7 +176,7 @@ BuiltInFunctionName ::= BUILT_IN_FUNC_ATTRIBUTE | BUILT_IN_FUNC_STATUS
     | BUILT_IN_FUNC_OUT
     | BUILT_IN_FUNC_REMOVE
 FunctionBody ::= FunctionBodyStatement*
-Statement ::= (FunctionInvocation | Assignment | Declaration | ReturnStatement) ';'
+Statement ::= (FunctionInvocation | Assignment | Declaration | ReturnStatement | KEYWORD_BREAK) ';'
 StatementWithoutEol ::= FunctionInvocation | Assignment | Declaration // This is a hack and has a better solution for sure..
 FunctionBodyStatement ::= FunctionDefinition | ControlStructure | ((FunctionInvocation | Assignment | Declaration | ReturnStatement) SEMICOLON)
 

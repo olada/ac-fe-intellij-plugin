@@ -21,7 +21,6 @@ public interface FormulaEngineElementTypes {
   IElementType CONSTANT = new FormulaEngineElementType("CONSTANT");
   IElementType CONTROL_STRUCTURE = new FormulaEngineElementType("CONTROL_STRUCTURE");
   IElementType CONTROL_STRUCTURE_BODY = new FormulaEngineElementType("CONTROL_STRUCTURE_BODY");
-  IElementType CONTROL_STRUCTURE_KEYWORD = new FormulaEngineElementType("CONTROL_STRUCTURE_KEYWORD");
   IElementType CUSTOM_FUNCTION_NAME = new FormulaEngineElementType("CUSTOM_FUNCTION_NAME");
   IElementType DECLARATION = new FormulaEngineElementType("DECLARATION");
   IElementType DO_WHILE = new FormulaEngineElementType("DO_WHILE");
@@ -55,6 +54,7 @@ public interface FormulaEngineElementTypes {
   IElementType TOP_LEVEL_ITEM = new FormulaEngineElementType("TOP_LEVEL_ITEM");
   IElementType TYPE = new FormulaEngineElementType("TYPE");
   IElementType VISIBILITY = new FormulaEngineElementType("VISIBILITY");
+  IElementType WHILE = new FormulaEngineElementType("WHILE");
 
   IElementType BLOCK_COMMENT = new FormulaEngineTokenType("BLOCK_COMMENT");
   IElementType BUILT_IN_FUNC_ATTRIBUTE = new FormulaEngineTokenType("attribute");
@@ -183,9 +183,6 @@ public interface FormulaEngineElementTypes {
       else if (type == CONTROL_STRUCTURE_BODY) {
         return new FormulaEngineControlStructureBodyImpl(node);
       }
-      else if (type == CONTROL_STRUCTURE_KEYWORD) {
-        return new FormulaEngineControlStructureKeywordImpl(node);
-      }
       else if (type == CUSTOM_FUNCTION_NAME) {
         return new FormulaEngineCustomFunctionNameImpl(node);
       }
@@ -281,6 +278,9 @@ public interface FormulaEngineElementTypes {
       }
       else if (type == VISIBILITY) {
         return new FormulaEngineVisibilityImpl(node);
+      }
+      else if (type == WHILE) {
+        return new FormulaEngineWhileImpl(node);
       }
       throw new AssertionError("Unknown element type: " + type);
     }

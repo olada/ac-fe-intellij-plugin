@@ -28,26 +28,8 @@ public class FormulaEngineControlStructureImpl extends ASTWrapperPsiElement impl
 
   @Override
   @Nullable
-  public FormulaEngineControlStructureBody getControlStructureBody() {
-    return findChildByClass(FormulaEngineControlStructureBody.class);
-  }
-
-  @Override
-  @Nullable
-  public FormulaEngineControlStructureKeyword getControlStructureKeyword() {
-    return findChildByClass(FormulaEngineControlStructureKeyword.class);
-  }
-
-  @Override
-  @Nullable
   public FormulaEngineDoWhile getDoWhile() {
     return findChildByClass(FormulaEngineDoWhile.class);
-  }
-
-  @Override
-  @Nullable
-  public FormulaEngineExpression getExpression() {
-    return findChildByClass(FormulaEngineExpression.class);
   }
 
   @Override
@@ -66,6 +48,12 @@ public class FormulaEngineControlStructureImpl extends ASTWrapperPsiElement impl
   @Nullable
   public FormulaEngineSwitch getSwitch() {
     return findChildByClass(FormulaEngineSwitch.class);
+  }
+
+  @Override
+  @Nullable
+  public FormulaEngineWhile getWhile() {
+    return findChildByClass(FormulaEngineWhile.class);
   }
 
 }

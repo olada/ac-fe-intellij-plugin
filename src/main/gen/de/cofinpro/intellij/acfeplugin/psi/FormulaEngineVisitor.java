@@ -59,10 +59,6 @@ public class FormulaEngineVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitControlStructureKeyword(@NotNull FormulaEngineControlStructureKeyword o) {
-    visitPsiElement(o);
-  }
-
   public void visitCustomFunctionName(@NotNull FormulaEngineCustomFunctionName o) {
     visitPsiElement(o);
   }
@@ -192,6 +188,10 @@ public class FormulaEngineVisitor extends PsiElementVisitor {
   }
 
   public void visitVisibility(@NotNull FormulaEngineVisibility o) {
+    visitPsiElement(o);
+  }
+
+  public void visitWhile(@NotNull FormulaEngineWhile o) {
     visitPsiElement(o);
   }
 

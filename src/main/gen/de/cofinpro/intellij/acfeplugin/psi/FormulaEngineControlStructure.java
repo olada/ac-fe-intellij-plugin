@@ -8,16 +8,7 @@ import com.intellij.psi.PsiElement;
 public interface FormulaEngineControlStructure extends PsiElement {
 
   @Nullable
-  FormulaEngineControlStructureBody getControlStructureBody();
-
-  @Nullable
-  FormulaEngineControlStructureKeyword getControlStructureKeyword();
-
-  @Nullable
   FormulaEngineDoWhile getDoWhile();
-
-  @Nullable
-  FormulaEngineExpression getExpression();
 
   @Nullable
   FormulaEngineFor getFor();
@@ -27,5 +18,8 @@ public interface FormulaEngineControlStructure extends PsiElement {
 
   @Nullable
   FormulaEngineSwitch getSwitch();
+
+  @Nullable
+  FormulaEngineWhile getWhile();
 
 }

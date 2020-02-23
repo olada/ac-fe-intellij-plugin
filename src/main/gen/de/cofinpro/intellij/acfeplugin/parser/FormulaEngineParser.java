@@ -269,32 +269,17 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // (ControlStructureKeyword LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE) | For | If | Switch | DoWhile
+  // While | For | DoWhile | If | Switch
   public static boolean ControlStructure(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "ControlStructure")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, CONTROL_STRUCTURE, "<control structure>");
-    r = ControlStructure_0(b, l + 1);
+    r = While(b, l + 1);
     if (!r) r = For(b, l + 1);
+    if (!r) r = DoWhile(b, l + 1);
     if (!r) r = If(b, l + 1);
     if (!r) r = Switch(b, l + 1);
-    if (!r) r = DoWhile(b, l + 1);
     exit_section_(b, l, m, r, false, null);
-    return r;
-  }
-
-  // ControlStructureKeyword LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE
-  private static boolean ControlStructure_0(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "ControlStructure_0")) return false;
-    boolean r;
-    Marker m = enter_section_(b);
-    r = ControlStructureKeyword(b, l + 1);
-    r = r && consumeToken(b, LEFT_PARENTHESIS);
-    r = r && Expression(b, l + 1, -1);
-    r = r && consumeTokens(b, 0, RIGHT_PARENTHESIS, LEFT_CURLY_BRACE);
-    r = r && ControlStructureBody(b, l + 1);
-    r = r && consumeToken(b, RIGHT_CURLY_BRACE);
-    exit_section_(b, m, null, r);
     return r;
   }
 
@@ -318,19 +303,6 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     boolean r;
     r = ControlStructure(b, l + 1);
     if (!r) r = Statement(b, l + 1);
-    return r;
-  }
-
-  /* ********************************************************** */
-  // KEYWORD_FOR | KEYWORD_WHILE
-  public static boolean ControlStructureKeyword(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "ControlStructureKeyword")) return false;
-    if (!nextTokenIs(b, "<control structure keyword>", KEYWORD_FOR, KEYWORD_WHILE)) return false;
-    boolean r;
-    Marker m = enter_section_(b, l, _NONE_, CONTROL_STRUCTURE_KEYWORD, "<control structure keyword>");
-    r = consumeToken(b, KEYWORD_FOR);
-    if (!r) r = consumeToken(b, KEYWORD_WHILE);
-    exit_section_(b, l, m, r, false, null);
     return r;
   }
 
@@ -809,7 +781,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // (FunctionInvocation | Assignment | Declaration | ReturnStatement) ';'
+  // (FunctionInvocation | Assignment | Declaration | ReturnStatement | KEYWORD_BREAK) ';'
   public static boolean Statement(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Statement")) return false;
     boolean r;
@@ -820,7 +792,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     return r;
   }
 
-  // FunctionInvocation | Assignment | Declaration | ReturnStatement
+  // FunctionInvocation | Assignment | Declaration | ReturnStatement | KEYWORD_BREAK
   private static boolean Statement_0(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Statement_0")) return false;
     boolean r;
@@ -828,6 +800,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     if (!r) r = Assignment(b, l + 1);
     if (!r) r = Declaration(b, l + 1);
     if (!r) r = ReturnStatement(b, l + 1);
+    if (!r) r = consumeToken(b, KEYWORD_BREAK);
     return r;
   }
 
@@ -1080,6 +1053,22 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     r = consumeToken(b, VISIBILITY_GLOBAL);
     if (!r) r = consumeToken(b, VISIBILITY_LOCAL);
     exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // KEYWORD_WHILE LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE
+  public static boolean While(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "While")) return false;
+    if (!nextTokenIs(b, KEYWORD_WHILE)) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeTokens(b, 0, KEYWORD_WHILE, LEFT_PARENTHESIS);
+    r = r && Expression(b, l + 1, -1);
+    r = r && consumeTokens(b, 0, RIGHT_PARENTHESIS, LEFT_CURLY_BRACE);
+    r = r && ControlStructureBody(b, l + 1);
+    r = r && consumeToken(b, RIGHT_CURLY_BRACE);
+    exit_section_(b, m, WHILE, r);
     return r;
   }
 
