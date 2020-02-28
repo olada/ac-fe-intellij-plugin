@@ -148,6 +148,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   //     | BUILT_IN_FUNC_KERNEL
   //     | BUILT_IN_FUNC_LEN
   //     | BUILT_IN_FUNC_LOAD
+  //     | BUILT_IN_FUNC_MAX
   //     | BUILT_IN_FUNC_OUT
   //     | BUILT_IN_FUNC_REMOVE
   public static boolean BuiltInFunctionName(PsiBuilder b, int l) {
@@ -176,6 +177,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_KERNEL);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_LEN);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_LOAD);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_MAX);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_OUT);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_REMOVE);
     exit_section_(b, l, m, r, false, null);
