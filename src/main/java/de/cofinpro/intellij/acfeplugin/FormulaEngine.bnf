@@ -89,6 +89,7 @@
             BUILT_IN_FUNC_KERNEL = 'kernel'
             BUILT_IN_FUNC_LEN = 'len'
             BUILT_IN_FUNC_LOAD = 'load'
+            BUILT_IN_FUNC_MAX = 'max'
             BUILT_IN_FUNC_REMOVE = 'remove'
             BUILT_IN_FUNC_STATUS = 'status'
             BUILT_IN_FUNC_STR = 'str'
