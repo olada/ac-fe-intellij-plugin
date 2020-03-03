@@ -25,7 +25,7 @@
   ** Special variable
   ** String icon:check-circle[]
   ** Task Tag
-  ** Unterstützung von Methodennamen (auch built-in) bei Funktionsargumenten
+  ** Unterstützung von Methodennamen (auch built-in) bei Funktionsargumenten icon:check-circle[]
 * Auto Completion
 * Reference Resolution and jumping to definition
 * Brace Pair Highlighting icon:check-circle[]
