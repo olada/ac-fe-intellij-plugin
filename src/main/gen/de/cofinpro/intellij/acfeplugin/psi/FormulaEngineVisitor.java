@@ -135,6 +135,10 @@ public class FormulaEngineVisitor extends PsiElementVisitor {
     visitExpression(o);
   }
 
+  public void visitNumberLiteral(@NotNull FormulaEngineNumberLiteral o) {
+    visitPsiElement(o);
+  }
+
   public void visitParenthesisExpression(@NotNull FormulaEngineParenthesisExpression o) {
     visitExpression(o);
   }

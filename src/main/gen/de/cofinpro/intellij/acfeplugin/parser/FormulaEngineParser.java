@@ -246,35 +246,17 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // BuiltInVariableName | MINUS? NUMBER_INTEGER | StringLiteral | ListLiteral
+  // BuiltInVariableName | NumberLiteral | StringLiteral | ListLiteral
   public static boolean Constant(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Constant")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, CONSTANT, "<constant>");
     r = BuiltInVariableName(b, l + 1);
-    if (!r) r = Constant_1(b, l + 1);
+    if (!r) r = NumberLiteral(b, l + 1);
     if (!r) r = StringLiteral(b, l + 1);
     if (!r) r = ListLiteral(b, l + 1);
     exit_section_(b, l, m, r, false, null);
     return r;
-  }
-
-  // MINUS? NUMBER_INTEGER
-  private static boolean Constant_1(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "Constant_1")) return false;
-    boolean r;
-    Marker m = enter_section_(b);
-    r = Constant_1_0(b, l + 1);
-    r = r && consumeToken(b, NUMBER_INTEGER);
-    exit_section_(b, m, null, r);
-    return r;
-  }
-
-  // MINUS?
-  private static boolean Constant_1_0(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "Constant_1_0")) return false;
-    consumeToken(b, MINUS);
-    return true;
   }
 
   /* ********************************************************** */
@@ -742,6 +724,34 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   // FunctionName
   static boolean MethodReference(PsiBuilder b, int l) {
     return FunctionName(b, l + 1);
+  }
+
+  /* ********************************************************** */
+  // MINUS? (NUMBER_FLOAT | NUMBER_INTEGER)
+  public static boolean NumberLiteral(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "NumberLiteral")) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, NUMBER_LITERAL, "<number literal>");
+    r = NumberLiteral_0(b, l + 1);
+    r = r && NumberLiteral_1(b, l + 1);
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  // MINUS?
+  private static boolean NumberLiteral_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "NumberLiteral_0")) return false;
+    consumeToken(b, MINUS);
+    return true;
+  }
+
+  // NUMBER_FLOAT | NUMBER_INTEGER
+  private static boolean NumberLiteral_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "NumberLiteral_1")) return false;
+    boolean r;
+    r = consumeToken(b, NUMBER_FLOAT);
+    if (!r) r = consumeToken(b, NUMBER_INTEGER);
+    return r;
   }
 
   /* ********************************************************** */

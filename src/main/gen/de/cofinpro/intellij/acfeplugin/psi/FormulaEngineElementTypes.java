@@ -40,6 +40,7 @@ public interface FormulaEngineElementTypes {
   IElementType LIST_CONTENTS = new FormulaEngineElementType("LIST_CONTENTS");
   IElementType LIST_LITERAL = new FormulaEngineElementType("LIST_LITERAL");
   IElementType NEGATED_EXPRESSION = new FormulaEngineElementType("NEGATED_EXPRESSION");
+  IElementType NUMBER_LITERAL = new FormulaEngineElementType("NUMBER_LITERAL");
   IElementType PARENTHESIS_EXPRESSION = new FormulaEngineElementType("PARENTHESIS_EXPRESSION");
   IElementType POSTFIX_OPERATOR = new FormulaEngineElementType("POSTFIX_OPERATOR");
   IElementType PREFIX_OPERATOR = new FormulaEngineElementType("PREFIX_OPERATOR");
@@ -119,6 +120,7 @@ public interface FormulaEngineElementTypes {
   IElementType LEFT_PARENTHESIS = new FormulaEngineTokenType("(");
   IElementType LINE_COMMENT = new FormulaEngineTokenType("LINE_COMMENT");
   IElementType MINUS = new FormulaEngineTokenType("-");
+  IElementType NUMBER_FLOAT = new FormulaEngineTokenType("NUMBER_FLOAT");
   IElementType NUMBER_INTEGER = new FormulaEngineTokenType("NUMBER_INTEGER");
   IElementType OPERATOR_ADDASSIGNMENT = new FormulaEngineTokenType("+=");
   IElementType OPERATOR_AND = new FormulaEngineTokenType("&&");
@@ -243,6 +245,9 @@ public interface FormulaEngineElementTypes {
       }
       else if (type == NEGATED_EXPRESSION) {
         return new FormulaEngineNegatedExpressionImpl(node);
+      }
+      else if (type == NUMBER_LITERAL) {
+        return new FormulaEngineNumberLiteralImpl(node);
       }
       else if (type == PARENTHESIS_EXPRESSION) {
         return new FormulaEngineParenthesisExpressionImpl(node);

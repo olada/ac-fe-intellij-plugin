@@ -11,14 +11,14 @@ import static de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import de.cofinpro.intellij.acfeplugin.psi.*;
 
-public class FormulaEngineConstantImpl extends ASTWrapperPsiElement implements FormulaEngineConstant {
+public class FormulaEngineNumberLiteralImpl extends ASTWrapperPsiElement implements FormulaEngineNumberLiteral {
 
-  public FormulaEngineConstantImpl(@NotNull ASTNode node) {
+  public FormulaEngineNumberLiteralImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull FormulaEngineVisitor visitor) {
-    visitor.visitConstant(this);
+    visitor.visitNumberLiteral(this);
   }
 
   public void accept(@NotNull PsiElementVisitor visitor) {
@@ -28,26 +28,14 @@ public class FormulaEngineConstantImpl extends ASTWrapperPsiElement implements F
 
   @Override
   @Nullable
-  public FormulaEngineBuiltInVariableName getBuiltInVariableName() {
-    return findChildByClass(FormulaEngineBuiltInVariableName.class);
+  public PsiElement getNumberFloat() {
+    return findChildByType(NUMBER_FLOAT);
   }
 
   @Override
   @Nullable
-  public FormulaEngineListLiteral getListLiteral() {
-    return findChildByClass(FormulaEngineListLiteral.class);
-  }
-
-  @Override
-  @Nullable
-  public FormulaEngineNumberLiteral getNumberLiteral() {
-    return findChildByClass(FormulaEngineNumberLiteral.class);
-  }
-
-  @Override
-  @Nullable
-  public FormulaEngineStringLiteral getStringLiteral() {
-    return findChildByClass(FormulaEngineStringLiteral.class);
+  public PsiElement getNumberInteger() {
+    return findChildByType(NUMBER_INTEGER);
   }
 
 }

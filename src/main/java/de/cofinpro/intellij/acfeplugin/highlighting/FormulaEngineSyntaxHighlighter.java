@@ -107,6 +107,7 @@ public class FormulaEngineSyntaxHighlighter extends SyntaxHighlighterBase {
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_STRING, INBUILT_FUNCTION_STRING_ATTR_KEY);
 
         // General Tokens
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.NUMBER_FLOAT, NUMBER_FLOAT);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.NUMBER_INTEGER, NUMBER_INTEGER);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.SEMICOLON, SEMICOLON);
     }

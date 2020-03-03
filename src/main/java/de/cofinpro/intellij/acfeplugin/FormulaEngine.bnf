@@ -115,6 +115,7 @@
             WHITE_SPACE = 'regexp:\s+'
 
             NUMBER_INTEGER = 'regexp:[0-9]+'
+            NUMBER_FLOAT = 'regexp:[0-9]+\.|[0-9]+\.[0-9]+'
     ]
 
       extends(".*Expression")=Expression
@@ -162,6 +163,7 @@ PostfixOperator ::= OPERATOR_INCREMENT | OPERATOR_DECREMENT
 PrefixOperator ::= OPERATOR_INCREMENT | OPERATOR_DECREMENT
 AssignmentOperator ::= OPERATOR_ADDASSIGNMENT | OPERATOR_SUBTRACTASSIGNMENT | OPERATOR_ASSIGNMENT
 
+NumberLiteral ::= MINUS? (NUMBER_FLOAT | NUMBER_INTEGER)
 StringLiteral ::= SingleStringLiteral (OPERATOR_PLUS Expression)* | SingleStringLiteral (OPERATOR_PLUS SingleStringLiteral)*
 SingleStringLiteral ::= SINGLE_QUOTED_STRING | DOUBLE_QUOTED_STRING
 ListLiteral ::= LEFT_BRACKET ListContents RIGHT_BRACKET
@@ -208,5 +210,5 @@ ReturnStatement ::= KEYWORD_RETURN Expression
 Visibility ::= VISIBILITY_GLOBAL | VISIBILITY_LOCAL
 Type ::= KEYWORD_INTEGER | KEYWORD_FLOAT | KEYWORD_DATE | KEYWORD_DATETIME | KEYWORD_STRING | KEYWORD_LIST | KEYWORD_DICT | KEYWORD_ANY
 
-Constant ::= BuiltInVariableName | MINUS? NUMBER_INTEGER | StringLiteral | ListLiteral
+Constant ::= BuiltInVariableName | NumberLiteral | StringLiteral | ListLiteral
 BuiltInVariableName ::= BUILT_IN_VAR_NA | BUILT_IN_VAR_TODAY

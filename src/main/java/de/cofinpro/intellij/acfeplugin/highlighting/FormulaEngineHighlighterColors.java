@@ -84,6 +84,8 @@ public class FormulaEngineHighlighterColors {
     public static final TextAttributesKey INBUILT_FUNCTION_STRING_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_STRING", DefaultLanguageHighlighterColors.STATIC_FIELD);
 
     // General Tokens
+    public static final TextAttributesKey NUMBER_FLOAT = createTextAttributesKey("FE_NUMBER_FLOAT", DefaultLanguageHighlighterColors.NUMBER);
     public static final TextAttributesKey NUMBER_INTEGER = createTextAttributesKey("FE_NUMBER_INTEGER", DefaultLanguageHighlighterColors.NUMBER);
+
     public static final TextAttributesKey SEMICOLON = createTextAttributesKey("FE_SEMICOLON", DefaultLanguageHighlighterColors.SEMICOLON);
 }
