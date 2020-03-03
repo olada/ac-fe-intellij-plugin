@@ -76,6 +76,7 @@ public interface FormulaEngineElementTypes {
   IElementType BUILT_IN_FUNC_IS_STRING = new FormulaEngineTokenType("is_string");
   IElementType BUILT_IN_FUNC_KERNEL = new FormulaEngineTokenType("kernel");
   IElementType BUILT_IN_FUNC_LEN = new FormulaEngineTokenType("len");
+  IElementType BUILT_IN_FUNC_LIST = new FormulaEngineTokenType("list");
   IElementType BUILT_IN_FUNC_LOAD = new FormulaEngineTokenType("load");
   IElementType BUILT_IN_FUNC_MAP = new FormulaEngineTokenType("map");
   IElementType BUILT_IN_FUNC_MAX = new FormulaEngineTokenType("max");
@@ -106,7 +107,7 @@ public interface FormulaEngineElementTypes {
   IElementType KEYWORD_FUNCTION = new FormulaEngineTokenType("function");
   IElementType KEYWORD_IF = new FormulaEngineTokenType("if");
   IElementType KEYWORD_INTEGER = new FormulaEngineTokenType("integer");
-  IElementType KEYWORD_LIST = new FormulaEngineTokenType("list");
+  IElementType KEYWORD_LIST = new FormulaEngineTokenType("KEYWORD_LIST");
   IElementType KEYWORD_OR = new FormulaEngineTokenType("or");
   IElementType KEYWORD_RETURN = new FormulaEngineTokenType("return");
   IElementType KEYWORD_SEQ = new FormulaEngineTokenType("seq");

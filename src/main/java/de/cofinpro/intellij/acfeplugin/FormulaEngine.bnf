@@ -88,6 +88,7 @@
             BUILT_IN_FUNC_IS_STRING = 'is_string'
             BUILT_IN_FUNC_KERNEL = 'kernel'
             BUILT_IN_FUNC_LEN = 'len'
+            BUILT_IN_FUNC_LIST = 'list'
             BUILT_IN_FUNC_LOAD = 'load'
             BUILT_IN_FUNC_MAP = 'map'
             BUILT_IN_FUNC_MAX = 'max'
@@ -151,7 +152,7 @@ CombinationExpression ::= Expression CombinationOperator Expression
 ComparisonExpression ::= Expression ComparisonOperator Expression
 CalculationExpression ::= Expression CalculationOperator Expression
 ShortIfExpression ::= Expression QUESIONMARK Expression COLON Expression
-LeafExpression ::= FunctionInvocation | Constant  | ArrayAccess | PrefixOperator IDENTIFIER | IDENTIFIER PostfixOperator | MethodReference | IDENTIFIER
+LeafExpression ::= FunctionInvocation | Constant | ArrayAccess | PrefixOperator IDENTIFIER | IDENTIFIER PostfixOperator | MethodReference | IDENTIFIER
 ParenthesisExpression ::= LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS
 
 CombinationOperator ::= OPERATOR_AND | OPERATOR_OR | KEYWORD_AND | KEYWORD_OR
@@ -173,7 +174,7 @@ private FunctionName ::= BuiltInFunctionName | CustomFunctionName
 private MethodReference ::= FunctionName // just for sake of better naming
 
 BuiltInFunctionName ::= BUILT_IN_FUNC_ATTRIBUTE | BUILT_IN_FUNC_STATUS
-    | BUILT_IN_FUNC_DATE | BUILT_IN_FUNC_DATETIME | BUILT_IN_FUNC_STR | BUILT_IN_FUNC_FLOAT | BUILT_IN_FUNC_INTEGER | BUILT_IN_FUNC_STRING
+    | BUILT_IN_FUNC_DATE | BUILT_IN_FUNC_DATETIME | BUILT_IN_FUNC_STR | BUILT_IN_FUNC_FLOAT | BUILT_IN_FUNC_INTEGER | BUILT_IN_FUNC_LIST | BUILT_IN_FUNC_STRING
     | BUILT_IN_FUNC_DAYDIFF | BUILT_IN_FUNC_DAYPLUS
     | BUILT_IN_FUNC_ELT
     | BUILT_IN_FUNC_FIRST
