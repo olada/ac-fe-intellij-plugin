@@ -89,6 +89,7 @@
             BUILT_IN_FUNC_KERNEL = 'kernel'
             BUILT_IN_FUNC_LEN = 'len'
             BUILT_IN_FUNC_LOAD = 'load'
+            BUILT_IN_FUNC_MAP = 'map'
             BUILT_IN_FUNC_MAX = 'max'
             BUILT_IN_FUNC_REMOVE = 'remove'
             BUILT_IN_FUNC_STATUS = 'status'
@@ -181,6 +182,7 @@ BuiltInFunctionName ::= BUILT_IN_FUNC_ATTRIBUTE | BUILT_IN_FUNC_STATUS
     | BUILT_IN_FUNC_KERNEL
     | BUILT_IN_FUNC_LEN
     | BUILT_IN_FUNC_LOAD
+    | BUILT_IN_FUNC_MAP
     | BUILT_IN_FUNC_MAX
     | BUILT_IN_FUNC_OUT
     | BUILT_IN_FUNC_REMOVE

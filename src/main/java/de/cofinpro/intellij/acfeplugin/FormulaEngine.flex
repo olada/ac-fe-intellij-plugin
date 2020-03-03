@@ -68,6 +68,7 @@ NUMBER_INTEGER = [0-9]+
    "kernel" { return FormulaEngineElementTypes.BUILT_IN_FUNC_KERNEL; }
    "len" { return FormulaEngineElementTypes.BUILT_IN_FUNC_LEN; }
    "load" { return FormulaEngineElementTypes.BUILT_IN_FUNC_LOAD; }
+   "map" { return FormulaEngineElementTypes.BUILT_IN_FUNC_MAP; }
    "max" { return FormulaEngineElementTypes.BUILT_IN_FUNC_MAX; }
    "out" { return FormulaEngineElementTypes.BUILT_IN_FUNC_OUT; }
    "remove" { return FormulaEngineElementTypes.BUILT_IN_FUNC_REMOVE; }
@@ -162,6 +163,7 @@ NUMBER_INTEGER = [0-9]+
    "kernel(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_KERNEL; }
    "len(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_LEN; }
    "load(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_LOAD; }
+   "map(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_MAP; }
    "max(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_MAX; }
    "out(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_OUT; }
    "remove(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_REMOVE; }
