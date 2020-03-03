@@ -599,7 +599,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // KEYWORD_IF LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE (KEYWORD_ELSE KEYWORD_IF LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE)* (KEYWORD_ELSE LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE)?
+  // KEYWORD_IF LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS IfOrElseBlock (KEYWORD_ELSE KEYWORD_IF LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS IfOrElseBlock)* (KEYWORD_ELSE IfOrElseBlock)?
   public static boolean If(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "If")) return false;
     if (!nextTokenIs(b, KEYWORD_IF)) return false;
@@ -607,53 +607,74 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     Marker m = enter_section_(b);
     r = consumeTokens(b, 0, KEYWORD_IF, LEFT_PARENTHESIS);
     r = r && Expression(b, l + 1, -1);
-    r = r && consumeTokens(b, 0, RIGHT_PARENTHESIS, LEFT_CURLY_BRACE);
-    r = r && ControlStructureBody(b, l + 1);
-    r = r && consumeToken(b, RIGHT_CURLY_BRACE);
-    r = r && If_7(b, l + 1);
-    r = r && If_8(b, l + 1);
+    r = r && consumeToken(b, RIGHT_PARENTHESIS);
+    r = r && IfOrElseBlock(b, l + 1);
+    r = r && If_5(b, l + 1);
+    r = r && If_6(b, l + 1);
     exit_section_(b, m, IF, r);
     return r;
   }
 
-  // (KEYWORD_ELSE KEYWORD_IF LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE)*
-  private static boolean If_7(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "If_7")) return false;
+  // (KEYWORD_ELSE KEYWORD_IF LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS IfOrElseBlock)*
+  private static boolean If_5(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "If_5")) return false;
     while (true) {
       int c = current_position_(b);
-      if (!If_7_0(b, l + 1)) break;
-      if (!empty_element_parsed_guard_(b, "If_7", c)) break;
+      if (!If_5_0(b, l + 1)) break;
+      if (!empty_element_parsed_guard_(b, "If_5", c)) break;
     }
     return true;
   }
 
-  // KEYWORD_ELSE KEYWORD_IF LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE
-  private static boolean If_7_0(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "If_7_0")) return false;
+  // KEYWORD_ELSE KEYWORD_IF LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS IfOrElseBlock
+  private static boolean If_5_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "If_5_0")) return false;
     boolean r;
     Marker m = enter_section_(b);
     r = consumeTokens(b, 0, KEYWORD_ELSE, KEYWORD_IF, LEFT_PARENTHESIS);
     r = r && Expression(b, l + 1, -1);
-    r = r && consumeTokens(b, 0, RIGHT_PARENTHESIS, LEFT_CURLY_BRACE);
-    r = r && ControlStructureBody(b, l + 1);
-    r = r && consumeToken(b, RIGHT_CURLY_BRACE);
+    r = r && consumeToken(b, RIGHT_PARENTHESIS);
+    r = r && IfOrElseBlock(b, l + 1);
     exit_section_(b, m, null, r);
     return r;
   }
 
-  // (KEYWORD_ELSE LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE)?
-  private static boolean If_8(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "If_8")) return false;
-    If_8_0(b, l + 1);
+  // (KEYWORD_ELSE IfOrElseBlock)?
+  private static boolean If_6(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "If_6")) return false;
+    If_6_0(b, l + 1);
     return true;
   }
 
-  // KEYWORD_ELSE LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE
-  private static boolean If_8_0(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "If_8_0")) return false;
+  // KEYWORD_ELSE IfOrElseBlock
+  private static boolean If_6_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "If_6_0")) return false;
     boolean r;
     Marker m = enter_section_(b);
-    r = consumeTokens(b, 0, KEYWORD_ELSE, LEFT_CURLY_BRACE);
+    r = consumeToken(b, KEYWORD_ELSE);
+    r = r && IfOrElseBlock(b, l + 1);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE | ControlStructureBody
+  static boolean IfOrElseBlock(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "IfOrElseBlock")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = IfOrElseBlock_0(b, l + 1);
+    if (!r) r = ControlStructureBody(b, l + 1);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  // LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE
+  private static boolean IfOrElseBlock_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "IfOrElseBlock_0")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeToken(b, LEFT_CURLY_BRACE);
     r = r && ControlStructureBody(b, l + 1);
     r = r && consumeToken(b, RIGHT_CURLY_BRACE);
     exit_section_(b, m, null, r);
@@ -1190,7 +1211,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     return r;
   }
 
-  // FunctionInvocation | Constant  | ArrayAccess | PrefixOperator IDENTIFIER | IDENTIFIER PostfixOperator | MethodReference | IDENTIFIER
+  // FunctionInvocation | Constant | ArrayAccess | PrefixOperator IDENTIFIER | IDENTIFIER PostfixOperator | MethodReference | IDENTIFIER
   public static boolean LeafExpression(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "LeafExpression")) return false;
     boolean r;
