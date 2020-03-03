@@ -33,8 +33,20 @@ public class FormulaEngineLeafExpressionImpl extends FormulaEngineExpressionImpl
 
   @Override
   @Nullable
+  public FormulaEngineBuiltInFunctionName getBuiltInFunctionName() {
+    return findChildByClass(FormulaEngineBuiltInFunctionName.class);
+  }
+
+  @Override
+  @Nullable
   public FormulaEngineConstant getConstant() {
     return findChildByClass(FormulaEngineConstant.class);
+  }
+
+  @Override
+  @Nullable
+  public FormulaEngineCustomFunctionName getCustomFunctionName() {
+    return findChildByClass(FormulaEngineCustomFunctionName.class);
   }
 
   @Override

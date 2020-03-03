@@ -512,25 +512,16 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // (BuiltInFunctionName | CustomFunctionName) LEFT_PARENTHESIS FunctionArguments? RIGHT_PARENTHESIS
+  // FunctionName LEFT_PARENTHESIS FunctionArguments? RIGHT_PARENTHESIS
   public static boolean FunctionInvocation(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "FunctionInvocation")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, FUNCTION_INVOCATION, "<function invocation>");
-    r = FunctionInvocation_0(b, l + 1);
+    r = FunctionName(b, l + 1);
     r = r && consumeToken(b, LEFT_PARENTHESIS);
     r = r && FunctionInvocation_2(b, l + 1);
     r = r && consumeToken(b, RIGHT_PARENTHESIS);
     exit_section_(b, l, m, r, false, null);
-    return r;
-  }
-
-  // BuiltInFunctionName | CustomFunctionName
-  private static boolean FunctionInvocation_0(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "FunctionInvocation_0")) return false;
-    boolean r;
-    r = BuiltInFunctionName(b, l + 1);
-    if (!r) r = CustomFunctionName(b, l + 1);
     return r;
   }
 
@@ -539,6 +530,16 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     if (!recursion_guard_(b, l, "FunctionInvocation_2")) return false;
     FunctionArguments(b, l + 1);
     return true;
+  }
+
+  /* ********************************************************** */
+  // BuiltInFunctionName | CustomFunctionName
+  static boolean FunctionName(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "FunctionName")) return false;
+    boolean r;
+    r = BuiltInFunctionName(b, l + 1);
+    if (!r) r = CustomFunctionName(b, l + 1);
+    return r;
   }
 
   /* ********************************************************** */
@@ -711,6 +712,12 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     r = r && consumeToken(b, RIGHT_BRACKET);
     exit_section_(b, m, LIST_LITERAL, r);
     return r;
+  }
+
+  /* ********************************************************** */
+  // FunctionName
+  static boolean MethodReference(PsiBuilder b, int l) {
+    return FunctionName(b, l + 1);
   }
 
   /* ********************************************************** */
@@ -1045,19 +1052,19 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // TYPE_INTEGER | TYPE_FLOAT | TYPE_DATE | TYPE_DATETIME | TYPE_STRING | TYPE_LIST | TYPE_DICT | TYPE_ANY
+  // KEYWORD_INTEGER | KEYWORD_FLOAT | KEYWORD_DATE | KEYWORD_DATETIME | KEYWORD_STRING | KEYWORD_LIST | KEYWORD_DICT | KEYWORD_ANY
   public static boolean Type(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Type")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, TYPE, "<type>");
-    r = consumeToken(b, TYPE_INTEGER);
-    if (!r) r = consumeToken(b, TYPE_FLOAT);
-    if (!r) r = consumeToken(b, TYPE_DATE);
-    if (!r) r = consumeToken(b, TYPE_DATETIME);
-    if (!r) r = consumeToken(b, TYPE_STRING);
-    if (!r) r = consumeToken(b, TYPE_LIST);
-    if (!r) r = consumeToken(b, TYPE_DICT);
-    if (!r) r = consumeToken(b, TYPE_ANY);
+    r = consumeToken(b, KEYWORD_INTEGER);
+    if (!r) r = consumeToken(b, KEYWORD_FLOAT);
+    if (!r) r = consumeToken(b, KEYWORD_DATE);
+    if (!r) r = consumeToken(b, KEYWORD_DATETIME);
+    if (!r) r = consumeToken(b, KEYWORD_STRING);
+    if (!r) r = consumeToken(b, KEYWORD_LIST);
+    if (!r) r = consumeToken(b, KEYWORD_DICT);
+    if (!r) r = consumeToken(b, KEYWORD_ANY);
     exit_section_(b, l, m, r, false, null);
     return r;
   }
@@ -1180,7 +1187,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     return r;
   }
 
-  // FunctionInvocation | Constant  | ArrayAccess | PrefixOperator IDENTIFIER | IDENTIFIER PostfixOperator | IDENTIFIER
+  // FunctionInvocation | Constant  | ArrayAccess | PrefixOperator IDENTIFIER | IDENTIFIER PostfixOperator | MethodReference | IDENTIFIER
   public static boolean LeafExpression(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "LeafExpression")) return false;
     boolean r;
@@ -1190,6 +1197,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     if (!r) r = ArrayAccess(b, l + 1);
     if (!r) r = LeafExpression_3(b, l + 1);
     if (!r) r = LeafExpression_4(b, l + 1);
+    if (!r) r = MethodReference(b, l + 1);
     if (!r) r = consumeTokenSmart(b, IDENTIFIER);
     exit_section_(b, l, m, r, false, null);
     return r;

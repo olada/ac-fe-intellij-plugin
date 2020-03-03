@@ -65,14 +65,14 @@ NUMBER_INTEGER = [0-9]+
     "global" { return FormulaEngineElementTypes.VISIBILITY_GLOBAL; }
 
     // Data Types
-    "datetime" { return FormulaEngineElementTypes.TYPE_DATETIME; }
-    "date" { return FormulaEngineElementTypes.TYPE_DATE; }
-    "float" { return FormulaEngineElementTypes.TYPE_FLOAT; }
-    "integer" { return FormulaEngineElementTypes.TYPE_INTEGER; }
-    "string" { return FormulaEngineElementTypes.TYPE_STRING; }
-    "list" { return FormulaEngineElementTypes.TYPE_LIST; }
-    "dict" { return FormulaEngineElementTypes.TYPE_DICT; }
-    "any" { return FormulaEngineElementTypes.TYPE_ANY; }
+    "datetime" { return FormulaEngineElementTypes.KEYWORD_DATETIME; }
+    "date" { return FormulaEngineElementTypes.KEYWORD_DATE; }
+    "float" { return FormulaEngineElementTypes.KEYWORD_FLOAT; }
+    "integer" { return FormulaEngineElementTypes.KEYWORD_INTEGER; }
+    "string" { return FormulaEngineElementTypes.KEYWORD_STRING; }
+    "list" { return FormulaEngineElementTypes.KEYWORD_LIST; }
+    "dict" { return FormulaEngineElementTypes.KEYWORD_DICT; }
+    "any" { return FormulaEngineElementTypes.KEYWORD_ANY; }
 
     // Keywords
     "and" { return FormulaEngineElementTypes.KEYWORD_AND; }

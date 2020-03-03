@@ -11,7 +11,13 @@ public interface FormulaEngineLeafExpression extends FormulaEngineExpression {
   FormulaEngineArrayAccess getArrayAccess();
 
   @Nullable
+  FormulaEngineBuiltInFunctionName getBuiltInFunctionName();
+
+  @Nullable
   FormulaEngineConstant getConstant();
+
+  @Nullable
+  FormulaEngineCustomFunctionName getCustomFunctionName();
 
   @Nullable
   FormulaEngineFunctionInvocation getFunctionInvocation();

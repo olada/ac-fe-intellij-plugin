@@ -909,7 +909,7 @@ public class FormulaEngineLexer implements FlexLexer {
             // fall through
           case 127: break;
           case 41: 
-            { return FormulaEngineElementTypes.TYPE_ANY;
+            { return FormulaEngineElementTypes.KEYWORD_ANY;
             } 
             // fall through
           case 128: break;
@@ -939,7 +939,7 @@ public class FormulaEngineLexer implements FlexLexer {
             // fall through
           case 133: break;
           case 47: 
-            { return FormulaEngineElementTypes.TYPE_LIST;
+            { return FormulaEngineElementTypes.KEYWORD_LIST;
             } 
             // fall through
           case 134: break;
@@ -954,12 +954,12 @@ public class FormulaEngineLexer implements FlexLexer {
             // fall through
           case 136: break;
           case 50: 
-            { return FormulaEngineElementTypes.TYPE_DATE;
+            { return FormulaEngineElementTypes.KEYWORD_DATE;
             } 
             // fall through
           case 137: break;
           case 51: 
-            { return FormulaEngineElementTypes.TYPE_DICT;
+            { return FormulaEngineElementTypes.KEYWORD_DICT;
             } 
             // fall through
           case 138: break;
@@ -1004,7 +1004,7 @@ public class FormulaEngineLexer implements FlexLexer {
             // fall through
           case 146: break;
           case 60: 
-            { return FormulaEngineElementTypes.TYPE_FLOAT;
+            { return FormulaEngineElementTypes.KEYWORD_FLOAT;
             } 
             // fall through
           case 147: break;
@@ -1039,7 +1039,7 @@ public class FormulaEngineLexer implements FlexLexer {
             // fall through
           case 153: break;
           case 67: 
-            { return FormulaEngineElementTypes.TYPE_STRING;
+            { return FormulaEngineElementTypes.KEYWORD_STRING;
             } 
             // fall through
           case 154: break;
@@ -1054,7 +1054,7 @@ public class FormulaEngineLexer implements FlexLexer {
             // fall through
           case 156: break;
           case 70: 
-            { return FormulaEngineElementTypes.TYPE_INTEGER;
+            { return FormulaEngineElementTypes.KEYWORD_INTEGER;
             } 
             // fall through
           case 157: break;
@@ -1079,7 +1079,7 @@ public class FormulaEngineLexer implements FlexLexer {
             // fall through
           case 161: break;
           case 75: 
-            { return FormulaEngineElementTypes.TYPE_DATETIME;
+            { return FormulaEngineElementTypes.KEYWORD_DATETIME;
             } 
             // fall through
           case 162: break;
