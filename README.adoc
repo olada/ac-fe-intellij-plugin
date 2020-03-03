@@ -31,6 +31,7 @@
 * Brace Pair Highlighting icon:check-circle[]
 * Toggle Regions / Region Folding
 * TODO Detection
+* Links Icons zeigen, wo die Methode in einer tsv-Datei referenziert ist (xx(HASH)RULES.tsv)
 
 == Testen des Plugins
 
