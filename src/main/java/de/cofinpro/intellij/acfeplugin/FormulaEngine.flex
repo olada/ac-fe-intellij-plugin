@@ -3,13 +3,15 @@ package de.cofinpro.intellij.acfeplugin;
 import com.intellij.lexer.FlexLexer;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.psi.TokenType;
+import de.cofinpro.intellij.acfeplugin.lex.FormulaEngineLexerStateTracker;
+import de.cofinpro.intellij.acfeplugin.lex.IFormulaEngineLexer;
 import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementType;
 import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementTypes;
 
 %%
 
 %class FormulaEngineLexer
-%implements FlexLexer
+%implements IFormulaEngineLexer
 %public
 %unicode
 %function advance
@@ -30,12 +32,58 @@ BLOCK_COMMENT=[/][*][^*]*[*]+([^/*][^*]*[*]+)*[/]
 
 NUMBER_INTEGER = [0-9]+
 
-%state WAITING_VALUE
+%state IN_PARENTHESIS
+%state IN_FUNCTION_HEADER
+
+%{
+  private final FormulaEngineLexerStateTracker stateTracker = new FormulaEngineLexerStateTracker(this);
+
+  @Override
+  public int getInitialState() {
+      return YYINITIAL;
+  }
+%}
 
 %%
-<YYINITIAL> {
+// Bei Funktionsargumenten ist es möglich, Methodenreferenzen anzugeben. Diese müssen also auch ohne darauffolgendes "(" erkannt werden.
+// Deshalb wurde der State "IN_PARENTHESIS" eingeführt, damit das nur auf "innerhalb von '(' und ')' beschränkt werden kann.
+<IN_PARENTHESIS> {
+    // Built-in Functions (use parenthesis for matching but don't include the parenthesis in the token)
+   "attribute" { return FormulaEngineElementTypes.BUILT_IN_FUNC_ATTRIBUTE; }
+   "date" { return FormulaEngineElementTypes.BUILT_IN_FUNC_DATE; }
+   "datetime" { return FormulaEngineElementTypes.BUILT_IN_FUNC_DATETIME; }
+   "daydiff" { return FormulaEngineElementTypes.BUILT_IN_FUNC_DAYDIFF; }
+   "dayplus" { return FormulaEngineElementTypes.BUILT_IN_FUNC_DAYPLUS; }
+   "elt" { return FormulaEngineElementTypes.BUILT_IN_FUNC_ELT; }
+   "first" { return FormulaEngineElementTypes.BUILT_IN_FUNC_FIRST; }
+   "float" { return FormulaEngineElementTypes.BUILT_IN_FUNC_FLOAT; }
+   "integer" { return FormulaEngineElementTypes.BUILT_IN_FUNC_INTEGER; }
+   "hash_get" { return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_GET; }
+   "hash_iskey" { return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_ISKEY; }
+   "hash_keys" { return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_KEYS; }
+   "hash_put" { return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_PUT; }
+   "is_list" { return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_LIST; }
+   "is_na" { return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_NA; }
+   "is_string" { return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_STRING; }
+   "kernel" { return FormulaEngineElementTypes.BUILT_IN_FUNC_KERNEL; }
+   "len" { return FormulaEngineElementTypes.BUILT_IN_FUNC_LEN; }
+   "load" { return FormulaEngineElementTypes.BUILT_IN_FUNC_LOAD; }
+   "max" { return FormulaEngineElementTypes.BUILT_IN_FUNC_MAX; }
+   "out" { return FormulaEngineElementTypes.BUILT_IN_FUNC_OUT; }
+   "remove" { return FormulaEngineElementTypes.BUILT_IN_FUNC_REMOVE; }
+   "status" { return FormulaEngineElementTypes.BUILT_IN_FUNC_STATUS; }
+   "str" { return FormulaEngineElementTypes.BUILT_IN_FUNC_STR; }
+   "string" { return FormulaEngineElementTypes.BUILT_IN_FUNC_STRING; }
+}
+
+// Der Function Header soll Datentypen nicht als built-in methode markieren (clash von datentypen und built-in Methodennamen, bspw "string" oder "integer" -> klassische cast funktionen)
+<IN_FUNCTION_HEADER> {
     "(" { return FormulaEngineElementTypes.LEFT_PARENTHESIS; }
     ")" { return FormulaEngineElementTypes.RIGHT_PARENTHESIS; }
+    "{" { stateTracker.endState(); return FormulaEngineElementTypes.LEFT_CURLY_BRACE; }
+}
+
+<YYINITIAL, IN_PARENTHESIS, IN_FUNCTION_HEADER> {
     "{" { return FormulaEngineElementTypes.LEFT_CURLY_BRACE; }
     "}" { return FormulaEngineElementTypes.RIGHT_CURLY_BRACE; }
     "[" { return FormulaEngineElementTypes.LEFT_BRACKET; }
@@ -82,7 +130,7 @@ NUMBER_INTEGER = [0-9]+
     "do" { return FormulaEngineElementTypes.KEYWORD_DO; }
     "else" { return FormulaEngineElementTypes.KEYWORD_ELSE; }
     "for" { return FormulaEngineElementTypes.KEYWORD_FOR; }
-    "function" { return FormulaEngineElementTypes.KEYWORD_FUNCTION; }
+    "function" { stateTracker.beginState(IN_FUNCTION_HEADER); return FormulaEngineElementTypes.KEYWORD_FUNCTION; }
     "if" { return FormulaEngineElementTypes.KEYWORD_IF; }
     "or" { return FormulaEngineElementTypes.KEYWORD_OR; }
     "return" { return FormulaEngineElementTypes.KEYWORD_RETURN; }
@@ -137,6 +185,11 @@ NUMBER_INTEGER = [0-9]+
 
    {IDENTIFIER} { return FormulaEngineElementTypes.IDENTIFIER; }
    {WHITE_SPACE} { return TokenType.WHITE_SPACE; }
+}
+
+<YYINITIAL, IN_PARENTHESIS> {
+    "(" { stateTracker.beginState(IN_PARENTHESIS); return FormulaEngineElementTypes.LEFT_PARENTHESIS; }
+    ")" { stateTracker.endState(); return FormulaEngineElementTypes.RIGHT_PARENTHESIS; }
 }
 
 [^] { return TokenType.BAD_CHARACTER; }
