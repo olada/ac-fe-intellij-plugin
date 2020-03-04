@@ -13,7 +13,8 @@
   *** ts
   ** Built-in variables
   *** $FIELDS
-  *** SYMBOL
+  *** $SYMBOL
+  *** $TREEID
   ** Single Line Comment icon:check-circle[]
   ** Block Comment
   ** Cross reference
