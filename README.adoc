@@ -45,6 +45,7 @@
 * Toggle Regions / Region Folding
 * TODO Detection
 * Links Icons zeigen, wo die Methode in einer tsv-Datei referenziert ist (xx(HASH)RULES.tsv)
+* Dead Code Analyse (erfordert Cross-Reference-Checks in xx(HASH)RULES-Dateien)
 
 == Testen des Plugins
 
