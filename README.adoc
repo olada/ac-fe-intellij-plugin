@@ -2,6 +2,10 @@
 
 = ac-fe-intellij-plugin
 
+== Voraussetzung für Entwicklung
+
+* GrammarKit Plugin von JetBrains installieren (damit Code generiert werden kann)
+
 == Backlog
 * Syntax Highlighting for following tokens (partly taken from Eclipse plugin)
   ** Annotation
