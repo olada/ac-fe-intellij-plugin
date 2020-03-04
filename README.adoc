@@ -5,7 +5,14 @@
 == Backlog
 * Syntax Highlighting for following tokens (partly taken from Eclipse plugin)
   ** Annotation
-  ** Built in function
+  ** Built-in functions
+  *** insert
+  *** price_field
+  *** print
+  *** ts
+  ** Built-in variables
+  *** $FIELDS
+  *** SYMBOL
   ** Single Line Comment icon:check-circle[]
   ** Block Comment
   ** Cross reference
