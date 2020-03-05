@@ -141,6 +141,7 @@ public interface FormulaEngineElementTypes {
   IElementType OPERATOR_ASSIGNMENT = new FormulaEngineTokenType("=");
   IElementType OPERATOR_DECREMENT = new FormulaEngineTokenType("--");
   IElementType OPERATOR_DIVIDE = new FormulaEngineTokenType("/");
+  IElementType OPERATOR_DIVIDEASSIGNMENT = new FormulaEngineTokenType("/=");
   IElementType OPERATOR_EQUAL = new FormulaEngineTokenType("==");
   IElementType OPERATOR_GREATERTHAN = new FormulaEngineTokenType(">");
   IElementType OPERATOR_GREATERTHANEQUAL = new FormulaEngineTokenType(">=");
@@ -149,11 +150,14 @@ public interface FormulaEngineElementTypes {
   IElementType OPERATOR_LESSTHANEQUAL = new FormulaEngineTokenType("<=");
   IElementType OPERATOR_MINUS = new FormulaEngineTokenType("-");
   IElementType OPERATOR_MODULO = new FormulaEngineTokenType("%");
+  IElementType OPERATOR_MODULOASSIGNMENT = new FormulaEngineTokenType("%=");
   IElementType OPERATOR_MULTIPLY = new FormulaEngineTokenType("*");
+  IElementType OPERATOR_MULTIPLYASSIGNMENT = new FormulaEngineTokenType("*=");
   IElementType OPERATOR_NEGATION = new FormulaEngineTokenType("!");
   IElementType OPERATOR_NOTEQUAL = new FormulaEngineTokenType("!=");
   IElementType OPERATOR_OR = new FormulaEngineTokenType("||");
   IElementType OPERATOR_PLUS = new FormulaEngineTokenType("+");
+  IElementType OPERATOR_POWER = new FormulaEngineTokenType("^");
   IElementType OPERATOR_SUBTRACTASSIGNMENT = new FormulaEngineTokenType("-=");
   IElementType QUESIONMARK = new FormulaEngineTokenType("?");
   IElementType RIGHT_BRACKET = new FormulaEngineTokenType("]");

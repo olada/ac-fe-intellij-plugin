@@ -112,6 +112,10 @@ NUMBER_FLOAT = [0-9]+\. | [0-9]+\.[0-9]+
     "+" { return FormulaEngineElementTypes.OPERATOR_PLUS; }
     "-" { return FormulaEngineElementTypes.OPERATOR_MINUS; }
     "-=" { return FormulaEngineElementTypes.OPERATOR_SUBTRACTASSIGNMENT; }
+    "*=" { return FormulaEngineElementTypes.OPERATOR_MULTIPLYASSIGNMENT; }
+    "/=" { return FormulaEngineElementTypes.OPERATOR_DIVIDEASSIGNMENT; }
+    "%=" { return FormulaEngineElementTypes.OPERATOR_MODULOASSIGNMENT; }
+    "^" { return FormulaEngineElementTypes.OPERATOR_POWER; }
 
     // Visibility
     "local" { return FormulaEngineElementTypes.VISIBILITY_LOCAL; }

@@ -147,13 +147,16 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // OPERATOR_ADDASSIGNMENT | OPERATOR_SUBTRACTASSIGNMENT | OPERATOR_ASSIGNMENT
+  // OPERATOR_ADDASSIGNMENT | OPERATOR_SUBTRACTASSIGNMENT | OPERATOR_MULTIPLYASSIGNMENT | OPERATOR_DIVIDEASSIGNMENT | OPERATOR_MODULOASSIGNMENT |OPERATOR_ASSIGNMENT
   public static boolean AssignmentOperator(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "AssignmentOperator")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, ASSIGNMENT_OPERATOR, "<assignment operator>");
     r = consumeToken(b, OPERATOR_ADDASSIGNMENT);
     if (!r) r = consumeToken(b, OPERATOR_SUBTRACTASSIGNMENT);
+    if (!r) r = consumeToken(b, OPERATOR_MULTIPLYASSIGNMENT);
+    if (!r) r = consumeToken(b, OPERATOR_DIVIDEASSIGNMENT);
+    if (!r) r = consumeToken(b, OPERATOR_MODULOASSIGNMENT);
     if (!r) r = consumeToken(b, OPERATOR_ASSIGNMENT);
     exit_section_(b, l, m, r, false, null);
     return r;
@@ -252,7 +255,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // OPERATOR_MODULO | OPERATOR_PLUS | OPERATOR_MINUS | OPERATOR_MULTIPLY | OPERATOR_DIVIDE
+  // OPERATOR_MODULO | OPERATOR_PLUS | OPERATOR_MINUS | OPERATOR_MULTIPLY | OPERATOR_DIVIDE | OPERATOR_POWER
   public static boolean CalculationOperator(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "CalculationOperator")) return false;
     boolean r;
@@ -262,6 +265,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     if (!r) r = consumeToken(b, OPERATOR_MINUS);
     if (!r) r = consumeToken(b, OPERATOR_MULTIPLY);
     if (!r) r = consumeToken(b, OPERATOR_DIVIDE);
+    if (!r) r = consumeToken(b, OPERATOR_POWER);
     exit_section_(b, l, m, r, false, null);
     return r;
   }
