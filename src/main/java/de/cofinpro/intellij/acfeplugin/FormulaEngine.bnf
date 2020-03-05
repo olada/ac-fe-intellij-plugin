@@ -221,7 +221,7 @@ Assignment ::= (Declaration AssignmentOperator (Seq | Expression)) | IDENTIFIER 
 
 ArrayAccess ::= (BuiltInVariableName | IDENTIFIER) (LEFT_BRACKET Expression RIGHT_BRACKET)+
 
-ReturnStatement ::= KEYWORD_RETURN Expression
+ReturnStatement ::= KEYWORD_RETURN Expression?
 
 Visibility ::= VISIBILITY_GLOBAL | VISIBILITY_LOCAL
 Type ::= KEYWORD_INTEGER | KEYWORD_FLOAT | KEYWORD_DATE | KEYWORD_DATETIME | KEYWORD_STRING | KEYWORD_LIST | KEYWORD_DICT | KEYWORD_ANY
