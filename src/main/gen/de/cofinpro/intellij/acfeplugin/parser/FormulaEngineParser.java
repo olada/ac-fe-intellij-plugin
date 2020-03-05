@@ -812,13 +812,13 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // NUMBER_FLOAT | NUMBER_INTEGER
+  // NUMBER_SCIENTIFIC | NUMBER_FLOAT | NUMBER_INTEGER
   public static boolean NumberLiteral(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "NumberLiteral")) return false;
-    if (!nextTokenIs(b, "<number literal>", NUMBER_FLOAT, NUMBER_INTEGER)) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, NUMBER_LITERAL, "<number literal>");
-    r = consumeToken(b, NUMBER_FLOAT);
+    r = consumeToken(b, NUMBER_SCIENTIFIC);
+    if (!r) r = consumeToken(b, NUMBER_FLOAT);
     if (!r) r = consumeToken(b, NUMBER_INTEGER);
     exit_section_(b, l, m, r, false, null);
     return r;
@@ -1215,7 +1215,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // KEYWORD_INTEGER | KEYWORD_FLOAT | KEYWORD_DATE | KEYWORD_DATETIME | KEYWORD_STRING | KEYWORD_LIST | KEYWORD_DICT | KEYWORD_ANY
+  // KEYWORD_INTEGER | KEYWORD_FLOAT | KEYWORD_DATE | KEYWORD_DATETIME | KEYWORD_STRING | KEYWORD_LIST | KEYWORD_DICT | KEYWORD_ANY | KEYWORD_BOOLEAN
   public static boolean Type(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Type")) return false;
     boolean r;
@@ -1228,6 +1228,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     if (!r) r = consumeToken(b, KEYWORD_LIST);
     if (!r) r = consumeToken(b, KEYWORD_DICT);
     if (!r) r = consumeToken(b, KEYWORD_ANY);
+    if (!r) r = consumeToken(b, KEYWORD_BOOLEAN);
     exit_section_(b, l, m, r, false, null);
     return r;
   }

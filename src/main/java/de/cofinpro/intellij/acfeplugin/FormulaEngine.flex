@@ -30,9 +30,10 @@ ESCAPE_SEQUENCE=\\[^\r\n]
 COMMENT_SINGLE_LINE = ("//")[^\r\n]*
 BLOCK_COMMENT=[/][*][^*]*[*]+([^/*][^*]*[*]+)*[/]
 
-DIGIT = [0-9]
+NUMBER_SCIENTIFIC = [0-9]+\.[0-9]+(E\d+)
+NUMBER_FLOAT = [0-9]+\.[0-9]+
 NUMBER_INTEGER = [0-9]+
-NUMBER_FLOAT = [0-9]+\. | [0-9]+\.[0-9]+
+DIGIT = [0-9]
 
 %state IN_PARENTHESIS
 %state IN_FUNCTION_HEADER
@@ -122,6 +123,7 @@ NUMBER_FLOAT = [0-9]+\. | [0-9]+\.[0-9]+
     "global" { return FormulaEngineElementTypes.VISIBILITY_GLOBAL; }
 
     // Data Types
+    "boolean" { return FormulaEngineElementTypes.KEYWORD_BOOLEAN; }
     "datetime" { return FormulaEngineElementTypes.KEYWORD_DATETIME; }
     "date" { return FormulaEngineElementTypes.KEYWORD_DATE; }
     "float" { return FormulaEngineElementTypes.KEYWORD_FLOAT; }
@@ -205,6 +207,7 @@ NUMBER_FLOAT = [0-9]+\. | [0-9]+\.[0-9]+
    {QUOTED_LITERAL} { return FormulaEngineElementTypes.SINGLE_QUOTED_STRING; }
    {DOUBLE_QUOTED_LITERAL} { return FormulaEngineElementTypes.DOUBLE_QUOTED_STRING; }
 
+   {NUMBER_SCIENTIFIC} { return FormulaEngineElementTypes.NUMBER_SCIENTIFIC; }
    {NUMBER_FLOAT} { return FormulaEngineElementTypes.NUMBER_FLOAT; }
    {NUMBER_INTEGER} { return FormulaEngineElementTypes.NUMBER_INTEGER; }
 

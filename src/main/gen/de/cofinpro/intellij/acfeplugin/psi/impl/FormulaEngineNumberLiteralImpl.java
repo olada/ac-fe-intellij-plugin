@@ -38,4 +38,10 @@ public class FormulaEngineNumberLiteralImpl extends ASTWrapperPsiElement impleme
     return findChildByType(NUMBER_INTEGER);
   }
 
+  @Override
+  @Nullable
+  public PsiElement getNumberScientific() {
+    return findChildByType(NUMBER_SCIENTIFIC);
+  }
+
 }

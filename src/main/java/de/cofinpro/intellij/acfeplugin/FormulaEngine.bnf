@@ -60,6 +60,7 @@
             KEYWORD_WHILE = 'while'
 
             KEYWORD_ANY = 'any'
+            KEYWORD_BOOLEAN = 'boolean'
             KEYWORD_DATE = 'date'
             KEYWORD_DATETIME = 'datetime'
             KEYWORD_DICT = 'dict'
@@ -131,8 +132,9 @@
             BLOCK_COMMENT='regexp:/\*([^*]|\*+[^*/])*(\*+/)?'
             WHITE_SPACE = 'regexp:\s+'
 
+            NUMBER_SCIENTIFIC = 'regexp:[0-9]+\.[0-9]+(E\d+)'
+            NUMBER_FLOAT = 'regexp:[0-9]+\.[0-9]+'
             NUMBER_INTEGER = 'regexp:[0-9]+'
-            NUMBER_FLOAT = 'regexp:[0-9]+\.|[0-9]+\.[0-9]+'
     ]
 
       extends(".*Expression")=Expression
@@ -182,7 +184,7 @@ PostfixOperator ::= OPERATOR_INCREMENT | OPERATOR_DECREMENT
 PrefixOperator ::= OPERATOR_INCREMENT | OPERATOR_DECREMENT
 AssignmentOperator ::= OPERATOR_ADDASSIGNMENT | OPERATOR_SUBTRACTASSIGNMENT | OPERATOR_MULTIPLYASSIGNMENT | OPERATOR_DIVIDEASSIGNMENT | OPERATOR_MODULOASSIGNMENT |OPERATOR_ASSIGNMENT
 
-NumberLiteral ::= NUMBER_FLOAT | NUMBER_INTEGER
+NumberLiteral ::= NUMBER_SCIENTIFIC | NUMBER_FLOAT | NUMBER_INTEGER
 StringLiteral ::= SingleStringLiteral (OPERATOR_PLUS Expression)* | SingleStringLiteral (OPERATOR_PLUS SingleStringLiteral)*
 SingleStringLiteral ::= SINGLE_QUOTED_STRING | DOUBLE_QUOTED_STRING
 ListLiteral ::= LEFT_BRACKET ListContents RIGHT_BRACKET
@@ -228,7 +230,7 @@ ArrayAccess ::= (BuiltInVariableName | IDENTIFIER) (LEFT_BRACKET Expression RIGH
 ReturnStatement ::= KEYWORD_RETURN Expression?
 
 Visibility ::= VISIBILITY_GLOBAL | VISIBILITY_LOCAL
-Type ::= KEYWORD_INTEGER | KEYWORD_FLOAT | KEYWORD_DATE | KEYWORD_DATETIME | KEYWORD_STRING | KEYWORD_LIST | KEYWORD_DICT | KEYWORD_ANY
+Type ::= KEYWORD_INTEGER | KEYWORD_FLOAT | KEYWORD_DATE | KEYWORD_DATETIME | KEYWORD_STRING | KEYWORD_LIST | KEYWORD_DICT | KEYWORD_ANY | KEYWORD_BOOLEAN
 
 Constant ::= BuiltInVariableName | NumberLiteral | StringLiteral | ListLiteral
 BuiltInVariableName ::= BUILT_IN_VAR_NA

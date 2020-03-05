@@ -110,6 +110,7 @@ public interface FormulaEngineElementTypes {
   IElementType IDENTIFIER = new FormulaEngineTokenType("IDENTIFIER");
   IElementType KEYWORD_AND = new FormulaEngineTokenType("and");
   IElementType KEYWORD_ANY = new FormulaEngineTokenType("any");
+  IElementType KEYWORD_BOOLEAN = new FormulaEngineTokenType("boolean");
   IElementType KEYWORD_BREAK = new FormulaEngineTokenType("break");
   IElementType KEYWORD_CASE = new FormulaEngineTokenType("case");
   IElementType KEYWORD_DATE = new FormulaEngineTokenType("KEYWORD_DATE");
@@ -136,6 +137,7 @@ public interface FormulaEngineElementTypes {
   IElementType LINE_COMMENT = new FormulaEngineTokenType("LINE_COMMENT");
   IElementType NUMBER_FLOAT = new FormulaEngineTokenType("NUMBER_FLOAT");
   IElementType NUMBER_INTEGER = new FormulaEngineTokenType("NUMBER_INTEGER");
+  IElementType NUMBER_SCIENTIFIC = new FormulaEngineTokenType("NUMBER_SCIENTIFIC");
   IElementType OPERATOR_ADDASSIGNMENT = new FormulaEngineTokenType("+=");
   IElementType OPERATOR_AND = new FormulaEngineTokenType("&&");
   IElementType OPERATOR_ASSIGNMENT = new FormulaEngineTokenType("=");
