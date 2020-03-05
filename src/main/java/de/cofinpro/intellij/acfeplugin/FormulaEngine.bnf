@@ -205,7 +205,7 @@ BuiltInFunctionName ::= BUILT_IN_FUNC_ATTRIBUTE
     | BUILT_IN_FUNC_REMOVE
     | BUILT_IN_FUNC_STATUS
 FunctionBody ::= FunctionBodyStatement*
-Statement ::= (FunctionInvocation | Assignment | Declaration | ReturnStatement | KEYWORD_BREAK) SEMICOLON
+Statement ::= ((FunctionInvocation | Assignment | Declaration | ReturnStatement | KEYWORD_BREAK) SEMICOLON) |  FunctionDefinition
 StatementWithoutEol ::= FunctionInvocation | Assignment | Declaration | BuiltInVariableName
 FunctionBodyStatement ::= FunctionDefinition | ControlStructure | ((FunctionInvocation | Assignment | Declaration | ReturnStatement) SEMICOLON)
 

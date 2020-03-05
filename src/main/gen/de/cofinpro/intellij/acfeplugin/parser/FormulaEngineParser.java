@@ -888,20 +888,31 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // (FunctionInvocation | Assignment | Declaration | ReturnStatement | KEYWORD_BREAK) SEMICOLON
+  // ((FunctionInvocation | Assignment | Declaration | ReturnStatement | KEYWORD_BREAK) SEMICOLON) |  FunctionDefinition
   public static boolean Statement(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Statement")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, STATEMENT, "<statement>");
     r = Statement_0(b, l + 1);
-    r = r && consumeToken(b, SEMICOLON);
+    if (!r) r = FunctionDefinition(b, l + 1);
     exit_section_(b, l, m, r, false, null);
     return r;
   }
 
-  // FunctionInvocation | Assignment | Declaration | ReturnStatement | KEYWORD_BREAK
+  // (FunctionInvocation | Assignment | Declaration | ReturnStatement | KEYWORD_BREAK) SEMICOLON
   private static boolean Statement_0(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Statement_0")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = Statement_0_0(b, l + 1);
+    r = r && consumeToken(b, SEMICOLON);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  // FunctionInvocation | Assignment | Declaration | ReturnStatement | KEYWORD_BREAK
+  private static boolean Statement_0_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "Statement_0_0")) return false;
     boolean r;
     r = FunctionInvocation(b, l + 1);
     if (!r) r = Assignment(b, l + 1);
