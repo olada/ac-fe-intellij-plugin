@@ -216,7 +216,7 @@ If ::= KEYWORD_IF LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS IfOrElseBlock (K
 private IfOrElseBlock ::= LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE | ControlStructureBody
 
 Declaration ::= ArrayAccess | Visibility? Type? IDENTIFIER
-Assignment ::= (Declaration AssignmentOperator (Seq | Expression)) | IDENTIFIER PostfixOperator
+Assignment ::= (Declaration AssignmentOperator (Seq | Expression)) | IDENTIFIER PostfixOperator | PrefixOperator IDENTIFIER
 
 ArrayAccess ::= (BuiltInVariableName | IDENTIFIER) (LEFT_BRACKET Expression RIGHT_BRACKET)+
 

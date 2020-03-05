@@ -89,13 +89,14 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // (Declaration AssignmentOperator (Seq | Expression)) | IDENTIFIER PostfixOperator
+  // (Declaration AssignmentOperator (Seq | Expression)) | IDENTIFIER PostfixOperator | PrefixOperator IDENTIFIER
   public static boolean Assignment(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Assignment")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, ASSIGNMENT, "<assignment>");
     r = Assignment_0(b, l + 1);
     if (!r) r = Assignment_1(b, l + 1);
+    if (!r) r = Assignment_2(b, l + 1);
     exit_section_(b, l, m, r, false, null);
     return r;
   }
@@ -128,6 +129,17 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     Marker m = enter_section_(b);
     r = consumeToken(b, IDENTIFIER);
     r = r && PostfixOperator(b, l + 1);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  // PrefixOperator IDENTIFIER
+  private static boolean Assignment_2(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "Assignment_2")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = PrefixOperator(b, l + 1);
+    r = r && consumeToken(b, IDENTIFIER);
     exit_section_(b, m, null, r);
     return r;
   }

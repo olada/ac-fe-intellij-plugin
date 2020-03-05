@@ -20,6 +20,9 @@ public interface FormulaEngineAssignment extends PsiElement {
   FormulaEnginePostfixOperator getPostfixOperator();
 
   @Nullable
+  FormulaEnginePrefixOperator getPrefixOperator();
+
+  @Nullable
   FormulaEngineSeq getSeq();
 
   @Nullable
