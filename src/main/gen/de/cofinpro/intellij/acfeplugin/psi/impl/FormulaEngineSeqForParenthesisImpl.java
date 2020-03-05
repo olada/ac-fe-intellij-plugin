@@ -38,4 +38,10 @@ public class FormulaEngineSeqForParenthesisImpl extends ASTWrapperPsiElement imp
     return findNotNullChildByClass(FormulaEngineExpression.class);
   }
 
+  @Override
+  @NotNull
+  public List<FormulaEngineFunctionInvocation> getFunctionInvocationList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, FormulaEngineFunctionInvocation.class);
+  }
+
 }

@@ -844,7 +844,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // LEFT_PARENTHESIS Assignment SEMICOLON Expression SEMICOLON Assignment RIGHT_PARENTHESIS
+  // LEFT_PARENTHESIS Assignment (COMMA (Assignment | FunctionInvocation))* SEMICOLON Expression SEMICOLON (Assignment | FunctionInvocation) RIGHT_PARENTHESIS
   public static boolean SeqForParenthesis(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "SeqForParenthesis")) return false;
     if (!nextTokenIs(b, LEFT_PARENTHESIS)) return false;
@@ -852,12 +852,53 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     Marker m = enter_section_(b);
     r = consumeToken(b, LEFT_PARENTHESIS);
     r = r && Assignment(b, l + 1);
+    r = r && SeqForParenthesis_2(b, l + 1);
     r = r && consumeToken(b, SEMICOLON);
     r = r && Expression(b, l + 1, -1);
     r = r && consumeToken(b, SEMICOLON);
-    r = r && Assignment(b, l + 1);
+    r = r && SeqForParenthesis_6(b, l + 1);
     r = r && consumeToken(b, RIGHT_PARENTHESIS);
     exit_section_(b, m, SEQ_FOR_PARENTHESIS, r);
+    return r;
+  }
+
+  // (COMMA (Assignment | FunctionInvocation))*
+  private static boolean SeqForParenthesis_2(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "SeqForParenthesis_2")) return false;
+    while (true) {
+      int c = current_position_(b);
+      if (!SeqForParenthesis_2_0(b, l + 1)) break;
+      if (!empty_element_parsed_guard_(b, "SeqForParenthesis_2", c)) break;
+    }
+    return true;
+  }
+
+  // COMMA (Assignment | FunctionInvocation)
+  private static boolean SeqForParenthesis_2_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "SeqForParenthesis_2_0")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeToken(b, COMMA);
+    r = r && SeqForParenthesis_2_0_1(b, l + 1);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  // Assignment | FunctionInvocation
+  private static boolean SeqForParenthesis_2_0_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "SeqForParenthesis_2_0_1")) return false;
+    boolean r;
+    r = Assignment(b, l + 1);
+    if (!r) r = FunctionInvocation(b, l + 1);
+    return r;
+  }
+
+  // Assignment | FunctionInvocation
+  private static boolean SeqForParenthesis_6(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "SeqForParenthesis_6")) return false;
+    boolean r;
+    r = Assignment(b, l + 1);
+    if (!r) r = FunctionInvocation(b, l + 1);
     return r;
   }
 
