@@ -69,6 +69,20 @@
 
             BUILT_IN_VAR_NA = '$NA'
             BUILT_IN_VAR_TODAY = '$TODAY'
+            BUILT_IN_VAR_TIMETODAY = '$TIMETODAY'
+            BUILT_IN_VAR_SYMBOL = '$SYMBOL'
+            BUILT_IN_VAR_NAME = '$NAME'
+            BUILT_IN_VAR_PROCESSED = '$PROCESSED'
+            BUILT_IN_VAR_PASSED = '$PASSED'
+            BUILT_IN_VAR_LISTID = '$LISTID'
+            BUILT_IN_VAR_LISTTP = '$LISTTP'
+            BUILT_IN_VAR_TREEID = '$TREEID'
+            BUILT_IN_VAR_FIELD = '$FIELD'
+            BUILT_IN_VAR_FIELDS = '$FIELDS'
+            BUILT_IN_VAR_DATA = '$DATA'
+            BUILT_IN_VAR_STATUS = '$STATUS'
+            BUILT_IN_VAR_DEPENDENCIES = '$DEPENDENCIES'
+            BUILT_IN_VAR_DEPENDENCIES_TRIGGERS = '$DEPENDENCIES_TRIGGERS'
 
             BUILT_IN_FUNC_ATTRIBUTE = 'attribute'
             BUILT_IN_FUNC_DATE = 'date'
@@ -95,7 +109,7 @@
             BUILT_IN_FUNC_REMOVE = 'remove'
             BUILT_IN_FUNC_STATUS = 'status'
             BUILT_IN_FUNC_STR = 'str'
-            BUILT_IN_FUNC_STRING = 'string'
+            BUILT_IN_FUNC_STRING = 'built in func string'
             BUILT_IN_FUNC_OUT = 'out'
 
             DOUBLE_QUOTED_STRING_LITERAL = 'double quoted string literal'
@@ -153,7 +167,7 @@ CombinationExpression ::= Expression CombinationOperator Expression
 ComparisonExpression ::= Expression ComparisonOperator Expression
 CalculationExpression ::= Expression CalculationOperator Expression
 ShortIfExpression ::= Expression QUESIONMARK Expression COLON Expression
-LeafExpression ::= FunctionInvocation | Constant | ArrayAccess | PrefixOperator IDENTIFIER | IDENTIFIER PostfixOperator | MethodReference | IDENTIFIER
+LeafExpression ::= FunctionInvocation | ArrayAccess | Constant | PrefixOperator IDENTIFIER | IDENTIFIER PostfixOperator | MethodReference | IDENTIFIER
 ParenthesisExpression ::= LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS
 
 CombinationOperator ::= OPERATOR_AND | OPERATOR_OR | KEYWORD_AND | KEYWORD_OR
@@ -204,7 +218,7 @@ private IfOrElseBlock ::= LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRAC
 Declaration ::= ArrayAccess | Visibility? Type? IDENTIFIER
 Assignment ::= (Declaration AssignmentOperator (Seq | Expression)) | IDENTIFIER PostfixOperator
 
-ArrayAccess ::= IDENTIFIER (LEFT_BRACKET Expression RIGHT_BRACKET)+
+ArrayAccess ::= (BuiltInVariableName | IDENTIFIER) (LEFT_BRACKET Expression RIGHT_BRACKET)+
 
 ReturnStatement ::= KEYWORD_RETURN Expression
 
@@ -212,4 +226,19 @@ Visibility ::= VISIBILITY_GLOBAL | VISIBILITY_LOCAL
 Type ::= KEYWORD_INTEGER | KEYWORD_FLOAT | KEYWORD_DATE | KEYWORD_DATETIME | KEYWORD_STRING | KEYWORD_LIST | KEYWORD_DICT | KEYWORD_ANY
 
 Constant ::= BuiltInVariableName | NumberLiteral | StringLiteral | ListLiteral
-BuiltInVariableName ::= BUILT_IN_VAR_NA | BUILT_IN_VAR_TODAY
+BuiltInVariableName ::= BUILT_IN_VAR_NA
+                        | BUILT_IN_VAR_TODAY
+                        | BUILT_IN_VAR_TIMETODAY
+                        | BUILT_IN_VAR_SYMBOL
+                        | BUILT_IN_VAR_NAME
+                        | BUILT_IN_VAR_PROCESSED
+                        | BUILT_IN_VAR_PASSED
+                        | BUILT_IN_VAR_LISTID
+                        | BUILT_IN_VAR_LISTTP
+                        | BUILT_IN_VAR_TREEID
+                        | BUILT_IN_VAR_FIELD
+                        | BUILT_IN_VAR_FIELDS
+                        | BUILT_IN_VAR_DATA
+                        | BUILT_IN_VAR_STATUS
+                        | BUILT_IN_VAR_DEPENDENCIES
+                        | BUILT_IN_VAR_DEPENDENCIES_TRIGGERS

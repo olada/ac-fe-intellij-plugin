@@ -7,10 +7,13 @@ import com.intellij.psi.PsiElement;
 
 public interface FormulaEngineArrayAccess extends PsiElement {
 
+  @Nullable
+  FormulaEngineBuiltInVariableName getBuiltInVariableName();
+
   @NotNull
   List<FormulaEngineExpression> getExpressionList();
 
-  @NotNull
+  @Nullable
   PsiElement getIdentifier();
 
 }

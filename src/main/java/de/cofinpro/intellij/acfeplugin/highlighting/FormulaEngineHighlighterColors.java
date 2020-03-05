@@ -53,6 +53,20 @@ public class FormulaEngineHighlighterColors {
     // Built in Variables
     public static final TextAttributesKey INBUILT_VARIABLE_NA_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_NA", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_VARIABLE_TODAY_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_TODAY", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_VARIABLE_TIMETODAY_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_TIMETODAY", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_VARIABLE_SYMBOL_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_SYMBOL", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_VARIABLE_NAME_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_NAME", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_VARIABLE_PROCESSED_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_PROCESSED", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_VARIABLE_PASSED_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_PASSED", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_VARIABLE_LISTID_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_LISTID", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_VARIABLE_LISTTP_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_LISTTP", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_VARIABLE_TREEID_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_TREEID", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_VARIABLE_FIELD_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_FIELD", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_VARIABLE_FIELDS_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_FIELDS", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_VARIABLE_DATA_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_DATA", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_VARIABLE_STATUS_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_STATUS", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_VARIABLE_DEPENDENCIES_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_DEPENDENCIES", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_VARIABLE_DEPENDENCIES_TRIGGERS_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_DEPENDENCIES_TRIGGERS", DefaultLanguageHighlighterColors.STATIC_FIELD);
 
     // Built in Functions
     public static final TextAttributesKey INBUILT_FUNCTION_ATTRIBUTE_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_ATTRIBUTE", DefaultLanguageHighlighterColors.STATIC_FIELD);

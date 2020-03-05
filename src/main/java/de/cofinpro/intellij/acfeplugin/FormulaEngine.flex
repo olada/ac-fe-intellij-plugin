@@ -144,7 +144,21 @@ NUMBER_FLOAT = [0-9]+\. | [0-9]+\.[0-9]+
 
     // Built-in Variables
     "\$NA" { return FormulaEngineElementTypes.BUILT_IN_VAR_NA; }
-    "\$TODAY" { return FormulaEngineElementTypes.BUILT_IN_VAR_NA; }
+    "\$TODAY" { return FormulaEngineElementTypes.BUILT_IN_VAR_TODAY; }
+    "\$TIMETODAY" { return FormulaEngineElementTypes.BUILT_IN_VAR_TIMETODAY; }
+    "\$SYMBOL" { return FormulaEngineElementTypes.BUILT_IN_VAR_SYMBOL; }
+    "\$NAME" { return FormulaEngineElementTypes.BUILT_IN_VAR_NAME; }
+    "\$PROCESSED" { return FormulaEngineElementTypes.BUILT_IN_VAR_PROCESSED; }
+    "\$PASSED" { return FormulaEngineElementTypes.BUILT_IN_VAR_PASSED; }
+    "\$LISTID" { return FormulaEngineElementTypes.BUILT_IN_VAR_LISTID; }
+    "\$LISTTP" { return FormulaEngineElementTypes.BUILT_IN_VAR_LISTTP; }
+    "\$TREEID" { return FormulaEngineElementTypes.BUILT_IN_VAR_TREEID; }
+    "\$FIELD" { return FormulaEngineElementTypes.BUILT_IN_VAR_FIELD; }
+    "\$FIELDS" { return FormulaEngineElementTypes.BUILT_IN_VAR_FIELDS; }
+    "\$DATA" { return FormulaEngineElementTypes.BUILT_IN_VAR_DATA; }
+    "\$STATUS" { return FormulaEngineElementTypes.BUILT_IN_VAR_STATUS; }
+    "\$DEPENDENCIES" { return FormulaEngineElementTypes.BUILT_IN_VAR_DEPENDENCIES; }
+    "\$DEPENDENCIES_TRIGGERS" { return FormulaEngineElementTypes.BUILT_IN_VAR_DEPENDENCIES_TRIGGERS; }
 
     // Built-in Functions (use parenthesis for matching but don't include the parenthesis in the token)
    "attribute(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_ATTRIBUTE; }

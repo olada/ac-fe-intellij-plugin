@@ -41,15 +41,23 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   };
 
   /* ********************************************************** */
-  // IDENTIFIER (LEFT_BRACKET Expression RIGHT_BRACKET)+
+  // (BuiltInVariableName | IDENTIFIER) (LEFT_BRACKET Expression RIGHT_BRACKET)+
   public static boolean ArrayAccess(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "ArrayAccess")) return false;
-    if (!nextTokenIs(b, IDENTIFIER)) return false;
     boolean r;
-    Marker m = enter_section_(b);
-    r = consumeToken(b, IDENTIFIER);
+    Marker m = enter_section_(b, l, _NONE_, ARRAY_ACCESS, "<array access>");
+    r = ArrayAccess_0(b, l + 1);
     r = r && ArrayAccess_1(b, l + 1);
-    exit_section_(b, m, ARRAY_ACCESS, r);
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  // BuiltInVariableName | IDENTIFIER
+  private static boolean ArrayAccess_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "ArrayAccess_0")) return false;
+    boolean r;
+    r = BuiltInVariableName(b, l + 1);
+    if (!r) r = consumeToken(b, IDENTIFIER);
     return r;
   }
 
@@ -138,7 +146,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // BUILT_IN_FUNC_ATTRIBUTE | BUILT_IN_FUNC_STATUS
+  // BUILT_IN_FUNC_ATTRIBUTE
   //     | BUILT_IN_FUNC_DATE | BUILT_IN_FUNC_DATETIME | BUILT_IN_FUNC_STR | BUILT_IN_FUNC_FLOAT | BUILT_IN_FUNC_INTEGER | BUILT_IN_FUNC_LIST | BUILT_IN_FUNC_STRING
   //     | BUILT_IN_FUNC_DAYDIFF | BUILT_IN_FUNC_DAYPLUS
   //     | BUILT_IN_FUNC_ELT
@@ -152,12 +160,12 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   //     | BUILT_IN_FUNC_MAX
   //     | BUILT_IN_FUNC_OUT
   //     | BUILT_IN_FUNC_REMOVE
+  //     | BUILT_IN_FUNC_STATUS
   public static boolean BuiltInFunctionName(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "BuiltInFunctionName")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, BUILT_IN_FUNCTION_NAME, "<built in function name>");
     r = consumeToken(b, BUILT_IN_FUNC_ATTRIBUTE);
-    if (!r) r = consumeToken(b, BUILT_IN_FUNC_STATUS);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_DATE);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_DATETIME);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_STR);
@@ -183,19 +191,48 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_MAX);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_OUT);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_REMOVE);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_STATUS);
     exit_section_(b, l, m, r, false, null);
     return r;
   }
 
   /* ********************************************************** */
-  // BUILT_IN_VAR_NA | BUILT_IN_VAR_TODAY
+  // BUILT_IN_VAR_NA
+  //                         | BUILT_IN_VAR_TODAY
+  //                         | BUILT_IN_VAR_TIMETODAY
+  //                         | BUILT_IN_VAR_SYMBOL
+  //                         | BUILT_IN_VAR_NAME
+  //                         | BUILT_IN_VAR_PROCESSED
+  //                         | BUILT_IN_VAR_PASSED
+  //                         | BUILT_IN_VAR_LISTID
+  //                         | BUILT_IN_VAR_LISTTP
+  //                         | BUILT_IN_VAR_TREEID
+  //                         | BUILT_IN_VAR_FIELD
+  //                         | BUILT_IN_VAR_FIELDS
+  //                         | BUILT_IN_VAR_DATA
+  //                         | BUILT_IN_VAR_STATUS
+  //                         | BUILT_IN_VAR_DEPENDENCIES
+  //                         | BUILT_IN_VAR_DEPENDENCIES_TRIGGERS
   public static boolean BuiltInVariableName(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "BuiltInVariableName")) return false;
-    if (!nextTokenIs(b, "<built in variable name>", BUILT_IN_VAR_NA, BUILT_IN_VAR_TODAY)) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, BUILT_IN_VARIABLE_NAME, "<built in variable name>");
     r = consumeToken(b, BUILT_IN_VAR_NA);
     if (!r) r = consumeToken(b, BUILT_IN_VAR_TODAY);
+    if (!r) r = consumeToken(b, BUILT_IN_VAR_TIMETODAY);
+    if (!r) r = consumeToken(b, BUILT_IN_VAR_SYMBOL);
+    if (!r) r = consumeToken(b, BUILT_IN_VAR_NAME);
+    if (!r) r = consumeToken(b, BUILT_IN_VAR_PROCESSED);
+    if (!r) r = consumeToken(b, BUILT_IN_VAR_PASSED);
+    if (!r) r = consumeToken(b, BUILT_IN_VAR_LISTID);
+    if (!r) r = consumeToken(b, BUILT_IN_VAR_LISTTP);
+    if (!r) r = consumeToken(b, BUILT_IN_VAR_TREEID);
+    if (!r) r = consumeToken(b, BUILT_IN_VAR_FIELD);
+    if (!r) r = consumeToken(b, BUILT_IN_VAR_FIELDS);
+    if (!r) r = consumeToken(b, BUILT_IN_VAR_DATA);
+    if (!r) r = consumeToken(b, BUILT_IN_VAR_STATUS);
+    if (!r) r = consumeToken(b, BUILT_IN_VAR_DEPENDENCIES);
+    if (!r) r = consumeToken(b, BUILT_IN_VAR_DEPENDENCIES_TRIGGERS);
     exit_section_(b, l, m, r, false, null);
     return r;
   }
@@ -1221,14 +1258,14 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     return r;
   }
 
-  // FunctionInvocation | Constant | ArrayAccess | PrefixOperator IDENTIFIER | IDENTIFIER PostfixOperator | MethodReference | IDENTIFIER
+  // FunctionInvocation | ArrayAccess | Constant | PrefixOperator IDENTIFIER | IDENTIFIER PostfixOperator | MethodReference | IDENTIFIER
   public static boolean LeafExpression(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "LeafExpression")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, LEAF_EXPRESSION, "<leaf expression>");
     r = FunctionInvocation(b, l + 1);
-    if (!r) r = Constant(b, l + 1);
     if (!r) r = ArrayAccess(b, l + 1);
+    if (!r) r = Constant(b, l + 1);
     if (!r) r = LeafExpression_3(b, l + 1);
     if (!r) r = LeafExpression_4(b, l + 1);
     if (!r) r = MethodReference(b, l + 1);
