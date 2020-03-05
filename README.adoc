@@ -58,3 +58,4 @@ Task _runIde_ des intellij-Gradle-Plugins ausführen.
 * https://medium.com/@shan1024/custom-language-plugin-development-for-intellij-idea-part-03-2bfcc7f1517
 * https://medium.com/@shan1024/custom-language-plugin-development-for-intellij-idea-part-04-df2f3ce88b30
 * https://github.com/Shan1024/Simple-Intellij-Plugin/blob/master/src/main/java/org/shan/grammar/Simple.flex
+* https://github.com/JetBrains/Grammar-Kit/blob/master/TUTORIAL.md
