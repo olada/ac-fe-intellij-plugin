@@ -415,18 +415,48 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // KEYWORD_FOR SeqForParenthesis LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE
+  // KEYWORD_FOR SeqForParenthesis (ControlStructure | Statement) | (LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE)
   public static boolean For(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "For")) return false;
-    if (!nextTokenIs(b, KEYWORD_FOR)) return false;
+    if (!nextTokenIs(b, "<for>", KEYWORD_FOR, LEFT_CURLY_BRACE)) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, FOR, "<for>");
+    r = For_0(b, l + 1);
+    if (!r) r = For_1(b, l + 1);
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  // KEYWORD_FOR SeqForParenthesis (ControlStructure | Statement)
+  private static boolean For_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "For_0")) return false;
     boolean r;
     Marker m = enter_section_(b);
     r = consumeToken(b, KEYWORD_FOR);
     r = r && SeqForParenthesis(b, l + 1);
-    r = r && consumeToken(b, LEFT_CURLY_BRACE);
+    r = r && For_0_2(b, l + 1);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  // ControlStructure | Statement
+  private static boolean For_0_2(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "For_0_2")) return false;
+    boolean r;
+    r = ControlStructure(b, l + 1);
+    if (!r) r = Statement(b, l + 1);
+    return r;
+  }
+
+  // LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE
+  private static boolean For_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "For_1")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeToken(b, LEFT_CURLY_BRACE);
     r = r && ControlStructureBody(b, l + 1);
     r = r && consumeToken(b, RIGHT_CURLY_BRACE);
-    exit_section_(b, m, FOR, r);
+    exit_section_(b, m, null, r);
     return r;
   }
 
