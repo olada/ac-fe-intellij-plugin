@@ -155,12 +155,12 @@ DoWhile ::= KEYWORD_DO LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE K
 
 // Expressions
 Expression ::= NegatedExpression
+    | ParenthesisExpression
     | CombinationExpression
     | ComparisonExpression
     | CalculationExpression
     | ShortIfExpression
     | LeafExpression
-    | ParenthesisExpression
     | UnaryExpression
 NegatedExpression ::= OPERATOR_NEGATION Expression
 CombinationExpression ::= Expression CombinationOperator Expression

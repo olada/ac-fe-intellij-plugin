@@ -1195,12 +1195,12 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   // Expression root: Expression
   // Operator priority table:
   // 0: PREFIX(NegatedExpression)
-  // 1: BINARY(CombinationExpression)
-  // 2: BINARY(ComparisonExpression)
-  // 3: BINARY(CalculationExpression)
-  // 4: BINARY(ShortIfExpression)
-  // 5: ATOM(LeafExpression)
-  // 6: PREFIX(ParenthesisExpression)
+  // 1: PREFIX(ParenthesisExpression)
+  // 2: BINARY(CombinationExpression)
+  // 3: BINARY(ComparisonExpression)
+  // 4: BINARY(CalculationExpression)
+  // 5: BINARY(ShortIfExpression)
+  // 6: ATOM(LeafExpression)
   // 7: ATOM(UnaryExpression)
   public static boolean Expression(PsiBuilder b, int l, int g) {
     if (!recursion_guard_(b, l, "Expression")) return false;
@@ -1208,8 +1208,8 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     boolean r, p;
     Marker m = enter_section_(b, l, _NONE_, "<expression>");
     r = NegatedExpression(b, l + 1);
-    if (!r) r = LeafExpression(b, l + 1);
     if (!r) r = ParenthesisExpression(b, l + 1);
+    if (!r) r = LeafExpression(b, l + 1);
     if (!r) r = UnaryExpression(b, l + 1);
     p = r;
     r = r && Expression_0(b, l + 1, g);
@@ -1222,20 +1222,20 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     boolean r = true;
     while (true) {
       Marker m = enter_section_(b, l, _LEFT_, null);
-      if (g < 1 && CombinationOperator(b, l + 1)) {
-        r = Expression(b, l, 1);
+      if (g < 2 && CombinationOperator(b, l + 1)) {
+        r = Expression(b, l, 2);
         exit_section_(b, l, m, COMBINATION_EXPRESSION, r, true, null);
       }
-      else if (g < 2 && ComparisonOperator(b, l + 1)) {
-        r = Expression(b, l, 2);
+      else if (g < 3 && ComparisonOperator(b, l + 1)) {
+        r = Expression(b, l, 3);
         exit_section_(b, l, m, COMPARISON_EXPRESSION, r, true, null);
       }
-      else if (g < 3 && CalculationOperator(b, l + 1)) {
-        r = Expression(b, l, 3);
+      else if (g < 4 && CalculationOperator(b, l + 1)) {
+        r = Expression(b, l, 4);
         exit_section_(b, l, m, CALCULATION_EXPRESSION, r, true, null);
       }
-      else if (g < 4 && consumeTokenSmart(b, QUESIONMARK)) {
-        r = report_error_(b, Expression(b, l, 4));
+      else if (g < 5 && consumeTokenSmart(b, QUESIONMARK)) {
+        r = report_error_(b, Expression(b, l, 5));
         r = ShortIfExpression_1(b, l + 1) && r;
         exit_section_(b, l, m, SHORT_IF_EXPRESSION, r, true, null);
       }
@@ -1256,6 +1256,19 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     p = r;
     r = p && Expression(b, l, 0);
     exit_section_(b, l, m, NEGATED_EXPRESSION, r, p, null);
+    return r || p;
+  }
+
+  public static boolean ParenthesisExpression(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "ParenthesisExpression")) return false;
+    if (!nextTokenIsSmart(b, LEFT_PARENTHESIS)) return false;
+    boolean r, p;
+    Marker m = enter_section_(b, l, _NONE_, null);
+    r = consumeTokenSmart(b, LEFT_PARENTHESIS);
+    p = r;
+    r = p && Expression(b, l, 1);
+    r = p && report_error_(b, consumeToken(b, RIGHT_PARENTHESIS)) && r;
+    exit_section_(b, l, m, PARENTHESIS_EXPRESSION, r, p, null);
     return r || p;
   }
 
@@ -1282,19 +1295,6 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     if (!r) r = consumeTokenSmart(b, IDENTIFIER);
     exit_section_(b, l, m, r, false, null);
     return r;
-  }
-
-  public static boolean ParenthesisExpression(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "ParenthesisExpression")) return false;
-    if (!nextTokenIsSmart(b, LEFT_PARENTHESIS)) return false;
-    boolean r, p;
-    Marker m = enter_section_(b, l, _NONE_, null);
-    r = consumeTokenSmart(b, LEFT_PARENTHESIS);
-    p = r;
-    r = p && Expression(b, l, 6);
-    r = p && report_error_(b, consumeToken(b, RIGHT_PARENTHESIS)) && r;
-    exit_section_(b, l, m, PARENTHESIS_EXPRESSION, r, p, null);
-    return r || p;
   }
 
   // PrefixOperator IDENTIFIER | IDENTIFIER PostfixOperator | OPERATOR_MINUS Expression | OPERATOR_PLUS Expression
