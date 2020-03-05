@@ -55,6 +55,7 @@ public interface FormulaEngineElementTypes {
   IElementType SWITCH = new FormulaEngineElementType("SWITCH");
   IElementType TOP_LEVEL_ITEM = new FormulaEngineElementType("TOP_LEVEL_ITEM");
   IElementType TYPE = new FormulaEngineElementType("TYPE");
+  IElementType UNARY_EXPRESSION = new FormulaEngineElementType("UNARY_EXPRESSION");
   IElementType VISIBILITY = new FormulaEngineElementType("VISIBILITY");
   IElementType WHILE = new FormulaEngineElementType("WHILE");
 
@@ -133,7 +134,6 @@ public interface FormulaEngineElementTypes {
   IElementType LEFT_CURLY_BRACE = new FormulaEngineTokenType("{");
   IElementType LEFT_PARENTHESIS = new FormulaEngineTokenType("(");
   IElementType LINE_COMMENT = new FormulaEngineTokenType("LINE_COMMENT");
-  IElementType MINUS = new FormulaEngineTokenType("-");
   IElementType NUMBER_FLOAT = new FormulaEngineTokenType("NUMBER_FLOAT");
   IElementType NUMBER_INTEGER = new FormulaEngineTokenType("NUMBER_INTEGER");
   IElementType OPERATOR_ADDASSIGNMENT = new FormulaEngineTokenType("+=");
@@ -147,6 +147,7 @@ public interface FormulaEngineElementTypes {
   IElementType OPERATOR_INCREMENT = new FormulaEngineTokenType("++");
   IElementType OPERATOR_LESSTHAN = new FormulaEngineTokenType("<");
   IElementType OPERATOR_LESSTHANEQUAL = new FormulaEngineTokenType("<=");
+  IElementType OPERATOR_MINUS = new FormulaEngineTokenType("-");
   IElementType OPERATOR_MODULO = new FormulaEngineTokenType("%");
   IElementType OPERATOR_MULTIPLY = new FormulaEngineTokenType("*");
   IElementType OPERATOR_NEGATION = new FormulaEngineTokenType("!");
@@ -304,6 +305,9 @@ public interface FormulaEngineElementTypes {
       }
       else if (type == TYPE) {
         return new FormulaEngineTypeImpl(node);
+      }
+      else if (type == UNARY_EXPRESSION) {
+        return new FormulaEngineUnaryExpressionImpl(node);
       }
       else if (type == VISIBILITY) {
         return new FormulaEngineVisibilityImpl(node);

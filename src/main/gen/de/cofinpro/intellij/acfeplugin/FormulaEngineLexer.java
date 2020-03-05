@@ -1031,7 +1031,7 @@ public class FormulaEngineLexer implements IFormulaEngineLexer {
             // fall through
           case 150: break;
           case 16: 
-            { return FormulaEngineElementTypes.MINUS;
+            { return FormulaEngineElementTypes.OPERATOR_MINUS;
             } 
             // fall through
           case 151: break;

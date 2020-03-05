@@ -110,6 +110,7 @@ NUMBER_FLOAT = [0-9]+\. | [0-9]+\.[0-9]+
     "*" { return FormulaEngineElementTypes.OPERATOR_MULTIPLY; }
     "+=" { return FormulaEngineElementTypes.OPERATOR_ADDASSIGNMENT; }
     "+" { return FormulaEngineElementTypes.OPERATOR_PLUS; }
+    "-" { return FormulaEngineElementTypes.OPERATOR_MINUS; }
     "-=" { return FormulaEngineElementTypes.OPERATOR_SUBTRACTASSIGNMENT; }
 
     // Visibility
@@ -192,7 +193,6 @@ NUMBER_FLOAT = [0-9]+\. | [0-9]+\.[0-9]+
    "," { return FormulaEngineElementTypes.COMMA; }
    ";" { return FormulaEngineElementTypes.SEMICOLON; }
    ":" { return FormulaEngineElementTypes.COLON; }
-   "-" { return FormulaEngineElementTypes.MINUS; }
    "?" { return FormulaEngineElementTypes.QUESIONMARK; }
 
    {COMMENT_SINGLE_LINE} { return FormulaEngineElementTypes.LINE_COMMENT; }

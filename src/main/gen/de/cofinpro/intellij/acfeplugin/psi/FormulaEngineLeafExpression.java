@@ -23,12 +23,6 @@ public interface FormulaEngineLeafExpression extends FormulaEngineExpression {
   FormulaEngineFunctionInvocation getFunctionInvocation();
 
   @Nullable
-  FormulaEnginePostfixOperator getPostfixOperator();
-
-  @Nullable
-  FormulaEnginePrefixOperator getPrefixOperator();
-
-  @Nullable
   PsiElement getIdentifier();
 
 }

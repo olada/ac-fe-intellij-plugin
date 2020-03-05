@@ -195,6 +195,10 @@ public class FormulaEngineVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitUnaryExpression(@NotNull FormulaEngineUnaryExpression o) {
+    visitExpression(o);
+  }
+
   public void visitVisibility(@NotNull FormulaEngineVisibility o) {
     visitPsiElement(o);
   }

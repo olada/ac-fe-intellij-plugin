@@ -37,7 +37,8 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
 
   public static final TokenSet[] EXTENDS_SETS_ = new TokenSet[] {
     create_token_set_(CALCULATION_EXPRESSION, COMBINATION_EXPRESSION, COMPARISON_EXPRESSION, EXPRESSION,
-      LEAF_EXPRESSION, NEGATED_EXPRESSION, PARENTHESIS_EXPRESSION, SHORT_IF_EXPRESSION),
+      LEAF_EXPRESSION, NEGATED_EXPRESSION, PARENTHESIS_EXPRESSION, SHORT_IF_EXPRESSION,
+      UNARY_EXPRESSION),
   };
 
   /* ********************************************************** */
@@ -89,7 +90,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // (Declaration AssignmentOperator (Seq | Expression)) | IDENTIFIER PostfixOperator | PrefixOperator IDENTIFIER
+  // (Declaration AssignmentOperator (Seq | Expression)) | IDENTIFIER PostfixOperator | PrefixOperator IDENTIFIER | OPERATOR_MINUS IDENTIFIER
   public static boolean Assignment(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Assignment")) return false;
     boolean r;
@@ -97,6 +98,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     r = Assignment_0(b, l + 1);
     if (!r) r = Assignment_1(b, l + 1);
     if (!r) r = Assignment_2(b, l + 1);
+    if (!r) r = parseTokens(b, 0, OPERATOR_MINUS, IDENTIFIER);
     exit_section_(b, l, m, r, false, null);
     return r;
   }
@@ -250,14 +252,14 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // OPERATOR_MODULO | OPERATOR_PLUS | MINUS | OPERATOR_MULTIPLY | OPERATOR_DIVIDE
+  // OPERATOR_MODULO | OPERATOR_PLUS | OPERATOR_MINUS | OPERATOR_MULTIPLY | OPERATOR_DIVIDE
   public static boolean CalculationOperator(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "CalculationOperator")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, CALCULATION_OPERATOR, "<calculation operator>");
     r = consumeToken(b, OPERATOR_MODULO);
     if (!r) r = consumeToken(b, OPERATOR_PLUS);
-    if (!r) r = consumeToken(b, MINUS);
+    if (!r) r = consumeToken(b, OPERATOR_MINUS);
     if (!r) r = consumeToken(b, OPERATOR_MULTIPLY);
     if (!r) r = consumeToken(b, OPERATOR_DIVIDE);
     exit_section_(b, l, m, r, false, null);
@@ -776,30 +778,15 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // MINUS? (NUMBER_FLOAT | NUMBER_INTEGER)
+  // NUMBER_FLOAT | NUMBER_INTEGER
   public static boolean NumberLiteral(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "NumberLiteral")) return false;
+    if (!nextTokenIs(b, "<number literal>", NUMBER_FLOAT, NUMBER_INTEGER)) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, NUMBER_LITERAL, "<number literal>");
-    r = NumberLiteral_0(b, l + 1);
-    r = r && NumberLiteral_1(b, l + 1);
-    exit_section_(b, l, m, r, false, null);
-    return r;
-  }
-
-  // MINUS?
-  private static boolean NumberLiteral_0(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "NumberLiteral_0")) return false;
-    consumeToken(b, MINUS);
-    return true;
-  }
-
-  // NUMBER_FLOAT | NUMBER_INTEGER
-  private static boolean NumberLiteral_1(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "NumberLiteral_1")) return false;
-    boolean r;
     r = consumeToken(b, NUMBER_FLOAT);
     if (!r) r = consumeToken(b, NUMBER_INTEGER);
+    exit_section_(b, l, m, r, false, null);
     return r;
   }
 
@@ -1214,6 +1201,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   // 4: BINARY(ShortIfExpression)
   // 5: ATOM(LeafExpression)
   // 6: PREFIX(ParenthesisExpression)
+  // 7: ATOM(UnaryExpression)
   public static boolean Expression(PsiBuilder b, int l, int g) {
     if (!recursion_guard_(b, l, "Expression")) return false;
     addVariant(b, "<expression>");
@@ -1222,6 +1210,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     r = NegatedExpression(b, l + 1);
     if (!r) r = LeafExpression(b, l + 1);
     if (!r) r = ParenthesisExpression(b, l + 1);
+    if (!r) r = UnaryExpression(b, l + 1);
     p = r;
     r = r && Expression_0(b, l + 1, g);
     exit_section_(b, l, m, null, r, p, null);
@@ -1281,7 +1270,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     return r;
   }
 
-  // FunctionInvocation | ArrayAccess | Constant | PrefixOperator IDENTIFIER | IDENTIFIER PostfixOperator | MethodReference | IDENTIFIER
+  // FunctionInvocation | ArrayAccess | Constant |  MethodReference | IDENTIFIER
   public static boolean LeafExpression(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "LeafExpression")) return false;
     boolean r;
@@ -1289,33 +1278,9 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     r = FunctionInvocation(b, l + 1);
     if (!r) r = ArrayAccess(b, l + 1);
     if (!r) r = Constant(b, l + 1);
-    if (!r) r = LeafExpression_3(b, l + 1);
-    if (!r) r = LeafExpression_4(b, l + 1);
     if (!r) r = MethodReference(b, l + 1);
     if (!r) r = consumeTokenSmart(b, IDENTIFIER);
     exit_section_(b, l, m, r, false, null);
-    return r;
-  }
-
-  // PrefixOperator IDENTIFIER
-  private static boolean LeafExpression_3(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "LeafExpression_3")) return false;
-    boolean r;
-    Marker m = enter_section_(b);
-    r = PrefixOperator(b, l + 1);
-    r = r && consumeToken(b, IDENTIFIER);
-    exit_section_(b, m, null, r);
-    return r;
-  }
-
-  // IDENTIFIER PostfixOperator
-  private static boolean LeafExpression_4(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "LeafExpression_4")) return false;
-    boolean r;
-    Marker m = enter_section_(b);
-    r = consumeTokenSmart(b, IDENTIFIER);
-    r = r && PostfixOperator(b, l + 1);
-    exit_section_(b, m, null, r);
     return r;
   }
 
@@ -1326,10 +1291,67 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     Marker m = enter_section_(b, l, _NONE_, null);
     r = consumeTokenSmart(b, LEFT_PARENTHESIS);
     p = r;
-    r = p && Expression(b, l, -1);
+    r = p && Expression(b, l, 6);
     r = p && report_error_(b, consumeToken(b, RIGHT_PARENTHESIS)) && r;
     exit_section_(b, l, m, PARENTHESIS_EXPRESSION, r, p, null);
     return r || p;
+  }
+
+  // PrefixOperator IDENTIFIER | IDENTIFIER PostfixOperator | OPERATOR_MINUS Expression | OPERATOR_PLUS Expression
+  public static boolean UnaryExpression(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "UnaryExpression")) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NONE_, UNARY_EXPRESSION, "<unary expression>");
+    r = UnaryExpression_0(b, l + 1);
+    if (!r) r = UnaryExpression_1(b, l + 1);
+    if (!r) r = UnaryExpression_2(b, l + 1);
+    if (!r) r = UnaryExpression_3(b, l + 1);
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  // PrefixOperator IDENTIFIER
+  private static boolean UnaryExpression_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "UnaryExpression_0")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = PrefixOperator(b, l + 1);
+    r = r && consumeToken(b, IDENTIFIER);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  // IDENTIFIER PostfixOperator
+  private static boolean UnaryExpression_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "UnaryExpression_1")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeTokenSmart(b, IDENTIFIER);
+    r = r && PostfixOperator(b, l + 1);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  // OPERATOR_MINUS Expression
+  private static boolean UnaryExpression_2(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "UnaryExpression_2")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeTokenSmart(b, OPERATOR_MINUS);
+    r = r && Expression(b, l + 1, -1);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  // OPERATOR_PLUS Expression
+  private static boolean UnaryExpression_3(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "UnaryExpression_3")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeTokenSmart(b, OPERATOR_PLUS);
+    r = r && Expression(b, l + 1, -1);
+    exit_section_(b, m, null, r);
+    return r;
   }
 
 }
