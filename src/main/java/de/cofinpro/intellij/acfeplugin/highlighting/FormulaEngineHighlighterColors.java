@@ -11,6 +11,7 @@ public class FormulaEngineHighlighterColors {
     public static final TextAttributesKey FUNCTION_ATTR_KEY = createTextAttributesKey("FE_FUNCTION", FUNCTION_DECLARATION);
 
     // Data Types
+    public static final TextAttributesKey BOOLEAN_ATTR_KEY = createTextAttributesKey("FE_BOOLEAN", KEYWORD);
     public static final TextAttributesKey DATE_ATTR_KEY = createTextAttributesKey("FE_DATE", KEYWORD);
     public static final TextAttributesKey DATETIME_ATTR_KEY = createTextAttributesKey("FE_DATETIME", KEYWORD);
     public static final TextAttributesKey INTEGER_ATTR_KEY = createTextAttributesKey("FE_INTEGER", KEYWORD);
@@ -53,6 +54,20 @@ public class FormulaEngineHighlighterColors {
     // Built in Variables
     public static final TextAttributesKey INBUILT_VARIABLE_NA_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_NA", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_VARIABLE_TODAY_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_TODAY", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_VARIABLE_TIMETODAY_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_TIMETODAY", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_VARIABLE_SYMBOL_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_SYMBOL", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_VARIABLE_NAME_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_NAME", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_VARIABLE_PROCESSED_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_PROCESSED", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_VARIABLE_PASSED_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_PASSED", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_VARIABLE_LISTID_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_LISTID", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_VARIABLE_LISTTP_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_LISTTP", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_VARIABLE_TREEID_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_TREEID", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_VARIABLE_FIELD_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_FIELD", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_VARIABLE_FIELDS_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_FIELDS", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_VARIABLE_DATA_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_DATA", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_VARIABLE_STATUS_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_STATUS", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_VARIABLE_DEPENDENCIES_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_DEPENDENCIES", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_VARIABLE_DEPENDENCIES_TRIGGERS_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_DEPENDENCIES_TRIGGERS", DefaultLanguageHighlighterColors.STATIC_FIELD);
 
     // Built in Functions
     public static final TextAttributesKey INBUILT_FUNCTION_ATTRIBUTE_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_ATTRIBUTE", DefaultLanguageHighlighterColors.STATIC_FIELD);
@@ -84,6 +99,7 @@ public class FormulaEngineHighlighterColors {
     public static final TextAttributesKey INBUILT_FUNCTION_STRING_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_STRING", DefaultLanguageHighlighterColors.STATIC_FIELD);
 
     // General Tokens
+    public static final TextAttributesKey NUMBER_SCIENTIFIC = createTextAttributesKey("FE_NUMBER_SCIENTIFIC", DefaultLanguageHighlighterColors.NUMBER);
     public static final TextAttributesKey NUMBER_FLOAT = createTextAttributesKey("FE_NUMBER_FLOAT", DefaultLanguageHighlighterColors.NUMBER);
     public static final TextAttributesKey NUMBER_INTEGER = createTextAttributesKey("FE_NUMBER_INTEGER", DefaultLanguageHighlighterColors.NUMBER);
 

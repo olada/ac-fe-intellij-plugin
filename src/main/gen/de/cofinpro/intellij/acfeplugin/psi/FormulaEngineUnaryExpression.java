@@ -5,13 +5,16 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface FormulaEngineArrayAccess extends PsiElement {
+public interface FormulaEngineUnaryExpression extends FormulaEngineExpression {
 
   @Nullable
-  FormulaEngineBuiltInVariableName getBuiltInVariableName();
+  FormulaEngineExpression getExpression();
 
-  @NotNull
-  List<FormulaEngineExpression> getExpressionList();
+  @Nullable
+  FormulaEnginePostfixOperator getPostfixOperator();
+
+  @Nullable
+  FormulaEnginePrefixOperator getPrefixOperator();
 
   @Nullable
   PsiElement getIdentifier();

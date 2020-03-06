@@ -30,9 +30,10 @@ ESCAPE_SEQUENCE=\\[^\r\n]
 COMMENT_SINGLE_LINE = ("//")[^\r\n]*
 BLOCK_COMMENT=[/][*][^*]*[*]+([^/*][^*]*[*]+)*[/]
 
-DIGIT = [0-9]
+NUMBER_SCIENTIFIC = [0-9]+\.[0-9]+(E\d+)
+NUMBER_FLOAT = [0-9]+\.[0-9]+
 NUMBER_INTEGER = [0-9]+
-NUMBER_FLOAT = [0-9]+\. | [0-9]+\.[0-9]+
+DIGIT = [0-9]
 
 %state IN_PARENTHESIS
 %state IN_FUNCTION_HEADER
@@ -110,13 +111,19 @@ NUMBER_FLOAT = [0-9]+\. | [0-9]+\.[0-9]+
     "*" { return FormulaEngineElementTypes.OPERATOR_MULTIPLY; }
     "+=" { return FormulaEngineElementTypes.OPERATOR_ADDASSIGNMENT; }
     "+" { return FormulaEngineElementTypes.OPERATOR_PLUS; }
+    "-" { return FormulaEngineElementTypes.OPERATOR_MINUS; }
     "-=" { return FormulaEngineElementTypes.OPERATOR_SUBTRACTASSIGNMENT; }
+    "*=" { return FormulaEngineElementTypes.OPERATOR_MULTIPLYASSIGNMENT; }
+    "/=" { return FormulaEngineElementTypes.OPERATOR_DIVIDEASSIGNMENT; }
+    "%=" { return FormulaEngineElementTypes.OPERATOR_MODULOASSIGNMENT; }
+    "^" { return FormulaEngineElementTypes.OPERATOR_POWER; }
 
     // Visibility
     "local" { return FormulaEngineElementTypes.VISIBILITY_LOCAL; }
     "global" { return FormulaEngineElementTypes.VISIBILITY_GLOBAL; }
 
     // Data Types
+    "boolean" { return FormulaEngineElementTypes.KEYWORD_BOOLEAN; }
     "datetime" { return FormulaEngineElementTypes.KEYWORD_DATETIME; }
     "date" { return FormulaEngineElementTypes.KEYWORD_DATE; }
     "float" { return FormulaEngineElementTypes.KEYWORD_FLOAT; }
@@ -144,7 +151,21 @@ NUMBER_FLOAT = [0-9]+\. | [0-9]+\.[0-9]+
 
     // Built-in Variables
     "\$NA" { return FormulaEngineElementTypes.BUILT_IN_VAR_NA; }
-    "\$TODAY" { return FormulaEngineElementTypes.BUILT_IN_VAR_NA; }
+    "\$TODAY" { return FormulaEngineElementTypes.BUILT_IN_VAR_TODAY; }
+    "\$TIMETODAY" { return FormulaEngineElementTypes.BUILT_IN_VAR_TIMETODAY; }
+    "\$SYMBOL" { return FormulaEngineElementTypes.BUILT_IN_VAR_SYMBOL; }
+    "\$NAME" { return FormulaEngineElementTypes.BUILT_IN_VAR_NAME; }
+    "\$PROCESSED" { return FormulaEngineElementTypes.BUILT_IN_VAR_PROCESSED; }
+    "\$PASSED" { return FormulaEngineElementTypes.BUILT_IN_VAR_PASSED; }
+    "\$LISTID" { return FormulaEngineElementTypes.BUILT_IN_VAR_LISTID; }
+    "\$LISTTP" { return FormulaEngineElementTypes.BUILT_IN_VAR_LISTTP; }
+    "\$TREEID" { return FormulaEngineElementTypes.BUILT_IN_VAR_TREEID; }
+    "\$FIELD" { return FormulaEngineElementTypes.BUILT_IN_VAR_FIELD; }
+    "\$FIELDS" { return FormulaEngineElementTypes.BUILT_IN_VAR_FIELDS; }
+    "\$DATA" { return FormulaEngineElementTypes.BUILT_IN_VAR_DATA; }
+    "\$STATUS" { return FormulaEngineElementTypes.BUILT_IN_VAR_STATUS; }
+    "\$DEPENDENCIES" { return FormulaEngineElementTypes.BUILT_IN_VAR_DEPENDENCIES; }
+    "\$DEPENDENCIES_TRIGGERS" { return FormulaEngineElementTypes.BUILT_IN_VAR_DEPENDENCIES_TRIGGERS; }
 
     // Built-in Functions (use parenthesis for matching but don't include the parenthesis in the token)
    "attribute(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_ATTRIBUTE; }
@@ -178,7 +199,6 @@ NUMBER_FLOAT = [0-9]+\. | [0-9]+\.[0-9]+
    "," { return FormulaEngineElementTypes.COMMA; }
    ";" { return FormulaEngineElementTypes.SEMICOLON; }
    ":" { return FormulaEngineElementTypes.COLON; }
-   "-" { return FormulaEngineElementTypes.MINUS; }
    "?" { return FormulaEngineElementTypes.QUESIONMARK; }
 
    {COMMENT_SINGLE_LINE} { return FormulaEngineElementTypes.LINE_COMMENT; }
@@ -187,6 +207,7 @@ NUMBER_FLOAT = [0-9]+\. | [0-9]+\.[0-9]+
    {QUOTED_LITERAL} { return FormulaEngineElementTypes.SINGLE_QUOTED_STRING; }
    {DOUBLE_QUOTED_LITERAL} { return FormulaEngineElementTypes.DOUBLE_QUOTED_STRING; }
 
+   {NUMBER_SCIENTIFIC} { return FormulaEngineElementTypes.NUMBER_SCIENTIFIC; }
    {NUMBER_FLOAT} { return FormulaEngineElementTypes.NUMBER_FLOAT; }
    {NUMBER_INTEGER} { return FormulaEngineElementTypes.NUMBER_INTEGER; }
 
