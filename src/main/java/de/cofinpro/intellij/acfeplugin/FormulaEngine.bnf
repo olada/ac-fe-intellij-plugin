@@ -67,6 +67,7 @@
             KEYWORD_FLOAT = 'float'
             KEYWORD_INTEGER = 'integer'
             KEYWORD_LIST = 'list'
+            KEYWORD_NUMBER = 'number'
             KEYWORD_STRING = 'string'
 
             VISIBILITY_GLOBAL = 'global'
@@ -230,7 +231,16 @@ ArrayAccess ::= (BuiltInVariableName | IDENTIFIER) (LEFT_BRACKET Expression RIGH
 ReturnStatement ::= KEYWORD_RETURN Expression?
 
 Visibility ::= VISIBILITY_GLOBAL | VISIBILITY_LOCAL
-Type ::= KEYWORD_INTEGER | KEYWORD_FLOAT | KEYWORD_DATE | KEYWORD_DATETIME | KEYWORD_STRING | KEYWORD_LIST | KEYWORD_DICT | KEYWORD_ANY | KEYWORD_BOOLEAN
+Type ::= KEYWORD_ANY
+    | KEYWORD_BOOLEAN
+    | KEYWORD_DATE
+    | KEYWORD_DATETIME
+    | KEYWORD_DICT
+    | KEYWORD_FLOAT
+    | KEYWORD_INTEGER
+    | KEYWORD_LIST
+    | KEYWORD_NUMBER
+    | KEYWORD_STRING
 
 Constant ::= BuiltInVariableName | NumberLiteral | StringLiteral | ListLiteral
 BuiltInVariableName ::= BUILT_IN_VAR_NA

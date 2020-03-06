@@ -11,15 +11,16 @@ public class FormulaEngineHighlighterColors {
     public static final TextAttributesKey FUNCTION_ATTR_KEY = createTextAttributesKey("FE_FUNCTION", FUNCTION_DECLARATION);
 
     // Data Types
+    public static final TextAttributesKey ANY_ATTR_KEY = createTextAttributesKey("FE_ANY", KEYWORD);
     public static final TextAttributesKey BOOLEAN_ATTR_KEY = createTextAttributesKey("FE_BOOLEAN", KEYWORD);
     public static final TextAttributesKey DATE_ATTR_KEY = createTextAttributesKey("FE_DATE", KEYWORD);
     public static final TextAttributesKey DATETIME_ATTR_KEY = createTextAttributesKey("FE_DATETIME", KEYWORD);
-    public static final TextAttributesKey INTEGER_ATTR_KEY = createTextAttributesKey("FE_INTEGER", KEYWORD);
-    public static final TextAttributesKey FLOAT_ATTR_KEY = createTextAttributesKey("FE_FLOAT", KEYWORD);
-    public static final TextAttributesKey STRING_ATTR_KEY = createTextAttributesKey("FE_STRING", KEYWORD);
-    public static final TextAttributesKey LIST_ATTR_KEY = createTextAttributesKey("FE_LIST", KEYWORD);
     public static final TextAttributesKey DICT_ATTR_KEY = createTextAttributesKey("FE_DICT", KEYWORD);
-    public static final TextAttributesKey ANY_ATTR_KEY = createTextAttributesKey("FE_ANY", KEYWORD);
+    public static final TextAttributesKey FLOAT_ATTR_KEY = createTextAttributesKey("FE_FLOAT", KEYWORD);
+    public static final TextAttributesKey INTEGER_ATTR_KEY = createTextAttributesKey("FE_INTEGER", KEYWORD);
+    public static final TextAttributesKey LIST_ATTR_KEY = createTextAttributesKey("FE_LIST", KEYWORD);
+    public static final TextAttributesKey NUMBER_ATTR_KEY = createTextAttributesKey("FE_NUMBER", KEYWORD);
+    public static final TextAttributesKey STRING_ATTR_KEY = createTextAttributesKey("FE_STRING", KEYWORD);
 
     // Variable Visibility
     public static final TextAttributesKey LOCAL_ATTR_KEY = createTextAttributesKey("FE_LOCAL", KEYWORD);

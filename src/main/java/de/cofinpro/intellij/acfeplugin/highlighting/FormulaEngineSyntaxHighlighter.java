@@ -34,15 +34,16 @@ public class FormulaEngineSyntaxHighlighter extends SyntaxHighlighterBase {
 
     static {
         // Types
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.KEYWORD_ANY, ANY_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.KEYWORD_BOOLEAN, BOOLEAN_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.KEYWORD_DATE, DATE_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.KEYWORD_DATETIME, DATETIME_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.KEYWORD_DICT, DICT_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.KEYWORD_FLOAT, FLOAT_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.KEYWORD_INTEGER, INTEGER_ATTR_KEY);
-        safeMap(ATTRIBUTES, FormulaEngineElementTypes.KEYWORD_STRING, STRING_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.KEYWORD_LIST, LIST_ATTR_KEY);
-        safeMap(ATTRIBUTES, FormulaEngineElementTypes.KEYWORD_DICT, DICT_ATTR_KEY);
-        safeMap(ATTRIBUTES, FormulaEngineElementTypes.KEYWORD_ANY, ANY_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.KEYWORD_NUMBER, NUMBER_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.KEYWORD_STRING, STRING_ATTR_KEY);
 
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.VISIBILITY_LOCAL, LOCAL_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.VISIBILITY_GLOBAL, GLOBAL_ATTR_KEY);

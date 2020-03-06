@@ -1215,20 +1215,30 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // KEYWORD_INTEGER | KEYWORD_FLOAT | KEYWORD_DATE | KEYWORD_DATETIME | KEYWORD_STRING | KEYWORD_LIST | KEYWORD_DICT | KEYWORD_ANY | KEYWORD_BOOLEAN
+  // KEYWORD_ANY
+  //     | KEYWORD_BOOLEAN
+  //     | KEYWORD_DATE 
+  //     | KEYWORD_DATETIME
+  //     | KEYWORD_DICT 
+  //     | KEYWORD_FLOAT
+  //     | KEYWORD_INTEGER 
+  //     | KEYWORD_LIST  
+  //     | KEYWORD_NUMBER
+  //     | KEYWORD_STRING
   public static boolean Type(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Type")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, TYPE, "<type>");
-    r = consumeToken(b, KEYWORD_INTEGER);
-    if (!r) r = consumeToken(b, KEYWORD_FLOAT);
+    r = consumeToken(b, KEYWORD_ANY);
+    if (!r) r = consumeToken(b, KEYWORD_BOOLEAN);
     if (!r) r = consumeToken(b, KEYWORD_DATE);
     if (!r) r = consumeToken(b, KEYWORD_DATETIME);
-    if (!r) r = consumeToken(b, KEYWORD_STRING);
-    if (!r) r = consumeToken(b, KEYWORD_LIST);
     if (!r) r = consumeToken(b, KEYWORD_DICT);
-    if (!r) r = consumeToken(b, KEYWORD_ANY);
-    if (!r) r = consumeToken(b, KEYWORD_BOOLEAN);
+    if (!r) r = consumeToken(b, KEYWORD_FLOAT);
+    if (!r) r = consumeToken(b, KEYWORD_INTEGER);
+    if (!r) r = consumeToken(b, KEYWORD_LIST);
+    if (!r) r = consumeToken(b, KEYWORD_NUMBER);
+    if (!r) r = consumeToken(b, KEYWORD_STRING);
     exit_section_(b, l, m, r, false, null);
     return r;
   }

@@ -123,15 +123,16 @@ DIGIT = [0-9]
     "global" { return FormulaEngineElementTypes.VISIBILITY_GLOBAL; }
 
     // Data Types
+    "any" { return FormulaEngineElementTypes.KEYWORD_ANY; }
     "boolean" { return FormulaEngineElementTypes.KEYWORD_BOOLEAN; }
-    "datetime" { return FormulaEngineElementTypes.KEYWORD_DATETIME; }
     "date" { return FormulaEngineElementTypes.KEYWORD_DATE; }
+    "datetime" { return FormulaEngineElementTypes.KEYWORD_DATETIME; }
+    "dict" { return FormulaEngineElementTypes.KEYWORD_DICT; }
     "float" { return FormulaEngineElementTypes.KEYWORD_FLOAT; }
     "integer" { return FormulaEngineElementTypes.KEYWORD_INTEGER; }
-    "string" { return FormulaEngineElementTypes.KEYWORD_STRING; }
     "list" { return FormulaEngineElementTypes.KEYWORD_LIST; }
-    "dict" { return FormulaEngineElementTypes.KEYWORD_DICT; }
-    "any" { return FormulaEngineElementTypes.KEYWORD_ANY; }
+    "number" { return FormulaEngineElementTypes.KEYWORD_NUMBER; }
+    "string" { return FormulaEngineElementTypes.KEYWORD_STRING; }
 
     // Keywords
     "and" { return FormulaEngineElementTypes.KEYWORD_AND; }

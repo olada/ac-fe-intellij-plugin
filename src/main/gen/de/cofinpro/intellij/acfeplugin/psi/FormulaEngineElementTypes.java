@@ -125,6 +125,7 @@ public interface FormulaEngineElementTypes {
   IElementType KEYWORD_IF = new FormulaEngineTokenType("if");
   IElementType KEYWORD_INTEGER = new FormulaEngineTokenType("integer");
   IElementType KEYWORD_LIST = new FormulaEngineTokenType("KEYWORD_LIST");
+  IElementType KEYWORD_NUMBER = new FormulaEngineTokenType("number");
   IElementType KEYWORD_OR = new FormulaEngineTokenType("or");
   IElementType KEYWORD_RETURN = new FormulaEngineTokenType("return");
   IElementType KEYWORD_SEQ = new FormulaEngineTokenType("seq");
