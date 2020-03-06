@@ -50,4 +50,10 @@ public class FormulaEngineConstantImpl extends ASTWrapperPsiElement implements F
     return findChildByClass(FormulaEngineStringLiteral.class);
   }
 
+  @Override
+  @Nullable
+  public PsiElement getIdentifier() {
+    return findChildByType(IDENTIFIER);
+  }
+
 }

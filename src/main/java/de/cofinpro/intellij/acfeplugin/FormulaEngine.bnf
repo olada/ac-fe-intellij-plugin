@@ -247,7 +247,7 @@ Type ::= KEYWORD_ANY
     | KEYWORD_STRING
     | KEYWORD_TIME
 
-Constant ::= BuiltInVariableName | NumberLiteral | StringLiteral | ListLiteral
+Constant ::= BuiltInVariableName | NumberLiteral | StringLiteral | ListLiteral | IDENTIFIER
 BuiltInVariableName ::= BUILT_IN_VAR_NA
                         | BUILT_IN_VAR_TODAY
                         | BUILT_IN_VAR_TIMETODAY

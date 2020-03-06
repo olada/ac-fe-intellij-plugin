@@ -304,7 +304,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // BuiltInVariableName | NumberLiteral | StringLiteral | ListLiteral
+  // BuiltInVariableName | NumberLiteral | StringLiteral | ListLiteral | IDENTIFIER
   public static boolean Constant(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Constant")) return false;
     boolean r;
@@ -313,6 +313,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     if (!r) r = NumberLiteral(b, l + 1);
     if (!r) r = StringLiteral(b, l + 1);
     if (!r) r = ListLiteral(b, l + 1);
+    if (!r) r = consumeToken(b, IDENTIFIER);
     exit_section_(b, l, m, r, false, null);
     return r;
   }
