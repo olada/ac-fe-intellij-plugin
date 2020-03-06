@@ -31,7 +31,7 @@ COMMENT_SINGLE_LINE = ("//")[^\r\n]*
 BLOCK_COMMENT=[/][*][^*]*[*]+([^/*][^*]*[*]+)*[/]
 
 NUMBER_SCIENTIFIC = [0-9]+\.[0-9]+(E\d+)
-NUMBER_FLOAT = [0-9]+\.[0-9]+
+NUMBER_FLOAT = [0-9]+\.[0-9]*
 NUMBER_INTEGER = [0-9]+
 DIGIT = [0-9]
 

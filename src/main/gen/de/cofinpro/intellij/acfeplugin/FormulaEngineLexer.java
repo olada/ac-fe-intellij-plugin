@@ -82,11 +82,11 @@ public class FormulaEngineLexer implements IFormulaEngineLexer {
     "\1\10\20\3\1\11\1\12\1\13\1\14\1\15\1\16"+
     "\1\1\1\17\1\20\1\21\1\22\1\23\1\24\1\25"+
     "\1\1\1\26\1\3\1\1\1\27\1\30\1\31\1\32"+
-    "\14\3\1\33\1\34\1\35\1\0\2\5\2\6\1\36"+
-    "\1\0\1\37\1\40\3\3\1\41\10\3\1\42\14\3"+
-    "\1\43\5\3\1\44\1\45\1\46\1\47\1\50\1\51"+
-    "\1\52\1\53\1\54\1\55\1\56\1\3\7\0\21\3"+
-    "\1\57\1\0\1\3\1\60\1\61\21\3\1\62\6\3"+
+    "\14\3\1\33\1\34\1\35\1\36\2\5\2\6\1\37"+
+    "\1\0\1\40\1\41\3\3\1\42\10\3\1\43\14\3"+
+    "\1\44\5\3\1\45\1\46\1\47\1\50\1\51\1\52"+
+    "\1\53\1\54\1\55\1\56\1\57\1\3\7\0\21\3"+
+    "\1\36\1\0\1\3\1\60\1\61\21\3\1\62\6\3"+
     "\1\63\10\3\1\64\13\0\4\3\1\65\3\3\1\66"+
     "\1\67\3\3\1\70\2\3\1\71\1\72\2\3\1\0"+
     "\1\73\11\3\1\74\1\75\1\76\2\3\1\77\1\3"+
@@ -718,7 +718,7 @@ public class FormulaEngineLexer implements IFormulaEngineLexer {
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
     "\3\0\2\11\26\1\6\11\11\1\1\11\2\1\4\11"+
-    "\14\1\3\11\1\0\1\11\2\1\1\11\1\1\1\0"+
+    "\14\1\3\11\1\1\1\11\2\1\1\11\1\1\1\0"+
     "\2\11\37\1\13\11\1\1\7\0\22\1\1\0\45\1"+
     "\13\0\24\1\1\0\1\11\11\1\1\11\6\1\2\11"+
     "\4\1\1\11\4\1\1\11\2\1\1\11\5\1\14\0"+
@@ -1199,92 +1199,92 @@ public class FormulaEngineLexer implements IFormulaEngineLexer {
             // fall through
           case 173: break;
           case 30: 
-            { return FormulaEngineElementTypes.LINE_COMMENT;
+            { return FormulaEngineElementTypes.NUMBER_FLOAT;
             } 
             // fall through
           case 174: break;
           case 31: 
-            { return FormulaEngineElementTypes.OPERATOR_DIVIDEASSIGNMENT;
+            { return FormulaEngineElementTypes.LINE_COMMENT;
             } 
             // fall through
           case 175: break;
           case 32: 
-            { return FormulaEngineElementTypes.OPERATOR_MULTIPLYASSIGNMENT;
+            { return FormulaEngineElementTypes.OPERATOR_DIVIDEASSIGNMENT;
             } 
             // fall through
           case 176: break;
           case 33: 
-            { return FormulaEngineElementTypes.KEYWORD_IF;
+            { return FormulaEngineElementTypes.OPERATOR_MULTIPLYASSIGNMENT;
             } 
             // fall through
           case 177: break;
           case 34: 
-            { return FormulaEngineElementTypes.KEYWORD_DO;
+            { return FormulaEngineElementTypes.KEYWORD_IF;
             } 
             // fall through
           case 178: break;
           case 35: 
-            { return FormulaEngineElementTypes.KEYWORD_OR;
+            { return FormulaEngineElementTypes.KEYWORD_DO;
             } 
             // fall through
           case 179: break;
           case 36: 
-            { return FormulaEngineElementTypes.OPERATOR_AND;
+            { return FormulaEngineElementTypes.KEYWORD_OR;
             } 
             // fall through
           case 180: break;
           case 37: 
-            { return FormulaEngineElementTypes.OPERATOR_EQUAL;
+            { return FormulaEngineElementTypes.OPERATOR_AND;
             } 
             // fall through
           case 181: break;
           case 38: 
-            { return FormulaEngineElementTypes.OPERATOR_SUBTRACTASSIGNMENT;
+            { return FormulaEngineElementTypes.OPERATOR_EQUAL;
             } 
             // fall through
           case 182: break;
           case 39: 
-            { return FormulaEngineElementTypes.OPERATOR_DECREMENT;
+            { return FormulaEngineElementTypes.OPERATOR_SUBTRACTASSIGNMENT;
             } 
             // fall through
           case 183: break;
           case 40: 
-            { return FormulaEngineElementTypes.OPERATOR_GREATERTHANEQUAL;
+            { return FormulaEngineElementTypes.OPERATOR_DECREMENT;
             } 
             // fall through
           case 184: break;
           case 41: 
-            { return FormulaEngineElementTypes.OPERATOR_ADDASSIGNMENT;
+            { return FormulaEngineElementTypes.OPERATOR_GREATERTHANEQUAL;
             } 
             // fall through
           case 185: break;
           case 42: 
-            { return FormulaEngineElementTypes.OPERATOR_INCREMENT;
+            { return FormulaEngineElementTypes.OPERATOR_ADDASSIGNMENT;
             } 
             // fall through
           case 186: break;
           case 43: 
-            { return FormulaEngineElementTypes.OPERATOR_LESSTHANEQUAL;
+            { return FormulaEngineElementTypes.OPERATOR_INCREMENT;
             } 
             // fall through
           case 187: break;
           case 44: 
-            { return FormulaEngineElementTypes.OPERATOR_MODULOASSIGNMENT;
+            { return FormulaEngineElementTypes.OPERATOR_LESSTHANEQUAL;
             } 
             // fall through
           case 188: break;
           case 45: 
-            { return FormulaEngineElementTypes.OPERATOR_NOTEQUAL;
+            { return FormulaEngineElementTypes.OPERATOR_MODULOASSIGNMENT;
             } 
             // fall through
           case 189: break;
           case 46: 
-            { return FormulaEngineElementTypes.OPERATOR_OR;
+            { return FormulaEngineElementTypes.OPERATOR_NOTEQUAL;
             } 
             // fall through
           case 190: break;
           case 47: 
-            { return FormulaEngineElementTypes.NUMBER_FLOAT;
+            { return FormulaEngineElementTypes.OPERATOR_OR;
             } 
             // fall through
           case 191: break;
