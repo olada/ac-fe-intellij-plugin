@@ -31,7 +31,7 @@ COMMENT_SINGLE_LINE = ("//")[^\r\n]*
 BLOCK_COMMENT=[/][*][^*]*[*]+([^/*][^*]*[*]+)*[/]
 
 NUMBER_SCIENTIFIC = [0-9]+\.[0-9]+(E\d+)
-NUMBER_FLOAT = [0-9]+\.[0-9]+
+NUMBER_FLOAT = [0-9]+\.[0-9]*
 NUMBER_INTEGER = [0-9]+
 DIGIT = [0-9]
 
@@ -57,6 +57,7 @@ DIGIT = [0-9]
    "datetime" { return FormulaEngineElementTypes.BUILT_IN_FUNC_DATETIME; }
    "daydiff" { return FormulaEngineElementTypes.BUILT_IN_FUNC_DAYDIFF; }
    "dayplus" { return FormulaEngineElementTypes.BUILT_IN_FUNC_DAYPLUS; }
+   "dict" { return FormulaEngineElementTypes.BUILT_IN_FUNC_DICT; }
    "elt" { return FormulaEngineElementTypes.BUILT_IN_FUNC_ELT; }
    "first" { return FormulaEngineElementTypes.BUILT_IN_FUNC_FIRST; }
    "float" { return FormulaEngineElementTypes.BUILT_IN_FUNC_FLOAT; }
@@ -79,6 +80,7 @@ DIGIT = [0-9]
    "status" { return FormulaEngineElementTypes.BUILT_IN_FUNC_STATUS; }
    "str" { return FormulaEngineElementTypes.BUILT_IN_FUNC_STR; }
    "string" { return FormulaEngineElementTypes.BUILT_IN_FUNC_STRING; }
+   "time" { return FormulaEngineElementTypes.BUILT_IN_FUNC_TIME; }
 }
 
 // Der Function Header soll Datentypen nicht als built-in methode markieren (clash von datentypen und built-in Methodennamen, bspw "string" oder "integer" -> klassische cast funktionen)
@@ -123,15 +125,17 @@ DIGIT = [0-9]
     "global" { return FormulaEngineElementTypes.VISIBILITY_GLOBAL; }
 
     // Data Types
+    "any" { return FormulaEngineElementTypes.KEYWORD_ANY; }
     "boolean" { return FormulaEngineElementTypes.KEYWORD_BOOLEAN; }
-    "datetime" { return FormulaEngineElementTypes.KEYWORD_DATETIME; }
     "date" { return FormulaEngineElementTypes.KEYWORD_DATE; }
+    "datetime" { return FormulaEngineElementTypes.KEYWORD_DATETIME; }
+    "dict" { return FormulaEngineElementTypes.KEYWORD_DICT; }
     "float" { return FormulaEngineElementTypes.KEYWORD_FLOAT; }
     "integer" { return FormulaEngineElementTypes.KEYWORD_INTEGER; }
-    "string" { return FormulaEngineElementTypes.KEYWORD_STRING; }
     "list" { return FormulaEngineElementTypes.KEYWORD_LIST; }
-    "dict" { return FormulaEngineElementTypes.KEYWORD_DICT; }
-    "any" { return FormulaEngineElementTypes.KEYWORD_ANY; }
+    "number" { return FormulaEngineElementTypes.KEYWORD_NUMBER; }
+    "string" { return FormulaEngineElementTypes.KEYWORD_STRING; }
+    "time" { return FormulaEngineElementTypes.KEYWORD_TIME; }
 
     // Keywords
     "and" { return FormulaEngineElementTypes.KEYWORD_AND; }
@@ -163,6 +167,7 @@ DIGIT = [0-9]
     "\$FIELD" { return FormulaEngineElementTypes.BUILT_IN_VAR_FIELD; }
     "\$FIELDS" { return FormulaEngineElementTypes.BUILT_IN_VAR_FIELDS; }
     "\$DATA" { return FormulaEngineElementTypes.BUILT_IN_VAR_DATA; }
+    "\$DATETIME" { return FormulaEngineElementTypes.BUILT_IN_VAR_DATETIME; }
     "\$STATUS" { return FormulaEngineElementTypes.BUILT_IN_VAR_STATUS; }
     "\$DEPENDENCIES" { return FormulaEngineElementTypes.BUILT_IN_VAR_DEPENDENCIES; }
     "\$DEPENDENCIES_TRIGGERS" { return FormulaEngineElementTypes.BUILT_IN_VAR_DEPENDENCIES_TRIGGERS; }
@@ -173,6 +178,7 @@ DIGIT = [0-9]
    "datetime(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DATETIME; }
    "daydiff(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DAYDIFF; }
    "dayplus(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DAYPLUS; }
+   "dict(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DICT; }
    "elt(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_ELT; }
    "first(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_FIRST; }
    "float(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_FLOAT; }
@@ -195,6 +201,7 @@ DIGIT = [0-9]
    "status(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STATUS; }
    "str(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STR; }
    "string(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STRING; }
+   "time(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_TIME; }
 
    "," { return FormulaEngineElementTypes.COMMA; }
    ";" { return FormulaEngineElementTypes.SEMICOLON; }

@@ -50,7 +50,6 @@ public interface FormulaEngineElementTypes {
   IElementType SHORT_IF_EXPRESSION = new FormulaEngineElementType("SHORT_IF_EXPRESSION");
   IElementType SINGLE_STRING_LITERAL = new FormulaEngineElementType("SINGLE_STRING_LITERAL");
   IElementType STATEMENT = new FormulaEngineElementType("STATEMENT");
-  IElementType STATEMENT_WITHOUT_EOL = new FormulaEngineElementType("STATEMENT_WITHOUT_EOL");
   IElementType STRING_LITERAL = new FormulaEngineElementType("STRING_LITERAL");
   IElementType SWITCH = new FormulaEngineElementType("SWITCH");
   IElementType TOP_LEVEL_ITEM = new FormulaEngineElementType("TOP_LEVEL_ITEM");
@@ -65,6 +64,7 @@ public interface FormulaEngineElementTypes {
   IElementType BUILT_IN_FUNC_DATETIME = new FormulaEngineTokenType("datetime");
   IElementType BUILT_IN_FUNC_DAYDIFF = new FormulaEngineTokenType("daydiff");
   IElementType BUILT_IN_FUNC_DAYPLUS = new FormulaEngineTokenType("dayplus");
+  IElementType BUILT_IN_FUNC_DICT = new FormulaEngineTokenType("dict");
   IElementType BUILT_IN_FUNC_ELT = new FormulaEngineTokenType("elt");
   IElementType BUILT_IN_FUNC_FIRST = new FormulaEngineTokenType("first");
   IElementType BUILT_IN_FUNC_FLOAT = new FormulaEngineTokenType("float");
@@ -87,7 +87,9 @@ public interface FormulaEngineElementTypes {
   IElementType BUILT_IN_FUNC_STATUS = new FormulaEngineTokenType("status");
   IElementType BUILT_IN_FUNC_STR = new FormulaEngineTokenType("str");
   IElementType BUILT_IN_FUNC_STRING = new FormulaEngineTokenType("built in func string");
+  IElementType BUILT_IN_FUNC_TIME = new FormulaEngineTokenType("built in func time");
   IElementType BUILT_IN_VAR_DATA = new FormulaEngineTokenType("$DATA");
+  IElementType BUILT_IN_VAR_DATETIME = new FormulaEngineTokenType("$DATETIME");
   IElementType BUILT_IN_VAR_DEPENDENCIES = new FormulaEngineTokenType("$DEPENDENCIES");
   IElementType BUILT_IN_VAR_DEPENDENCIES_TRIGGERS = new FormulaEngineTokenType("$DEPENDENCIES_TRIGGERS");
   IElementType BUILT_IN_VAR_FIELD = new FormulaEngineTokenType("$FIELD");
@@ -116,7 +118,7 @@ public interface FormulaEngineElementTypes {
   IElementType KEYWORD_DATE = new FormulaEngineTokenType("KEYWORD_DATE");
   IElementType KEYWORD_DATETIME = new FormulaEngineTokenType("KEYWORD_DATETIME");
   IElementType KEYWORD_DEFAULT = new FormulaEngineTokenType("default");
-  IElementType KEYWORD_DICT = new FormulaEngineTokenType("dict");
+  IElementType KEYWORD_DICT = new FormulaEngineTokenType("KEYWORD_DICT");
   IElementType KEYWORD_DO = new FormulaEngineTokenType("do");
   IElementType KEYWORD_ELSE = new FormulaEngineTokenType("else");
   IElementType KEYWORD_FLOAT = new FormulaEngineTokenType("KEYWORD_FLOAT");
@@ -125,11 +127,13 @@ public interface FormulaEngineElementTypes {
   IElementType KEYWORD_IF = new FormulaEngineTokenType("if");
   IElementType KEYWORD_INTEGER = new FormulaEngineTokenType("integer");
   IElementType KEYWORD_LIST = new FormulaEngineTokenType("KEYWORD_LIST");
+  IElementType KEYWORD_NUMBER = new FormulaEngineTokenType("number");
   IElementType KEYWORD_OR = new FormulaEngineTokenType("or");
   IElementType KEYWORD_RETURN = new FormulaEngineTokenType("return");
   IElementType KEYWORD_SEQ = new FormulaEngineTokenType("seq");
   IElementType KEYWORD_STRING = new FormulaEngineTokenType("string");
   IElementType KEYWORD_SWITCH = new FormulaEngineTokenType("switch");
+  IElementType KEYWORD_TIME = new FormulaEngineTokenType("time");
   IElementType KEYWORD_WHILE = new FormulaEngineTokenType("while");
   IElementType LEFT_BRACKET = new FormulaEngineTokenType("[");
   IElementType LEFT_CURLY_BRACE = new FormulaEngineTokenType("{");
@@ -296,9 +300,6 @@ public interface FormulaEngineElementTypes {
       }
       else if (type == STATEMENT) {
         return new FormulaEngineStatementImpl(node);
-      }
-      else if (type == STATEMENT_WITHOUT_EOL) {
-        return new FormulaEngineStatementWithoutEolImpl(node);
       }
       else if (type == STRING_LITERAL) {
         return new FormulaEngineStringLiteralImpl(node);

@@ -11,15 +11,17 @@ public class FormulaEngineHighlighterColors {
     public static final TextAttributesKey FUNCTION_ATTR_KEY = createTextAttributesKey("FE_FUNCTION", FUNCTION_DECLARATION);
 
     // Data Types
+    public static final TextAttributesKey ANY_ATTR_KEY = createTextAttributesKey("FE_ANY", KEYWORD);
     public static final TextAttributesKey BOOLEAN_ATTR_KEY = createTextAttributesKey("FE_BOOLEAN", KEYWORD);
     public static final TextAttributesKey DATE_ATTR_KEY = createTextAttributesKey("FE_DATE", KEYWORD);
     public static final TextAttributesKey DATETIME_ATTR_KEY = createTextAttributesKey("FE_DATETIME", KEYWORD);
-    public static final TextAttributesKey INTEGER_ATTR_KEY = createTextAttributesKey("FE_INTEGER", KEYWORD);
-    public static final TextAttributesKey FLOAT_ATTR_KEY = createTextAttributesKey("FE_FLOAT", KEYWORD);
-    public static final TextAttributesKey STRING_ATTR_KEY = createTextAttributesKey("FE_STRING", KEYWORD);
-    public static final TextAttributesKey LIST_ATTR_KEY = createTextAttributesKey("FE_LIST", KEYWORD);
     public static final TextAttributesKey DICT_ATTR_KEY = createTextAttributesKey("FE_DICT", KEYWORD);
-    public static final TextAttributesKey ANY_ATTR_KEY = createTextAttributesKey("FE_ANY", KEYWORD);
+    public static final TextAttributesKey FLOAT_ATTR_KEY = createTextAttributesKey("FE_FLOAT", KEYWORD);
+    public static final TextAttributesKey INTEGER_ATTR_KEY = createTextAttributesKey("FE_INTEGER", KEYWORD);
+    public static final TextAttributesKey LIST_ATTR_KEY = createTextAttributesKey("FE_LIST", KEYWORD);
+    public static final TextAttributesKey NUMBER_ATTR_KEY = createTextAttributesKey("FE_NUMBER", KEYWORD);
+    public static final TextAttributesKey STRING_ATTR_KEY = createTextAttributesKey("FE_STRING", KEYWORD);
+    public static final TextAttributesKey TIME_ATTR_KEY = createTextAttributesKey("FE_TIME", KEYWORD);
 
     // Variable Visibility
     public static final TextAttributesKey LOCAL_ATTR_KEY = createTextAttributesKey("FE_LOCAL", KEYWORD);
@@ -65,6 +67,7 @@ public class FormulaEngineHighlighterColors {
     public static final TextAttributesKey INBUILT_VARIABLE_FIELD_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_FIELD", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_VARIABLE_FIELDS_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_FIELDS", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_VARIABLE_DATA_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_DATA", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_VARIABLE_DATETIME_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_DATETIME", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_VARIABLE_STATUS_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_STATUS", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_VARIABLE_DEPENDENCIES_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_DEPENDENCIES", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_VARIABLE_DEPENDENCIES_TRIGGERS_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_DEPENDENCIES_TRIGGERS", DefaultLanguageHighlighterColors.STATIC_FIELD);
@@ -75,6 +78,7 @@ public class FormulaEngineHighlighterColors {
     public static final TextAttributesKey INBUILT_FUNCTION_DATETIME_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_DATETIME", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_DAYDIFF_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_DAYDIFF", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_DAYPLUS_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_DAYPLUS", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_FUNCTION_DICT_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_DICT", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_ELT_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_ELT", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_FIRST_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_FIRST", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_FLOAT_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_FLOAT", DefaultLanguageHighlighterColors.STATIC_FIELD);
@@ -97,6 +101,7 @@ public class FormulaEngineHighlighterColors {
     public static final TextAttributesKey INBUILT_FUNCTION_STATUS_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_STATUS", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_STR_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_STR", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_STRING_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_STRING", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_FUNCTION_TIME_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_TIME", DefaultLanguageHighlighterColors.STATIC_FIELD);
 
     // General Tokens
     public static final TextAttributesKey NUMBER_SCIENTIFIC = createTextAttributesKey("FE_NUMBER_SCIENTIFIC", DefaultLanguageHighlighterColors.NUMBER);

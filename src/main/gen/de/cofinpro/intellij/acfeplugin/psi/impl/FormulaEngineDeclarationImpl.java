@@ -34,6 +34,12 @@ public class FormulaEngineDeclarationImpl extends ASTWrapperPsiElement implement
 
   @Override
   @Nullable
+  public FormulaEngineBuiltInVariableName getBuiltInVariableName() {
+    return findChildByClass(FormulaEngineBuiltInVariableName.class);
+  }
+
+  @Override
+  @Nullable
   public FormulaEngineType getType() {
     return findChildByClass(FormulaEngineType.class);
   }

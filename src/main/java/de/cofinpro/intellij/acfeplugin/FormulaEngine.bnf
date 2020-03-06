@@ -67,7 +67,9 @@
             KEYWORD_FLOAT = 'float'
             KEYWORD_INTEGER = 'integer'
             KEYWORD_LIST = 'list'
+            KEYWORD_NUMBER = 'number'
             KEYWORD_STRING = 'string'
+            KEYWORD_TIME = 'time'
 
             VISIBILITY_GLOBAL = 'global'
             VISIBILITY_LOCAL = 'local'
@@ -85,6 +87,7 @@
             BUILT_IN_VAR_FIELD = '$FIELD'
             BUILT_IN_VAR_FIELDS = '$FIELDS'
             BUILT_IN_VAR_DATA = '$DATA'
+            BUILT_IN_VAR_DATETIME = '$DATETIME'
             BUILT_IN_VAR_STATUS = '$STATUS'
             BUILT_IN_VAR_DEPENDENCIES = '$DEPENDENCIES'
             BUILT_IN_VAR_DEPENDENCIES_TRIGGERS = '$DEPENDENCIES_TRIGGERS'
@@ -94,6 +97,7 @@
             BUILT_IN_FUNC_DATETIME = 'datetime'
             BUILT_IN_FUNC_DAYDIFF = 'daydiff'
             BUILT_IN_FUNC_DAYPLUS = 'dayplus'
+            BUILT_IN_FUNC_DICT = 'dict'
             BUILT_IN_FUNC_ELT = 'elt'
             BUILT_IN_FUNC_FIRST = 'first'
             BUILT_IN_FUNC_FLOAT = 'float'
@@ -115,6 +119,7 @@
             BUILT_IN_FUNC_STATUS = 'status'
             BUILT_IN_FUNC_STR = 'str'
             BUILT_IN_FUNC_STRING = 'built in func string'
+            BUILT_IN_FUNC_TIME = 'built in func time'
             BUILT_IN_FUNC_OUT = 'out'
 
             DOUBLE_QUOTED_STRING_LITERAL = 'double quoted string literal'
@@ -133,7 +138,7 @@
             WHITE_SPACE = 'regexp:\s+'
 
             NUMBER_SCIENTIFIC = 'regexp:[0-9]+\.[0-9]+(E\d+)'
-            NUMBER_FLOAT = 'regexp:[0-9]+\.[0-9]+'
+            NUMBER_FLOAT = 'regexp:[0-9]+\.[0-9]*'
             NUMBER_INTEGER = 'regexp:[0-9]+'
     ]
 
@@ -153,7 +158,7 @@ FunctionArgument ::= Expression
 
 // Control Structures
 ControlStructure ::= While | For | DoWhile | If | Switch
-ControlStructureBody ::= (ControlStructure | Statement)*
+ControlStructureBody ::= (ControlStructure | Statement | (Constant SEMICOLON))*
 
 While ::= KEYWORD_WHILE LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE
 Switch ::= KEYWORD_SWITCH LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE (KEYWORD_CASE Constant COLON (ControlStructureBody (KEYWORD_BREAK SEMICOLON)?))* (KEYWORD_DEFAULT COLON (ControlStructureBody (KEYWORD_BREAK SEMICOLON)?))? RIGHT_CURLY_BRACE
@@ -197,7 +202,7 @@ private FunctionName ::= BuiltInFunctionName | CustomFunctionName
 private MethodReference ::= FunctionName // just for sake of better naming
 
 BuiltInFunctionName ::= BUILT_IN_FUNC_ATTRIBUTE
-    | BUILT_IN_FUNC_DATE | BUILT_IN_FUNC_DATETIME | BUILT_IN_FUNC_STR | BUILT_IN_FUNC_FLOAT | BUILT_IN_FUNC_INTEGER | BUILT_IN_FUNC_LIST | BUILT_IN_FUNC_STRING
+    | BUILT_IN_FUNC_DATE | BUILT_IN_FUNC_DATETIME | BUILT_IN_FUNC_DICT | BUILT_IN_FUNC_STR | BUILT_IN_FUNC_FLOAT | BUILT_IN_FUNC_INTEGER | BUILT_IN_FUNC_LIST | BUILT_IN_FUNC_STRING
     | BUILT_IN_FUNC_DAYDIFF | BUILT_IN_FUNC_DAYPLUS
     | BUILT_IN_FUNC_ELT
     | BUILT_IN_FUNC_FIRST
@@ -211,18 +216,19 @@ BuiltInFunctionName ::= BUILT_IN_FUNC_ATTRIBUTE
     | BUILT_IN_FUNC_OUT
     | BUILT_IN_FUNC_REMOVE
     | BUILT_IN_FUNC_STATUS
+    | BUILT_IN_FUNC_TIME
 FunctionBody ::= FunctionBodyStatement*
 Statement ::= ((FunctionInvocation | Assignment | Declaration | ReturnStatement | KEYWORD_BREAK) SEMICOLON) |  FunctionDefinition
-StatementWithoutEol ::= FunctionInvocation | Assignment | Declaration | BuiltInVariableName
-FunctionBodyStatement ::= FunctionDefinition | ControlStructure | ((FunctionInvocation | Assignment | Declaration | ReturnStatement) SEMICOLON)
+FunctionBodyStatement ::= FunctionDefinition | ControlStructure | ((FunctionInvocation | Assignment | Declaration | ReturnStatement | Seq) SEMICOLON)
 
 SeqForParenthesis ::= LEFT_PARENTHESIS Assignment (COMMA (Assignment | FunctionInvocation))* SEMICOLON Expression SEMICOLON (Assignment | FunctionInvocation) RIGHT_PARENTHESIS
-Seq ::= KEYWORD_SEQ SeqForParenthesis StatementWithoutEol
+Seq ::= KEYWORD_SEQ SeqForParenthesis SeqBody
 For ::= KEYWORD_FOR SeqForParenthesis (ControlStructure | Statement) | (LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE)
 If ::= KEYWORD_IF LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS IfOrElseBlock (KEYWORD_ELSE KEYWORD_IF LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS IfOrElseBlock)* (KEYWORD_ELSE IfOrElseBlock)?
 private IfOrElseBlock ::= LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE | ControlStructureBody
+private SeqBody ::= Assignment | CalculationExpression | FunctionInvocation | ListLiteral | BuiltInVariableName
 
-Declaration ::= ArrayAccess | Visibility? Type? IDENTIFIER
+Declaration ::= ArrayAccess | BuiltInVariableName | Visibility? Type? IDENTIFIER
 Assignment ::= (Declaration AssignmentOperator (Seq | Expression)) | IDENTIFIER PostfixOperator | PrefixOperator IDENTIFIER | OPERATOR_MINUS IDENTIFIER
 
 ArrayAccess ::= (BuiltInVariableName | IDENTIFIER) (LEFT_BRACKET Expression RIGHT_BRACKET)+
@@ -230,9 +236,19 @@ ArrayAccess ::= (BuiltInVariableName | IDENTIFIER) (LEFT_BRACKET Expression RIGH
 ReturnStatement ::= KEYWORD_RETURN Expression?
 
 Visibility ::= VISIBILITY_GLOBAL | VISIBILITY_LOCAL
-Type ::= KEYWORD_INTEGER | KEYWORD_FLOAT | KEYWORD_DATE | KEYWORD_DATETIME | KEYWORD_STRING | KEYWORD_LIST | KEYWORD_DICT | KEYWORD_ANY | KEYWORD_BOOLEAN
+Type ::= KEYWORD_ANY
+    | KEYWORD_BOOLEAN
+    | KEYWORD_DATE
+    | KEYWORD_DATETIME
+    | KEYWORD_DICT
+    | KEYWORD_FLOAT
+    | KEYWORD_INTEGER
+    | KEYWORD_LIST
+    | KEYWORD_NUMBER
+    | KEYWORD_STRING
+    | KEYWORD_TIME
 
-Constant ::= BuiltInVariableName | NumberLiteral | StringLiteral | ListLiteral
+Constant ::= BuiltInVariableName | NumberLiteral | StringLiteral | ListLiteral | IDENTIFIER
 BuiltInVariableName ::= BUILT_IN_VAR_NA
                         | BUILT_IN_VAR_TODAY
                         | BUILT_IN_VAR_TIMETODAY
@@ -246,6 +262,7 @@ BuiltInVariableName ::= BUILT_IN_VAR_NA
                         | BUILT_IN_VAR_FIELD
                         | BUILT_IN_VAR_FIELDS
                         | BUILT_IN_VAR_DATA
+                        | BUILT_IN_VAR_DATETIME
                         | BUILT_IN_VAR_STATUS
                         | BUILT_IN_VAR_DEPENDENCIES
                         | BUILT_IN_VAR_DEPENDENCIES_TRIGGERS

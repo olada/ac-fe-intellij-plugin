@@ -25,4 +25,7 @@ public interface FormulaEngineFunctionBodyStatement extends PsiElement {
   @Nullable
   FormulaEngineReturnStatement getReturnStatement();
 
+  @Nullable
+  FormulaEngineSeq getSeq();
+
 }
