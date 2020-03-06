@@ -29,10 +29,10 @@ public class FormulaEngineLexerStateTracker {
             Integer poppedState = states.pop();
             Integer newStateToEnter = states.peek();
             lexer.yybegin(newStateToEnter);
-            LOG.info("Popped-State: " + poppedState);
-            LOG.info("New State: " + newStateToEnter);
+            LOG.trace("Popped-State: " + poppedState);
+            LOG.trace("New State: " + newStateToEnter);
         } catch (EmptyStackException e) {
-            LOG.info("Lexer State Stack has no values - entering initial state");
+            LOG.trace("Lexer State Stack has no values - entering initial state");
             lexer.yybegin(lexer.getInitialState());
         }
     }
