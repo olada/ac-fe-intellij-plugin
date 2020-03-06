@@ -215,11 +215,11 @@ BuiltInFunctionName ::= BUILT_IN_FUNC_ATTRIBUTE
     | BUILT_IN_FUNC_STATUS
 FunctionBody ::= FunctionBodyStatement*
 Statement ::= ((FunctionInvocation | Assignment | Declaration | ReturnStatement | KEYWORD_BREAK) SEMICOLON) |  FunctionDefinition
-StatementWithoutEol ::= FunctionInvocation | Assignment | Declaration | BuiltInVariableName | ListLiteral
+StatementWithoutEol ::= CombinationExpression | FunctionInvocation | Assignment | Declaration | BuiltInVariableName | ListLiteral
 FunctionBodyStatement ::= FunctionDefinition | ControlStructure | ((FunctionInvocation | Assignment | Declaration | ReturnStatement) SEMICOLON)
 
 SeqForParenthesis ::= LEFT_PARENTHESIS Assignment (COMMA (Assignment | FunctionInvocation))* SEMICOLON Expression SEMICOLON (Assignment | FunctionInvocation) RIGHT_PARENTHESIS
-Seq ::= KEYWORD_SEQ SeqForParenthesis StatementWithoutEol
+Seq ::= KEYWORD_SEQ SeqForParenthesis StatementWithoutEol  // StatementWithoutEOL might be replaced by Expression
 For ::= KEYWORD_FOR SeqForParenthesis (ControlStructure | Statement) | (LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE)
 If ::= KEYWORD_IF LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS IfOrElseBlock (KEYWORD_ELSE KEYWORD_IF LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS IfOrElseBlock)* (KEYWORD_ELSE IfOrElseBlock)?
 private IfOrElseBlock ::= LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE | ControlStructureBody

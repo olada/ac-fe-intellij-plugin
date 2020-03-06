@@ -993,12 +993,13 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // FunctionInvocation | Assignment | Declaration | BuiltInVariableName | ListLiteral
+  // CombinationExpression | FunctionInvocation | Assignment | Declaration | BuiltInVariableName | ListLiteral
   public static boolean StatementWithoutEol(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "StatementWithoutEol")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, STATEMENT_WITHOUT_EOL, "<statement without eol>");
-    r = FunctionInvocation(b, l + 1);
+    r = Expression(b, l + 1, 1);
+    if (!r) r = FunctionInvocation(b, l + 1);
     if (!r) r = Assignment(b, l + 1);
     if (!r) r = Declaration(b, l + 1);
     if (!r) r = BuiltInVariableName(b, l + 1);

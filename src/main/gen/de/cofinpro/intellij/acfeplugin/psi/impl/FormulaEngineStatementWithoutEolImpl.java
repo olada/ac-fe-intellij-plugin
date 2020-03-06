@@ -40,6 +40,12 @@ public class FormulaEngineStatementWithoutEolImpl extends ASTWrapperPsiElement i
 
   @Override
   @Nullable
+  public FormulaEngineCombinationExpression getCombinationExpression() {
+    return findChildByClass(FormulaEngineCombinationExpression.class);
+  }
+
+  @Override
+  @Nullable
   public FormulaEngineDeclaration getDeclaration() {
     return findChildByClass(FormulaEngineDeclaration.class);
   }
