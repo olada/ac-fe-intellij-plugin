@@ -2,11 +2,22 @@
 
 = ac-fe-intellij-plugin
 
-== Voraussetzung für Entwicklung
+== Usage
 
-* GrammarKit Plugin von JetBrains installieren (damit Code generiert werden kann)
+Download the `.jar` file (see _Releases_ tab) and place it in your IntelliJ
+IDEA user directory at `$IDEA_USERDIR/config/plugins`.
+During the next startup of IntelliJ it should be automatically added to your list
+of installed plugins.
 
-== Backlog
+Note: Your IntelliJ IDEA version must be >= 2019.3
+
+== Development
+
+=== Prerequisites
+
+* Installation of JetBrains' GrammarKit Plugin. This is required so that you can generate code from `.flex` and `.bnf` files.
+
+=== Backlog
 * Syntax Highlighting for following tokens (partly taken from Eclipse plugin)
   ** Annotation
   ** Built-in functions
@@ -15,6 +26,7 @@
   *** price_field
   *** print
   *** ts
+  *** min
   ** Built-in variables
   *** $FIELDS
   *** $SYMBOL
@@ -38,20 +50,21 @@
   ** Special variable
   ** String icon:check-circle[]
   ** Task Tag
-  ** Unterstützung von Methodennamen (auch built-in) bei Funktionsargumenten icon:check-circle[]
+  ** method references in function argument icon:check-circle[]
 * Auto Completion
 * Reference Resolution and jumping to definition
 * Brace Pair Highlighting icon:check-circle[]
 * Toggle Regions / Region Folding
 * TODO Detection
-* Links Icons zeigen, wo die Methode in einer tsv-Datei referenziert ist (xx(HASH)RULES.tsv)
-* Dead Code Analyse (erfordert Cross-Reference-Checks in xx(HASH)RULES-Dateien)
+* Display _Jump-To_ icons on the left hand side of the editor to show where the function is reference (e.g. in _co(HASH)RULES.tsv_ file)
+* dead code analysis (requires cross reference checks in at least _co(HASH)RULES.tsv_ file)
 
-== Testen des Plugins
+=== Local Testing
 
-Task _runIde_ des intellij-Gradle-Plugins ausführen.
+. Run the gradle task _runIde_ of the intellij gradle plugins
+. Open files with FE syntax in newly opened IntelliJ Community Edition instance
 
-== Quellen
+=== Sources
 
 * https://www.jetbrains.org/intellij/sdk/docs/reference_guide/custom_language_support.html
 * https://medium.com/@shan1024/custom-language-plugin-development-for-intellij-idea-part-02-f948a078dc81
