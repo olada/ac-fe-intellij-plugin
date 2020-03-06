@@ -24,7 +24,9 @@ IDENTIFIER=[a-zA-Z_][a-zA-Z0-9_]*
 
 // taken from Python.flex in OSS
 QUOTED_LITERAL="'" ([^\\\'\r\n] | {ESCAPE_SEQUENCE} | (\\[\r\n]))* ("'"|\\)?
+QUOTED_MULTILINE_LITERAL="'" ([^\\\'] | {ESCAPE_SEQUENCE} | (\\[\r\n]))* ("'"|\\)?
 DOUBLE_QUOTED_LITERAL=\"([^\\\"\r\n]|{ESCAPE_SEQUENCE}|(\\[\r\n]))*?(\"|\\)?
+DOUBLE_QUOTED_MULTILINE_LITERAL=\"([^\\\"]|{ESCAPE_SEQUENCE}|(\\[\r\n]))*?(\"|\\)?
 ESCAPE_SEQUENCE=\\[^\r\n]
 
 COMMENT_SINGLE_LINE = ("//")[^\r\n]*
@@ -211,7 +213,9 @@ DIGIT = [0-9]
    {COMMENT_SINGLE_LINE} { return FormulaEngineElementTypes.LINE_COMMENT; }
    {BLOCK_COMMENT} { return FormulaEngineElementTypes.BLOCK_COMMENT; }
 
+   {QUOTED_MULTILINE_LITERAL} { return FormulaEngineElementTypes.SINGLE_QUOTED_STRING; }
    {QUOTED_LITERAL} { return FormulaEngineElementTypes.SINGLE_QUOTED_STRING; }
+   {DOUBLE_QUOTED_MULTILINE_LITERAL} { return FormulaEngineElementTypes.DOUBLE_QUOTED_STRING; }
    {DOUBLE_QUOTED_LITERAL} { return FormulaEngineElementTypes.DOUBLE_QUOTED_STRING; }
 
    {NUMBER_SCIENTIFIC} { return FormulaEngineElementTypes.NUMBER_SCIENTIFIC; }
