@@ -333,7 +333,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // (ControlStructure | Statement)*
+  // (ControlStructure | Statement | (Constant SEMICOLON))*
   public static boolean ControlStructureBody(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "ControlStructureBody")) return false;
     Marker m = enter_section_(b, l, _NONE_, CONTROL_STRUCTURE_BODY, "<control structure body>");
@@ -346,12 +346,26 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     return true;
   }
 
-  // ControlStructure | Statement
+  // ControlStructure | Statement | (Constant SEMICOLON)
   private static boolean ControlStructureBody_0(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "ControlStructureBody_0")) return false;
     boolean r;
+    Marker m = enter_section_(b);
     r = ControlStructure(b, l + 1);
     if (!r) r = Statement(b, l + 1);
+    if (!r) r = ControlStructureBody_0_2(b, l + 1);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  // Constant SEMICOLON
+  private static boolean ControlStructureBody_0_2(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "ControlStructureBody_0_2")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = Constant(b, l + 1);
+    r = r && consumeToken(b, SEMICOLON);
+    exit_section_(b, m, null, r);
     return r;
   }
 
