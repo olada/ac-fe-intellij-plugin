@@ -11,6 +11,9 @@ public interface FormulaEngineDeclaration extends PsiElement {
   FormulaEngineArrayAccess getArrayAccess();
 
   @Nullable
+  FormulaEngineBuiltInVariableName getBuiltInVariableName();
+
+  @Nullable
   FormulaEngineType getType();
 
   @Nullable

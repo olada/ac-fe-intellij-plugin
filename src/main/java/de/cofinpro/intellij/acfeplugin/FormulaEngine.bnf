@@ -228,7 +228,7 @@ If ::= KEYWORD_IF LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS IfOrElseBlock (K
 private IfOrElseBlock ::= LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE | ControlStructureBody
 private SeqBody ::= Assignment | CalculationExpression | FunctionInvocation | ListLiteral | BuiltInVariableName
 
-Declaration ::= ArrayAccess | Visibility? Type? IDENTIFIER
+Declaration ::= ArrayAccess | BuiltInVariableName | Visibility? Type? IDENTIFIER
 Assignment ::= (Declaration AssignmentOperator (Seq | Expression)) | IDENTIFIER PostfixOperator | PrefixOperator IDENTIFIER | OPERATOR_MINUS IDENTIFIER
 
 ArrayAccess ::= (BuiltInVariableName | IDENTIFIER) (LEFT_BRACKET Expression RIGHT_BRACKET)+

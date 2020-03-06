@@ -385,39 +385,40 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // ArrayAccess | Visibility? Type? IDENTIFIER
+  // ArrayAccess | BuiltInVariableName | Visibility? Type? IDENTIFIER
   public static boolean Declaration(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Declaration")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, DECLARATION, "<declaration>");
     r = ArrayAccess(b, l + 1);
-    if (!r) r = Declaration_1(b, l + 1);
+    if (!r) r = BuiltInVariableName(b, l + 1);
+    if (!r) r = Declaration_2(b, l + 1);
     exit_section_(b, l, m, r, false, null);
     return r;
   }
 
   // Visibility? Type? IDENTIFIER
-  private static boolean Declaration_1(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "Declaration_1")) return false;
+  private static boolean Declaration_2(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "Declaration_2")) return false;
     boolean r;
     Marker m = enter_section_(b);
-    r = Declaration_1_0(b, l + 1);
-    r = r && Declaration_1_1(b, l + 1);
+    r = Declaration_2_0(b, l + 1);
+    r = r && Declaration_2_1(b, l + 1);
     r = r && consumeToken(b, IDENTIFIER);
     exit_section_(b, m, null, r);
     return r;
   }
 
   // Visibility?
-  private static boolean Declaration_1_0(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "Declaration_1_0")) return false;
+  private static boolean Declaration_2_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "Declaration_2_0")) return false;
     Visibility(b, l + 1);
     return true;
   }
 
   // Type?
-  private static boolean Declaration_1_1(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "Declaration_1_1")) return false;
+  private static boolean Declaration_2_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "Declaration_2_1")) return false;
     Type(b, l + 1);
     return true;
   }
