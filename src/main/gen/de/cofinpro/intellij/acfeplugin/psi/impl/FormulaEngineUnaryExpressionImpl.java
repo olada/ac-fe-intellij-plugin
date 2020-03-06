@@ -8,17 +8,16 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
 import static de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementTypes.*;
-import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import de.cofinpro.intellij.acfeplugin.psi.*;
 
-public class FormulaEngineStatementWithoutEolImpl extends ASTWrapperPsiElement implements FormulaEngineStatementWithoutEol {
+public class FormulaEngineUnaryExpressionImpl extends FormulaEngineExpressionImpl implements FormulaEngineUnaryExpression {
 
-  public FormulaEngineStatementWithoutEolImpl(@NotNull ASTNode node) {
+  public FormulaEngineUnaryExpressionImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull FormulaEngineVisitor visitor) {
-    visitor.visitStatementWithoutEol(this);
+    visitor.visitUnaryExpression(this);
   }
 
   public void accept(@NotNull PsiElementVisitor visitor) {
@@ -28,26 +27,26 @@ public class FormulaEngineStatementWithoutEolImpl extends ASTWrapperPsiElement i
 
   @Override
   @Nullable
-  public FormulaEngineAssignment getAssignment() {
-    return findChildByClass(FormulaEngineAssignment.class);
+  public FormulaEngineExpression getExpression() {
+    return findChildByClass(FormulaEngineExpression.class);
   }
 
   @Override
   @Nullable
-  public FormulaEngineBuiltInVariableName getBuiltInVariableName() {
-    return findChildByClass(FormulaEngineBuiltInVariableName.class);
+  public FormulaEnginePostfixOperator getPostfixOperator() {
+    return findChildByClass(FormulaEnginePostfixOperator.class);
   }
 
   @Override
   @Nullable
-  public FormulaEngineDeclaration getDeclaration() {
-    return findChildByClass(FormulaEngineDeclaration.class);
+  public FormulaEnginePrefixOperator getPrefixOperator() {
+    return findChildByClass(FormulaEnginePrefixOperator.class);
   }
 
   @Override
   @Nullable
-  public FormulaEngineFunctionInvocation getFunctionInvocation() {
-    return findChildByClass(FormulaEngineFunctionInvocation.class);
+  public PsiElement getIdentifier() {
+    return findChildByType(IDENTIFIER);
   }
 
 }

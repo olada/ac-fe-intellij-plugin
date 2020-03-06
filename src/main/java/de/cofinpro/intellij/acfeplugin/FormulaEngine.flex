@@ -30,9 +30,10 @@ ESCAPE_SEQUENCE=\\[^\r\n]
 COMMENT_SINGLE_LINE = ("//")[^\r\n]*
 BLOCK_COMMENT=[/][*][^*]*[*]+([^/*][^*]*[*]+)*[/]
 
-DIGIT = [0-9]
+NUMBER_SCIENTIFIC = [0-9]+\.[0-9]+(E\d+)
+NUMBER_FLOAT = [0-9]+\.[0-9]*
 NUMBER_INTEGER = [0-9]+
-NUMBER_FLOAT = [0-9]+\. | [0-9]+\.[0-9]+
+DIGIT = [0-9]
 
 %state IN_PARENTHESIS
 %state IN_FUNCTION_HEADER
@@ -56,6 +57,7 @@ NUMBER_FLOAT = [0-9]+\. | [0-9]+\.[0-9]+
    "datetime" { return FormulaEngineElementTypes.BUILT_IN_FUNC_DATETIME; }
    "daydiff" { return FormulaEngineElementTypes.BUILT_IN_FUNC_DAYDIFF; }
    "dayplus" { return FormulaEngineElementTypes.BUILT_IN_FUNC_DAYPLUS; }
+   "dict" { return FormulaEngineElementTypes.BUILT_IN_FUNC_DICT; }
    "elt" { return FormulaEngineElementTypes.BUILT_IN_FUNC_ELT; }
    "first" { return FormulaEngineElementTypes.BUILT_IN_FUNC_FIRST; }
    "float" { return FormulaEngineElementTypes.BUILT_IN_FUNC_FLOAT; }
@@ -78,6 +80,7 @@ NUMBER_FLOAT = [0-9]+\. | [0-9]+\.[0-9]+
    "status" { return FormulaEngineElementTypes.BUILT_IN_FUNC_STATUS; }
    "str" { return FormulaEngineElementTypes.BUILT_IN_FUNC_STR; }
    "string" { return FormulaEngineElementTypes.BUILT_IN_FUNC_STRING; }
+   "time" { return FormulaEngineElementTypes.BUILT_IN_FUNC_TIME; }
 }
 
 // Der Function Header soll Datentypen nicht als built-in methode markieren (clash von datentypen und built-in Methodennamen, bspw "string" oder "integer" -> klassische cast funktionen)
@@ -110,21 +113,29 @@ NUMBER_FLOAT = [0-9]+\. | [0-9]+\.[0-9]+
     "*" { return FormulaEngineElementTypes.OPERATOR_MULTIPLY; }
     "+=" { return FormulaEngineElementTypes.OPERATOR_ADDASSIGNMENT; }
     "+" { return FormulaEngineElementTypes.OPERATOR_PLUS; }
+    "-" { return FormulaEngineElementTypes.OPERATOR_MINUS; }
     "-=" { return FormulaEngineElementTypes.OPERATOR_SUBTRACTASSIGNMENT; }
+    "*=" { return FormulaEngineElementTypes.OPERATOR_MULTIPLYASSIGNMENT; }
+    "/=" { return FormulaEngineElementTypes.OPERATOR_DIVIDEASSIGNMENT; }
+    "%=" { return FormulaEngineElementTypes.OPERATOR_MODULOASSIGNMENT; }
+    "^" { return FormulaEngineElementTypes.OPERATOR_POWER; }
 
     // Visibility
     "local" { return FormulaEngineElementTypes.VISIBILITY_LOCAL; }
     "global" { return FormulaEngineElementTypes.VISIBILITY_GLOBAL; }
 
     // Data Types
-    "datetime" { return FormulaEngineElementTypes.KEYWORD_DATETIME; }
+    "any" { return FormulaEngineElementTypes.KEYWORD_ANY; }
+    "boolean" { return FormulaEngineElementTypes.KEYWORD_BOOLEAN; }
     "date" { return FormulaEngineElementTypes.KEYWORD_DATE; }
+    "datetime" { return FormulaEngineElementTypes.KEYWORD_DATETIME; }
+    "dict" { return FormulaEngineElementTypes.KEYWORD_DICT; }
     "float" { return FormulaEngineElementTypes.KEYWORD_FLOAT; }
     "integer" { return FormulaEngineElementTypes.KEYWORD_INTEGER; }
-    "string" { return FormulaEngineElementTypes.KEYWORD_STRING; }
     "list" { return FormulaEngineElementTypes.KEYWORD_LIST; }
-    "dict" { return FormulaEngineElementTypes.KEYWORD_DICT; }
-    "any" { return FormulaEngineElementTypes.KEYWORD_ANY; }
+    "number" { return FormulaEngineElementTypes.KEYWORD_NUMBER; }
+    "string" { return FormulaEngineElementTypes.KEYWORD_STRING; }
+    "time" { return FormulaEngineElementTypes.KEYWORD_TIME; }
 
     // Keywords
     "and" { return FormulaEngineElementTypes.KEYWORD_AND; }
@@ -144,7 +155,21 @@ NUMBER_FLOAT = [0-9]+\. | [0-9]+\.[0-9]+
 
     // Built-in Variables
     "\$NA" { return FormulaEngineElementTypes.BUILT_IN_VAR_NA; }
-    "\$TODAY" { return FormulaEngineElementTypes.BUILT_IN_VAR_NA; }
+    "\$TODAY" { return FormulaEngineElementTypes.BUILT_IN_VAR_TODAY; }
+    "\$TIMETODAY" { return FormulaEngineElementTypes.BUILT_IN_VAR_TIMETODAY; }
+    "\$SYMBOL" { return FormulaEngineElementTypes.BUILT_IN_VAR_SYMBOL; }
+    "\$NAME" { return FormulaEngineElementTypes.BUILT_IN_VAR_NAME; }
+    "\$PROCESSED" { return FormulaEngineElementTypes.BUILT_IN_VAR_PROCESSED; }
+    "\$PASSED" { return FormulaEngineElementTypes.BUILT_IN_VAR_PASSED; }
+    "\$LISTID" { return FormulaEngineElementTypes.BUILT_IN_VAR_LISTID; }
+    "\$LISTTP" { return FormulaEngineElementTypes.BUILT_IN_VAR_LISTTP; }
+    "\$TREEID" { return FormulaEngineElementTypes.BUILT_IN_VAR_TREEID; }
+    "\$FIELD" { return FormulaEngineElementTypes.BUILT_IN_VAR_FIELD; }
+    "\$FIELDS" { return FormulaEngineElementTypes.BUILT_IN_VAR_FIELDS; }
+    "\$DATA" { return FormulaEngineElementTypes.BUILT_IN_VAR_DATA; }
+    "\$STATUS" { return FormulaEngineElementTypes.BUILT_IN_VAR_STATUS; }
+    "\$DEPENDENCIES" { return FormulaEngineElementTypes.BUILT_IN_VAR_DEPENDENCIES; }
+    "\$DEPENDENCIES_TRIGGERS" { return FormulaEngineElementTypes.BUILT_IN_VAR_DEPENDENCIES_TRIGGERS; }
 
     // Built-in Functions (use parenthesis for matching but don't include the parenthesis in the token)
    "attribute(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_ATTRIBUTE; }
@@ -152,6 +177,7 @@ NUMBER_FLOAT = [0-9]+\. | [0-9]+\.[0-9]+
    "datetime(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DATETIME; }
    "daydiff(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DAYDIFF; }
    "dayplus(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DAYPLUS; }
+   "dict(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DICT; }
    "elt(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_ELT; }
    "first(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_FIRST; }
    "float(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_FLOAT; }
@@ -174,11 +200,11 @@ NUMBER_FLOAT = [0-9]+\. | [0-9]+\.[0-9]+
    "status(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STATUS; }
    "str(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STR; }
    "string(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STRING; }
+   "time(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_TIME; }
 
    "," { return FormulaEngineElementTypes.COMMA; }
    ";" { return FormulaEngineElementTypes.SEMICOLON; }
    ":" { return FormulaEngineElementTypes.COLON; }
-   "-" { return FormulaEngineElementTypes.MINUS; }
    "?" { return FormulaEngineElementTypes.QUESIONMARK; }
 
    {COMMENT_SINGLE_LINE} { return FormulaEngineElementTypes.LINE_COMMENT; }
@@ -187,6 +213,7 @@ NUMBER_FLOAT = [0-9]+\. | [0-9]+\.[0-9]+
    {QUOTED_LITERAL} { return FormulaEngineElementTypes.SINGLE_QUOTED_STRING; }
    {DOUBLE_QUOTED_LITERAL} { return FormulaEngineElementTypes.DOUBLE_QUOTED_STRING; }
 
+   {NUMBER_SCIENTIFIC} { return FormulaEngineElementTypes.NUMBER_SCIENTIFIC; }
    {NUMBER_FLOAT} { return FormulaEngineElementTypes.NUMBER_FLOAT; }
    {NUMBER_INTEGER} { return FormulaEngineElementTypes.NUMBER_INTEGER; }
 

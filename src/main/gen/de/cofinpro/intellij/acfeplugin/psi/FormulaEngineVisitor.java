@@ -175,10 +175,6 @@ public class FormulaEngineVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitStatementWithoutEol(@NotNull FormulaEngineStatementWithoutEol o) {
-    visitPsiElement(o);
-  }
-
   public void visitStringLiteral(@NotNull FormulaEngineStringLiteral o) {
     visitPsiElement(o);
   }
@@ -193,6 +189,10 @@ public class FormulaEngineVisitor extends PsiElementVisitor {
 
   public void visitType(@NotNull FormulaEngineType o) {
     visitPsiElement(o);
+  }
+
+  public void visitUnaryExpression(@NotNull FormulaEngineUnaryExpression o) {
+    visitExpression(o);
   }
 
   public void visitVisibility(@NotNull FormulaEngineVisibility o) {

@@ -8,6 +8,9 @@ import com.intellij.psi.PsiElement;
 public interface FormulaEngineControlStructureBody extends PsiElement {
 
   @NotNull
+  List<FormulaEngineConstant> getConstantList();
+
+  @NotNull
   List<FormulaEngineControlStructure> getControlStructureList();
 
   @NotNull

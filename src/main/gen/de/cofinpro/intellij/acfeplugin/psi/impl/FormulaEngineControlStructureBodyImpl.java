@@ -28,6 +28,12 @@ public class FormulaEngineControlStructureBodyImpl extends ASTWrapperPsiElement 
 
   @Override
   @NotNull
+  public List<FormulaEngineConstant> getConstantList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, FormulaEngineConstant.class);
+  }
+
+  @Override
+  @NotNull
   public List<FormulaEngineControlStructure> getControlStructureList() {
     return PsiTreeUtil.getChildrenOfTypeAsList(this, FormulaEngineControlStructure.class);
   }

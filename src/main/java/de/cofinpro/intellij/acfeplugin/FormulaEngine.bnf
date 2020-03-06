@@ -25,6 +25,7 @@
             OPERATOR_AND = '&&'
             OPERATOR_DECREMENT = '--'
             OPERATOR_DIVIDE = '/'
+            OPERATOR_DIVIDEASSIGNMENT = '/='
             OPERATOR_EQUAL = '=='
             OPERATOR_GREATERTHAN = '>'
             OPERATOR_GREATERTHANEQUAL = '>='
@@ -33,11 +34,14 @@
             OPERATOR_LESSTHANEQUAL = '<='
             OPERATOR_MINUS = '-'
             OPERATOR_MODULO = '%'
+            OPERATOR_MODULOASSIGNMENT = '%='
             OPERATOR_MULTIPLY = '*'
+            OPERATOR_MULTIPLYASSIGNMENT = '*='
             OPERATOR_NEGATION = '!'
             OPERATOR_NOTEQUAL = '!='
             OPERATOR_OR = '||'
             OPERATOR_PLUS = '+'
+            OPERATOR_POWER = '^'
             OPERATOR_SUBTRACTASSIGNMENT = '-='
 
             KEYWORD_AND = 'and'
@@ -56,25 +60,43 @@
             KEYWORD_WHILE = 'while'
 
             KEYWORD_ANY = 'any'
+            KEYWORD_BOOLEAN = 'boolean'
             KEYWORD_DATE = 'date'
             KEYWORD_DATETIME = 'datetime'
             KEYWORD_DICT = 'dict'
             KEYWORD_FLOAT = 'float'
             KEYWORD_INTEGER = 'integer'
             KEYWORD_LIST = 'list'
+            KEYWORD_NUMBER = 'number'
             KEYWORD_STRING = 'string'
+            KEYWORD_TIME = 'time'
 
             VISIBILITY_GLOBAL = 'global'
             VISIBILITY_LOCAL = 'local'
 
             BUILT_IN_VAR_NA = '$NA'
             BUILT_IN_VAR_TODAY = '$TODAY'
+            BUILT_IN_VAR_TIMETODAY = '$TIMETODAY'
+            BUILT_IN_VAR_SYMBOL = '$SYMBOL'
+            BUILT_IN_VAR_NAME = '$NAME'
+            BUILT_IN_VAR_PROCESSED = '$PROCESSED'
+            BUILT_IN_VAR_PASSED = '$PASSED'
+            BUILT_IN_VAR_LISTID = '$LISTID'
+            BUILT_IN_VAR_LISTTP = '$LISTTP'
+            BUILT_IN_VAR_TREEID = '$TREEID'
+            BUILT_IN_VAR_FIELD = '$FIELD'
+            BUILT_IN_VAR_FIELDS = '$FIELDS'
+            BUILT_IN_VAR_DATA = '$DATA'
+            BUILT_IN_VAR_STATUS = '$STATUS'
+            BUILT_IN_VAR_DEPENDENCIES = '$DEPENDENCIES'
+            BUILT_IN_VAR_DEPENDENCIES_TRIGGERS = '$DEPENDENCIES_TRIGGERS'
 
             BUILT_IN_FUNC_ATTRIBUTE = 'attribute'
             BUILT_IN_FUNC_DATE = 'date'
             BUILT_IN_FUNC_DATETIME = 'datetime'
             BUILT_IN_FUNC_DAYDIFF = 'daydiff'
             BUILT_IN_FUNC_DAYPLUS = 'dayplus'
+            BUILT_IN_FUNC_DICT = 'dict'
             BUILT_IN_FUNC_ELT = 'elt'
             BUILT_IN_FUNC_FIRST = 'first'
             BUILT_IN_FUNC_FLOAT = 'float'
@@ -95,7 +117,8 @@
             BUILT_IN_FUNC_REMOVE = 'remove'
             BUILT_IN_FUNC_STATUS = 'status'
             BUILT_IN_FUNC_STR = 'str'
-            BUILT_IN_FUNC_STRING = 'string'
+            BUILT_IN_FUNC_STRING = 'built in func string'
+            BUILT_IN_FUNC_TIME = 'built in func time'
             BUILT_IN_FUNC_OUT = 'out'
 
             DOUBLE_QUOTED_STRING_LITERAL = 'double quoted string literal'
@@ -106,7 +129,6 @@
             COMMA = ','
             COLON = ':'
             SEMICOLON = ';'
-            MINUS = '-'
             QUESIONMARK = '?'
 
             IDENTIFIER = 'regexp:[a-zA-Z_][a-zA-Z0-9_]*'
@@ -114,8 +136,9 @@
             BLOCK_COMMENT='regexp:/\*([^*]|\*+[^*/])*(\*+/)?'
             WHITE_SPACE = 'regexp:\s+'
 
+            NUMBER_SCIENTIFIC = 'regexp:[0-9]+\.[0-9]+(E\d+)'
+            NUMBER_FLOAT = 'regexp:[0-9]+\.[0-9]*'
             NUMBER_INTEGER = 'regexp:[0-9]+'
-            NUMBER_FLOAT = 'regexp:[0-9]+\.|[0-9]+\.[0-9]+'
     ]
 
       extends(".*Expression")=Expression
@@ -134,36 +157,38 @@ FunctionArgument ::= Expression
 
 // Control Structures
 ControlStructure ::= While | For | DoWhile | If | Switch
-ControlStructureBody ::= (ControlStructure | Statement)*
+ControlStructureBody ::= (ControlStructure | Statement | (Constant SEMICOLON))*
 
 While ::= KEYWORD_WHILE LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE
-Switch ::= KEYWORD_SWITCH LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE (KEYWORD_CASE Constant COLON (ControlStructureBody (KEYWORD_BREAK SEMICOLON)?))* (KEYWORD_DEFAULT Constant COLON (ControlStructureBody (KEYWORD_BREAK SEMICOLON)?))? RIGHT_CURLY_BRACE
+Switch ::= KEYWORD_SWITCH LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE (KEYWORD_CASE Constant COLON (ControlStructureBody (KEYWORD_BREAK SEMICOLON)?))* (KEYWORD_DEFAULT Constant? COLON (ControlStructureBody (KEYWORD_BREAK SEMICOLON)?))? RIGHT_CURLY_BRACE
 DoWhile ::= KEYWORD_DO LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE KEYWORD_WHILE LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS SEMICOLON
 
 // Expressions
 Expression ::= NegatedExpression
+    | ParenthesisExpression
     | CombinationExpression
     | ComparisonExpression
     | CalculationExpression
     | ShortIfExpression
     | LeafExpression
-    | ParenthesisExpression
+    | UnaryExpression
 NegatedExpression ::= OPERATOR_NEGATION Expression
 CombinationExpression ::= Expression CombinationOperator Expression
 ComparisonExpression ::= Expression ComparisonOperator Expression
 CalculationExpression ::= Expression CalculationOperator Expression
 ShortIfExpression ::= Expression QUESIONMARK Expression COLON Expression
-LeafExpression ::= FunctionInvocation | Constant | ArrayAccess | PrefixOperator IDENTIFIER | IDENTIFIER PostfixOperator | MethodReference | IDENTIFIER
+LeafExpression ::= FunctionInvocation | ArrayAccess | Constant |  MethodReference | IDENTIFIER
 ParenthesisExpression ::= LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS
+UnaryExpression ::= PrefixOperator IDENTIFIER | IDENTIFIER PostfixOperator | OPERATOR_MINUS Expression | OPERATOR_PLUS Expression
 
 CombinationOperator ::= OPERATOR_AND | OPERATOR_OR | KEYWORD_AND | KEYWORD_OR
 ComparisonOperator ::= OPERATOR_EQUAL | OPERATOR_NOTEQUAL | OPERATOR_GREATERTHANEQUAL | OPERATOR_GREATERTHAN | OPERATOR_LESSTHANEQUAL | OPERATOR_LESSTHAN
-CalculationOperator ::= OPERATOR_MODULO | OPERATOR_PLUS | MINUS | OPERATOR_MULTIPLY | OPERATOR_DIVIDE
+CalculationOperator ::= OPERATOR_MODULO | OPERATOR_PLUS | OPERATOR_MINUS | OPERATOR_MULTIPLY | OPERATOR_DIVIDE | OPERATOR_POWER
 PostfixOperator ::= OPERATOR_INCREMENT | OPERATOR_DECREMENT
 PrefixOperator ::= OPERATOR_INCREMENT | OPERATOR_DECREMENT
-AssignmentOperator ::= OPERATOR_ADDASSIGNMENT | OPERATOR_SUBTRACTASSIGNMENT | OPERATOR_ASSIGNMENT
+AssignmentOperator ::= OPERATOR_ADDASSIGNMENT | OPERATOR_SUBTRACTASSIGNMENT | OPERATOR_MULTIPLYASSIGNMENT | OPERATOR_DIVIDEASSIGNMENT | OPERATOR_MODULOASSIGNMENT |OPERATOR_ASSIGNMENT
 
-NumberLiteral ::= MINUS? (NUMBER_FLOAT | NUMBER_INTEGER)
+NumberLiteral ::= NUMBER_SCIENTIFIC | NUMBER_FLOAT | NUMBER_INTEGER
 StringLiteral ::= SingleStringLiteral (OPERATOR_PLUS Expression)* | SingleStringLiteral (OPERATOR_PLUS SingleStringLiteral)*
 SingleStringLiteral ::= SINGLE_QUOTED_STRING | DOUBLE_QUOTED_STRING
 ListLiteral ::= LEFT_BRACKET ListContents RIGHT_BRACKET
@@ -176,7 +201,7 @@ private FunctionName ::= BuiltInFunctionName | CustomFunctionName
 private MethodReference ::= FunctionName // just for sake of better naming
 
 BuiltInFunctionName ::= BUILT_IN_FUNC_ATTRIBUTE
-    | BUILT_IN_FUNC_DATE | BUILT_IN_FUNC_DATETIME | BUILT_IN_FUNC_STR | BUILT_IN_FUNC_FLOAT | BUILT_IN_FUNC_INTEGER | BUILT_IN_FUNC_LIST | BUILT_IN_FUNC_STRING
+    | BUILT_IN_FUNC_DATE | BUILT_IN_FUNC_DATETIME | BUILT_IN_FUNC_DICT | BUILT_IN_FUNC_STR | BUILT_IN_FUNC_FLOAT | BUILT_IN_FUNC_INTEGER | BUILT_IN_FUNC_LIST | BUILT_IN_FUNC_STRING
     | BUILT_IN_FUNC_DAYDIFF | BUILT_IN_FUNC_DAYPLUS
     | BUILT_IN_FUNC_ELT
     | BUILT_IN_FUNC_FIRST
@@ -190,26 +215,52 @@ BuiltInFunctionName ::= BUILT_IN_FUNC_ATTRIBUTE
     | BUILT_IN_FUNC_OUT
     | BUILT_IN_FUNC_REMOVE
     | BUILT_IN_FUNC_STATUS
+    | BUILT_IN_FUNC_TIME
 FunctionBody ::= FunctionBodyStatement*
-Statement ::= (FunctionInvocation | Assignment | Declaration | ReturnStatement | KEYWORD_BREAK) SEMICOLON
-StatementWithoutEol ::= FunctionInvocation | Assignment | Declaration | BuiltInVariableName
-FunctionBodyStatement ::= FunctionDefinition | ControlStructure | ((FunctionInvocation | Assignment | Declaration | ReturnStatement) SEMICOLON)
+Statement ::= ((FunctionInvocation | Assignment | Declaration | ReturnStatement | KEYWORD_BREAK) SEMICOLON) |  FunctionDefinition
+FunctionBodyStatement ::= FunctionDefinition | ControlStructure | ((FunctionInvocation | Assignment | Declaration | ReturnStatement | Seq) SEMICOLON)
 
-SeqForParenthesis ::= LEFT_PARENTHESIS Assignment SEMICOLON Expression SEMICOLON Assignment RIGHT_PARENTHESIS
-Seq ::= KEYWORD_SEQ SeqForParenthesis StatementWithoutEol
-For ::= KEYWORD_FOR SeqForParenthesis LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE
+SeqForParenthesis ::= LEFT_PARENTHESIS Assignment (COMMA (Assignment | FunctionInvocation))* SEMICOLON Expression SEMICOLON (Assignment | FunctionInvocation) RIGHT_PARENTHESIS
+Seq ::= KEYWORD_SEQ SeqForParenthesis SeqBody
+For ::= KEYWORD_FOR SeqForParenthesis (ControlStructure | Statement) | (LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE)
 If ::= KEYWORD_IF LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS IfOrElseBlock (KEYWORD_ELSE KEYWORD_IF LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS IfOrElseBlock)* (KEYWORD_ELSE IfOrElseBlock)?
 private IfOrElseBlock ::= LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE | ControlStructureBody
+private SeqBody ::= Assignment | CalculationExpression | FunctionInvocation | ListLiteral | BuiltInVariableName
 
 Declaration ::= ArrayAccess | Visibility? Type? IDENTIFIER
-Assignment ::= (Declaration AssignmentOperator (Seq | Expression)) | IDENTIFIER PostfixOperator
+Assignment ::= (Declaration AssignmentOperator (Seq | Expression)) | IDENTIFIER PostfixOperator | PrefixOperator IDENTIFIER | OPERATOR_MINUS IDENTIFIER
 
-ArrayAccess ::= IDENTIFIER (LEFT_BRACKET Expression RIGHT_BRACKET)+
+ArrayAccess ::= (BuiltInVariableName | IDENTIFIER) (LEFT_BRACKET Expression RIGHT_BRACKET)+
 
-ReturnStatement ::= KEYWORD_RETURN Expression
+ReturnStatement ::= KEYWORD_RETURN Expression?
 
 Visibility ::= VISIBILITY_GLOBAL | VISIBILITY_LOCAL
-Type ::= KEYWORD_INTEGER | KEYWORD_FLOAT | KEYWORD_DATE | KEYWORD_DATETIME | KEYWORD_STRING | KEYWORD_LIST | KEYWORD_DICT | KEYWORD_ANY
+Type ::= KEYWORD_ANY
+    | KEYWORD_BOOLEAN
+    | KEYWORD_DATE
+    | KEYWORD_DATETIME
+    | KEYWORD_DICT
+    | KEYWORD_FLOAT
+    | KEYWORD_INTEGER
+    | KEYWORD_LIST
+    | KEYWORD_NUMBER
+    | KEYWORD_STRING
+    | KEYWORD_TIME
 
 Constant ::= BuiltInVariableName | NumberLiteral | StringLiteral | ListLiteral
-BuiltInVariableName ::= BUILT_IN_VAR_NA | BUILT_IN_VAR_TODAY
+BuiltInVariableName ::= BUILT_IN_VAR_NA
+                        | BUILT_IN_VAR_TODAY
+                        | BUILT_IN_VAR_TIMETODAY
+                        | BUILT_IN_VAR_SYMBOL
+                        | BUILT_IN_VAR_NAME
+                        | BUILT_IN_VAR_PROCESSED
+                        | BUILT_IN_VAR_PASSED
+                        | BUILT_IN_VAR_LISTID
+                        | BUILT_IN_VAR_LISTTP
+                        | BUILT_IN_VAR_TREEID
+                        | BUILT_IN_VAR_FIELD
+                        | BUILT_IN_VAR_FIELDS
+                        | BUILT_IN_VAR_DATA
+                        | BUILT_IN_VAR_STATUS
+                        | BUILT_IN_VAR_DEPENDENCIES
+                        | BUILT_IN_VAR_DEPENDENCIES_TRIGGERS

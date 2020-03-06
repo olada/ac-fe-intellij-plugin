@@ -13,4 +13,7 @@ public interface FormulaEngineSeqForParenthesis extends PsiElement {
   @NotNull
   FormulaEngineExpression getExpression();
 
+  @NotNull
+  List<FormulaEngineFunctionInvocation> getFunctionInvocationList();
+
 }

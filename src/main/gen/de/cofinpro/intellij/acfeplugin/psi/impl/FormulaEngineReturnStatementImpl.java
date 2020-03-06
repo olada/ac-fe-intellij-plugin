@@ -27,9 +27,9 @@ public class FormulaEngineReturnStatementImpl extends ASTWrapperPsiElement imple
   }
 
   @Override
-  @NotNull
+  @Nullable
   public FormulaEngineExpression getExpression() {
-    return findNotNullChildByClass(FormulaEngineExpression.class);
+    return findChildByClass(FormulaEngineExpression.class);
   }
 
 }

@@ -13,4 +13,7 @@ public interface FormulaEngineNumberLiteral extends PsiElement {
   @Nullable
   PsiElement getNumberInteger();
 
+  @Nullable
+  PsiElement getNumberScientific();
+
 }

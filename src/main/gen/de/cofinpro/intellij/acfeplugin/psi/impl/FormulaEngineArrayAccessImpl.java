@@ -27,15 +27,21 @@ public class FormulaEngineArrayAccessImpl extends ASTWrapperPsiElement implement
   }
 
   @Override
+  @Nullable
+  public FormulaEngineBuiltInVariableName getBuiltInVariableName() {
+    return findChildByClass(FormulaEngineBuiltInVariableName.class);
+  }
+
+  @Override
   @NotNull
   public List<FormulaEngineExpression> getExpressionList() {
     return PsiTreeUtil.getChildrenOfTypeAsList(this, FormulaEngineExpression.class);
   }
 
   @Override
-  @NotNull
+  @Nullable
   public PsiElement getIdentifier() {
-    return findNotNullChildByType(IDENTIFIER);
+    return findChildByType(IDENTIFIER);
   }
 
 }

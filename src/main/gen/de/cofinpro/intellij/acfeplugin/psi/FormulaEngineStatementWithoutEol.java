@@ -19,4 +19,7 @@ public interface FormulaEngineStatementWithoutEol extends PsiElement {
   @Nullable
   FormulaEngineFunctionInvocation getFunctionInvocation();
 
+  @Nullable
+  FormulaEngineListLiteral getListLiteral();
+
 }

@@ -7,7 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public interface FormulaEngineReturnStatement extends PsiElement {
 
-  @NotNull
+  @Nullable
   FormulaEngineExpression getExpression();
 
 }
