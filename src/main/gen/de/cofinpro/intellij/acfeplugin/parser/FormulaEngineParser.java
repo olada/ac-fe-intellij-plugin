@@ -992,7 +992,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // FunctionInvocation | Assignment | Declaration | BuiltInVariableName
+  // FunctionInvocation | Assignment | Declaration | BuiltInVariableName | ListLiteral
   public static boolean StatementWithoutEol(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "StatementWithoutEol")) return false;
     boolean r;
@@ -1001,6 +1001,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     if (!r) r = Assignment(b, l + 1);
     if (!r) r = Declaration(b, l + 1);
     if (!r) r = BuiltInVariableName(b, l + 1);
+    if (!r) r = ListLiteral(b, l + 1);
     exit_section_(b, l, m, r, false, null);
     return r;
   }
@@ -1217,12 +1218,12 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   /* ********************************************************** */
   // KEYWORD_ANY
   //     | KEYWORD_BOOLEAN
-  //     | KEYWORD_DATE 
+  //     | KEYWORD_DATE
   //     | KEYWORD_DATETIME
-  //     | KEYWORD_DICT 
+  //     | KEYWORD_DICT
   //     | KEYWORD_FLOAT
-  //     | KEYWORD_INTEGER 
-  //     | KEYWORD_LIST  
+  //     | KEYWORD_INTEGER
+  //     | KEYWORD_LIST
   //     | KEYWORD_NUMBER
   //     | KEYWORD_STRING
   public static boolean Type(PsiBuilder b, int l) {

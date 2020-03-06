@@ -50,4 +50,10 @@ public class FormulaEngineStatementWithoutEolImpl extends ASTWrapperPsiElement i
     return findChildByClass(FormulaEngineFunctionInvocation.class);
   }
 
+  @Override
+  @Nullable
+  public FormulaEngineListLiteral getListLiteral() {
+    return findChildByClass(FormulaEngineListLiteral.class);
+  }
+
 }
