@@ -1087,7 +1087,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // KEYWORD_SWITCH LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE (KEYWORD_CASE Constant COLON (ControlStructureBody (KEYWORD_BREAK SEMICOLON)?))* (KEYWORD_DEFAULT Constant COLON (ControlStructureBody (KEYWORD_BREAK SEMICOLON)?))? RIGHT_CURLY_BRACE
+  // KEYWORD_SWITCH LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE (KEYWORD_CASE Constant COLON (ControlStructureBody (KEYWORD_BREAK SEMICOLON)?))* (KEYWORD_DEFAULT Constant? COLON (ControlStructureBody (KEYWORD_BREAK SEMICOLON)?))? RIGHT_CURLY_BRACE
   public static boolean Switch(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Switch")) return false;
     if (!nextTokenIs(b, KEYWORD_SWITCH)) return false;
@@ -1155,24 +1155,31 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     return r;
   }
 
-  // (KEYWORD_DEFAULT Constant COLON (ControlStructureBody (KEYWORD_BREAK SEMICOLON)?))?
+  // (KEYWORD_DEFAULT Constant? COLON (ControlStructureBody (KEYWORD_BREAK SEMICOLON)?))?
   private static boolean Switch_6(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Switch_6")) return false;
     Switch_6_0(b, l + 1);
     return true;
   }
 
-  // KEYWORD_DEFAULT Constant COLON (ControlStructureBody (KEYWORD_BREAK SEMICOLON)?)
+  // KEYWORD_DEFAULT Constant? COLON (ControlStructureBody (KEYWORD_BREAK SEMICOLON)?)
   private static boolean Switch_6_0(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Switch_6_0")) return false;
     boolean r;
     Marker m = enter_section_(b);
     r = consumeToken(b, KEYWORD_DEFAULT);
-    r = r && Constant(b, l + 1);
+    r = r && Switch_6_0_1(b, l + 1);
     r = r && consumeToken(b, COLON);
     r = r && Switch_6_0_3(b, l + 1);
     exit_section_(b, m, null, r);
     return r;
+  }
+
+  // Constant?
+  private static boolean Switch_6_0_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "Switch_6_0_1")) return false;
+    Constant(b, l + 1);
+    return true;
   }
 
   // ControlStructureBody (KEYWORD_BREAK SEMICOLON)?
