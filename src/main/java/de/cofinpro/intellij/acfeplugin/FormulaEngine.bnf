@@ -69,6 +69,7 @@
             KEYWORD_LIST = 'list'
             KEYWORD_NUMBER = 'number'
             KEYWORD_STRING = 'string'
+            KEYWORD_TIME = 'time'
 
             VISIBILITY_GLOBAL = 'global'
             VISIBILITY_LOCAL = 'local'
@@ -117,6 +118,7 @@
             BUILT_IN_FUNC_STATUS = 'status'
             BUILT_IN_FUNC_STR = 'str'
             BUILT_IN_FUNC_STRING = 'built in func string'
+            BUILT_IN_FUNC_TIME = 'built in func time'
             BUILT_IN_FUNC_OUT = 'out'
 
             DOUBLE_QUOTED_STRING_LITERAL = 'double quoted string literal'
@@ -213,6 +215,7 @@ BuiltInFunctionName ::= BUILT_IN_FUNC_ATTRIBUTE
     | BUILT_IN_FUNC_OUT
     | BUILT_IN_FUNC_REMOVE
     | BUILT_IN_FUNC_STATUS
+    | BUILT_IN_FUNC_TIME
 FunctionBody ::= FunctionBodyStatement*
 Statement ::= ((FunctionInvocation | Assignment | Declaration | ReturnStatement | KEYWORD_BREAK) SEMICOLON) |  FunctionDefinition
 FunctionBodyStatement ::= FunctionDefinition | ControlStructure | ((FunctionInvocation | Assignment | Declaration | ReturnStatement | Seq) SEMICOLON)
@@ -242,6 +245,7 @@ Type ::= KEYWORD_ANY
     | KEYWORD_LIST
     | KEYWORD_NUMBER
     | KEYWORD_STRING
+    | KEYWORD_TIME
 
 Constant ::= BuiltInVariableName | NumberLiteral | StringLiteral | ListLiteral
 BuiltInVariableName ::= BUILT_IN_VAR_NA

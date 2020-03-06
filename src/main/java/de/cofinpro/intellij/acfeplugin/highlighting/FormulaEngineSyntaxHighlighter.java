@@ -44,6 +44,7 @@ public class FormulaEngineSyntaxHighlighter extends SyntaxHighlighterBase {
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.KEYWORD_LIST, LIST_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.KEYWORD_NUMBER, NUMBER_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.KEYWORD_STRING, STRING_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.KEYWORD_TIME, TIME_ATTR_KEY);
 
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.VISIBILITY_LOCAL, LOCAL_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.VISIBILITY_GLOBAL, GLOBAL_ATTR_KEY);
@@ -122,6 +123,7 @@ public class FormulaEngineSyntaxHighlighter extends SyntaxHighlighterBase {
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_STATUS, INBUILT_FUNCTION_STATUS_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_STR, INBUILT_FUNCTION_STR_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_STRING, INBUILT_FUNCTION_STRING_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_TIME, INBUILT_FUNCTION_TIME_ATTR_KEY);
 
         // General Tokens
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.NUMBER_SCIENTIFIC, NUMBER_SCIENTIFIC);

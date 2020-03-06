@@ -80,6 +80,7 @@ DIGIT = [0-9]
    "status" { return FormulaEngineElementTypes.BUILT_IN_FUNC_STATUS; }
    "str" { return FormulaEngineElementTypes.BUILT_IN_FUNC_STR; }
    "string" { return FormulaEngineElementTypes.BUILT_IN_FUNC_STRING; }
+   "time" { return FormulaEngineElementTypes.BUILT_IN_FUNC_TIME; }
 }
 
 // Der Function Header soll Datentypen nicht als built-in methode markieren (clash von datentypen und built-in Methodennamen, bspw "string" oder "integer" -> klassische cast funktionen)
@@ -134,6 +135,7 @@ DIGIT = [0-9]
     "list" { return FormulaEngineElementTypes.KEYWORD_LIST; }
     "number" { return FormulaEngineElementTypes.KEYWORD_NUMBER; }
     "string" { return FormulaEngineElementTypes.KEYWORD_STRING; }
+    "time" { return FormulaEngineElementTypes.KEYWORD_TIME; }
 
     // Keywords
     "and" { return FormulaEngineElementTypes.KEYWORD_AND; }
@@ -198,6 +200,7 @@ DIGIT = [0-9]
    "status(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STATUS; }
    "str(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STR; }
    "string(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STRING; }
+   "time(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_TIME; }
 
    "," { return FormulaEngineElementTypes.COMMA; }
    ";" { return FormulaEngineElementTypes.SEMICOLON; }

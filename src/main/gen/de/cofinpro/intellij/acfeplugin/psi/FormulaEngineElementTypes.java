@@ -87,6 +87,7 @@ public interface FormulaEngineElementTypes {
   IElementType BUILT_IN_FUNC_STATUS = new FormulaEngineTokenType("status");
   IElementType BUILT_IN_FUNC_STR = new FormulaEngineTokenType("str");
   IElementType BUILT_IN_FUNC_STRING = new FormulaEngineTokenType("built in func string");
+  IElementType BUILT_IN_FUNC_TIME = new FormulaEngineTokenType("built in func time");
   IElementType BUILT_IN_VAR_DATA = new FormulaEngineTokenType("$DATA");
   IElementType BUILT_IN_VAR_DEPENDENCIES = new FormulaEngineTokenType("$DEPENDENCIES");
   IElementType BUILT_IN_VAR_DEPENDENCIES_TRIGGERS = new FormulaEngineTokenType("$DEPENDENCIES_TRIGGERS");
@@ -131,6 +132,7 @@ public interface FormulaEngineElementTypes {
   IElementType KEYWORD_SEQ = new FormulaEngineTokenType("seq");
   IElementType KEYWORD_STRING = new FormulaEngineTokenType("string");
   IElementType KEYWORD_SWITCH = new FormulaEngineTokenType("switch");
+  IElementType KEYWORD_TIME = new FormulaEngineTokenType("time");
   IElementType KEYWORD_WHILE = new FormulaEngineTokenType("while");
   IElementType LEFT_BRACKET = new FormulaEngineTokenType("[");
   IElementType LEFT_CURLY_BRACE = new FormulaEngineTokenType("{");

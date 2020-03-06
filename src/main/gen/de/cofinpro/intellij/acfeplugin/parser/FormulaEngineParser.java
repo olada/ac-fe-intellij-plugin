@@ -178,6 +178,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   //     | BUILT_IN_FUNC_OUT
   //     | BUILT_IN_FUNC_REMOVE
   //     | BUILT_IN_FUNC_STATUS
+  //     | BUILT_IN_FUNC_TIME
   public static boolean BuiltInFunctionName(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "BuiltInFunctionName")) return false;
     boolean r;
@@ -210,6 +211,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_OUT);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_REMOVE);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_STATUS);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_TIME);
     exit_section_(b, l, m, r, false, null);
     return r;
   }
@@ -1233,6 +1235,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   //     | KEYWORD_LIST
   //     | KEYWORD_NUMBER
   //     | KEYWORD_STRING
+  //     | KEYWORD_TIME
   public static boolean Type(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Type")) return false;
     boolean r;
@@ -1247,6 +1250,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     if (!r) r = consumeToken(b, KEYWORD_LIST);
     if (!r) r = consumeToken(b, KEYWORD_NUMBER);
     if (!r) r = consumeToken(b, KEYWORD_STRING);
+    if (!r) r = consumeToken(b, KEYWORD_TIME);
     exit_section_(b, l, m, r, false, null);
     return r;
   }
