@@ -1,6 +1,7 @@
 package de.cofinpro.intellij.acfeplugin;
 
 import com.intellij.openapi.fileTypes.LanguageFileType;
+import com.intellij.openapi.util.IconLoader;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -37,6 +38,6 @@ public class FormulaEngineFileType extends LanguageFileType {
     @Nullable
     @Override
     public Icon getIcon() {
-        return null;
+        return IconLoader.getIcon("/icons/fe-filetype-icon.png");
     }
 }
