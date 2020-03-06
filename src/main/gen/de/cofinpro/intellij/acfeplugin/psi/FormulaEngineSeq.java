@@ -7,10 +7,22 @@ import com.intellij.psi.PsiElement;
 
 public interface FormulaEngineSeq extends PsiElement {
 
-  @NotNull
-  FormulaEngineSeqForParenthesis getSeqForParenthesis();
+  @Nullable
+  FormulaEngineAssignment getAssignment();
+
+  @Nullable
+  FormulaEngineBuiltInVariableName getBuiltInVariableName();
+
+  @Nullable
+  FormulaEngineCalculationExpression getCalculationExpression();
+
+  @Nullable
+  FormulaEngineFunctionInvocation getFunctionInvocation();
+
+  @Nullable
+  FormulaEngineListLiteral getListLiteral();
 
   @NotNull
-  FormulaEngineStatementWithoutEol getStatementWithoutEol();
+  FormulaEngineSeqForParenthesis getSeqForParenthesis();
 
 }

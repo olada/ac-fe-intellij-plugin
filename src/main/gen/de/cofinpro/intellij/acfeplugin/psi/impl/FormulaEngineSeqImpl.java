@@ -27,15 +27,39 @@ public class FormulaEngineSeqImpl extends ASTWrapperPsiElement implements Formul
   }
 
   @Override
-  @NotNull
-  public FormulaEngineSeqForParenthesis getSeqForParenthesis() {
-    return findNotNullChildByClass(FormulaEngineSeqForParenthesis.class);
+  @Nullable
+  public FormulaEngineAssignment getAssignment() {
+    return findChildByClass(FormulaEngineAssignment.class);
+  }
+
+  @Override
+  @Nullable
+  public FormulaEngineBuiltInVariableName getBuiltInVariableName() {
+    return findChildByClass(FormulaEngineBuiltInVariableName.class);
+  }
+
+  @Override
+  @Nullable
+  public FormulaEngineCalculationExpression getCalculationExpression() {
+    return findChildByClass(FormulaEngineCalculationExpression.class);
+  }
+
+  @Override
+  @Nullable
+  public FormulaEngineFunctionInvocation getFunctionInvocation() {
+    return findChildByClass(FormulaEngineFunctionInvocation.class);
+  }
+
+  @Override
+  @Nullable
+  public FormulaEngineListLiteral getListLiteral() {
+    return findChildByClass(FormulaEngineListLiteral.class);
   }
 
   @Override
   @NotNull
-  public FormulaEngineStatementWithoutEol getStatementWithoutEol() {
-    return findNotNullChildByClass(FormulaEngineStatementWithoutEol.class);
+  public FormulaEngineSeqForParenthesis getSeqForParenthesis() {
+    return findNotNullChildByClass(FormulaEngineSeqForParenthesis.class);
   }
 
 }

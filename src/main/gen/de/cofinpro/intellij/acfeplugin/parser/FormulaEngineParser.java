@@ -525,7 +525,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // FunctionDefinition | ControlStructure | ((FunctionInvocation | Assignment | Declaration | ReturnStatement) SEMICOLON)
+  // FunctionDefinition | ControlStructure | ((FunctionInvocation | Assignment | Declaration | ReturnStatement | Seq) SEMICOLON)
   public static boolean FunctionBodyStatement(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "FunctionBodyStatement")) return false;
     boolean r;
@@ -537,7 +537,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     return r;
   }
 
-  // (FunctionInvocation | Assignment | Declaration | ReturnStatement) SEMICOLON
+  // (FunctionInvocation | Assignment | Declaration | ReturnStatement | Seq) SEMICOLON
   private static boolean FunctionBodyStatement_2(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "FunctionBodyStatement_2")) return false;
     boolean r;
@@ -548,7 +548,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     return r;
   }
 
-  // FunctionInvocation | Assignment | Declaration | ReturnStatement
+  // FunctionInvocation | Assignment | Declaration | ReturnStatement | Seq
   private static boolean FunctionBodyStatement_2_0(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "FunctionBodyStatement_2_0")) return false;
     boolean r;
@@ -556,6 +556,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     if (!r) r = Assignment(b, l + 1);
     if (!r) r = Declaration(b, l + 1);
     if (!r) r = ReturnStatement(b, l + 1);
+    if (!r) r = Seq(b, l + 1);
     return r;
   }
 
@@ -872,7 +873,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // KEYWORD_SEQ SeqForParenthesis StatementWithoutEol
+  // KEYWORD_SEQ SeqForParenthesis SeqBody
   public static boolean Seq(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Seq")) return false;
     if (!nextTokenIs(b, KEYWORD_SEQ)) return false;
@@ -880,8 +881,21 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     Marker m = enter_section_(b);
     r = consumeToken(b, KEYWORD_SEQ);
     r = r && SeqForParenthesis(b, l + 1);
-    r = r && StatementWithoutEol(b, l + 1);
+    r = r && SeqBody(b, l + 1);
     exit_section_(b, m, SEQ, r);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // Assignment | CalculationExpression | FunctionInvocation | ListLiteral | BuiltInVariableName
+  static boolean SeqBody(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "SeqBody")) return false;
+    boolean r;
+    r = Assignment(b, l + 1);
+    if (!r) r = Expression(b, l + 1, 3);
+    if (!r) r = FunctionInvocation(b, l + 1);
+    if (!r) r = ListLiteral(b, l + 1);
+    if (!r) r = BuiltInVariableName(b, l + 1);
     return r;
   }
 
@@ -989,22 +1003,6 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     if (!r) r = Declaration(b, l + 1);
     if (!r) r = ReturnStatement(b, l + 1);
     if (!r) r = consumeToken(b, KEYWORD_BREAK);
-    return r;
-  }
-
-  /* ********************************************************** */
-  // CombinationExpression | FunctionInvocation | Assignment | Declaration | BuiltInVariableName | ListLiteral
-  public static boolean StatementWithoutEol(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "StatementWithoutEol")) return false;
-    boolean r;
-    Marker m = enter_section_(b, l, _NONE_, STATEMENT_WITHOUT_EOL, "<statement without eol>");
-    r = Expression(b, l + 1, 1);
-    if (!r) r = FunctionInvocation(b, l + 1);
-    if (!r) r = Assignment(b, l + 1);
-    if (!r) r = Declaration(b, l + 1);
-    if (!r) r = BuiltInVariableName(b, l + 1);
-    if (!r) r = ListLiteral(b, l + 1);
-    exit_section_(b, l, m, r, false, null);
     return r;
   }
 

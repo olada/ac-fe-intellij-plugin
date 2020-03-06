@@ -50,7 +50,6 @@ public interface FormulaEngineElementTypes {
   IElementType SHORT_IF_EXPRESSION = new FormulaEngineElementType("SHORT_IF_EXPRESSION");
   IElementType SINGLE_STRING_LITERAL = new FormulaEngineElementType("SINGLE_STRING_LITERAL");
   IElementType STATEMENT = new FormulaEngineElementType("STATEMENT");
-  IElementType STATEMENT_WITHOUT_EOL = new FormulaEngineElementType("STATEMENT_WITHOUT_EOL");
   IElementType STRING_LITERAL = new FormulaEngineElementType("STRING_LITERAL");
   IElementType SWITCH = new FormulaEngineElementType("SWITCH");
   IElementType TOP_LEVEL_ITEM = new FormulaEngineElementType("TOP_LEVEL_ITEM");
@@ -298,9 +297,6 @@ public interface FormulaEngineElementTypes {
       }
       else if (type == STATEMENT) {
         return new FormulaEngineStatementImpl(node);
-      }
-      else if (type == STATEMENT_WITHOUT_EOL) {
-        return new FormulaEngineStatementWithoutEolImpl(node);
       }
       else if (type == STRING_LITERAL) {
         return new FormulaEngineStringLiteralImpl(node);
