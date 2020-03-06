@@ -87,6 +87,7 @@
             BUILT_IN_VAR_FIELD = '$FIELD'
             BUILT_IN_VAR_FIELDS = '$FIELDS'
             BUILT_IN_VAR_DATA = '$DATA'
+            BUILT_IN_VAR_DATETIME = '$DATETIME'
             BUILT_IN_VAR_STATUS = '$STATUS'
             BUILT_IN_VAR_DEPENDENCIES = '$DEPENDENCIES'
             BUILT_IN_VAR_DEPENDENCIES_TRIGGERS = '$DEPENDENCIES_TRIGGERS'
@@ -261,6 +262,7 @@ BuiltInVariableName ::= BUILT_IN_VAR_NA
                         | BUILT_IN_VAR_FIELD
                         | BUILT_IN_VAR_FIELDS
                         | BUILT_IN_VAR_DATA
+                        | BUILT_IN_VAR_DATETIME
                         | BUILT_IN_VAR_STATUS
                         | BUILT_IN_VAR_DEPENDENCIES
                         | BUILT_IN_VAR_DEPENDENCIES_TRIGGERS

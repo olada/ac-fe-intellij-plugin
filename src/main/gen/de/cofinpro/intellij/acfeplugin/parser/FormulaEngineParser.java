@@ -230,6 +230,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   //                         | BUILT_IN_VAR_FIELD
   //                         | BUILT_IN_VAR_FIELDS
   //                         | BUILT_IN_VAR_DATA
+  //                         | BUILT_IN_VAR_DATETIME
   //                         | BUILT_IN_VAR_STATUS
   //                         | BUILT_IN_VAR_DEPENDENCIES
   //                         | BUILT_IN_VAR_DEPENDENCIES_TRIGGERS
@@ -250,6 +251,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     if (!r) r = consumeToken(b, BUILT_IN_VAR_FIELD);
     if (!r) r = consumeToken(b, BUILT_IN_VAR_FIELDS);
     if (!r) r = consumeToken(b, BUILT_IN_VAR_DATA);
+    if (!r) r = consumeToken(b, BUILT_IN_VAR_DATETIME);
     if (!r) r = consumeToken(b, BUILT_IN_VAR_STATUS);
     if (!r) r = consumeToken(b, BUILT_IN_VAR_DEPENDENCIES);
     if (!r) r = consumeToken(b, BUILT_IN_VAR_DEPENDENCIES_TRIGGERS);

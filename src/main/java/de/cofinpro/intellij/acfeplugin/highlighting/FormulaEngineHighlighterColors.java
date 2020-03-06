@@ -67,6 +67,7 @@ public class FormulaEngineHighlighterColors {
     public static final TextAttributesKey INBUILT_VARIABLE_FIELD_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_FIELD", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_VARIABLE_FIELDS_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_FIELDS", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_VARIABLE_DATA_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_DATA", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_VARIABLE_DATETIME_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_DATETIME", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_VARIABLE_STATUS_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_STATUS", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_VARIABLE_DEPENDENCIES_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_DEPENDENCIES", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_VARIABLE_DEPENDENCIES_TRIGGERS_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_DEPENDENCIES_TRIGGERS", DefaultLanguageHighlighterColors.STATIC_FIELD);

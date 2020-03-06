@@ -167,6 +167,7 @@ DIGIT = [0-9]
     "\$FIELD" { return FormulaEngineElementTypes.BUILT_IN_VAR_FIELD; }
     "\$FIELDS" { return FormulaEngineElementTypes.BUILT_IN_VAR_FIELDS; }
     "\$DATA" { return FormulaEngineElementTypes.BUILT_IN_VAR_DATA; }
+    "\$DATETIME" { return FormulaEngineElementTypes.BUILT_IN_VAR_DATETIME; }
     "\$STATUS" { return FormulaEngineElementTypes.BUILT_IN_VAR_STATUS; }
     "\$DEPENDENCIES" { return FormulaEngineElementTypes.BUILT_IN_VAR_DEPENDENCIES; }
     "\$DEPENDENCIES_TRIGGERS" { return FormulaEngineElementTypes.BUILT_IN_VAR_DEPENDENCIES_TRIGGERS; }

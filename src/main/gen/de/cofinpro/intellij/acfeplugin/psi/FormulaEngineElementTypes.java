@@ -89,6 +89,7 @@ public interface FormulaEngineElementTypes {
   IElementType BUILT_IN_FUNC_STRING = new FormulaEngineTokenType("built in func string");
   IElementType BUILT_IN_FUNC_TIME = new FormulaEngineTokenType("built in func time");
   IElementType BUILT_IN_VAR_DATA = new FormulaEngineTokenType("$DATA");
+  IElementType BUILT_IN_VAR_DATETIME = new FormulaEngineTokenType("$DATETIME");
   IElementType BUILT_IN_VAR_DEPENDENCIES = new FormulaEngineTokenType("$DEPENDENCIES");
   IElementType BUILT_IN_VAR_DEPENDENCIES_TRIGGERS = new FormulaEngineTokenType("$DEPENDENCIES_TRIGGERS");
   IElementType BUILT_IN_VAR_FIELD = new FormulaEngineTokenType("$FIELD");
