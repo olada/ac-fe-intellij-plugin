@@ -11,6 +11,7 @@ public class FormulaEngineHighlighterColors {
     public static final TextAttributesKey FUNCTION_ATTR_KEY = createTextAttributesKey("FE_FUNCTION", FUNCTION_DECLARATION);
 
     // Data Types
+    public static final TextAttributesKey BOOLEAN_ATTR_KEY = createTextAttributesKey("FE_BOOLEAN", KEYWORD);
     public static final TextAttributesKey DATE_ATTR_KEY = createTextAttributesKey("FE_DATE", KEYWORD);
     public static final TextAttributesKey DATETIME_ATTR_KEY = createTextAttributesKey("FE_DATETIME", KEYWORD);
     public static final TextAttributesKey INTEGER_ATTR_KEY = createTextAttributesKey("FE_INTEGER", KEYWORD);
