@@ -65,6 +65,7 @@ public interface FormulaEngineElementTypes {
   IElementType BUILT_IN_FUNC_DATETIME = new FormulaEngineTokenType("datetime");
   IElementType BUILT_IN_FUNC_DAYDIFF = new FormulaEngineTokenType("daydiff");
   IElementType BUILT_IN_FUNC_DAYPLUS = new FormulaEngineTokenType("dayplus");
+  IElementType BUILT_IN_FUNC_DICT = new FormulaEngineTokenType("dict");
   IElementType BUILT_IN_FUNC_ELT = new FormulaEngineTokenType("elt");
   IElementType BUILT_IN_FUNC_FIRST = new FormulaEngineTokenType("first");
   IElementType BUILT_IN_FUNC_FLOAT = new FormulaEngineTokenType("float");
@@ -116,7 +117,7 @@ public interface FormulaEngineElementTypes {
   IElementType KEYWORD_DATE = new FormulaEngineTokenType("KEYWORD_DATE");
   IElementType KEYWORD_DATETIME = new FormulaEngineTokenType("KEYWORD_DATETIME");
   IElementType KEYWORD_DEFAULT = new FormulaEngineTokenType("default");
-  IElementType KEYWORD_DICT = new FormulaEngineTokenType("dict");
+  IElementType KEYWORD_DICT = new FormulaEngineTokenType("KEYWORD_DICT");
   IElementType KEYWORD_DO = new FormulaEngineTokenType("do");
   IElementType KEYWORD_ELSE = new FormulaEngineTokenType("else");
   IElementType KEYWORD_FLOAT = new FormulaEngineTokenType("KEYWORD_FLOAT");

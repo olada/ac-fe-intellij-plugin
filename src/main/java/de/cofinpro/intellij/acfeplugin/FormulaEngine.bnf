@@ -95,6 +95,7 @@
             BUILT_IN_FUNC_DATETIME = 'datetime'
             BUILT_IN_FUNC_DAYDIFF = 'daydiff'
             BUILT_IN_FUNC_DAYPLUS = 'dayplus'
+            BUILT_IN_FUNC_DICT = 'dict'
             BUILT_IN_FUNC_ELT = 'elt'
             BUILT_IN_FUNC_FIRST = 'first'
             BUILT_IN_FUNC_FLOAT = 'float'
@@ -198,7 +199,7 @@ private FunctionName ::= BuiltInFunctionName | CustomFunctionName
 private MethodReference ::= FunctionName // just for sake of better naming
 
 BuiltInFunctionName ::= BUILT_IN_FUNC_ATTRIBUTE
-    | BUILT_IN_FUNC_DATE | BUILT_IN_FUNC_DATETIME | BUILT_IN_FUNC_STR | BUILT_IN_FUNC_FLOAT | BUILT_IN_FUNC_INTEGER | BUILT_IN_FUNC_LIST | BUILT_IN_FUNC_STRING
+    | BUILT_IN_FUNC_DATE | BUILT_IN_FUNC_DATETIME | BUILT_IN_FUNC_DICT | BUILT_IN_FUNC_STR | BUILT_IN_FUNC_FLOAT | BUILT_IN_FUNC_INTEGER | BUILT_IN_FUNC_LIST | BUILT_IN_FUNC_STRING
     | BUILT_IN_FUNC_DAYDIFF | BUILT_IN_FUNC_DAYPLUS
     | BUILT_IN_FUNC_ELT
     | BUILT_IN_FUNC_FIRST
