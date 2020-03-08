@@ -36,6 +36,7 @@ public interface FormulaEngineElementTypes {
   IElementType LEAF_EXPRESSION = new FormulaEngineElementType("LEAF_EXPRESSION");
   IElementType LIST_CONTENTS = new FormulaEngineElementType("LIST_CONTENTS");
   IElementType LIST_LITERAL = new FormulaEngineElementType("LIST_LITERAL");
+  IElementType LOOP_STRUCTURE_BODY = new FormulaEngineElementType("LOOP_STRUCTURE_BODY");
   IElementType NEGATED_EXPRESSION = new FormulaEngineElementType("NEGATED_EXPRESSION");
   IElementType NUMBER_LITERAL = new FormulaEngineElementType("NUMBER_LITERAL");
   IElementType PARENTHESIS_EXPRESSION = new FormulaEngineElementType("PARENTHESIS_EXPRESSION");
@@ -110,6 +111,7 @@ public interface FormulaEngineElementTypes {
   IElementType KEYWORD_BOOLEAN = new FormulaEngineTokenType("boolean");
   IElementType KEYWORD_BREAK = new FormulaEngineTokenType("break");
   IElementType KEYWORD_CASE = new FormulaEngineTokenType("case");
+  IElementType KEYWORD_CONTINUE = new FormulaEngineTokenType("continue");
   IElementType KEYWORD_DATE = new FormulaEngineTokenType("KEYWORD_DATE");
   IElementType KEYWORD_DATETIME = new FormulaEngineTokenType("KEYWORD_DATETIME");
   IElementType KEYWORD_DEFAULT = new FormulaEngineTokenType("default");
@@ -253,6 +255,9 @@ public interface FormulaEngineElementTypes {
       }
       else if (type == LIST_LITERAL) {
         return new FormulaEngineListLiteralImpl(node);
+      }
+      else if (type == LOOP_STRUCTURE_BODY) {
+        return new FormulaEngineLoopStructureBodyImpl(node);
       }
       else if (type == NEGATED_EXPRESSION) {
         return new FormulaEngineNegatedExpressionImpl(node);

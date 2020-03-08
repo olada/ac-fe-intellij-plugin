@@ -34,8 +34,8 @@ public class FormulaEngineForImpl extends ASTWrapperPsiElement implements Formul
 
   @Override
   @Nullable
-  public FormulaEngineControlStructureBody getControlStructureBody() {
-    return findChildByClass(FormulaEngineControlStructureBody.class);
+  public FormulaEngineLoopStructureBody getLoopStructureBody() {
+    return findChildByClass(FormulaEngineLoopStructureBody.class);
   }
 
   @Override

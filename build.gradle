@@ -29,7 +29,11 @@ intellij {
 
 patchPluginXml {
     changeNotes """
-      Add change notes here.<br>
-      <em>most HTML tags may be used</em>"""
+        <ul>
+            <li>Grammar Support for all ACSD files and Validation methods in ACKV</li>
+            <li>Region Folding for functions</li>
+            <li>Syntax Highlighting for 'continue'a
+        </ul>
+    """
     version = project.version
 }

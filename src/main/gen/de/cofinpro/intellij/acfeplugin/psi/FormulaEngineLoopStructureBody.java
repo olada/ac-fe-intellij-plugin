@@ -5,12 +5,12 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface FormulaEngineWhile extends PsiElement {
+public interface FormulaEngineLoopStructureBody extends PsiElement {
 
   @NotNull
-  FormulaEngineExpression getExpression();
+  List<FormulaEngineControlStructure> getControlStructureList();
 
   @NotNull
-  FormulaEngineLoopStructureBody getLoopStructureBody();
+  List<FormulaEngineStatement> getStatementList();
 
 }

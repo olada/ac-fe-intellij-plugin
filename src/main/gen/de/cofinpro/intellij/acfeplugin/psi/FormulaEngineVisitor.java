@@ -119,6 +119,10 @@ public class FormulaEngineVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitLoopStructureBody(@NotNull FormulaEngineLoopStructureBody o) {
+    visitPsiElement(o);
+  }
+
   public void visitNegatedExpression(@NotNull FormulaEngineNegatedExpression o) {
     visitExpression(o);
   }

@@ -143,6 +143,7 @@ DIGIT = [0-9]
     "and" { return FormulaEngineElementTypes.KEYWORD_AND; }
     "break" { return FormulaEngineElementTypes.KEYWORD_BREAK; }
     "case" { return FormulaEngineElementTypes.KEYWORD_CASE; }
+    "continue" { return FormulaEngineElementTypes.KEYWORD_CONTINUE; }
     "default" { return FormulaEngineElementTypes.KEYWORD_DEFAULT; }
     "do" { return FormulaEngineElementTypes.KEYWORD_DO; }
     "else" { return FormulaEngineElementTypes.KEYWORD_ELSE; }

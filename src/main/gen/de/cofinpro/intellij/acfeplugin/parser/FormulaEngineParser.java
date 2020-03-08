@@ -303,6 +303,18 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
+  // KEYWORD_CONTINUE SEMICOLON
+  static boolean ContinueStatement(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "ContinueStatement")) return false;
+    if (!nextTokenIs(b, KEYWORD_CONTINUE)) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeTokens(b, 0, KEYWORD_CONTINUE, SEMICOLON);
+    exit_section_(b, m, null, r);
+    return r;
+  }
+
+  /* ********************************************************** */
   // While | For | DoWhile | If | Switch
   public static boolean ControlStructure(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "ControlStructure")) return false;
@@ -415,14 +427,14 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // KEYWORD_DO LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE KEYWORD_WHILE LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS SEMICOLON
+  // KEYWORD_DO LEFT_CURLY_BRACE LoopStructureBody RIGHT_CURLY_BRACE KEYWORD_WHILE LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS SEMICOLON
   public static boolean DoWhile(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "DoWhile")) return false;
     if (!nextTokenIs(b, KEYWORD_DO)) return false;
     boolean r;
     Marker m = enter_section_(b);
     r = consumeTokens(b, 0, KEYWORD_DO, LEFT_CURLY_BRACE);
-    r = r && ControlStructureBody(b, l + 1);
+    r = r && LoopStructureBody(b, l + 1);
     r = r && consumeTokens(b, 0, RIGHT_CURLY_BRACE, KEYWORD_WHILE, LEFT_PARENTHESIS);
     r = r && Expression(b, l + 1, -1);
     r = r && consumeTokens(b, 0, RIGHT_PARENTHESIS, SEMICOLON);
@@ -431,7 +443,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // KEYWORD_FOR SeqForParenthesis (ControlStructure | Statement) | (LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE)
+  // KEYWORD_FOR SeqForParenthesis (ControlStructure | Statement) | (LEFT_CURLY_BRACE LoopStructureBody RIGHT_CURLY_BRACE)
   public static boolean For(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "For")) return false;
     if (!nextTokenIs(b, "<for>", KEYWORD_FOR, LEFT_CURLY_BRACE)) return false;
@@ -464,13 +476,13 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     return r;
   }
 
-  // LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE
+  // LEFT_CURLY_BRACE LoopStructureBody RIGHT_CURLY_BRACE
   private static boolean For_1(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "For_1")) return false;
     boolean r;
     Marker m = enter_section_(b);
     r = consumeToken(b, LEFT_CURLY_BRACE);
-    r = r && ControlStructureBody(b, l + 1);
+    r = r && LoopStructureBody(b, l + 1);
     r = r && consumeToken(b, RIGHT_CURLY_BRACE);
     exit_section_(b, m, null, r);
     return r;
@@ -845,6 +857,30 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     r = r && ListContents(b, l + 1);
     r = r && consumeToken(b, RIGHT_BRACKET);
     exit_section_(b, m, LIST_LITERAL, r);
+    return r;
+  }
+
+  /* ********************************************************** */
+  // (ControlStructure | Statement | ContinueStatement)*
+  public static boolean LoopStructureBody(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "LoopStructureBody")) return false;
+    Marker m = enter_section_(b, l, _NONE_, LOOP_STRUCTURE_BODY, "<loop structure body>");
+    while (true) {
+      int c = current_position_(b);
+      if (!LoopStructureBody_0(b, l + 1)) break;
+      if (!empty_element_parsed_guard_(b, "LoopStructureBody", c)) break;
+    }
+    exit_section_(b, l, m, true, false, null);
+    return true;
+  }
+
+  // ControlStructure | Statement | ContinueStatement
+  private static boolean LoopStructureBody_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "LoopStructureBody_0")) return false;
+    boolean r;
+    r = ControlStructure(b, l + 1);
+    if (!r) r = Statement(b, l + 1);
+    if (!r) r = ContinueStatement(b, l + 1);
     return r;
   }
 
@@ -1357,7 +1393,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // KEYWORD_WHILE LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE
+  // KEYWORD_WHILE LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS LEFT_CURLY_BRACE LoopStructureBody RIGHT_CURLY_BRACE
   public static boolean While(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "While")) return false;
     if (!nextTokenIs(b, KEYWORD_WHILE)) return false;
@@ -1366,7 +1402,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     r = consumeTokens(b, 0, KEYWORD_WHILE, LEFT_PARENTHESIS);
     r = r && Expression(b, l + 1, -1);
     r = r && consumeTokens(b, 0, RIGHT_PARENTHESIS, LEFT_CURLY_BRACE);
-    r = r && ControlStructureBody(b, l + 1);
+    r = r && LoopStructureBody(b, l + 1);
     r = r && consumeToken(b, RIGHT_CURLY_BRACE);
     exit_section_(b, m, WHILE, r);
     return r;

@@ -12,13 +12,6 @@ import javax.swing.*;
 import java.util.Map;
 
 public class FormulaEngineColorSettingsPage implements ColorSettingsPage {
-    private static final AttributesDescriptor[] DESCRIPTORS = new AttributesDescriptor[]{
-            new AttributesDescriptor("Key", FormulaEngineSyntaxHighlighter.KEY),
-            new AttributesDescriptor("Separator", FormulaEngineSyntaxHighlighter.SEPARATOR),
-            new AttributesDescriptor("Value", FormulaEngineSyntaxHighlighter.VALUE),
-            new AttributesDescriptor("Bad Value", FormulaEngineSyntaxHighlighter.BAD_CHARACTER)
-    };
-
     @Nullable
     @Override
     public Icon getIcon() {
@@ -56,7 +49,8 @@ public class FormulaEngineColorSettingsPage implements ColorSettingsPage {
     @NotNull
     @Override
     public AttributesDescriptor[] getAttributeDescriptors() {
-        return DESCRIPTORS;
+        AttributesDescriptor[] descriptors = new AttributesDescriptor[0];
+        return descriptors;
     }
 
     @NotNull

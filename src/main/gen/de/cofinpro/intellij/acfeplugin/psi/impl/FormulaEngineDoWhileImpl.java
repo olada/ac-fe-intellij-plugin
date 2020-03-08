@@ -28,14 +28,14 @@ public class FormulaEngineDoWhileImpl extends ASTWrapperPsiElement implements Fo
 
   @Override
   @NotNull
-  public FormulaEngineControlStructureBody getControlStructureBody() {
-    return findNotNullChildByClass(FormulaEngineControlStructureBody.class);
+  public FormulaEngineExpression getExpression() {
+    return findNotNullChildByClass(FormulaEngineExpression.class);
   }
 
   @Override
   @NotNull
-  public FormulaEngineExpression getExpression() {
-    return findNotNullChildByClass(FormulaEngineExpression.class);
+  public FormulaEngineLoopStructureBody getLoopStructureBody() {
+    return findNotNullChildByClass(FormulaEngineLoopStructureBody.class);
   }
 
 }
