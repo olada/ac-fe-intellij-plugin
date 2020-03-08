@@ -40,8 +40,8 @@ public class FormulaEngineSeqImpl extends ASTWrapperPsiElement implements Formul
 
   @Override
   @Nullable
-  public FormulaEngineCalculationExpression getCalculationExpression() {
-    return findChildByClass(FormulaEngineCalculationExpression.class);
+  public FormulaEngineExpression getExpression() {
+    return findChildByClass(FormulaEngineExpression.class);
   }
 
   @Override

@@ -8,9 +8,6 @@ import com.intellij.psi.PsiElement;
 public interface FormulaEngineCombinationExpression extends FormulaEngineExpression {
 
   @NotNull
-  FormulaEngineCombinationOperator getCombinationOperator();
-
-  @NotNull
   List<FormulaEngineExpression> getExpressionList();
 
 }

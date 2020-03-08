@@ -15,10 +15,6 @@ public class FormulaEngineVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitAssignmentOperator(@NotNull FormulaEngineAssignmentOperator o) {
-    visitPsiElement(o);
-  }
-
   public void visitBuiltInFunctionName(@NotNull FormulaEngineBuiltInFunctionName o) {
     visitPsiElement(o);
   }
@@ -31,24 +27,12 @@ public class FormulaEngineVisitor extends PsiElementVisitor {
     visitExpression(o);
   }
 
-  public void visitCalculationOperator(@NotNull FormulaEngineCalculationOperator o) {
-    visitPsiElement(o);
-  }
-
   public void visitCombinationExpression(@NotNull FormulaEngineCombinationExpression o) {
     visitExpression(o);
   }
 
-  public void visitCombinationOperator(@NotNull FormulaEngineCombinationOperator o) {
-    visitPsiElement(o);
-  }
-
   public void visitComparisonExpression(@NotNull FormulaEngineComparisonExpression o) {
     visitExpression(o);
-  }
-
-  public void visitComparisonOperator(@NotNull FormulaEngineComparisonOperator o) {
-    visitPsiElement(o);
   }
 
   public void visitConstant(@NotNull FormulaEngineConstant o) {
@@ -115,6 +99,10 @@ public class FormulaEngineVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitIdentifierLiteral(@NotNull FormulaEngineIdentifierLiteral o) {
+    visitPsiElement(o);
+  }
+
   public void visitIf(@NotNull FormulaEngineIf o) {
     visitPsiElement(o);
   }
@@ -141,14 +129,6 @@ public class FormulaEngineVisitor extends PsiElementVisitor {
 
   public void visitParenthesisExpression(@NotNull FormulaEngineParenthesisExpression o) {
     visitExpression(o);
-  }
-
-  public void visitPostfixOperator(@NotNull FormulaEnginePostfixOperator o) {
-    visitPsiElement(o);
-  }
-
-  public void visitPrefixOperator(@NotNull FormulaEnginePrefixOperator o) {
-    visitPsiElement(o);
   }
 
   public void visitReturnStatement(@NotNull FormulaEngineReturnStatement o) {

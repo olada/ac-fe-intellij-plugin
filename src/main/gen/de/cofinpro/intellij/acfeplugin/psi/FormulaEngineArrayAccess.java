@@ -14,6 +14,6 @@ public interface FormulaEngineArrayAccess extends PsiElement {
   List<FormulaEngineExpression> getExpressionList();
 
   @Nullable
-  PsiElement getIdentifier();
+  FormulaEngineIdentifierLiteral getIdentifierLiteral();
 
 }

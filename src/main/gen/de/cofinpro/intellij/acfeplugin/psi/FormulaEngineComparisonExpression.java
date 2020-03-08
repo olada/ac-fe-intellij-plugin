@@ -8,9 +8,6 @@ import com.intellij.psi.PsiElement;
 public interface FormulaEngineComparisonExpression extends FormulaEngineExpression {
 
   @NotNull
-  FormulaEngineComparisonOperator getComparisonOperator();
-
-  @NotNull
   List<FormulaEngineExpression> getExpressionList();
 
 }

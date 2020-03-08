@@ -10,15 +10,11 @@ public interface FormulaEngineElementTypes {
 
   IElementType ARRAY_ACCESS = new FormulaEngineElementType("ARRAY_ACCESS");
   IElementType ASSIGNMENT = new FormulaEngineElementType("ASSIGNMENT");
-  IElementType ASSIGNMENT_OPERATOR = new FormulaEngineElementType("ASSIGNMENT_OPERATOR");
   IElementType BUILT_IN_FUNCTION_NAME = new FormulaEngineElementType("BUILT_IN_FUNCTION_NAME");
   IElementType BUILT_IN_VARIABLE_NAME = new FormulaEngineElementType("BUILT_IN_VARIABLE_NAME");
   IElementType CALCULATION_EXPRESSION = new FormulaEngineElementType("CALCULATION_EXPRESSION");
-  IElementType CALCULATION_OPERATOR = new FormulaEngineElementType("CALCULATION_OPERATOR");
   IElementType COMBINATION_EXPRESSION = new FormulaEngineElementType("COMBINATION_EXPRESSION");
-  IElementType COMBINATION_OPERATOR = new FormulaEngineElementType("COMBINATION_OPERATOR");
   IElementType COMPARISON_EXPRESSION = new FormulaEngineElementType("COMPARISON_EXPRESSION");
-  IElementType COMPARISON_OPERATOR = new FormulaEngineElementType("COMPARISON_OPERATOR");
   IElementType CONSTANT = new FormulaEngineElementType("CONSTANT");
   IElementType CONTROL_STRUCTURE = new FormulaEngineElementType("CONTROL_STRUCTURE");
   IElementType CONTROL_STRUCTURE_BODY = new FormulaEngineElementType("CONTROL_STRUCTURE_BODY");
@@ -35,6 +31,7 @@ public interface FormulaEngineElementTypes {
   IElementType FUNCTION_INVOCATION = new FormulaEngineElementType("FUNCTION_INVOCATION");
   IElementType FUNCTION_PARAMETER = new FormulaEngineElementType("FUNCTION_PARAMETER");
   IElementType FUNCTION_PARAMETERS = new FormulaEngineElementType("FUNCTION_PARAMETERS");
+  IElementType IDENTIFIER_LITERAL = new FormulaEngineElementType("IDENTIFIER_LITERAL");
   IElementType IF = new FormulaEngineElementType("IF");
   IElementType LEAF_EXPRESSION = new FormulaEngineElementType("LEAF_EXPRESSION");
   IElementType LIST_CONTENTS = new FormulaEngineElementType("LIST_CONTENTS");
@@ -42,8 +39,6 @@ public interface FormulaEngineElementTypes {
   IElementType NEGATED_EXPRESSION = new FormulaEngineElementType("NEGATED_EXPRESSION");
   IElementType NUMBER_LITERAL = new FormulaEngineElementType("NUMBER_LITERAL");
   IElementType PARENTHESIS_EXPRESSION = new FormulaEngineElementType("PARENTHESIS_EXPRESSION");
-  IElementType POSTFIX_OPERATOR = new FormulaEngineElementType("POSTFIX_OPERATOR");
-  IElementType PREFIX_OPERATOR = new FormulaEngineElementType("PREFIX_OPERATOR");
   IElementType RETURN_STATEMENT = new FormulaEngineElementType("RETURN_STATEMENT");
   IElementType SEQ = new FormulaEngineElementType("SEQ");
   IElementType SEQ_FOR_PARENTHESIS = new FormulaEngineElementType("SEQ_FOR_PARENTHESIS");
@@ -184,9 +179,6 @@ public interface FormulaEngineElementTypes {
       else if (type == ASSIGNMENT) {
         return new FormulaEngineAssignmentImpl(node);
       }
-      else if (type == ASSIGNMENT_OPERATOR) {
-        return new FormulaEngineAssignmentOperatorImpl(node);
-      }
       else if (type == BUILT_IN_FUNCTION_NAME) {
         return new FormulaEngineBuiltInFunctionNameImpl(node);
       }
@@ -196,20 +188,11 @@ public interface FormulaEngineElementTypes {
       else if (type == CALCULATION_EXPRESSION) {
         return new FormulaEngineCalculationExpressionImpl(node);
       }
-      else if (type == CALCULATION_OPERATOR) {
-        return new FormulaEngineCalculationOperatorImpl(node);
-      }
       else if (type == COMBINATION_EXPRESSION) {
         return new FormulaEngineCombinationExpressionImpl(node);
       }
-      else if (type == COMBINATION_OPERATOR) {
-        return new FormulaEngineCombinationOperatorImpl(node);
-      }
       else if (type == COMPARISON_EXPRESSION) {
         return new FormulaEngineComparisonExpressionImpl(node);
-      }
-      else if (type == COMPARISON_OPERATOR) {
-        return new FormulaEngineComparisonOperatorImpl(node);
       }
       else if (type == CONSTANT) {
         return new FormulaEngineConstantImpl(node);
@@ -256,6 +239,9 @@ public interface FormulaEngineElementTypes {
       else if (type == FUNCTION_PARAMETERS) {
         return new FormulaEngineFunctionParametersImpl(node);
       }
+      else if (type == IDENTIFIER_LITERAL) {
+        return new FormulaEngineIdentifierLiteralImpl(node);
+      }
       else if (type == IF) {
         return new FormulaEngineIfImpl(node);
       }
@@ -276,12 +262,6 @@ public interface FormulaEngineElementTypes {
       }
       else if (type == PARENTHESIS_EXPRESSION) {
         return new FormulaEngineParenthesisExpressionImpl(node);
-      }
-      else if (type == POSTFIX_OPERATOR) {
-        return new FormulaEnginePostfixOperatorImpl(node);
-      }
-      else if (type == PREFIX_OPERATOR) {
-        return new FormulaEnginePrefixOperatorImpl(node);
       }
       else if (type == RETURN_STATEMENT) {
         return new FormulaEngineReturnStatementImpl(node);

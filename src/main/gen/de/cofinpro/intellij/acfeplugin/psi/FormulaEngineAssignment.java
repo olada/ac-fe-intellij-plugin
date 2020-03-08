@@ -8,24 +8,18 @@ import com.intellij.psi.PsiElement;
 public interface FormulaEngineAssignment extends PsiElement {
 
   @Nullable
-  FormulaEngineAssignmentOperator getAssignmentOperator();
+  FormulaEngineArrayAccess getArrayAccess();
 
   @Nullable
-  FormulaEngineDeclaration getDeclaration();
+  FormulaEngineBuiltInVariableName getBuiltInVariableName();
 
   @Nullable
   FormulaEngineExpression getExpression();
 
   @Nullable
-  FormulaEnginePostfixOperator getPostfixOperator();
-
-  @Nullable
-  FormulaEnginePrefixOperator getPrefixOperator();
+  FormulaEngineIdentifierLiteral getIdentifierLiteral();
 
   @Nullable
   FormulaEngineSeq getSeq();
-
-  @Nullable
-  PsiElement getIdentifier();
 
 }

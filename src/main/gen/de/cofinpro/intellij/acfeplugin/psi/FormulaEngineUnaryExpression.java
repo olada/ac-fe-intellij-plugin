@@ -10,13 +10,4 @@ public interface FormulaEngineUnaryExpression extends FormulaEngineExpression {
   @Nullable
   FormulaEngineExpression getExpression();
 
-  @Nullable
-  FormulaEnginePostfixOperator getPostfixOperator();
-
-  @Nullable
-  FormulaEnginePrefixOperator getPrefixOperator();
-
-  @Nullable
-  PsiElement getIdentifier();
-
 }

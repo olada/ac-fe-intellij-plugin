@@ -27,12 +27,6 @@ public class FormulaEngineCalculationExpressionImpl extends FormulaEngineExpress
 
   @Override
   @NotNull
-  public FormulaEngineCalculationOperator getCalculationOperator() {
-    return findNotNullChildByClass(FormulaEngineCalculationOperator.class);
-  }
-
-  @Override
-  @NotNull
   public List<FormulaEngineExpression> getExpressionList() {
     return PsiTreeUtil.getChildrenOfTypeAsList(this, FormulaEngineExpression.class);
   }

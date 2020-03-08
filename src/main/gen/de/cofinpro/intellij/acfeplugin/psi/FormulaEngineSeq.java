@@ -14,7 +14,7 @@ public interface FormulaEngineSeq extends PsiElement {
   FormulaEngineBuiltInVariableName getBuiltInVariableName();
 
   @Nullable
-  FormulaEngineCalculationExpression getCalculationExpression();
+  FormulaEngineExpression getExpression();
 
   @Nullable
   FormulaEngineFunctionInvocation getFunctionInvocation();

@@ -23,6 +23,6 @@ public interface FormulaEngineLeafExpression extends FormulaEngineExpression {
   FormulaEngineFunctionInvocation getFunctionInvocation();
 
   @Nullable
-  PsiElement getIdentifier();
+  FormulaEngineIdentifierLiteral getIdentifierLiteral();
 
 }

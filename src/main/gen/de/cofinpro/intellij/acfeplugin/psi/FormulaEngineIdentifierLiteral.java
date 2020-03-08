@@ -5,6 +5,12 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface FormulaEnginePrefixOperator extends PsiElement {
+public interface FormulaEngineIdentifierLiteral extends PsiElement {
+
+  @Nullable
+  FormulaEngineType getType();
+
+  @Nullable
+  PsiElement getIdentifier();
 
 }

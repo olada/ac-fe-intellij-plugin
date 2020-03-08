@@ -28,14 +28,14 @@ public class FormulaEngineAssignmentImpl extends ASTWrapperPsiElement implements
 
   @Override
   @Nullable
-  public FormulaEngineAssignmentOperator getAssignmentOperator() {
-    return findChildByClass(FormulaEngineAssignmentOperator.class);
+  public FormulaEngineArrayAccess getArrayAccess() {
+    return findChildByClass(FormulaEngineArrayAccess.class);
   }
 
   @Override
   @Nullable
-  public FormulaEngineDeclaration getDeclaration() {
-    return findChildByClass(FormulaEngineDeclaration.class);
+  public FormulaEngineBuiltInVariableName getBuiltInVariableName() {
+    return findChildByClass(FormulaEngineBuiltInVariableName.class);
   }
 
   @Override
@@ -46,26 +46,14 @@ public class FormulaEngineAssignmentImpl extends ASTWrapperPsiElement implements
 
   @Override
   @Nullable
-  public FormulaEnginePostfixOperator getPostfixOperator() {
-    return findChildByClass(FormulaEnginePostfixOperator.class);
-  }
-
-  @Override
-  @Nullable
-  public FormulaEnginePrefixOperator getPrefixOperator() {
-    return findChildByClass(FormulaEnginePrefixOperator.class);
+  public FormulaEngineIdentifierLiteral getIdentifierLiteral() {
+    return findChildByClass(FormulaEngineIdentifierLiteral.class);
   }
 
   @Override
   @Nullable
   public FormulaEngineSeq getSeq() {
     return findChildByClass(FormulaEngineSeq.class);
-  }
-
-  @Override
-  @Nullable
-  public PsiElement getIdentifier() {
-    return findChildByType(IDENTIFIER);
   }
 
 }

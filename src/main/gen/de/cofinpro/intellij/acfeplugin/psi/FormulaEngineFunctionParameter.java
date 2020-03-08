@@ -7,10 +7,10 @@ import com.intellij.psi.PsiElement;
 
 public interface FormulaEngineFunctionParameter extends PsiElement {
 
+  @NotNull
+  FormulaEngineIdentifierLiteral getIdentifierLiteral();
+
   @Nullable
   FormulaEngineType getType();
-
-  @NotNull
-  PsiElement getIdentifier();
 
 }

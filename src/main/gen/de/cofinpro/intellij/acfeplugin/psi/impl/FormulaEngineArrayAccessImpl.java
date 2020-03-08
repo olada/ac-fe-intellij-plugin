@@ -40,8 +40,8 @@ public class FormulaEngineArrayAccessImpl extends ASTWrapperPsiElement implement
 
   @Override
   @Nullable
-  public PsiElement getIdentifier() {
-    return findChildByType(IDENTIFIER);
+  public FormulaEngineIdentifierLiteral getIdentifierLiteral() {
+    return findChildByClass(FormulaEngineIdentifierLiteral.class);
   }
 
 }

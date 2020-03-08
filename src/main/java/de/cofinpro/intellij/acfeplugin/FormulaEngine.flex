@@ -222,6 +222,7 @@ DIGIT = [0-9]
    {NUMBER_FLOAT} { return FormulaEngineElementTypes.NUMBER_FLOAT; }
    {NUMBER_INTEGER} { return FormulaEngineElementTypes.NUMBER_INTEGER; }
 
+   {IDENTIFIER} "[" { yypushback(1); return FormulaEngineElementTypes.IDENTIFIER; }  // fix token detection of built in methods during array access (e.g. list[0])
    {IDENTIFIER} { return FormulaEngineElementTypes.IDENTIFIER; }
    {WHITE_SPACE} { return TokenType.WHITE_SPACE; }
 }

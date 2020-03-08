@@ -11,19 +11,31 @@ import static de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import de.cofinpro.intellij.acfeplugin.psi.*;
 
-public class FormulaEnginePrefixOperatorImpl extends ASTWrapperPsiElement implements FormulaEnginePrefixOperator {
+public class FormulaEngineIdentifierLiteralImpl extends ASTWrapperPsiElement implements FormulaEngineIdentifierLiteral {
 
-  public FormulaEnginePrefixOperatorImpl(@NotNull ASTNode node) {
+  public FormulaEngineIdentifierLiteralImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull FormulaEngineVisitor visitor) {
-    visitor.visitPrefixOperator(this);
+    visitor.visitIdentifierLiteral(this);
   }
 
   public void accept(@NotNull PsiElementVisitor visitor) {
     if (visitor instanceof FormulaEngineVisitor) accept((FormulaEngineVisitor)visitor);
     else super.accept(visitor);
+  }
+
+  @Override
+  @Nullable
+  public FormulaEngineType getType() {
+    return findChildByClass(FormulaEngineType.class);
+  }
+
+  @Override
+  @Nullable
+  public PsiElement getIdentifier() {
+    return findChildByType(IDENTIFIER);
   }
 
 }

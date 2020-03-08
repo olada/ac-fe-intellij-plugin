@@ -27,15 +27,15 @@ public class FormulaEngineFunctionParameterImpl extends ASTWrapperPsiElement imp
   }
 
   @Override
-  @Nullable
-  public FormulaEngineType getType() {
-    return findChildByClass(FormulaEngineType.class);
+  @NotNull
+  public FormulaEngineIdentifierLiteral getIdentifierLiteral() {
+    return findNotNullChildByClass(FormulaEngineIdentifierLiteral.class);
   }
 
   @Override
-  @NotNull
-  public PsiElement getIdentifier() {
-    return findNotNullChildByType(IDENTIFIER);
+  @Nullable
+  public FormulaEngineType getType() {
+    return findChildByClass(FormulaEngineType.class);
   }
 
 }

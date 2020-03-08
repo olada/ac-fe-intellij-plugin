@@ -27,12 +27,6 @@ public class FormulaEngineComparisonExpressionImpl extends FormulaEngineExpressi
 
   @Override
   @NotNull
-  public FormulaEngineComparisonOperator getComparisonOperator() {
-    return findNotNullChildByClass(FormulaEngineComparisonOperator.class);
-  }
-
-  @Override
-  @NotNull
   public List<FormulaEngineExpression> getExpressionList() {
     return PsiTreeUtil.getChildrenOfTypeAsList(this, FormulaEngineExpression.class);
   }

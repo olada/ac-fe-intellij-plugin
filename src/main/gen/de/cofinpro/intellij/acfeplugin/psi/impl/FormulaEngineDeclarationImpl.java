@@ -28,14 +28,20 @@ public class FormulaEngineDeclarationImpl extends ASTWrapperPsiElement implement
 
   @Override
   @Nullable
-  public FormulaEngineArrayAccess getArrayAccess() {
-    return findChildByClass(FormulaEngineArrayAccess.class);
+  public FormulaEngineExpression getExpression() {
+    return findChildByClass(FormulaEngineExpression.class);
+  }
+
+  @Override
+  @NotNull
+  public FormulaEngineIdentifierLiteral getIdentifierLiteral() {
+    return findNotNullChildByClass(FormulaEngineIdentifierLiteral.class);
   }
 
   @Override
   @Nullable
-  public FormulaEngineBuiltInVariableName getBuiltInVariableName() {
-    return findChildByClass(FormulaEngineBuiltInVariableName.class);
+  public FormulaEngineSeq getSeq() {
+    return findChildByClass(FormulaEngineSeq.class);
   }
 
   @Override
@@ -45,15 +51,9 @@ public class FormulaEngineDeclarationImpl extends ASTWrapperPsiElement implement
   }
 
   @Override
-  @Nullable
+  @NotNull
   public FormulaEngineVisibility getVisibility() {
-    return findChildByClass(FormulaEngineVisibility.class);
-  }
-
-  @Override
-  @Nullable
-  public PsiElement getIdentifier() {
-    return findChildByType(IDENTIFIER);
+    return findNotNullChildByClass(FormulaEngineVisibility.class);
   }
 
 }

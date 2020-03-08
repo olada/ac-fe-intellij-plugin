@@ -57,8 +57,8 @@ public class FormulaEngineLeafExpressionImpl extends FormulaEngineExpressionImpl
 
   @Override
   @Nullable
-  public PsiElement getIdentifier() {
-    return findChildByType(IDENTIFIER);
+  public FormulaEngineIdentifierLiteral getIdentifierLiteral() {
+    return findChildByClass(FormulaEngineIdentifierLiteral.class);
   }
 
 }
