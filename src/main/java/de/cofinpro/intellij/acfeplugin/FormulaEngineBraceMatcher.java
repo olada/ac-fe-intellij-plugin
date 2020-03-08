@@ -1,4 +1,4 @@
-package de.cofinpro.intellij.acfeplugin.brackets;
+package de.cofinpro.intellij.acfeplugin;
 
 import com.intellij.lang.BracePair;
 import com.intellij.lang.PairedBraceMatcher;
