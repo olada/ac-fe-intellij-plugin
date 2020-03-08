@@ -20,11 +20,20 @@
 
 
     <extensions defaultExtensionNs="com.intellij">
-        <fileType name="Formula Engine File" implementationClass="de.cofinpro.intellij.acfeplugin.FormulaEngineFileType" fieldName="INSTANCE" language="FormulaEngine" extensions="fe" />
-        <lang.parserDefinition language="FormulaEngine" implementationClass="de.cofinpro.intellij.acfeplugin.FormulaEngineParserDefinition"/>
-        <lang.syntaxHighlighterFactory language="FormulaEngine" implementationClass="de.cofinpro.intellij.acfeplugin.highlighting.FormulaEngineSyntaxHighlighterFactory" />
-        <lang.braceMatcher language="FormulaEngine" implementationClass="de.cofinpro.intellij.acfeplugin.FormulaEngineBraceMatcher" />
+        <fileType language="FormulaEngine"
+                  name="Formula Engine File"
+                  implementationClass="de.cofinpro.intellij.acfeplugin.FormulaEngineFileType"
+                  fieldName="INSTANCE"
+                  extensions="fe" />
+        <lang.parserDefinition language="FormulaEngine"
+                               implementationClass="de.cofinpro.intellij.acfeplugin.FormulaEngineParserDefinition"/>
+        <lang.syntaxHighlighterFactory language="FormulaEngine"
+                                       implementationClass="de.cofinpro.intellij.acfeplugin.highlighting.FormulaEngineSyntaxHighlighterFactory" />
+        <lang.braceMatcher language="FormulaEngine"
+                           implementationClass="de.cofinpro.intellij.acfeplugin.FormulaEngineBraceMatcher" />
         <colorSettingsPage implementation="de.cofinpro.intellij.acfeplugin.highlighting.FormulaEngineColorSettingsPage" />
+        <lang.foldingBuilder language="FormulaEngine"
+                             implementationClass="de.cofinpro.intellij.acfeplugin.FormulaEngineFoldingBuilder"/>
     </extensions>
 
     <actions>
