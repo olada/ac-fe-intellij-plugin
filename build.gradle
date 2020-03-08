@@ -31,8 +31,8 @@ patchPluginXml {
     changeNotes """
         <ul>
             <li>Grammar Support for all ACSD files and Validation methods in ACKV</li>
-            <li>Region Folding for functions</li>
-            <li>Syntax Highlighting for 'continue'a
+            <li>Folding for functions</li>
+            <li>Syntax Highlighting for 'continue' keyword
         </ul>
     """
     version = project.version
