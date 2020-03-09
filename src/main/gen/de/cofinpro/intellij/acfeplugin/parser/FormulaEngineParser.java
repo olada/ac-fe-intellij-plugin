@@ -778,13 +778,13 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
 
   /* ********************************************************** */
   // LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE | ControlStructureBody
-  static boolean IfOrElseBlock(PsiBuilder b, int l) {
+  public static boolean IfOrElseBlock(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "IfOrElseBlock")) return false;
     boolean r;
-    Marker m = enter_section_(b);
+    Marker m = enter_section_(b, l, _NONE_, IF_OR_ELSE_BLOCK, "<if or else block>");
     r = IfOrElseBlock_0(b, l + 1);
     if (!r) r = ControlStructureBody(b, l + 1);
-    exit_section_(b, m, null, r);
+    exit_section_(b, l, m, r, false, null);
     return r;
   }
 

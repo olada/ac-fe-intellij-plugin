@@ -24,7 +24,7 @@ import static de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementTypes.*;
 public class FormulaEngineFoldingBuilder extends CustomFoldingBuilder implements DumbAware {
 
     private static final List<IElementType> CURLY_BRACE_FOLDING_ELEMENTS = Arrays.asList(
-        FUNCTION_DEFINITION, FOR, WHILE, DO_WHILE, IF, SWITCH
+        FUNCTION_DEFINITION, FOR, WHILE, DO_WHILE, IF_OR_ELSE_BLOCK, SWITCH
     );
 
     @Override
@@ -33,7 +33,7 @@ public class FormulaEngineFoldingBuilder extends CustomFoldingBuilder implements
         buildFoldRegionForElementWithCurlyBraces(descriptors, root, FormulaEngineFor.class);
         buildFoldRegionForElementWithCurlyBraces(descriptors, root, FormulaEngineWhile.class);
         buildFoldRegionForElementWithCurlyBraces(descriptors, root, FormulaEngineDoWhile.class);
-        buildFoldRegionForElementWithCurlyBraces(descriptors, root, FormulaEngineIf.class);
+        buildFoldRegionForElementWithCurlyBraces(descriptors, root, FormulaEngineIfOrElseBlock.class);
         buildFoldRegionForElementWithCurlyBraces(descriptors, root, FormulaEngineSwitch.class);
     }
 
@@ -53,7 +53,7 @@ public class FormulaEngineFoldingBuilder extends CustomFoldingBuilder implements
     @Override
     protected String getLanguagePlaceholderText(@NotNull ASTNode node, @NotNull TextRange range) {
         if (CURLY_BRACE_FOLDING_ELEMENTS.contains(node.getElementType())) {
-            return "{ ... }";
+            return "{...}";
         } else {
             return "...";
         }

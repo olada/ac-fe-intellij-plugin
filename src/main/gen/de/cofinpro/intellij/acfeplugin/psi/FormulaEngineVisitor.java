@@ -107,6 +107,10 @@ public class FormulaEngineVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitIfOrElseBlock(@NotNull FormulaEngineIfOrElseBlock o) {
+    visitPsiElement(o);
+  }
+
   public void visitLeafExpression(@NotNull FormulaEngineLeafExpression o) {
     visitExpression(o);
   }

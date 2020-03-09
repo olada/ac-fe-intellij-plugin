@@ -33,6 +33,7 @@ public interface FormulaEngineElementTypes {
   IElementType FUNCTION_PARAMETERS = new FormulaEngineElementType("FUNCTION_PARAMETERS");
   IElementType IDENTIFIER_LITERAL = new FormulaEngineElementType("IDENTIFIER_LITERAL");
   IElementType IF = new FormulaEngineElementType("IF");
+  IElementType IF_OR_ELSE_BLOCK = new FormulaEngineElementType("IF_OR_ELSE_BLOCK");
   IElementType LEAF_EXPRESSION = new FormulaEngineElementType("LEAF_EXPRESSION");
   IElementType LIST_CONTENTS = new FormulaEngineElementType("LIST_CONTENTS");
   IElementType LIST_LITERAL = new FormulaEngineElementType("LIST_LITERAL");
@@ -250,6 +251,9 @@ public interface FormulaEngineElementTypes {
       }
       else if (type == IF) {
         return new FormulaEngineIfImpl(node);
+      }
+      else if (type == IF_OR_ELSE_BLOCK) {
+        return new FormulaEngineIfOrElseBlockImpl(node);
       }
       else if (type == LEAF_EXPRESSION) {
         return new FormulaEngineLeafExpressionImpl(node);

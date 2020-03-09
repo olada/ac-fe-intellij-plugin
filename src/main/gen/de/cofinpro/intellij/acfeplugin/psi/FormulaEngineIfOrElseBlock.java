@@ -5,12 +5,9 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface FormulaEngineIf extends PsiElement {
+public interface FormulaEngineIfOrElseBlock extends PsiElement {
 
   @NotNull
-  List<FormulaEngineExpression> getExpressionList();
-
-  @NotNull
-  List<FormulaEngineIfOrElseBlock> getIfOrElseBlockList();
+  FormulaEngineControlStructureBody getControlStructureBody();
 
 }

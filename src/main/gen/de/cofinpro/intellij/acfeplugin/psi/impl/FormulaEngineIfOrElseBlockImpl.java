@@ -11,14 +11,14 @@ import static de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import de.cofinpro.intellij.acfeplugin.psi.*;
 
-public class FormulaEngineIfImpl extends ASTWrapperPsiElement implements FormulaEngineIf {
+public class FormulaEngineIfOrElseBlockImpl extends ASTWrapperPsiElement implements FormulaEngineIfOrElseBlock {
 
-  public FormulaEngineIfImpl(@NotNull ASTNode node) {
+  public FormulaEngineIfOrElseBlockImpl(@NotNull ASTNode node) {
     super(node);
   }
 
   public void accept(@NotNull FormulaEngineVisitor visitor) {
-    visitor.visitIf(this);
+    visitor.visitIfOrElseBlock(this);
   }
 
   public void accept(@NotNull PsiElementVisitor visitor) {
@@ -28,14 +28,8 @@ public class FormulaEngineIfImpl extends ASTWrapperPsiElement implements Formula
 
   @Override
   @NotNull
-  public List<FormulaEngineExpression> getExpressionList() {
-    return PsiTreeUtil.getChildrenOfTypeAsList(this, FormulaEngineExpression.class);
-  }
-
-  @Override
-  @NotNull
-  public List<FormulaEngineIfOrElseBlock> getIfOrElseBlockList() {
-    return PsiTreeUtil.getChildrenOfTypeAsList(this, FormulaEngineIfOrElseBlock.class);
+  public FormulaEngineControlStructureBody getControlStructureBody() {
+    return findNotNullChildByClass(FormulaEngineControlStructureBody.class);
   }
 
 }
