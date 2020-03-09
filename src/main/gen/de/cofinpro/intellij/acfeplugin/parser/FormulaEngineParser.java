@@ -159,6 +159,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   //     | BUILT_IN_FUNC_HASH_GET | BUILT_IN_FUNC_HASH_PUT | BUILT_IN_FUNC_HASH_ISKEY | BUILT_IN_FUNC_HASH_KEYS
   //     | BUILT_IN_FUNC_IS_LIST | BUILT_IN_FUNC_IS_NA | BUILT_IN_FUNC_IS_STRING
   //     | BUILT_IN_FUNC_KERNEL
+  //     | BUILT_IN_FUNC_LAST
   //     | BUILT_IN_FUNC_LEN
   //     | BUILT_IN_FUNC_LOAD
   //     | BUILT_IN_FUNC_LSEARCH
@@ -194,6 +195,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_IS_NA);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_IS_STRING);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_KERNEL);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_LAST);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_LEN);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_LOAD);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_LSEARCH);
