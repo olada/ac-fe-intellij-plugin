@@ -75,6 +75,7 @@ DIGIT = [0-9]
    "len" { return FormulaEngineElementTypes.BUILT_IN_FUNC_LEN; }
    "list" { return FormulaEngineElementTypes.BUILT_IN_FUNC_LIST; }
    "load" { return FormulaEngineElementTypes.BUILT_IN_FUNC_LOAD; }
+   "lsearch" { return FormulaEngineElementTypes.BUILT_IN_FUNC_LSEARCH; }
    "map" { return FormulaEngineElementTypes.BUILT_IN_FUNC_MAP; }
    "max" { return FormulaEngineElementTypes.BUILT_IN_FUNC_MAX; }
    "out" { return FormulaEngineElementTypes.BUILT_IN_FUNC_OUT; }
@@ -198,6 +199,7 @@ DIGIT = [0-9]
    "len(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_LEN; }
    "list(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_LIST; }
    "load(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_LOAD; }
+   "lsearch(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_LSEARCH; }
    "map(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_MAP; }
    "max(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_MAX; }
    "out(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_OUT; }

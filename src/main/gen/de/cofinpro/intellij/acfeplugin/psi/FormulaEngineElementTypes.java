@@ -76,6 +76,7 @@ public interface FormulaEngineElementTypes {
   IElementType BUILT_IN_FUNC_LEN = new FormulaEngineTokenType("len");
   IElementType BUILT_IN_FUNC_LIST = new FormulaEngineTokenType("list");
   IElementType BUILT_IN_FUNC_LOAD = new FormulaEngineTokenType("load");
+  IElementType BUILT_IN_FUNC_LSEARCH = new FormulaEngineTokenType("lsearch");
   IElementType BUILT_IN_FUNC_MAP = new FormulaEngineTokenType("map");
   IElementType BUILT_IN_FUNC_MAX = new FormulaEngineTokenType("max");
   IElementType BUILT_IN_FUNC_OUT = new FormulaEngineTokenType("out");
