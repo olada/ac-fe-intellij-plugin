@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>de.cofinpro.intellij.ac-fe-plugin</id>
     <name>FE Code (Formula Engine)</name>
-    <vendor email="david.olah@cofinpro.de" url="http://www.cofinpro.de">Cofinpro AG</vendor>
+    <vendor email="david.olah@cofinpro.de">David Olah</vendor>
 
     <description><![CDATA[
     Language Support for Asset Control's Formula Engine code (<i>FE code</i>).
