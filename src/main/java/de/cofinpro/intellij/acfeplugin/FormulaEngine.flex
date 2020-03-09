@@ -79,6 +79,7 @@ DIGIT = [0-9]
    "max" { return FormulaEngineElementTypes.BUILT_IN_FUNC_MAX; }
    "out" { return FormulaEngineElementTypes.BUILT_IN_FUNC_OUT; }
    "remove" { return FormulaEngineElementTypes.BUILT_IN_FUNC_REMOVE; }
+   "sort" { return FormulaEngineElementTypes.BUILT_IN_FUNC_SORT; }
    "status" { return FormulaEngineElementTypes.BUILT_IN_FUNC_STATUS; }
    "str" { return FormulaEngineElementTypes.BUILT_IN_FUNC_STR; }
    "string" { return FormulaEngineElementTypes.BUILT_IN_FUNC_STRING; }
@@ -201,6 +202,7 @@ DIGIT = [0-9]
    "max(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_MAX; }
    "out(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_OUT; }
    "remove(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_REMOVE; }
+   "sort(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_SORT; }
    "status(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STATUS; }
    "str(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STR; }
    "string(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STRING; }
