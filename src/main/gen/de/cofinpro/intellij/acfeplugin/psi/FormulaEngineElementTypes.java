@@ -81,6 +81,7 @@ public interface FormulaEngineElementTypes {
   IElementType BUILT_IN_FUNC_MAP = new FormulaEngineTokenType("map");
   IElementType BUILT_IN_FUNC_MAX = new FormulaEngineTokenType("max");
   IElementType BUILT_IN_FUNC_OUT = new FormulaEngineTokenType("out");
+  IElementType BUILT_IN_FUNC_PRICE_FIELD = new FormulaEngineTokenType("price_field");
   IElementType BUILT_IN_FUNC_REMOVE = new FormulaEngineTokenType("remove");
   IElementType BUILT_IN_FUNC_SORT = new FormulaEngineTokenType("sort");
   IElementType BUILT_IN_FUNC_STATUS = new FormulaEngineTokenType("status");

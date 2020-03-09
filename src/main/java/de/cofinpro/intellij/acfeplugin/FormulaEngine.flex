@@ -80,6 +80,7 @@ DIGIT = [0-9]
    "map" { return FormulaEngineElementTypes.BUILT_IN_FUNC_MAP; }
    "max" { return FormulaEngineElementTypes.BUILT_IN_FUNC_MAX; }
    "out" { return FormulaEngineElementTypes.BUILT_IN_FUNC_OUT; }
+   "price_field" { return FormulaEngineElementTypes.BUILT_IN_FUNC_PRICE_FIELD; }
    "remove" { return FormulaEngineElementTypes.BUILT_IN_FUNC_REMOVE; }
    "sort" { return FormulaEngineElementTypes.BUILT_IN_FUNC_SORT; }
    "status" { return FormulaEngineElementTypes.BUILT_IN_FUNC_STATUS; }
@@ -205,6 +206,7 @@ DIGIT = [0-9]
    "map(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_MAP; }
    "max(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_MAX; }
    "out(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_OUT; }
+   "price_field(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_PRICE_FIELD; }
    "remove(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_REMOVE; }
    "sort(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_SORT; }
    "status(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STATUS; }
