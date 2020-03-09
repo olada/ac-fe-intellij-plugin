@@ -8,8 +8,6 @@ import static com.intellij.openapi.editor.DefaultLanguageHighlighterColors.KEYWO
 import static com.intellij.openapi.editor.colors.TextAttributesKey.createTextAttributesKey;
 
 public class FormulaEngineHighlighterColors {
-    public static final TextAttributesKey FUNCTION_ATTR_KEY = createTextAttributesKey("FE_FUNCTION", FUNCTION_DECLARATION);
-
     // Data Types
     public static final TextAttributesKey ANY_ATTR_KEY = createTextAttributesKey("FE_ANY", KEYWORD);
     public static final TextAttributesKey BOOLEAN_ATTR_KEY = createTextAttributesKey("FE_BOOLEAN", KEYWORD);
@@ -34,11 +32,12 @@ public class FormulaEngineHighlighterColors {
     public static final TextAttributesKey CONTINUE_ATTR_KEY = createTextAttributesKey("FE_CONTINUE", KEYWORD);
     public static final TextAttributesKey DEFAULT_ATTR_KEY = createTextAttributesKey("FE_DEFAULT", KEYWORD);
     public static final TextAttributesKey DO_ATTR_KEY = createTextAttributesKey("FE_DO", KEYWORD);
-    public static final TextAttributesKey RETURN_ATTR_KEY = createTextAttributesKey("FE_RETURN", KEYWORD);
     public static final TextAttributesKey ELSE_ATTR_KEY = createTextAttributesKey("FE_ELSE", KEYWORD);
     public static final TextAttributesKey FOR_ATTR_KEY = createTextAttributesKey("FE_FOR", KEYWORD);
+    public static final TextAttributesKey FUNCTION_ATTR_KEY = createTextAttributesKey("FE_FUNCTION", KEYWORD);
     public static final TextAttributesKey IF_ATTR_KEY = createTextAttributesKey("FE_IF", KEYWORD);
     public static final TextAttributesKey OR_ATTR_KEY = createTextAttributesKey("FE_OR", KEYWORD);
+    public static final TextAttributesKey RETURN_ATTR_KEY = createTextAttributesKey("FE_RETURN", KEYWORD);
     public static final TextAttributesKey SEQ_ATTR_KEY = createTextAttributesKey("FE_SEQ", KEYWORD);
     public static final TextAttributesKey SWITCH_ATTR_KEY = createTextAttributesKey("FE_SWITCH", KEYWORD);
     public static final TextAttributesKey WHILE_ATTR_KEY = createTextAttributesKey("FE_WHILE", KEYWORD);
