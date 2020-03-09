@@ -3,7 +3,6 @@ package de.cofinpro.intellij.acfeplugin;
 import com.intellij.lang.ASTNode;
 import com.intellij.lang.folding.CustomFoldingBuilder;
 import com.intellij.lang.folding.FoldingDescriptor;
-import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.util.TextRange;
@@ -13,24 +12,20 @@ import com.intellij.psi.util.PsiTreeUtil;
 import de.cofinpro.intellij.acfeplugin.psi.*;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+
+import static de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementTypes.*;
 
 /**
  * Responsible for dealing with folding regions.
  */
 public class FormulaEngineFoldingBuilder extends CustomFoldingBuilder implements DumbAware {
 
-    private final List<IElementType> placeholdersCurlyBraces = new ArrayList<IElementType>() {{
-        add(FormulaEngineElementTypes.FUNCTION_DEFINITION);
-        add(FormulaEngineElementTypes.FOR);
-        add(FormulaEngineElementTypes.WHILE);
-        add(FormulaEngineElementTypes.DO_WHILE);
-        add(FormulaEngineElementTypes.IF);
-        add(FormulaEngineElementTypes.SWITCH);
-    } };
+    private static final List<IElementType> CURLY_BRACE_FOLDING_ELEMENTS = Arrays.asList(
+        FUNCTION_DEFINITION, FOR, WHILE, DO_WHILE, IF, SWITCH
+    );
 
     @Override
     protected void buildLanguageFoldRegions(@NotNull List<FoldingDescriptor> descriptors, @NotNull PsiElement root, @NotNull Document document, boolean quick) {
@@ -57,7 +52,7 @@ public class FormulaEngineFoldingBuilder extends CustomFoldingBuilder implements
 
     @Override
     protected String getLanguagePlaceholderText(@NotNull ASTNode node, @NotNull TextRange range) {
-        if (placeholdersCurlyBraces.contains(node.getElementType())) {
+        if (CURLY_BRACE_FOLDING_ELEMENTS.contains(node.getElementType())) {
             return "{ ... }";
         } else {
             return "...";
