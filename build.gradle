@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'de.cofinpro.intellij'
-version '0.0.4-SNAPSHOT'
+version '0.0.4'
 
 sourceCompatibility = 1.8
 
@@ -30,9 +30,10 @@ intellij {
 patchPluginXml {
     changeNotes """
     <p>
-        <h2>Version 0.0.4 (2020-03-??)</h2>
+        <h2>Version 0.0.4 (2020-03-10)</h2>
         <ul>
             <li>Folding for loops and if / else</li>
+            <li>Syntax Highlighting for built-in methods: sql</li>
         </ul>
     </p>
     
