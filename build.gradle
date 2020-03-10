@@ -29,12 +29,43 @@ intellij {
 
 patchPluginXml {
     changeNotes """
-        <h2>Version 0.0.3</h2>
+    <p>
+        <h2>Version 0.0.4 (2020-03-??)</h2>
+        <ul>
+            <li>Folding for loops and if / else</li>
+        </ul>
+    </p>
+    
+    <p>
+        <h2>Version 0.0.3 (2020-03-09)</h2>
         <ul>
             <li>Grammar Support for all ACSD files and Validation methods in ACKV</li>
             <li>Folding for functions</li>
-            <li>Syntax Highlighting for 'continue' keyword
+            <li>Syntax Highlighting for 'continue' keyword</li>
+            <li>Syntax Highlighting for built-in methods: last, lsearch, price_field, sort</li>
         </ul>
+    </p>
+    
+    <p>
+        <h2>Version 0.0.2 (2020-03-03)</h2>
+        <ul>
+            <li>Support for additional built-in-functions (map, list, hash_get, hash_put)</li>
+            <li>if-else blocks with optional braces</li>
+            <li>additional loops (do-while)</li>
+            <li>brace matching (highlights matching brace when setting the cursor on top of a brace)</li>
+            <li>built-in functions are highlighted differently when used as a function argument</li>
+            <li>Multi-Line-Comments</li>
+            <li>Better Expression support with optional parenthesis support</li>
+        </ul>
+    </p>
+    
+    <p>
+        <h2>Version 0.0.1 (2020-02-21)</h2>
+        <ul>
+            <li>Most grammar of currently known FE-files works</li>
+            <li>Most syntax highlighting implemented</li>
+        </ul>
+    </p>
     """
     version = project.version
 }
