@@ -120,6 +120,7 @@
             BUILT_IN_FUNC_MAX = 'max'
             BUILT_IN_FUNC_PRICE_FIELD = 'price_field'
             BUILT_IN_FUNC_REMOVE = 'remove'
+            BUILT_IN_FUNC_SQL = 'sql'
             BUILT_IN_FUNC_SORT = 'sort'
             BUILT_IN_FUNC_STATUS = 'status'
             BUILT_IN_FUNC_STR = 'str'
@@ -231,6 +232,7 @@ BuiltInFunctionName ::= BUILT_IN_FUNC_ATTRIBUTE
     | BUILT_IN_FUNC_MAX
     | BUILT_IN_FUNC_OUT
     | BUILT_IN_FUNC_REMOVE
+    | BUILT_IN_FUNC_SQL
     | BUILT_IN_FUNC_SORT
     | BUILT_IN_FUNC_STATUS
     | BUILT_IN_FUNC_TIME

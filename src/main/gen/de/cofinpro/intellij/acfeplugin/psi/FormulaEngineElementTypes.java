@@ -85,6 +85,7 @@ public interface FormulaEngineElementTypes {
   IElementType BUILT_IN_FUNC_PRICE_FIELD = new FormulaEngineTokenType("price_field");
   IElementType BUILT_IN_FUNC_REMOVE = new FormulaEngineTokenType("remove");
   IElementType BUILT_IN_FUNC_SORT = new FormulaEngineTokenType("sort");
+  IElementType BUILT_IN_FUNC_SQL = new FormulaEngineTokenType("sql");
   IElementType BUILT_IN_FUNC_STATUS = new FormulaEngineTokenType("status");
   IElementType BUILT_IN_FUNC_STR = new FormulaEngineTokenType("str");
   IElementType BUILT_IN_FUNC_STRING = new FormulaEngineTokenType("built in func string");
