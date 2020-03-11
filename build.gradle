@@ -30,6 +30,13 @@ intellij {
 patchPluginXml {
     changeNotes """
     <p>
+        <h2>Version 0.0.5 (2020-03-??)</h2>
+        <ul>
+            <li>Syntax Highlighting for built-in methods: ts, ts_update</li>
+        </ul>
+    </p>
+    
+    <p>
         <h2>Version 0.0.4 (2020-03-10)</h2>
         <ul>
             <li>Folding for loops and if / else</li>
