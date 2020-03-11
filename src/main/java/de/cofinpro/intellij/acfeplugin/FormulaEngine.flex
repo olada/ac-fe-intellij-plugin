@@ -89,6 +89,7 @@ DIGIT = [0-9]
    "string" { return FormulaEngineElementTypes.BUILT_IN_FUNC_STRING; }
    "time" { return FormulaEngineElementTypes.BUILT_IN_FUNC_TIME; }
    "ts" { return FormulaEngineElementTypes.BUILT_IN_FUNC_TS; }
+   "ts_update" { return FormulaEngineElementTypes.BUILT_IN_FUNC_TS_UPDATE; }
 }
 
 // Der Function Header soll Datentypen nicht als built-in methode markieren (clash von datentypen und built-in Methodennamen, bspw "string" oder "integer" -> klassische cast funktionen)
@@ -217,6 +218,7 @@ DIGIT = [0-9]
    "string(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STRING; }
    "time(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_TIME; }
    "ts(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_TS; }
+   "ts_update(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_TS_UPDATE; }
 
    "," { return FormulaEngineElementTypes.COMMA; }
    ";" { return FormulaEngineElementTypes.SEMICOLON; }

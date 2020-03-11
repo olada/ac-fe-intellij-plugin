@@ -173,6 +173,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   //     | BUILT_IN_FUNC_STATUS
   //     | BUILT_IN_FUNC_TIME
   //     | BUILT_IN_FUNC_TS
+  //     | BUILT_IN_FUNC_TS_UPDATE
   public static boolean BuiltInFunctionName(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "BuiltInFunctionName")) return false;
     boolean r;
@@ -212,6 +213,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_STATUS);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_TIME);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_TS);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_TS_UPDATE);
     exit_section_(b, l, m, r, false, null);
     return r;
   }

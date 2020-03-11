@@ -118,6 +118,7 @@
             BUILT_IN_FUNC_LOAD = 'load'
             BUILT_IN_FUNC_MAP = 'map'
             BUILT_IN_FUNC_MAX = 'max'
+            BUILT_IN_FUNC_OUT = 'out'
             BUILT_IN_FUNC_PRICE_FIELD = 'price_field'
             BUILT_IN_FUNC_REMOVE = 'remove'
             BUILT_IN_FUNC_SQL = 'sql'
@@ -127,7 +128,7 @@
             BUILT_IN_FUNC_STRING = 'built in func string'
             BUILT_IN_FUNC_TIME = 'built in func time'
             BUILT_IN_FUNC_TS = 'built in func ts'
-            BUILT_IN_FUNC_OUT = 'out'
+            BUILT_IN_FUNC_TS_UPDATE = 'built in func ts_update'
 
             DOUBLE_QUOTED_STRING_LITERAL = 'double quoted string literal'
             SINGLE_QUOTED_STRING_LITERAL = 'single quoted string literal'
@@ -238,6 +239,7 @@ BuiltInFunctionName ::= BUILT_IN_FUNC_ATTRIBUTE
     | BUILT_IN_FUNC_STATUS
     | BUILT_IN_FUNC_TIME
     | BUILT_IN_FUNC_TS
+    | BUILT_IN_FUNC_TS_UPDATE
 FunctionBody ::= FunctionBodyStatement*
 Statement ::= ((Assignment | Declaration | Expression | ReturnStatement | KEYWORD_BREAK) SEMICOLON) |  FunctionDefinition
 FunctionBodyStatement ::= FunctionDefinition | ControlStructure | ((FunctionInvocation | Assignment | Declaration | ReturnStatement | Seq) SEMICOLON)
