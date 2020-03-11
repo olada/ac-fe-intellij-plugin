@@ -126,6 +126,7 @@
             BUILT_IN_FUNC_STR = 'str'
             BUILT_IN_FUNC_STRING = 'built in func string'
             BUILT_IN_FUNC_TIME = 'built in func time'
+            BUILT_IN_FUNC_TS = 'built in func ts'
             BUILT_IN_FUNC_OUT = 'out'
 
             DOUBLE_QUOTED_STRING_LITERAL = 'double quoted string literal'
@@ -236,6 +237,7 @@ BuiltInFunctionName ::= BUILT_IN_FUNC_ATTRIBUTE
     | BUILT_IN_FUNC_SORT
     | BUILT_IN_FUNC_STATUS
     | BUILT_IN_FUNC_TIME
+    | BUILT_IN_FUNC_TS
 FunctionBody ::= FunctionBodyStatement*
 Statement ::= ((Assignment | Declaration | Expression | ReturnStatement | KEYWORD_BREAK) SEMICOLON) |  FunctionDefinition
 FunctionBodyStatement ::= FunctionDefinition | ControlStructure | ((FunctionInvocation | Assignment | Declaration | ReturnStatement | Seq) SEMICOLON)
