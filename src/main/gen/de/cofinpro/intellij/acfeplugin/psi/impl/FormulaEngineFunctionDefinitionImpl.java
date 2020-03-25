@@ -8,10 +8,10 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
 import static de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementTypes.*;
-import com.intellij.extapi.psi.ASTWrapperPsiElement;
+import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineNameIdentifierOwnerImpl;
 import de.cofinpro.intellij.acfeplugin.psi.*;
 
-public class FormulaEngineFunctionDefinitionImpl extends ASTWrapperPsiElement implements FormulaEngineFunctionDefinition {
+public class FormulaEngineFunctionDefinitionImpl extends FormulaEngineNameIdentifierOwnerImpl implements FormulaEngineFunctionDefinition {
 
   public FormulaEngineFunctionDefinitionImpl(@NotNull ASTNode node) {
     super(node);

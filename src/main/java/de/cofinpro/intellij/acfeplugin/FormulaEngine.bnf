@@ -157,7 +157,9 @@ feFile ::= TopLevelItem*
 
 TopLevelItem ::= FunctionDefinition | ControlStructure | Statement
 
-FunctionDefinition ::= KEYWORD_FUNCTION IDENTIFIER LEFT_PARENTHESIS FunctionParameters? RIGHT_PARENTHESIS LEFT_CURLY_BRACE FunctionBody RIGHT_CURLY_BRACE
+FunctionDefinition ::= KEYWORD_FUNCTION IDENTIFIER LEFT_PARENTHESIS FunctionParameters? RIGHT_PARENTHESIS LEFT_CURLY_BRACE FunctionBody RIGHT_CURLY_BRACE {
+    mixin = "de.cofinpro.intellij.acfeplugin.psi.FormulaEngineNameIdentifierOwnerImpl"
+}
 FunctionParameters ::= FunctionParameter (COMMA FunctionParameter)*
 FunctionParameter ::= ParameterWithType | ParameterWithoutType
 private ParameterWithoutType ::= IdentifierLiteral
@@ -211,7 +213,9 @@ ListLiteral ::= LEFT_BRACKET ListContents RIGHT_BRACKET
 ListContents ::= (Expression (COMMA Expression)*)?
 IdentifierLiteral ::= IDENTIFIER | Type
 
-FunctionInvocation ::= FunctionName LEFT_PARENTHESIS FunctionArguments? RIGHT_PARENTHESIS
+FunctionInvocation ::= FunctionName LEFT_PARENTHESIS FunctionArguments? RIGHT_PARENTHESIS {
+    mixin = "de.cofinpro.intellij.acfeplugin.referencing.FormulaEngineFunctionNameImpl"
+}
 CustomFunctionName ::= IDENTIFIER
 
 private FunctionName ::= BuiltInFunctionName | CustomFunctionName
