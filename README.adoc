@@ -72,3 +72,20 @@ Note: Your IntelliJ IDEA version must be >= 2019.3
 * https://medium.com/@shan1024/custom-language-plugin-development-for-intellij-idea-part-04-df2f3ce88b30
 * https://github.com/Shan1024/Simple-Intellij-Plugin/blob/master/src/main/java/org/shan/grammar/Simple.flex
 * https://github.com/JetBrains/Grammar-Kit/blob/master/TUTORIAL.md
+
+
+== Stubs
+
+
+* Define an interface for the stub, derived from the StubElement interface (example).
+  => FunctionDefinitionStub
+* Provide an implementation for the interface (example).
+  => FunctionDefinitionStubImpl
+* Make sure that the interface for the PSI element extends StubBasedPsiElement parameterized by the type of the stub interface (example).
+  => FunctionDefinition
+* Make sure that the implementation class for the PSI element extends StubBasedPsiElementBase parameterized by the type of the stub interface (example). Provide both a constructor that accepts an ASTNode and a constructor which accepts a stub.
+  => FunctionDefinitionImpl
+* Create a class which implements IStubElementType and is parameterized with the stub interface and the actual PSI element interface (example). Implement the createPsi() and createStub() methods for creating PSI from a stub and vice versa. Implement the serialize() and deserialize() methods for storing the data in a binary stream.
+  => FunctionDefinitionElementType (via ElementTypeBase)
+* Use the class implementing IStubElementType as the element type constant when parsing (example).
+* Make sure that all methods in the PSI element interface access the stub data rather than the PSI tree when appropriate (example: Property.getKey() implementation).

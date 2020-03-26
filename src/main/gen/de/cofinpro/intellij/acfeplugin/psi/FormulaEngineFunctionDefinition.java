@@ -4,8 +4,10 @@ package de.cofinpro.intellij.acfeplugin.psi;
 import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
+import com.intellij.psi.StubBasedPsiElement;
+import de.cofinpro.intellij.acfeplugin.psi.stub2.FunctionDefinitionStub;
 
-public interface FormulaEngineFunctionDefinition extends PsiElement {
+public interface FormulaEngineFunctionDefinition extends FormulaEngineNameIdentifierOwner, StubBasedPsiElement<FunctionDefinitionStub> {
 
   @NotNull
   FormulaEngineFunctionBody getFunctionBody();

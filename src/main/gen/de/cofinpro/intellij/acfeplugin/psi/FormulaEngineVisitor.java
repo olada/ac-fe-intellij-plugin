@@ -4,6 +4,8 @@ package de.cofinpro.intellij.acfeplugin.psi;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.PsiElement;
+import com.intellij.psi.StubBasedPsiElement;
+import de.cofinpro.intellij.acfeplugin.psi.stub2.FunctionDefinitionStub;
 
 public class FormulaEngineVisitor extends PsiElementVisitor {
 
@@ -84,7 +86,8 @@ public class FormulaEngineVisitor extends PsiElementVisitor {
   }
 
   public void visitFunctionDefinition(@NotNull FormulaEngineFunctionDefinition o) {
-    visitPsiElement(o);
+    visitNameIdentifierOwner(o);
+    // visitStubBasedPsiElement(o);
   }
 
   public void visitFunctionInvocation(@NotNull FormulaEngineFunctionInvocation o) {
@@ -188,6 +191,10 @@ public class FormulaEngineVisitor extends PsiElementVisitor {
   }
 
   public void visitWhile(@NotNull FormulaEngineWhile o) {
+    visitPsiElement(o);
+  }
+
+  public void visitNameIdentifierOwner(@NotNull FormulaEngineNameIdentifierOwner o) {
     visitPsiElement(o);
   }
 
