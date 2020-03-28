@@ -15,7 +15,6 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Collection;
 import java.util.Optional;
 
-// TODO: Performance Optimization (limit PsiTree walks by caching / indexing)
 public class FormulaEngineFunctionReference extends FormulaEngineReference implements PsiPolyVariantReference {
     private final FormulaEngineFunctionInvocation functionInvocation;
 
