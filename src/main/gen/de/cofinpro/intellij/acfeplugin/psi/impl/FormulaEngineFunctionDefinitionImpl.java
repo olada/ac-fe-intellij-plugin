@@ -55,4 +55,9 @@ public class FormulaEngineFunctionDefinitionImpl extends StubBasedPsiElementBase
     return notNullChild(findChildByType(IDENTIFIER));
   }
 
+  @Override
+  public String getIdentifierName() {
+    return FormulaEnginePsiImplUtil.getIdentifierName(this);
+  }
+
 }
