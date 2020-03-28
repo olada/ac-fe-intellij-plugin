@@ -24,8 +24,6 @@ public class FormulaEngineParserDefinition implements ParserDefinition {
     public static final TokenSet WHITE_SPACES = TokenSet.create(TokenType.WHITE_SPACE);
     public static final TokenSet COMMENTS = TokenSet.create(FormulaEngineElementTypes.LINE_COMMENT, FormulaEngineElementTypes.BLOCK_COMMENT);
 
-    public static final IFileElementType FILE = new IFileElementType(FormulaEngineLanguage.INSTANCE);
-
     @NotNull
     @Override
     public Lexer createLexer(Project project) {
@@ -39,7 +37,7 @@ public class FormulaEngineParserDefinition implements ParserDefinition {
 
     @Override
     public IFileElementType getFileNodeType() {
-        return FILE;
+        return FormulaEngineFileElementType.INSTANCE;
     }
 
     @NotNull

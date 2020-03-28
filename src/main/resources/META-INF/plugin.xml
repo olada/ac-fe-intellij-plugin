@@ -34,6 +34,8 @@
         <colorSettingsPage implementation="de.cofinpro.intellij.acfeplugin.highlighting.FormulaEngineColorSettingsPage" />
         <lang.foldingBuilder language="FormulaEngine"
                              implementationClass="de.cofinpro.intellij.acfeplugin.FormulaEngineFoldingBuilder"/>
+
+        <stubElementTypeHolder class="de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementTypes" />
     </extensions>
 
     <actions>
