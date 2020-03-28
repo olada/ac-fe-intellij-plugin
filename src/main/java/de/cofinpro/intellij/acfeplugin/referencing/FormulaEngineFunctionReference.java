@@ -1,10 +1,14 @@
 package de.cofinpro.intellij.acfeplugin.referencing;
 
-import com.intellij.openapi.util.TextRange;
-import com.intellij.psi.*;
-import com.intellij.psi.util.PsiTreeUtil;
+import com.intellij.psi.PsiElement;
+import com.intellij.psi.PsiFile;
+import com.intellij.psi.PsiPolyVariantReference;
+import com.intellij.psi.ResolveResult;
+import com.intellij.psi.search.ProjectScope;
+import com.intellij.psi.stubs.StubIndex;
 import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineFunctionDefinition;
 import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineFunctionInvocation;
+import de.cofinpro.intellij.acfeplugin.psi.stub2.FunctionDefinitionsStubIndex;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -38,7 +42,7 @@ public class FormulaEngineFunctionReference extends FormulaEngineReference imple
                 functionInvocation.getCustomFunctionName() != null) {
             String customFunctionName = functionInvocation.getCustomFunctionName().getIdentifier().getText();
             PsiFile root = functionInvocation.getContainingFile();
-            Collection<FormulaEngineFunctionDefinition> functionDefinitions = PsiTreeUtil.findChildrenOfType(root, FormulaEngineFunctionDefinition.class);
+            Collection<FormulaEngineFunctionDefinition> functionDefinitions = StubIndex.getElements(FunctionDefinitionsStubIndex.KEY, customFunctionName, root.getProject(), ProjectScope.getAllScope(root.getProject()), FormulaEngineFunctionDefinition.class);
             Optional<FormulaEngineFunctionDefinition> foundFunctionDefinition = functionDefinitions.stream().filter(functionDefinition -> functionDefinition.getIdentifierName().equals(customFunctionName)).findFirst();
             return foundFunctionDefinition.orElse(null);
         }
