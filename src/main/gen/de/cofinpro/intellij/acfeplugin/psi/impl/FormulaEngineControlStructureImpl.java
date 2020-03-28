@@ -29,31 +29,31 @@ public class FormulaEngineControlStructureImpl extends ASTWrapperPsiElement impl
   @Override
   @Nullable
   public FormulaEngineDoWhile getDoWhile() {
-    return findChildByClass(FormulaEngineDoWhile.class);
+    return PsiTreeUtil.getChildOfType(this, FormulaEngineDoWhile.class);
   }
 
   @Override
   @Nullable
   public FormulaEngineFor getFor() {
-    return findChildByClass(FormulaEngineFor.class);
+    return PsiTreeUtil.getChildOfType(this, FormulaEngineFor.class);
   }
 
   @Override
   @Nullable
   public FormulaEngineIf getIf() {
-    return findChildByClass(FormulaEngineIf.class);
+    return PsiTreeUtil.getChildOfType(this, FormulaEngineIf.class);
   }
 
   @Override
   @Nullable
   public FormulaEngineSwitch getSwitch() {
-    return findChildByClass(FormulaEngineSwitch.class);
+    return PsiTreeUtil.getChildOfType(this, FormulaEngineSwitch.class);
   }
 
   @Override
   @Nullable
   public FormulaEngineWhile getWhile() {
-    return findChildByClass(FormulaEngineWhile.class);
+    return PsiTreeUtil.getChildOfType(this, FormulaEngineWhile.class);
   }
 
 }

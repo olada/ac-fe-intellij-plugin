@@ -29,25 +29,25 @@ public class FormulaEngineConstantImpl extends ASTWrapperPsiElement implements F
   @Override
   @Nullable
   public FormulaEngineBuiltInVariableName getBuiltInVariableName() {
-    return findChildByClass(FormulaEngineBuiltInVariableName.class);
+    return PsiTreeUtil.getChildOfType(this, FormulaEngineBuiltInVariableName.class);
   }
 
   @Override
   @Nullable
   public FormulaEngineListLiteral getListLiteral() {
-    return findChildByClass(FormulaEngineListLiteral.class);
+    return PsiTreeUtil.getChildOfType(this, FormulaEngineListLiteral.class);
   }
 
   @Override
   @Nullable
   public FormulaEngineNumberLiteral getNumberLiteral() {
-    return findChildByClass(FormulaEngineNumberLiteral.class);
+    return PsiTreeUtil.getChildOfType(this, FormulaEngineNumberLiteral.class);
   }
 
   @Override
   @Nullable
   public FormulaEngineStringLiteral getStringLiteral() {
-    return findChildByClass(FormulaEngineStringLiteral.class);
+    return PsiTreeUtil.getChildOfType(this, FormulaEngineStringLiteral.class);
   }
 
   @Override

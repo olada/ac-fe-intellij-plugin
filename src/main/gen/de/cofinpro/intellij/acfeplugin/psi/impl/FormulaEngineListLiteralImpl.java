@@ -29,7 +29,7 @@ public class FormulaEngineListLiteralImpl extends ASTWrapperPsiElement implement
   @Override
   @NotNull
   public FormulaEngineListContents getListContents() {
-    return findNotNullChildByClass(FormulaEngineListContents.class);
+    return notNullChild(PsiTreeUtil.getChildOfType(this, FormulaEngineListContents.class));
   }
 
 }

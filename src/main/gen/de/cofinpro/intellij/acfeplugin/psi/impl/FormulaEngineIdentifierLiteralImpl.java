@@ -29,7 +29,7 @@ public class FormulaEngineIdentifierLiteralImpl extends ASTWrapperPsiElement imp
   @Override
   @Nullable
   public FormulaEngineType getType() {
-    return findChildByClass(FormulaEngineType.class);
+    return PsiTreeUtil.getChildOfType(this, FormulaEngineType.class);
   }
 
   @Override

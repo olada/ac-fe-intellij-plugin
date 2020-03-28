@@ -29,13 +29,13 @@ public class FormulaEngineWhileImpl extends ASTWrapperPsiElement implements Form
   @Override
   @NotNull
   public FormulaEngineExpression getExpression() {
-    return findNotNullChildByClass(FormulaEngineExpression.class);
+    return notNullChild(PsiTreeUtil.getChildOfType(this, FormulaEngineExpression.class));
   }
 
   @Override
   @NotNull
   public FormulaEngineLoopStructureBody getLoopStructureBody() {
-    return findNotNullChildByClass(FormulaEngineLoopStructureBody.class);
+    return notNullChild(PsiTreeUtil.getChildOfType(this, FormulaEngineLoopStructureBody.class));
   }
 
 }

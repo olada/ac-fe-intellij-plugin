@@ -29,7 +29,7 @@ public class FormulaEngineIfOrElseBlockImpl extends ASTWrapperPsiElement impleme
   @Override
   @NotNull
   public FormulaEngineControlStructureBody getControlStructureBody() {
-    return findNotNullChildByClass(FormulaEngineControlStructureBody.class);
+    return notNullChild(PsiTreeUtil.getChildOfType(this, FormulaEngineControlStructureBody.class));
   }
 
 }

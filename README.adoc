@@ -82,9 +82,9 @@ Note: Your IntelliJ IDEA version must be >= 2019.3
 * Provide an implementation for the interface (example).
   => FunctionDefinitionStubImpl
 * Make sure that the interface for the PSI element extends StubBasedPsiElement parameterized by the type of the stub interface (example).
-  => FunctionDefinition
+  => generated FormulaEngineFunctionDefinition
 * Make sure that the implementation class for the PSI element extends StubBasedPsiElementBase parameterized by the type of the stub interface (example). Provide both a constructor that accepts an ASTNode and a constructor which accepts a stub.
-  => FunctionDefinitionImpl
+  => generated FormulaEngineFunctionDefinitionImpl
 * Create a class which implements IStubElementType and is parameterized with the stub interface and the actual PSI element interface (example). Implement the createPsi() and createStub() methods for creating PSI from a stub and vice versa. Implement the serialize() and deserialize() methods for storing the data in a binary stream.
   => FunctionDefinitionElementType (via ElementTypeBase)
 * Use the class implementing IStubElementType as the element type constant when parsing (example).

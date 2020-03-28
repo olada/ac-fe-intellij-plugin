@@ -28,37 +28,37 @@ public class FormulaEngineLeafExpressionImpl extends FormulaEngineExpressionImpl
   @Override
   @Nullable
   public FormulaEngineArrayAccess getArrayAccess() {
-    return findChildByClass(FormulaEngineArrayAccess.class);
+    return PsiTreeUtil.getChildOfType(this, FormulaEngineArrayAccess.class);
   }
 
   @Override
   @Nullable
   public FormulaEngineBuiltInFunctionName getBuiltInFunctionName() {
-    return findChildByClass(FormulaEngineBuiltInFunctionName.class);
+    return PsiTreeUtil.getChildOfType(this, FormulaEngineBuiltInFunctionName.class);
   }
 
   @Override
   @Nullable
   public FormulaEngineConstant getConstant() {
-    return findChildByClass(FormulaEngineConstant.class);
+    return PsiTreeUtil.getChildOfType(this, FormulaEngineConstant.class);
   }
 
   @Override
   @Nullable
   public FormulaEngineCustomFunctionName getCustomFunctionName() {
-    return findChildByClass(FormulaEngineCustomFunctionName.class);
+    return PsiTreeUtil.getChildOfType(this, FormulaEngineCustomFunctionName.class);
   }
 
   @Override
   @Nullable
   public FormulaEngineFunctionInvocation getFunctionInvocation() {
-    return findChildByClass(FormulaEngineFunctionInvocation.class);
+    return PsiTreeUtil.getChildOfType(this, FormulaEngineFunctionInvocation.class);
   }
 
   @Override
   @Nullable
   public FormulaEngineIdentifierLiteral getIdentifierLiteral() {
-    return findChildByClass(FormulaEngineIdentifierLiteral.class);
+    return PsiTreeUtil.getChildOfType(this, FormulaEngineIdentifierLiteral.class);
   }
 
 }

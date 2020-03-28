@@ -29,37 +29,37 @@ public class FormulaEngineSeqImpl extends ASTWrapperPsiElement implements Formul
   @Override
   @Nullable
   public FormulaEngineAssignment getAssignment() {
-    return findChildByClass(FormulaEngineAssignment.class);
+    return PsiTreeUtil.getChildOfType(this, FormulaEngineAssignment.class);
   }
 
   @Override
   @Nullable
   public FormulaEngineBuiltInVariableName getBuiltInVariableName() {
-    return findChildByClass(FormulaEngineBuiltInVariableName.class);
+    return PsiTreeUtil.getChildOfType(this, FormulaEngineBuiltInVariableName.class);
   }
 
   @Override
   @Nullable
   public FormulaEngineExpression getExpression() {
-    return findChildByClass(FormulaEngineExpression.class);
+    return PsiTreeUtil.getChildOfType(this, FormulaEngineExpression.class);
   }
 
   @Override
   @Nullable
   public FormulaEngineFunctionInvocation getFunctionInvocation() {
-    return findChildByClass(FormulaEngineFunctionInvocation.class);
+    return PsiTreeUtil.getChildOfType(this, FormulaEngineFunctionInvocation.class);
   }
 
   @Override
   @Nullable
   public FormulaEngineListLiteral getListLiteral() {
-    return findChildByClass(FormulaEngineListLiteral.class);
+    return PsiTreeUtil.getChildOfType(this, FormulaEngineListLiteral.class);
   }
 
   @Override
   @NotNull
   public FormulaEngineSeqForParenthesis getSeqForParenthesis() {
-    return findNotNullChildByClass(FormulaEngineSeqForParenthesis.class);
+    return notNullChild(PsiTreeUtil.getChildOfType(this, FormulaEngineSeqForParenthesis.class));
   }
 
 }

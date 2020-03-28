@@ -4,6 +4,7 @@ package de.cofinpro.intellij.acfeplugin.psi;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.psi.PsiElement;
 import com.intellij.lang.ASTNode;
+import de.cofinpro.intellij.acfeplugin.psi.stub2.FunctionDefinitionElementType;
 import de.cofinpro.intellij.acfeplugin.psi.impl.*;
 
 public interface FormulaEngineElementTypes {
@@ -27,7 +28,7 @@ public interface FormulaEngineElementTypes {
   IElementType FUNCTION_ARGUMENTS = new FormulaEngineElementType("FUNCTION_ARGUMENTS");
   IElementType FUNCTION_BODY = new FormulaEngineElementType("FUNCTION_BODY");
   IElementType FUNCTION_BODY_STATEMENT = new FormulaEngineElementType("FUNCTION_BODY_STATEMENT");
-  IElementType FUNCTION_DEFINITION = new FormulaEngineElementType("FUNCTION_DEFINITION");
+  IElementType FUNCTION_DEFINITION = new FunctionDefinitionElementType("FUNCTION_DEFINITION");
   IElementType FUNCTION_INVOCATION = new FormulaEngineElementType("FUNCTION_INVOCATION");
   IElementType FUNCTION_PARAMETER = new FormulaEngineElementType("FUNCTION_PARAMETER");
   IElementType FUNCTION_PARAMETERS = new FormulaEngineElementType("FUNCTION_PARAMETERS");

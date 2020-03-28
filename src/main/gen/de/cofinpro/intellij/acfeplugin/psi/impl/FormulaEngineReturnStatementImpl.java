@@ -29,7 +29,7 @@ public class FormulaEngineReturnStatementImpl extends ASTWrapperPsiElement imple
   @Override
   @Nullable
   public FormulaEngineExpression getExpression() {
-    return findChildByClass(FormulaEngineExpression.class);
+    return PsiTreeUtil.getChildOfType(this, FormulaEngineExpression.class);
   }
 
 }

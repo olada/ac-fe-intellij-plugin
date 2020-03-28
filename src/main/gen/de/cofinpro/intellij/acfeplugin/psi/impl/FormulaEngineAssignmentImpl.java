@@ -29,31 +29,31 @@ public class FormulaEngineAssignmentImpl extends ASTWrapperPsiElement implements
   @Override
   @Nullable
   public FormulaEngineArrayAccess getArrayAccess() {
-    return findChildByClass(FormulaEngineArrayAccess.class);
+    return PsiTreeUtil.getChildOfType(this, FormulaEngineArrayAccess.class);
   }
 
   @Override
   @Nullable
   public FormulaEngineBuiltInVariableName getBuiltInVariableName() {
-    return findChildByClass(FormulaEngineBuiltInVariableName.class);
+    return PsiTreeUtil.getChildOfType(this, FormulaEngineBuiltInVariableName.class);
   }
 
   @Override
   @Nullable
   public FormulaEngineExpression getExpression() {
-    return findChildByClass(FormulaEngineExpression.class);
+    return PsiTreeUtil.getChildOfType(this, FormulaEngineExpression.class);
   }
 
   @Override
   @Nullable
   public FormulaEngineIdentifierLiteral getIdentifierLiteral() {
-    return findChildByClass(FormulaEngineIdentifierLiteral.class);
+    return PsiTreeUtil.getChildOfType(this, FormulaEngineIdentifierLiteral.class);
   }
 
   @Override
   @Nullable
   public FormulaEngineSeq getSeq() {
-    return findChildByClass(FormulaEngineSeq.class);
+    return PsiTreeUtil.getChildOfType(this, FormulaEngineSeq.class);
   }
 
 }

@@ -28,7 +28,7 @@ public class FormulaEngineNegatedExpressionImpl extends FormulaEngineExpressionI
   @Override
   @Nullable
   public FormulaEngineExpression getExpression() {
-    return findChildByClass(FormulaEngineExpression.class);
+    return PsiTreeUtil.getChildOfType(this, FormulaEngineExpression.class);
   }
 
 }

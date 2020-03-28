@@ -29,19 +29,19 @@ public class FormulaEngineFunctionInvocationImpl extends FormulaEngineFunctionNa
   @Override
   @Nullable
   public FormulaEngineBuiltInFunctionName getBuiltInFunctionName() {
-    return findChildByClass(FormulaEngineBuiltInFunctionName.class);
+    return PsiTreeUtil.getChildOfType(this, FormulaEngineBuiltInFunctionName.class);
   }
 
   @Override
   @Nullable
   public FormulaEngineCustomFunctionName getCustomFunctionName() {
-    return findChildByClass(FormulaEngineCustomFunctionName.class);
+    return PsiTreeUtil.getChildOfType(this, FormulaEngineCustomFunctionName.class);
   }
 
   @Override
   @Nullable
   public FormulaEngineFunctionArguments getFunctionArguments() {
-    return findChildByClass(FormulaEngineFunctionArguments.class);
+    return PsiTreeUtil.getChildOfType(this, FormulaEngineFunctionArguments.class);
   }
 
 }

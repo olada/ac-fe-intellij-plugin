@@ -41,7 +41,7 @@ public class FormulaEngineSwitchImpl extends ASTWrapperPsiElement implements For
   @Override
   @NotNull
   public FormulaEngineExpression getExpression() {
-    return findNotNullChildByClass(FormulaEngineExpression.class);
+    return notNullChild(PsiTreeUtil.getChildOfType(this, FormulaEngineExpression.class));
   }
 
 }

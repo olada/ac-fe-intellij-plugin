@@ -8,13 +8,24 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
 import static de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementTypes.*;
-import de.cofinpro.intellij.acfeplugin.psi.stub2.FunctionDefinitionBaseImpl;
+import com.intellij.extapi.psi.StubBasedPsiElementBase;
+import de.cofinpro.intellij.acfeplugin.psi.stub2.FunctionDefinitionStub;
 import de.cofinpro.intellij.acfeplugin.psi.*;
+import com.intellij.psi.stubs.IStubElementType;
+import com.intellij.psi.tree.IElementType;
 
-public class FormulaEngineFunctionDefinitionImpl extends FunctionDefinitionBaseImpl implements FormulaEngineFunctionDefinition {
+public class FormulaEngineFunctionDefinitionImpl extends StubBasedPsiElementBase<FunctionDefinitionStub> implements FormulaEngineFunctionDefinition {
+
+  public FormulaEngineFunctionDefinitionImpl(@NotNull FunctionDefinitionStub stub, @NotNull IStubElementType type) {
+    super(stub, type);
+  }
 
   public FormulaEngineFunctionDefinitionImpl(@NotNull ASTNode node) {
     super(node);
+  }
+
+  public FormulaEngineFunctionDefinitionImpl(FunctionDefinitionStub stub, IElementType type, ASTNode node) {
+    super(stub, type, node);
   }
 
   public void accept(@NotNull FormulaEngineVisitor visitor) {
@@ -29,19 +40,19 @@ public class FormulaEngineFunctionDefinitionImpl extends FunctionDefinitionBaseI
   @Override
   @NotNull
   public FormulaEngineFunctionBody getFunctionBody() {
-    return findNotNullChildByClass(FormulaEngineFunctionBody.class);
+    return notNullChild(PsiTreeUtil.getChildOfType(this, FormulaEngineFunctionBody.class));
   }
 
   @Override
   @Nullable
   public FormulaEngineFunctionParameters getFunctionParameters() {
-    return findChildByClass(FormulaEngineFunctionParameters.class);
+    return PsiTreeUtil.getChildOfType(this, FormulaEngineFunctionParameters.class);
   }
 
   @Override
   @NotNull
   public PsiElement getIdentifier() {
-    return findNotNullChildByType(IDENTIFIER);
+    return notNullChild(findChildByType(IDENTIFIER));
   }
 
 }

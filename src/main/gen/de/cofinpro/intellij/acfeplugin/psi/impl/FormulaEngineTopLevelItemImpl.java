@@ -29,19 +29,19 @@ public class FormulaEngineTopLevelItemImpl extends ASTWrapperPsiElement implemen
   @Override
   @Nullable
   public FormulaEngineControlStructure getControlStructure() {
-    return findChildByClass(FormulaEngineControlStructure.class);
+    return PsiTreeUtil.getChildOfType(this, FormulaEngineControlStructure.class);
   }
 
   @Override
   @Nullable
   public FormulaEngineFunctionDefinition getFunctionDefinition() {
-    return findChildByClass(FormulaEngineFunctionDefinition.class);
+    return PsiTreeUtil.getChildOfType(this, FormulaEngineFunctionDefinition.class);
   }
 
   @Override
   @Nullable
   public FormulaEngineStatement getStatement() {
-    return findChildByClass(FormulaEngineStatement.class);
+    return PsiTreeUtil.getChildOfType(this, FormulaEngineStatement.class);
   }
 
 }

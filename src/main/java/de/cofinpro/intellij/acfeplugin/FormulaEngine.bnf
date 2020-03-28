@@ -12,6 +12,8 @@
     elementTypeClass="de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementType"
     tokenTypeClass="de.cofinpro.intellij.acfeplugin.psi.FormulaEngineTokenType"
 
+    psiImplUtilClass="de.cofinpro.intellij.acfeplugin.psi.FormulaEnginePsiImplUtil"
+
     tokens = [
             LEFT_PARENTHESIS = '('
             RIGHT_PARENTHESIS = ')'
@@ -159,7 +161,8 @@ TopLevelItem ::= FunctionDefinition | ControlStructure | Statement
 
 FunctionDefinition ::= KEYWORD_FUNCTION IDENTIFIER LEFT_PARENTHESIS FunctionParameters? RIGHT_PARENTHESIS LEFT_CURLY_BRACE FunctionBody RIGHT_CURLY_BRACE {
     implements = ["de.cofinpro.intellij.acfeplugin.psi.FormulaEngineNameIdentifierOwner" "com.intellij.psi.StubBasedPsiElement<de.cofinpro.intellij.acfeplugin.psi.stub2.FunctionDefinitionStub>"]
-    mixin = "de.cofinpro.intellij.acfeplugin.psi.stub2.FunctionDefinitionBaseImpl"
+    stubClass = "de.cofinpro.intellij.acfeplugin.psi.stub2.FunctionDefinitionStub"
+    elementTypeClass = "de.cofinpro.intellij.acfeplugin.psi.stub2.FunctionDefinitionElementType"
 }
 FunctionParameters ::= FunctionParameter (COMMA FunctionParameter)*
 FunctionParameter ::= ParameterWithType | ParameterWithoutType

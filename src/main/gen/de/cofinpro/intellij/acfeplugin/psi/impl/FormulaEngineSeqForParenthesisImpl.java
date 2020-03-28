@@ -35,7 +35,7 @@ public class FormulaEngineSeqForParenthesisImpl extends ASTWrapperPsiElement imp
   @Override
   @NotNull
   public FormulaEngineExpression getExpression() {
-    return findNotNullChildByClass(FormulaEngineExpression.class);
+    return notNullChild(PsiTreeUtil.getChildOfType(this, FormulaEngineExpression.class));
   }
 
   @Override

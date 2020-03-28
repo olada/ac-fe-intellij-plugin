@@ -29,7 +29,7 @@ public class FormulaEngineFunctionArgumentImpl extends ASTWrapperPsiElement impl
   @Override
   @NotNull
   public FormulaEngineExpression getExpression() {
-    return findNotNullChildByClass(FormulaEngineExpression.class);
+    return notNullChild(PsiTreeUtil.getChildOfType(this, FormulaEngineExpression.class));
   }
 
 }

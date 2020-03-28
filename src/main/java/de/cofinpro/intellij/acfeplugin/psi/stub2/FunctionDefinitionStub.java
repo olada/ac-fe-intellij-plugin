@@ -4,5 +4,5 @@ import com.intellij.psi.stubs.StubElement;
 import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineFunctionDefinition;
 
 public interface FunctionDefinitionStub extends StubElement<FormulaEngineFunctionDefinition> {
-    String getName();
+    String getIdentifierName();
 }

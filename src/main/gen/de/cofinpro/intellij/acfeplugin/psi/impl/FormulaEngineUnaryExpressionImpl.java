@@ -28,7 +28,7 @@ public class FormulaEngineUnaryExpressionImpl extends FormulaEngineExpressionImp
   @Override
   @Nullable
   public FormulaEngineExpression getExpression() {
-    return findChildByClass(FormulaEngineExpression.class);
+    return PsiTreeUtil.getChildOfType(this, FormulaEngineExpression.class);
   }
 
 }

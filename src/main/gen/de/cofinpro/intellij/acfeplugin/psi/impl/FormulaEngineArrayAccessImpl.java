@@ -29,7 +29,7 @@ public class FormulaEngineArrayAccessImpl extends ASTWrapperPsiElement implement
   @Override
   @Nullable
   public FormulaEngineBuiltInVariableName getBuiltInVariableName() {
-    return findChildByClass(FormulaEngineBuiltInVariableName.class);
+    return PsiTreeUtil.getChildOfType(this, FormulaEngineBuiltInVariableName.class);
   }
 
   @Override
@@ -41,7 +41,7 @@ public class FormulaEngineArrayAccessImpl extends ASTWrapperPsiElement implement
   @Override
   @Nullable
   public FormulaEngineIdentifierLiteral getIdentifierLiteral() {
-    return findChildByClass(FormulaEngineIdentifierLiteral.class);
+    return PsiTreeUtil.getChildOfType(this, FormulaEngineIdentifierLiteral.class);
   }
 
 }

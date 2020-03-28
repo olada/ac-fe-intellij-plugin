@@ -29,25 +29,25 @@ public class FormulaEngineForImpl extends ASTWrapperPsiElement implements Formul
   @Override
   @Nullable
   public FormulaEngineControlStructure getControlStructure() {
-    return findChildByClass(FormulaEngineControlStructure.class);
+    return PsiTreeUtil.getChildOfType(this, FormulaEngineControlStructure.class);
   }
 
   @Override
   @Nullable
   public FormulaEngineLoopStructureBody getLoopStructureBody() {
-    return findChildByClass(FormulaEngineLoopStructureBody.class);
+    return PsiTreeUtil.getChildOfType(this, FormulaEngineLoopStructureBody.class);
   }
 
   @Override
   @Nullable
   public FormulaEngineSeqForParenthesis getSeqForParenthesis() {
-    return findChildByClass(FormulaEngineSeqForParenthesis.class);
+    return PsiTreeUtil.getChildOfType(this, FormulaEngineSeqForParenthesis.class);
   }
 
   @Override
   @Nullable
   public FormulaEngineStatement getStatement() {
-    return findChildByClass(FormulaEngineStatement.class);
+    return PsiTreeUtil.getChildOfType(this, FormulaEngineStatement.class);
   }
 
 }

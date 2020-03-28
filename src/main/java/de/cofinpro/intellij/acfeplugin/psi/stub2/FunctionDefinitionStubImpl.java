@@ -6,14 +6,15 @@ import com.intellij.psi.stubs.StubElement;
 import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineFunctionDefinition;
 
 public class FunctionDefinitionStubImpl extends StubBase<FormulaEngineFunctionDefinition> implements FunctionDefinitionStub {
-    private String name;
+    private String identifierName;
 
-    protected FunctionDefinitionStubImpl(StubElement parent, IStubElementType elementType) {
+    protected FunctionDefinitionStubImpl(StubElement parent, IStubElementType elementType, String identifierName) {
         super(parent, elementType);
+        this.identifierName = identifierName;
     }
 
     @Override
-    public String getName() {
-        return name;
+    public String getIdentifierName() {
+        return identifierName;
     }
 }
