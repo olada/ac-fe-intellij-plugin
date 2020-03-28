@@ -6,7 +6,7 @@ public class FormulaEnginePsiImplUtil {
     public static String getIdentifierName(FormulaEngineFunctionDefinition functionDefinition) {
         FunctionDefinitionStub stub = functionDefinition.getStub();
         if (stub != null) {
-            return stub.getIdentifierName();
+            return stub.getName();
         } else {
             return functionDefinition.getIdentifier().getText();
         }

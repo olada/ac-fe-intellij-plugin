@@ -13,8 +13,8 @@ import javax.swing.*;
 /**
  * Created by David Olah on 30.07.2018.
  */
-public class FormulaEngineFile extends PsiFileBase {
-    public FormulaEngineFile(@NotNull FileViewProvider viewProvider) {
+public class FormulaEngineFileBase extends PsiFileBase {
+    public FormulaEngineFileBase(@NotNull FileViewProvider viewProvider) {
         super(viewProvider, FormulaEngineLanguage.INSTANCE);
     }
 

@@ -14,7 +14,7 @@ import com.intellij.psi.tree.TokenSet;
 import de.cofinpro.intellij.acfeplugin.lex.FormulaEngineLexerAdapter;
 import de.cofinpro.intellij.acfeplugin.parser.FormulaEngineParser;
 import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementTypes;
-import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineFile;
+import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineFileBase;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -66,7 +66,7 @@ public class FormulaEngineParserDefinition implements ParserDefinition {
 
     @Override
     public PsiFile createFile(FileViewProvider viewProvider) {
-        return new FormulaEngineFile(viewProvider);
+        return new FormulaEngineFileBase(viewProvider);
     }
 
     @Override

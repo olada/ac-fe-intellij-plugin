@@ -1,8 +1,7 @@
 package de.cofinpro.intellij.acfeplugin.psi.stub2;
 
-import com.intellij.psi.stubs.StubElement;
+import com.intellij.psi.stubs.NamedStub;
 import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineFunctionDefinition;
 
-public interface FunctionDefinitionStub extends StubElement<FormulaEngineFunctionDefinition> {
-    String getIdentifierName();
+public interface FunctionDefinitionStub extends NamedStub<FormulaEngineFunctionDefinition> {
 }
