@@ -1,6 +1,7 @@
 package de.cofinpro.intellij.acfeplugin.structureview;
 
 import com.intellij.ide.structureView.*;
+import com.intellij.ide.util.treeView.smartTree.Sorter;
 import com.intellij.ide.util.treeView.smartTree.TreeElement;
 import com.intellij.lang.PsiStructureViewFactory;
 import com.intellij.navigation.ItemPresentation;
@@ -13,7 +14,6 @@ import com.intellij.util.PlatformIcons;
 import de.cofinpro.intellij.acfeplugin.FormulaEngineFile;
 import de.cofinpro.intellij.acfeplugin.FormulaEngineFileType;
 import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineFunctionDefinition;
-import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineFunctionParameter;
 import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineNameIdentifierOwner;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -44,6 +44,7 @@ public class FormulaEngineStructureViewFactory implements PsiStructureViewFactor
         public Model(@NotNull PsiFile psiFile, @Nullable Editor editor, @NotNull StructureViewTreeElement root) {
             super(psiFile, editor, root);
             withSuitableClasses(FormulaEngineFile.class, FormulaEngineFunctionDefinition.class);
+            withSorters(Sorter.ALPHA_SORTER);
         }
 
         @Override
