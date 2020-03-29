@@ -8,7 +8,7 @@ import com.intellij.psi.search.ProjectScope;
 import com.intellij.psi.stubs.StubIndex;
 import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineFunctionDefinition;
 import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineFunctionInvocation;
-import de.cofinpro.intellij.acfeplugin.psi.stub2.FunctionDefinitionsStubIndex;
+import de.cofinpro.intellij.acfeplugin.psi.stub.FunctionDefinitionsStubIndex;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

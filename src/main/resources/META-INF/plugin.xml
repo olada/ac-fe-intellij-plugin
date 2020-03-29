@@ -36,7 +36,7 @@
                              implementationClass="de.cofinpro.intellij.acfeplugin.FormulaEngineFoldingBuilder"/>
 
         <stubElementTypeHolder class="de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementTypes" />
-        <stubIndex implementation="de.cofinpro.intellij.acfeplugin.psi.stub2.FunctionDefinitionsStubIndex"/>
+        <stubIndex implementation="de.cofinpro.intellij.acfeplugin.psi.stub.FunctionDefinitionsStubIndex"/>
         <lang.psiStructureViewFactory language="FormulaEngine" implementationClass="de.cofinpro.intellij.acfeplugin.structureview.FormulaEngineStructureViewFactory" />
 
     </extensions>

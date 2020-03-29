@@ -4,7 +4,7 @@ package de.cofinpro.intellij.acfeplugin.psi;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.psi.PsiElement;
 import com.intellij.lang.ASTNode;
-import de.cofinpro.intellij.acfeplugin.psi.stub2.FunctionDefinitionElementType;
+import de.cofinpro.intellij.acfeplugin.psi.stub.FunctionDefinitionElementType;
 import de.cofinpro.intellij.acfeplugin.psi.impl.*;
 
 public interface FormulaEngineElementTypes {

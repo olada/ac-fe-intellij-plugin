@@ -1,4 +1,4 @@
-package de.cofinpro.intellij.acfeplugin.psi.stub2;
+package de.cofinpro.intellij.acfeplugin.psi.stub;
 
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.stubs.IStubElementType;

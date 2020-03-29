@@ -1,4 +1,4 @@
-package de.cofinpro.intellij.acfeplugin.psi.stub2;
+package de.cofinpro.intellij.acfeplugin.psi.stub;
 
 import com.intellij.psi.stubs.NamedStub;
 import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineFunctionDefinition;

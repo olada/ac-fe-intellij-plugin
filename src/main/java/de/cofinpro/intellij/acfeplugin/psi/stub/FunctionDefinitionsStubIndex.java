@@ -1,4 +1,4 @@
-package de.cofinpro.intellij.acfeplugin.psi.stub2;
+package de.cofinpro.intellij.acfeplugin.psi.stub;
 
 import com.intellij.psi.stubs.StringStubIndexExtension;
 import com.intellij.psi.stubs.StubIndexKey;
@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class FunctionDefinitionsStubIndex extends StringStubIndexExtension<FormulaEngineFunctionDefinition> {
     public static final StubIndexKey<String, FormulaEngineFunctionDefinition> KEY = StubIndexKey.createIndexKey("fe.stub.functions");
-    private static final int VERSION = 0;
+    private static final int VERSION = 1;
 
     @NotNull
     @Override

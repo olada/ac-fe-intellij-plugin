@@ -1,7 +1,7 @@
 package de.cofinpro.intellij.acfeplugin.psi;
 
 import com.intellij.psi.PsiReference;
-import de.cofinpro.intellij.acfeplugin.psi.stub2.FunctionDefinitionStub;
+import de.cofinpro.intellij.acfeplugin.psi.stub.FunctionDefinitionStub;
 import de.cofinpro.intellij.acfeplugin.referencing.FormulaEngineFunctionReference;
 import de.cofinpro.intellij.acfeplugin.referencing.FormulaEngineArrayAccessReference;
 import de.cofinpro.intellij.acfeplugin.referencing.FormulaEngineSelfReference;
