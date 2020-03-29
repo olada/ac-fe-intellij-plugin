@@ -6,6 +6,7 @@ import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.StubBasedPsiElement;
 import de.cofinpro.intellij.acfeplugin.psi.stub2.FunctionDefinitionStub;
+import com.intellij.psi.PsiReference;
 
 public interface FormulaEngineFunctionDefinition extends FormulaEngineNameIdentifierOwner, StubBasedPsiElement<FunctionDefinitionStub> {
 
@@ -19,5 +20,9 @@ public interface FormulaEngineFunctionDefinition extends FormulaEngineNameIdenti
   PsiElement getIdentifier();
 
   String getIdentifierName();
+
+  PsiReference getReference();
+
+  int getTextOffset();
 
 }

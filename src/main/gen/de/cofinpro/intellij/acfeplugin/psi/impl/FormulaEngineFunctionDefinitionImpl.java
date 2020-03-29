@@ -11,6 +11,7 @@ import static de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementTypes.*;
 import com.intellij.extapi.psi.StubBasedPsiElementBase;
 import de.cofinpro.intellij.acfeplugin.psi.stub2.FunctionDefinitionStub;
 import de.cofinpro.intellij.acfeplugin.psi.*;
+import com.intellij.psi.PsiReference;
 import com.intellij.psi.stubs.IStubElementType;
 import com.intellij.psi.tree.IElementType;
 
@@ -58,6 +59,16 @@ public class FormulaEngineFunctionDefinitionImpl extends StubBasedPsiElementBase
   @Override
   public String getIdentifierName() {
     return FormulaEnginePsiImplUtil.getIdentifierName(this);
+  }
+
+  @Override
+  public PsiReference getReference() {
+    return FormulaEnginePsiImplUtil.getReference(this);
+  }
+
+  @Override
+  public int getTextOffset() {
+    return FormulaEnginePsiImplUtil.getTextOffset(this);
   }
 
 }
