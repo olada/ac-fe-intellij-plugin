@@ -43,7 +43,7 @@ public class FormulaEngineFunctionReference extends FormulaEngineReference imple
             PsiFile root = functionInvocation.getContainingFile();
             Collection<FormulaEngineFunctionDefinition> functionDefinitions = StubIndex.getElements(FunctionDefinitionsStubIndex.KEY, customFunctionName, root.getProject(), ProjectScope.getAllScope(root.getProject()), FormulaEngineFunctionDefinition.class);
             Optional<FormulaEngineFunctionDefinition> foundFunctionDefinition = functionDefinitions.stream().filter(functionDefinition -> functionDefinition.getIdentifierName().equals(customFunctionName)).findFirst();
-            return foundFunctionDefinition.map(FormulaEngineFunctionDefinition::getIdentifier).orElse(null);
+            return foundFunctionDefinition.orElse(null);
         }
 
         return null;
