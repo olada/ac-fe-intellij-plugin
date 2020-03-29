@@ -17,10 +17,4 @@ public class FormulaEngineSelfReference extends FormulaEngineReference {
     public PsiElement resolve() {
         return sourceElement;
     }
-
-    @NotNull
-    @Override
-    public Object[] getVariants() {
-        return new Object[]{"this", "is", "a", "self", "reference"};
-    }
 }
