@@ -166,7 +166,9 @@ FunctionDefinition ::= KEYWORD_FUNCTION IDENTIFIER LEFT_PARENTHESIS FunctionPara
     methods = [ getIdentifierName getReference getTextOffset ]
 }
 FunctionParameters ::= FunctionParameter (COMMA FunctionParameter)*
-FunctionParameter ::= ParameterWithType | ParameterWithoutType
+FunctionParameter ::= ParameterWithType | ParameterWithoutType {
+    implements = ["de.cofinpro.intellij.acfeplugin.psi.FormulaEngineNameIdentifierOwner"]
+}
 private ParameterWithoutType ::= IdentifierLiteral
 private ParameterWithType ::= Type IdentifierLiteral
 
@@ -260,7 +262,9 @@ If ::= KEYWORD_IF LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS IfOrElseBlock (K
 IfOrElseBlock ::= LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE | ControlStructureBody
 private SeqBody ::= Assignment | CalculationExpression | FunctionInvocation | ListLiteral | BuiltInVariableName
 
-Declaration ::= (FullDeclaration | DeclarationWithoutType) DeclarationInitialization?
+Declaration ::= (FullDeclaration | DeclarationWithoutType) DeclarationInitialization? {
+    implements = ["de.cofinpro.intellij.acfeplugin.psi.FormulaEngineNameIdentifierOwner"]
+}
 private DeclarationInitialization ::= DeclarationOperator SeqOrExpression { pin = 1 }
 private SeqOrExpression ::= Seq | Expression
 private FullDeclaration ::= Visibility Type IdentifierLiteral
@@ -269,7 +273,9 @@ Assignment ::=  RegularAssignment | IdentifierLiteral PostfixOperator | PrefixOp
 private RegularAssignment ::= LeftHandSide AssignmentOperator (Seq | Expression) { pin = 2 }
 private LeftHandSide ::= ArrayAccess | BuiltInVariableName | IdentifierLiteral
 
-ArrayAccess ::= (BuiltInVariableName | IdentifierLiteral) (LEFT_BRACKET Expression RIGHT_BRACKET)+
+ArrayAccess ::= (BuiltInVariableName | IdentifierLiteral) (LEFT_BRACKET Expression RIGHT_BRACKET)+ {
+    methods = [ getReference ]
+}
 
 ReturnStatement ::= KEYWORD_RETURN Expression?
 

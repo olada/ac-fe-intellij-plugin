@@ -5,7 +5,7 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface FormulaEngineFunctionParameter extends PsiElement {
+public interface FormulaEngineFunctionParameter extends FormulaEngineNameIdentifierOwner {
 
   @NotNull
   FormulaEngineIdentifierLiteral getIdentifierLiteral();

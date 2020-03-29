@@ -3,6 +3,7 @@ package de.cofinpro.intellij.acfeplugin.psi;
 import com.intellij.psi.PsiReference;
 import de.cofinpro.intellij.acfeplugin.psi.stub2.FunctionDefinitionStub;
 import de.cofinpro.intellij.acfeplugin.referencing.FormulaEngineFunctionReference;
+import de.cofinpro.intellij.acfeplugin.referencing.FormulaEngineArrayAccessReference;
 import de.cofinpro.intellij.acfeplugin.referencing.FormulaEngineSelfReference;
 
 /**
@@ -26,6 +27,11 @@ public class FormulaEnginePsiImplUtil {
 
     public static PsiReference getReference(FormulaEngineFunctionDefinition functionDefinition) {
         return new FormulaEngineSelfReference(functionDefinition);
+    }
+
+
+    public static PsiReference getReference(FormulaEngineArrayAccess arrayAccess) {
+        return new FormulaEngineArrayAccessReference(arrayAccess);
     }
 
     public static int getTextOffset(FormulaEngineFunctionDefinition functionDefinition) {

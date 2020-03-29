@@ -54,7 +54,7 @@ public class FormulaEngineVisitor extends PsiElementVisitor {
   }
 
   public void visitDeclaration(@NotNull FormulaEngineDeclaration o) {
-    visitPsiElement(o);
+    visitNameIdentifierOwner(o);
   }
 
   public void visitDoWhile(@NotNull FormulaEngineDoWhile o) {
@@ -95,7 +95,7 @@ public class FormulaEngineVisitor extends PsiElementVisitor {
   }
 
   public void visitFunctionParameter(@NotNull FormulaEngineFunctionParameter o) {
-    visitPsiElement(o);
+    visitNameIdentifierOwner(o);
   }
 
   public void visitFunctionParameters(@NotNull FormulaEngineFunctionParameters o) {

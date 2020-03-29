@@ -12,7 +12,12 @@ public interface FormulaEngineNameIdentifierOwner extends PsiNameIdentifierOwner
     @Nullable
     @Override
     default PsiElement getNameIdentifier() {
-        return getIdentifier();
+        FormulaEngineIdentifierLiteral identifierLiteral = getIdentifierLiteral();
+        if (identifierLiteral != null) {
+            return identifierLiteral;
+        } else {
+            return getIdentifier();
+        }
     }
 
     @Override
@@ -25,5 +30,14 @@ public interface FormulaEngineNameIdentifierOwner extends PsiNameIdentifierOwner
         return PsiTreeUtil.getChildOfType(this, LeafPsiElement.class);
     }
 
-    PsiElement getIdentifier();
+    // requires default implementations for getIdentifier and getIdentifierLiteral because these two methods
+    // are the possible methods which return an identifier
+
+    default PsiElement getIdentifier() {
+        return null;
+    }
+
+    default FormulaEngineIdentifierLiteral getIdentifierLiteral() {
+        return null;
+    }
 }
