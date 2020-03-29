@@ -13,6 +13,7 @@ import com.intellij.psi.PsiFile;
 import com.intellij.util.PlatformIcons;
 import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineFunctionDefinition;
 import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineNameIdentifierOwner;
+import de.cofinpro.intellij.acfeplugin.psi.FormulaEnginePsiPresentationTextCreator;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -57,6 +58,7 @@ public class FormulaEngineStructureViewFactory implements PsiStructureViewFactor
     }
 
     public static class Element implements ItemPresentation, StructureViewTreeElement, NavigationItem {
+        private static final FormulaEnginePsiPresentationTextCreator psiPresenter = new FormulaEnginePsiPresentationTextCreator();
 
         private final PsiElement psiElement;
 
@@ -116,14 +118,7 @@ public class FormulaEngineStructureViewFactory implements PsiStructureViewFactor
                 return ((FormulaEngineFile) psiElement).getName();
             }
             if (psiElement instanceof FormulaEngineFunctionDefinition) {
-                // The structure view shows functions with their names and their parameter list.
-                FormulaEngineFunctionDefinition functionDefinition = (FormulaEngineFunctionDefinition) this.psiElement;
-                StringBuilder stringBuilder = new StringBuilder(functionDefinition.getIdentifierName());
-                stringBuilder.append('(');
-                String parametersText = functionDefinition.getText().substring(functionDefinition.getText().indexOf('(') + 1, functionDefinition.getText().indexOf(')'));
-                stringBuilder.append(parametersText.trim().replaceAll("\\s\\s+", " ")); // replace more than two spaces with one space
-                stringBuilder.append(')');
-                return stringBuilder.toString();
+                return psiPresenter.createTextFor((FormulaEngineFunctionDefinition) psiElement);
             }
             return null;
         }
