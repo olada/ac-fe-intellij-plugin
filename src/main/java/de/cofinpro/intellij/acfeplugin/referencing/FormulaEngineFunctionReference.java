@@ -48,10 +48,4 @@ public class FormulaEngineFunctionReference extends FormulaEngineReference imple
 
         return null;
     }
-
-    @NotNull
-    @Override
-    public Object[] getVariants() {
-        return new Object[0];
-    }
 }
