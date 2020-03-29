@@ -1,4 +1,4 @@
-package de.cofinpro.intellij.acfeplugin.structureview;
+package de.cofinpro.intellij.acfeplugin;
 
 import com.intellij.ide.structureView.*;
 import com.intellij.ide.util.treeView.smartTree.Sorter;
@@ -11,8 +11,6 @@ import com.intellij.pom.Navigatable;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.util.PlatformIcons;
-import de.cofinpro.intellij.acfeplugin.FormulaEngineFile;
-import de.cofinpro.intellij.acfeplugin.FormulaEngineFileType;
 import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineFunctionDefinition;
 import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineNameIdentifierOwner;
 import org.jetbrains.annotations.NotNull;
