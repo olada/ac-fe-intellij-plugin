@@ -25,11 +25,6 @@ public class FormulaEnginePsiImplUtil {
         return new FormulaEngineFunctionReference(functionInvocation);
     }
 
-    public static PsiReference getReference(FormulaEngineFunctionDefinition functionDefinition) {
-        return new FormulaEngineSelfReference(functionDefinition);
-    }
-
-
     public static PsiReference getReference(FormulaEngineArrayAccess arrayAccess) {
         return new FormulaEngineArrayAccessReference(arrayAccess);
     }

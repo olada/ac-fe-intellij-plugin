@@ -1,6 +1,7 @@
 // This is a generated file. Not intended for manual editing.
 package de.cofinpro.intellij.acfeplugin.psi.impl;
 
+import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.PsiElement;
@@ -10,7 +11,6 @@ import static de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementTypes.*;
 import com.intellij.extapi.psi.StubBasedPsiElementBase;
 import de.cofinpro.intellij.acfeplugin.psi.stub.FunctionDefinitionStub;
 import de.cofinpro.intellij.acfeplugin.psi.*;
-import com.intellij.psi.PsiReference;
 import com.intellij.psi.stubs.IStubElementType;
 import com.intellij.psi.tree.IElementType;
 
@@ -58,11 +58,6 @@ public class FormulaEngineFunctionDefinitionImpl extends StubBasedPsiElementBase
   @Override
   public String getIdentifierName() {
     return FormulaEnginePsiImplUtil.getIdentifierName(this);
-  }
-
-  @Override
-  public PsiReference getReference() {
-    return FormulaEnginePsiImplUtil.getReference(this);
   }
 
   @Override

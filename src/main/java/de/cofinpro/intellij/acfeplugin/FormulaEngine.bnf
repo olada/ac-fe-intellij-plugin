@@ -163,7 +163,7 @@ FunctionDefinition ::= KEYWORD_FUNCTION IDENTIFIER LEFT_PARENTHESIS FunctionPara
     implements = ["de.cofinpro.intellij.acfeplugin.psi.FormulaEngineNameIdentifierOwner" "com.intellij.psi.StubBasedPsiElement<de.cofinpro.intellij.acfeplugin.psi.stub.FunctionDefinitionStub>"]
     stubClass = "de.cofinpro.intellij.acfeplugin.psi.stub.FunctionDefinitionStub"
     elementTypeClass = "de.cofinpro.intellij.acfeplugin.psi.stub.FunctionDefinitionElementType"
-    methods = [ getIdentifierName getReference getTextOffset ]
+    methods = [ getIdentifierName getTextOffset ]
 }
 FunctionParameters ::= FunctionParameter (COMMA FunctionParameter)*
 FunctionParameter ::= ParameterWithType | ParameterWithoutType {
