@@ -38,4 +38,9 @@ public class FormulaEngineFunctionParameterImpl extends ASTWrapperPsiElement imp
     return PsiTreeUtil.getChildOfType(this, FormulaEngineType.class);
   }
 
+  @Override
+  public int getTextOffset() {
+    return FormulaEnginePsiImplUtil.getTextOffset(this);
+  }
+
 }

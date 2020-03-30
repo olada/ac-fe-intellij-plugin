@@ -13,4 +13,6 @@ public interface FormulaEngineFunctionParameter extends FormulaEngineNameIdentif
   @Nullable
   FormulaEngineType getType();
 
+  int getTextOffset();
+
 }

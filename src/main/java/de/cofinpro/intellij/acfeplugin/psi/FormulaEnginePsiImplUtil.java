@@ -29,7 +29,25 @@ public class FormulaEnginePsiImplUtil {
         return new FormulaEngineArrayAccessReference(arrayAccess);
     }
 
+    /**
+     * Returns the offset of the identifier as the function definition's offset.
+     * The text offset of a function definition needs to be its identifier literal because otherwise the token 'function'
+     * will be part of the function reference which would be a bit surprising.
+     * @param functionDefinition the function definition
+     * @return the offset
+     */
     public static int getTextOffset(FormulaEngineFunctionDefinition functionDefinition) {
         return functionDefinition.getIdentifier().getTextOffset();
+    }
+
+    /**
+     * Returns the offset of the identifier literal as the function parameter's offset.
+     * The text offset of a function parameter needs to be its identifier literal because otherwise the identifier will
+     * only be underlined when hovering over the type if it is present.
+     * @param functionParameter the function parameter
+     * @return the offset
+     */
+    public static int getTextOffset(FormulaEngineFunctionParameter functionParameter) {
+        return functionParameter.getIdentifierLiteral().getTextOffset();
     }
 }

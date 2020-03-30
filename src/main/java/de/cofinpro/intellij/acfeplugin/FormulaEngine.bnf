@@ -168,6 +168,7 @@ FunctionDefinition ::= KEYWORD_FUNCTION IDENTIFIER LEFT_PARENTHESIS FunctionPara
 FunctionParameters ::= FunctionParameter (COMMA FunctionParameter)*
 FunctionParameter ::= ParameterWithType | ParameterWithoutType {
     implements = ["de.cofinpro.intellij.acfeplugin.psi.FormulaEngineNameIdentifierOwner"]
+    methods = [ getTextOffset ]
 }
 private ParameterWithoutType ::= IdentifierLiteral
 private ParameterWithType ::= Type IdentifierLiteral
