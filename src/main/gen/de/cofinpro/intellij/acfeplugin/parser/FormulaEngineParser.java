@@ -935,6 +935,17 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
+  // !(SEMICOLON)
+  static boolean RecoverUntilSemicolon(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "RecoverUntilSemicolon")) return false;
+    boolean r;
+    Marker m = enter_section_(b, l, _NOT_);
+    r = !consumeToken(b, SEMICOLON);
+    exit_section_(b, l, m, r, false, null);
+    return r;
+  }
+
+  /* ********************************************************** */
   // LeftHandSide AssignmentOperator (Seq | Expression)
   static boolean RegularAssignment(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "RegularAssignment")) return false;
@@ -958,27 +969,30 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // (Assignment | Declaration | Expression | ReturnStatement | Seq | KEYWORD_BREAK) SEMICOLON
+  // RegularStatementWithoutSemicolon SEMICOLON
   static boolean RegularStatement(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "RegularStatement")) return false;
     boolean r;
     Marker m = enter_section_(b);
-    r = RegularStatement_0(b, l + 1);
+    r = RegularStatementWithoutSemicolon(b, l + 1);
     r = r && consumeToken(b, SEMICOLON);
     exit_section_(b, m, null, r);
     return r;
   }
 
+  /* ********************************************************** */
   // Assignment | Declaration | Expression | ReturnStatement | Seq | KEYWORD_BREAK
-  private static boolean RegularStatement_0(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "RegularStatement_0")) return false;
+  static boolean RegularStatementWithoutSemicolon(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "RegularStatementWithoutSemicolon")) return false;
     boolean r;
+    Marker m = enter_section_(b, l, _NONE_);
     r = Assignment(b, l + 1);
     if (!r) r = Declaration(b, l + 1);
     if (!r) r = Expression(b, l + 1, -1);
     if (!r) r = ReturnStatement(b, l + 1);
     if (!r) r = Seq(b, l + 1);
     if (!r) r = consumeToken(b, KEYWORD_BREAK);
+    exit_section_(b, l, m, r, false, RecoverUntilSemicolon_parser_);
     return r;
   }
 
@@ -1555,4 +1569,9 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     return r || p;
   }
 
+  static final Parser RecoverUntilSemicolon_parser_ = new Parser() {
+    public boolean parse(PsiBuilder b, int l) {
+      return RecoverUntilSemicolon(b, l + 1);
+    }
+  };
 }
