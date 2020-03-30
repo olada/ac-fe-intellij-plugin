@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'de.cofinpro.intellij'
-version '0.0.4'
+version '0.0.5'
 
 sourceCompatibility = 1.8
 
@@ -30,12 +30,13 @@ intellij {
 patchPluginXml {
     changeNotes """
     <p>
-        <h2>Version 0.0.5 (2020-??-??)</h2>
+        <h2>Version 0.0.5 (2020-03-30)</h2>
         <ul>
             <li>Syntax Highlighting for built-in methods: ts, ts_update</li>
             <li>Resolve function invocation references of custom functions. 
                 Search scope is "full project" for now - no inclusion hints are taken into account (e.g. load  or //@import)</li>
             <li>Structure view shows top level functions (allows searching in structure via Ctrl + F12 (Windows) or Cmd + F12 (Mac)</li>
+            <li>Show name of function and containing file when hovering with pushed Ctrl / Cmd button over potential function reference</li>
         </ul>
     </p>
     
