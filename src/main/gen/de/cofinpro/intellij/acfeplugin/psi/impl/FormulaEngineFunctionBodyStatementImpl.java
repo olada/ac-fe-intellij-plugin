@@ -46,14 +46,14 @@ public class FormulaEngineFunctionBodyStatementImpl extends ASTWrapperPsiElement
 
   @Override
   @Nullable
-  public FormulaEngineFunctionDefinition getFunctionDefinition() {
-    return PsiTreeUtil.getChildOfType(this, FormulaEngineFunctionDefinition.class);
+  public FormulaEngineExpression getExpression() {
+    return PsiTreeUtil.getChildOfType(this, FormulaEngineExpression.class);
   }
 
   @Override
   @Nullable
-  public FormulaEngineFunctionInvocation getFunctionInvocation() {
-    return PsiTreeUtil.getChildOfType(this, FormulaEngineFunctionInvocation.class);
+  public FormulaEngineFunctionDefinition getFunctionDefinition() {
+    return PsiTreeUtil.getChildOfType(this, FormulaEngineFunctionDefinition.class);
   }
 
   @Override

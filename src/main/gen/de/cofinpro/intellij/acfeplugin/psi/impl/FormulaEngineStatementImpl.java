@@ -56,4 +56,10 @@ public class FormulaEngineStatementImpl extends ASTWrapperPsiElement implements 
     return PsiTreeUtil.getChildOfType(this, FormulaEngineReturnStatement.class);
   }
 
+  @Override
+  @Nullable
+  public FormulaEngineSeq getSeq() {
+    return PsiTreeUtil.getChildOfType(this, FormulaEngineSeq.class);
+  }
+
 }

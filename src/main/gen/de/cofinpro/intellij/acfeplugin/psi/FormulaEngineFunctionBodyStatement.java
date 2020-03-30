@@ -17,10 +17,10 @@ public interface FormulaEngineFunctionBodyStatement extends PsiElement {
   FormulaEngineDeclaration getDeclaration();
 
   @Nullable
-  FormulaEngineFunctionDefinition getFunctionDefinition();
+  FormulaEngineExpression getExpression();
 
   @Nullable
-  FormulaEngineFunctionInvocation getFunctionInvocation();
+  FormulaEngineFunctionDefinition getFunctionDefinition();
 
   @Nullable
   FormulaEngineReturnStatement getReturnStatement();
