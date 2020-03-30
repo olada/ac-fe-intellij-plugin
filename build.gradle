@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'de.cofinpro.intellij'
-version '0.0.5'
+version '0.0.6'
 
 sourceCompatibility = 1.8
 
@@ -29,6 +29,14 @@ intellij {
 
 patchPluginXml {
     changeNotes """
+    <p>
+        <h2>Version 0.0.5 (2020-04-??)</h2>
+        <ul>
+            <li>Increase parser's robustness: Allows highlighting multiple syntax errors as well as continuing to show
+                the file structure even when there are syntax errors</li>
+        </ul>
+    </p>
+    
     <p>
         <h2>Version 0.0.5 (2020-03-30)</h2>
         <ul>
