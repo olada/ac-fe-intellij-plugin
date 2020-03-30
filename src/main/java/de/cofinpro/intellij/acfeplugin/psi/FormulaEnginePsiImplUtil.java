@@ -31,8 +31,9 @@ public class FormulaEnginePsiImplUtil {
 
     /**
      * Returns the offset of the identifier as the function definition's offset.
-     * The text offset of a function definition needs to be its identifier literal because otherwise the token 'function'
-     * will be part of the function reference which would be a bit surprising.
+     * The text offset of a function definition needs to be its identifier literal because
+     * - when resolving the reference, the cursor should be places at the beginning of the identifier (not the beginning of the 'function' token)
+     * - otherwise the token 'function' will be part of the function reference which would be a bit surprising
      * @param functionDefinition the function definition
      * @return the offset
      */
