@@ -2,9 +2,8 @@ package de.cofinpro.intellij.acfeplugin.psi;
 
 import com.intellij.psi.PsiReference;
 import de.cofinpro.intellij.acfeplugin.psi.stub.FunctionDefinitionStub;
-import de.cofinpro.intellij.acfeplugin.referencing.FormulaEngineFunctionReference;
 import de.cofinpro.intellij.acfeplugin.referencing.FormulaEngineArrayAccessReference;
-import de.cofinpro.intellij.acfeplugin.referencing.FormulaEngineSelfReference;
+import de.cofinpro.intellij.acfeplugin.referencing.FormulaEngineFunctionReference;
 
 /**
  * Contains util functions which can be injected into PSI implementations via grammar kit.
