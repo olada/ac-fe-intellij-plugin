@@ -18,8 +18,6 @@ public interface FormulaEngineFunctionDefinition extends FormulaEngineNameIdenti
   @NotNull
   PsiElement getIdentifier();
 
-  String getIdentifierName();
-
   String getName();
 
   int getTextOffset();

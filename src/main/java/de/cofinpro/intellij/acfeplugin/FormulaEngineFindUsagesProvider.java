@@ -67,7 +67,8 @@ public class FormulaEngineFindUsagesProvider implements FindUsagesProvider {
     @Override
     public String getNodeText(@NotNull PsiElement element, boolean useFullName) {
         if (element instanceof FormulaEngineFunctionDefinition) {
-            return ((FormulaEngineFunctionDefinition) element).getIdentifierName();
+            String identifierName = ((FormulaEngineFunctionDefinition) element).getName();
+            return identifierName == null ? "" : identifierName;
         }
         return null;
     }

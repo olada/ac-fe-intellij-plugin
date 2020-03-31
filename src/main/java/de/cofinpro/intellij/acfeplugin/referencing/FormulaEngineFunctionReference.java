@@ -42,7 +42,7 @@ public class FormulaEngineFunctionReference extends FormulaEngineReference imple
             String customFunctionName = functionInvocation.getCustomFunctionName().getIdentifier().getText();
             PsiFile root = functionInvocation.getContainingFile();
             Collection<FormulaEngineFunctionDefinition> functionDefinitions = StubIndex.getElements(FunctionDefinitionsStubIndex.KEY, customFunctionName, root.getProject(), ProjectScope.getAllScope(root.getProject()), FormulaEngineFunctionDefinition.class);
-            Optional<FormulaEngineFunctionDefinition> foundFunctionDefinition = functionDefinitions.stream().filter(functionDefinition -> functionDefinition.getIdentifierName().equals(customFunctionName)).findFirst();
+            Optional<FormulaEngineFunctionDefinition> foundFunctionDefinition = functionDefinitions.stream().filter(functionDefinition -> customFunctionName.equals(functionDefinition.getName())).findFirst();
             return foundFunctionDefinition.orElse(null);
         }
 
