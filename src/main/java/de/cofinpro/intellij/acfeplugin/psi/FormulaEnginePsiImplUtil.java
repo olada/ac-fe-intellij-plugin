@@ -21,6 +21,10 @@ public class FormulaEnginePsiImplUtil {
         }
     }
 
+    public static String getName(FormulaEngineFunctionDefinition functionDefinition) {
+        return getIdentifierName(functionDefinition);
+    }
+
     public static PsiReference getReference(FormulaEngineFunctionInvocation functionInvocation) {
         return new FormulaEngineFunctionReference(functionInvocation);
     }

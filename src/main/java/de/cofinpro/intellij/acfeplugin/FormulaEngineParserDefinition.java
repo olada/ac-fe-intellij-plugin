@@ -17,12 +17,15 @@ import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementTypes;
 import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineFileImpl;
 import org.jetbrains.annotations.NotNull;
 
+import static de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementTypes.*;
+
 /**
  * Created by David Olah on 30.07.2018.
  */
 public class FormulaEngineParserDefinition implements ParserDefinition {
     public static final TokenSet WHITE_SPACES = TokenSet.create(TokenType.WHITE_SPACE);
-    public static final TokenSet COMMENTS = TokenSet.create(FormulaEngineElementTypes.LINE_COMMENT, FormulaEngineElementTypes.BLOCK_COMMENT);
+    public static final TokenSet COMMENTS = TokenSet.create(LINE_COMMENT, BLOCK_COMMENT);
+    public static final TokenSet LITERALS = TokenSet.create(NUMBER_SCIENTIFIC, NUMBER_FLOAT, NUMBER_INTEGER, DOUBLE_QUOTED_STRING, SINGLE_QUOTED_STRING);
 
     @NotNull
     @Override
@@ -61,7 +64,7 @@ public class FormulaEngineParserDefinition implements ParserDefinition {
     @NotNull
     @Override
     public PsiElement createElement(ASTNode node) {
-        return FormulaEngineElementTypes.Factory.createElement(node);
+        return Factory.createElement(node);
     }
 
     @Override

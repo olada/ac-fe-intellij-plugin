@@ -20,6 +20,8 @@ public interface FormulaEngineFunctionDefinition extends FormulaEngineNameIdenti
 
   String getIdentifierName();
 
+  String getName();
+
   int getTextOffset();
 
 }
