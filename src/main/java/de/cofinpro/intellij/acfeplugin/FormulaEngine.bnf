@@ -168,7 +168,7 @@ FunctionDefinition ::= KEYWORD_FUNCTION IDENTIFIER LEFT_PARENTHESIS FunctionPara
 FunctionParameters ::= FunctionParameter (COMMA FunctionParameter)*
 FunctionParameter ::= ParameterWithType | ParameterWithoutType {
     implements = ["de.cofinpro.intellij.acfeplugin.psi.FormulaEngineNameIdentifierOwner"]
-    methods = [ getTextOffset ]
+    methods = [ getName getTextOffset ]
 }
 private ParameterWithoutType ::= IdentifierLiteral
 private ParameterWithType ::= Type IdentifierLiteral
@@ -216,9 +216,7 @@ StringLiteral ::= SingleStringLiteral (OPERATOR_PLUS Expression)* | SingleString
 SingleStringLiteral ::= SINGLE_QUOTED_STRING | DOUBLE_QUOTED_STRING
 ListLiteral ::= LEFT_BRACKET ListContents RIGHT_BRACKET
 ListContents ::= (Expression (COMMA Expression)*)?
-IdentifierLiteral ::= IDENTIFIER | Type {
-    methods = [ getReference ]
-}
+IdentifierLiteral ::= IDENTIFIER | Type
 
 FunctionInvocation ::= FunctionName LEFT_PARENTHESIS FunctionArguments? RIGHT_PARENTHESIS {
     methods = [ getReference ]
@@ -281,7 +279,7 @@ private RegularAssignment ::= LeftHandSide AssignmentOperator (Seq | Expression)
 private LeftHandSide ::= ArrayAccess | BuiltInVariableName | IdentifierLiteral
 
 ArrayAccess ::= (BuiltInVariableName | IdentifierLiteral) (LEFT_BRACKET Expression RIGHT_BRACKET)+ {
-
+methods = [ getReference ]
 }
 
 ReturnStatement ::= KEYWORD_RETURN Expression?

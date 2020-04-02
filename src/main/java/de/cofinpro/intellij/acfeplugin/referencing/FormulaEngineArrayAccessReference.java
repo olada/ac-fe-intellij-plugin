@@ -3,9 +3,7 @@ package de.cofinpro.intellij.acfeplugin.referencing;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.util.PsiTreeUtil;
-import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineArrayAccess;
-import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineDeclaration;
-import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineStatement;
+import de.cofinpro.intellij.acfeplugin.psi.*;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -34,14 +32,32 @@ public class FormulaEngineArrayAccessReference extends FormulaEngineReference {
         }
 
         PsiElement parent = currentElement.getParent();
-        FormulaEngineStatement[] statementsInParent = PsiTreeUtil.getChildrenOfType(parent, FormulaEngineStatement.class);
+        PsiElement[] elementsInParent = null;
+        if (parent instanceof FormulaEngineControlStructureBody
+                || parent instanceof FormulaEngineFunctionBody
+                || parent instanceof PsiFile) {
+            elementsInParent = PsiTreeUtil.getChildrenOfType(parent, FormulaEngineStatement.class);
+        } else if (parent instanceof FormulaEngineFunctionDefinition) {
+            FormulaEngineFunctionParameters functionParameters = ((FormulaEngineFunctionDefinition) parent).getFunctionParameters();
+            if (functionParameters != null) {
+                elementsInParent = functionParameters.getFunctionParameterList().toArray(new PsiElement[0]);
+            }
+        }
 
-        if (statementsInParent != null) {
-            for (FormulaEngineStatement statement : statementsInParent) {
-                if (statement.isDeclaration()) {
-                    FormulaEngineDeclaration declaration = statement.getDeclaration();
-                    if (declaration.getName() != null && declaration.getName().equals(identifierToSearch)) {
-                        return Optional.of(declaration);
+        if (elementsInParent != null) {
+            for (PsiElement element : elementsInParent) {
+                if (element instanceof FormulaEngineStatement) {
+                    FormulaEngineStatement statement = (FormulaEngineStatement) element;
+                    if (statement.isDeclaration()) {
+                        FormulaEngineDeclaration declaration = statement.getDeclaration();
+                        if (declaration.getName() != null && declaration.getName().equals(identifierToSearch)) {
+                            return Optional.of(declaration);
+                        }
+                    }
+                } else if (element instanceof FormulaEngineFunctionParameter) {
+                    FormulaEngineFunctionParameter functionParameter = (FormulaEngineFunctionParameter) element;
+                    if (functionParameter.getName() != null && functionParameter.getName().equals(identifierToSearch)) {
+                        return Optional.of(functionParameter);
                     }
                 }
             }

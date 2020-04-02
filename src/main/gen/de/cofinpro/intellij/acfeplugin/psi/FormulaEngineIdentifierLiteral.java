@@ -4,7 +4,6 @@ package de.cofinpro.intellij.acfeplugin.psi;
 import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiReference;
 
 public interface FormulaEngineIdentifierLiteral extends PsiElement {
 
@@ -13,7 +12,5 @@ public interface FormulaEngineIdentifierLiteral extends PsiElement {
 
   @Nullable
   PsiElement getIdentifier();
-
-  PsiReference getReference();
 
 }

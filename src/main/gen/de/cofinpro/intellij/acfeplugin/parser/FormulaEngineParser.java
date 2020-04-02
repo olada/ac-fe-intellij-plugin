@@ -42,15 +42,13 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   };
 
   /* ********************************************************** */
-  // (BuiltInVariableName | IdentifierLiteral) (LEFT_BRACKET Expression RIGHT_BRACKET)+ {
-  // }
+  // (BuiltInVariableName | IdentifierLiteral) (LEFT_BRACKET Expression RIGHT_BRACKET)+
   public static boolean ArrayAccess(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "ArrayAccess")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, ARRAY_ACCESS, "<array access>");
     r = ArrayAccess_0(b, l + 1);
     r = r && ArrayAccess_1(b, l + 1);
-    r = r && ArrayAccess_2(b, l + 1);
     exit_section_(b, l, m, r, false, null);
     return r;
   }
@@ -89,12 +87,6 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     r = r && consumeToken(b, RIGHT_BRACKET);
     exit_section_(b, m, null, r);
     return r;
-  }
-
-  // {
-  // }
-  private static boolean ArrayAccess_2(PsiBuilder b, int l) {
-    return true;
   }
 
   /* ********************************************************** */

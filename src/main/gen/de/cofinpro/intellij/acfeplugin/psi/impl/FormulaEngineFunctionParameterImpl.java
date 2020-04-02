@@ -39,6 +39,11 @@ public class FormulaEngineFunctionParameterImpl extends ASTWrapperPsiElement imp
   }
 
   @Override
+  public String getName() {
+    return FormulaEnginePsiImplUtil.getName(this);
+  }
+
+  @Override
   public int getTextOffset() {
     return FormulaEnginePsiImplUtil.getTextOffset(this);
   }

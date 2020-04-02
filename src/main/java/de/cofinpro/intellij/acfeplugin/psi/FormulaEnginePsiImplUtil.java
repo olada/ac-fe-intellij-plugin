@@ -4,7 +4,6 @@ import com.intellij.psi.PsiReference;
 import de.cofinpro.intellij.acfeplugin.psi.stub.FunctionDefinitionStub;
 import de.cofinpro.intellij.acfeplugin.referencing.FormulaEngineArrayAccessReference;
 import de.cofinpro.intellij.acfeplugin.referencing.FormulaEngineFunctionReference;
-import de.cofinpro.intellij.acfeplugin.referencing.FormulaEngineIdentifierLiteralReference;
 
 /**
  * Contains util functions which can be injected into PSI implementations via grammar kit.
@@ -25,16 +24,16 @@ public class FormulaEnginePsiImplUtil {
         return declaration.getNameIdentifier() == null ? "" : declaration.getNameIdentifier().getText();
     }
 
+    public static String getName(FormulaEngineFunctionParameter functionParameter) {
+        return functionParameter.getNameIdentifier() == null ? "" : functionParameter.getNameIdentifier().getText();
+    }
+
     public static PsiReference getReference(FormulaEngineFunctionInvocation functionInvocation) {
         return new FormulaEngineFunctionReference(functionInvocation);
     }
 
     public static PsiReference getReference(FormulaEngineArrayAccess arrayAccess) {
         return new FormulaEngineArrayAccessReference(arrayAccess);
-    }
-
-    public static PsiReference getReference(FormulaEngineIdentifierLiteral identifierLiteral) {
-        return new FormulaEngineIdentifierLiteralReference(identifierLiteral);
     }
 
     public static boolean isDeclaration(FormulaEngineStatement statement) {
