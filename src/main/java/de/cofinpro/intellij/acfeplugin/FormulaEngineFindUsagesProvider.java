@@ -62,7 +62,7 @@ public class FormulaEngineFindUsagesProvider implements FindUsagesProvider {
         if (element instanceof FormulaEngineFunctionDefinition) {
             return presentationTextCreator.createTextFor((FormulaEngineFunctionDefinition) element);
         } else if (element instanceof FormulaEngineDeclaration) {
-            return "declaration descriptive name";
+            return ((FormulaEngineDeclaration) element).getName();
         }
         return null;
     }
