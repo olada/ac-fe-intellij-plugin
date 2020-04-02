@@ -1,11 +1,13 @@
 package de.cofinpro.intellij.acfeplugin;
 
+import com.intellij.lang.HelpID;
 import com.intellij.lang.cacheBuilder.DefaultWordsScanner;
 import com.intellij.lang.cacheBuilder.WordsScanner;
 import com.intellij.lang.findUsages.FindUsagesProvider;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.tree.TokenSet;
 import de.cofinpro.intellij.acfeplugin.lex.FormulaEngineLexerAdapter;
+import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineDeclaration;
 import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementTypes;
 import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineFunctionDefinition;
 import de.cofinpro.intellij.acfeplugin.psi.FormulaEnginePsiPresentationTextCreator;
@@ -33,16 +35,14 @@ public class FormulaEngineFindUsagesProvider implements FindUsagesProvider {
 
     @Override
     public boolean canFindUsagesFor(@NotNull PsiElement psiElement) {
-        return psiElement instanceof FormulaEngineFunctionDefinition;
+        return psiElement instanceof FormulaEngineFunctionDefinition
+                || psiElement instanceof FormulaEngineDeclaration;
     }
 
     @Nullable
     @Override
     public String getHelpId(@NotNull PsiElement psiElement) {
-        if (psiElement instanceof FormulaEngineFunctionDefinition) {
-            return "reference.dialogs.findUsages.method";
-        }
-        return null;
+        return HelpID.FIND_OTHER_USAGES;
     }
 
     @NotNull
@@ -50,6 +50,8 @@ public class FormulaEngineFindUsagesProvider implements FindUsagesProvider {
     public String getType(@NotNull PsiElement element) {
         if (element instanceof FormulaEngineFunctionDefinition) {
             return "function";
+        } else if (element instanceof FormulaEngineDeclaration) {
+            return "variable";
         }
         return null;
     }
@@ -59,6 +61,8 @@ public class FormulaEngineFindUsagesProvider implements FindUsagesProvider {
     public String getDescriptiveName(@NotNull PsiElement element) {
         if (element instanceof FormulaEngineFunctionDefinition) {
             return presentationTextCreator.createTextFor((FormulaEngineFunctionDefinition) element);
+        } else if (element instanceof FormulaEngineDeclaration) {
+            return "declaration descriptive name";
         }
         return null;
     }
@@ -67,7 +71,9 @@ public class FormulaEngineFindUsagesProvider implements FindUsagesProvider {
     @Override
     public String getNodeText(@NotNull PsiElement element, boolean useFullName) {
         if (element instanceof FormulaEngineFunctionDefinition) {
-            String identifierName = ((FormulaEngineFunctionDefinition) element).getName();
+            return presentationTextCreator.createTextFor((FormulaEngineFunctionDefinition) element);
+        } else if (element instanceof FormulaEngineDeclaration) {
+            String identifierName = ((FormulaEngineDeclaration) element).getName();
             return identifierName == null ? "" : identifierName;
         }
         return null;
