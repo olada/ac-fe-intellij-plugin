@@ -8,9 +8,9 @@ import com.intellij.psi.PsiElement;
 public interface FormulaEngineDoWhile extends PsiElement {
 
   @NotNull
-  FormulaEngineExpression getExpression();
+  FormulaEngineControlStructureBody getControlStructureBody();
 
   @NotNull
-  FormulaEngineLoopStructureBody getLoopStructureBody();
+  FormulaEngineExpression getExpression();
 
 }

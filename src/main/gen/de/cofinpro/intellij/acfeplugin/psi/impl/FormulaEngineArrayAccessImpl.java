@@ -10,7 +10,6 @@ import com.intellij.psi.util.PsiTreeUtil;
 import static de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementTypes.*;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import de.cofinpro.intellij.acfeplugin.psi.*;
-import com.intellij.psi.PsiReference;
 
 public class FormulaEngineArrayAccessImpl extends ASTWrapperPsiElement implements FormulaEngineArrayAccess {
 
@@ -43,11 +42,6 @@ public class FormulaEngineArrayAccessImpl extends ASTWrapperPsiElement implement
   @Nullable
   public FormulaEngineIdentifierLiteral getIdentifierLiteral() {
     return PsiTreeUtil.getChildOfType(this, FormulaEngineIdentifierLiteral.class);
-  }
-
-  @Override
-  public PsiReference getReference() {
-    return FormulaEnginePsiImplUtil.getReference(this);
   }
 
 }

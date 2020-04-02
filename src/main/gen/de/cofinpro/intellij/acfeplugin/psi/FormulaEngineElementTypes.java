@@ -37,7 +37,6 @@ public interface FormulaEngineElementTypes {
   IElementType LEAF_EXPRESSION = new FormulaEngineElementType("LEAF_EXPRESSION");
   IElementType LIST_CONTENTS = new FormulaEngineElementType("LIST_CONTENTS");
   IElementType LIST_LITERAL = new FormulaEngineElementType("LIST_LITERAL");
-  IElementType LOOP_STRUCTURE_BODY = new FormulaEngineElementType("LOOP_STRUCTURE_BODY");
   IElementType NEGATED_EXPRESSION = new FormulaEngineElementType("NEGATED_EXPRESSION");
   IElementType NUMBER_LITERAL = new FormulaEngineElementType("NUMBER_LITERAL");
   IElementType PARENTHESIS_EXPRESSION = new FormulaEngineElementType("PARENTHESIS_EXPRESSION");
@@ -263,9 +262,6 @@ public interface FormulaEngineElementTypes {
       }
       else if (type == LIST_LITERAL) {
         return new FormulaEngineListLiteralImpl(node);
-      }
-      else if (type == LOOP_STRUCTURE_BODY) {
-        return new FormulaEngineLoopStructureBodyImpl(node);
       }
       else if (type == NEGATED_EXPRESSION) {
         return new FormulaEngineNegatedExpressionImpl(node);

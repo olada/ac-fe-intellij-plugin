@@ -11,7 +11,7 @@ public interface FormulaEngineFor extends PsiElement {
   FormulaEngineControlStructure getControlStructure();
 
   @Nullable
-  FormulaEngineLoopStructureBody getLoopStructureBody();
+  FormulaEngineControlStructureBody getControlStructureBody();
 
   @Nullable
   FormulaEngineSeqForParenthesis getSeqForParenthesis();
