@@ -302,7 +302,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // BuiltInVariableName | NumberLiteral | StringLiteral | ListLiteral | IDENTIFIER
+  // BuiltInVariableName | NumberLiteral | StringLiteral | ListLiteral
   public static boolean Constant(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Constant")) return false;
     boolean r;
@@ -311,7 +311,6 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     if (!r) r = NumberLiteral(b, l + 1);
     if (!r) r = StringLiteral(b, l + 1);
     if (!r) r = ListLiteral(b, l + 1);
-    if (!r) r = consumeToken(b, IDENTIFIER);
     exit_section_(b, l, m, r, false, null);
     return r;
   }
@@ -356,14 +355,8 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
 
   /* ********************************************************** */
   // IDENTIFIER
-  public static boolean CustomFunctionName(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "CustomFunctionName")) return false;
-    if (!nextTokenIs(b, IDENTIFIER)) return false;
-    boolean r;
-    Marker m = enter_section_(b);
-    r = consumeToken(b, IDENTIFIER);
-    exit_section_(b, m, CUSTOM_FUNCTION_NAME, r);
-    return r;
+  static boolean CustomFunctionName(PsiBuilder b, int l) {
+    return consumeToken(b, IDENTIFIER);
   }
 
   /* ********************************************************** */

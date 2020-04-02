@@ -9,6 +9,7 @@ import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
 import static de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementTypes.*;
 import de.cofinpro.intellij.acfeplugin.psi.*;
+import com.intellij.psi.PsiReference;
 
 public class FormulaEngineLeafExpressionImpl extends FormulaEngineExpressionImpl implements FormulaEngineLeafExpression {
 
@@ -45,12 +46,6 @@ public class FormulaEngineLeafExpressionImpl extends FormulaEngineExpressionImpl
 
   @Override
   @Nullable
-  public FormulaEngineCustomFunctionName getCustomFunctionName() {
-    return PsiTreeUtil.getChildOfType(this, FormulaEngineCustomFunctionName.class);
-  }
-
-  @Override
-  @Nullable
   public FormulaEngineFunctionInvocation getFunctionInvocation() {
     return PsiTreeUtil.getChildOfType(this, FormulaEngineFunctionInvocation.class);
   }
@@ -59,6 +54,17 @@ public class FormulaEngineLeafExpressionImpl extends FormulaEngineExpressionImpl
   @Nullable
   public FormulaEngineIdentifierLiteral getIdentifierLiteral() {
     return PsiTreeUtil.getChildOfType(this, FormulaEngineIdentifierLiteral.class);
+  }
+
+  @Override
+  @Nullable
+  public PsiElement getIdentifier() {
+    return findChildByType(IDENTIFIER);
+  }
+
+  @Override
+  public PsiReference getReference() {
+    return FormulaEnginePsiImplUtil.getReference(this);
   }
 
 }

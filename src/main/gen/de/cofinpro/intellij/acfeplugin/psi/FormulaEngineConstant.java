@@ -19,7 +19,4 @@ public interface FormulaEngineConstant extends PsiElement {
   @Nullable
   FormulaEngineStringLiteral getStringLiteral();
 
-  @Nullable
-  PsiElement getIdentifier();
-
 }

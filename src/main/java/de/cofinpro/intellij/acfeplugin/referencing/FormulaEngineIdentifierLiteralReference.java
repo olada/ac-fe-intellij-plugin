@@ -6,25 +6,25 @@ import com.intellij.psi.ResolveResult;
 import com.intellij.psi.util.PsiTreeUtil;
 import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineFunctionDefinition;
 import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineIdentifierLiteral;
-import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineLeafExpression;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class FormulaEngineLeafExpressionReference extends FormulaEngineReference implements PsiPolyVariantReference {
-    private final FormulaEngineLeafExpression leafExpression;
+public class FormulaEngineIdentifierLiteralReference extends FormulaEngineReference implements PsiPolyVariantReference {
+    private final PsiElement identifierLiteral;
 
-    public FormulaEngineLeafExpressionReference(@NotNull FormulaEngineLeafExpression element) {
+    public FormulaEngineIdentifierLiteralReference(@NotNull PsiElement element) {
         super(element);
-        this.leafExpression = element;
+        this.identifierLiteral = element;
     }
 
     @Nullable
     @Override
     public PsiElement resolve() {
-        if (leafExpression.getIdentifier() != null) {
-            String identifierName = leafExpression.getIdentifier().getText();
-            return findFirstDeclarationWalkingUp(identifierName, leafExpression).orElse(null);
+        String identifierName = null;
+        if (identifierLiteral instanceof FormulaEngineIdentifierLiteral) {
+            identifierName = ((FormulaEngineIdentifierLiteral) identifierLiteral).getIdentifier().getText();
         }
+        FormulaEngineFunctionDefinition surroundingFunction = PsiTreeUtil.getParentOfType(identifierLiteral, FormulaEngineFunctionDefinition.class);
 
         return null;
     }

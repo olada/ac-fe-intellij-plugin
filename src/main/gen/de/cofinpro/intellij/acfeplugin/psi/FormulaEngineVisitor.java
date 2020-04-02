@@ -49,10 +49,6 @@ public class FormulaEngineVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitCustomFunctionName(@NotNull FormulaEngineCustomFunctionName o) {
-    visitPsiElement(o);
-  }
-
   public void visitDeclaration(@NotNull FormulaEngineDeclaration o) {
     visitNameIdentifierOwner(o);
   }

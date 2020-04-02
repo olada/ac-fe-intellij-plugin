@@ -4,6 +4,7 @@ package de.cofinpro.intellij.acfeplugin.psi;
 import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
+import com.intellij.psi.PsiReference;
 
 public interface FormulaEngineLeafExpression extends FormulaEngineExpression {
 
@@ -17,12 +18,14 @@ public interface FormulaEngineLeafExpression extends FormulaEngineExpression {
   FormulaEngineConstant getConstant();
 
   @Nullable
-  FormulaEngineCustomFunctionName getCustomFunctionName();
-
-  @Nullable
   FormulaEngineFunctionInvocation getFunctionInvocation();
 
   @Nullable
   FormulaEngineIdentifierLiteral getIdentifierLiteral();
+
+  @Nullable
+  PsiElement getIdentifier();
+
+  PsiReference getReference();
 
 }

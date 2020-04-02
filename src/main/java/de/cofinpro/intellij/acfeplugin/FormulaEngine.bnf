@@ -198,7 +198,9 @@ CombinationExpression ::= Expression CombinationOperator Expression
 ComparisonExpression ::= Expression ComparisonOperator Expression
 CalculationExpression ::= Expression CalculationOperator Expression
 ShortIfExpression ::= Expression QUESIONMARK Expression COLON Expression
-LeafExpression ::= FunctionInvocation | ArrayAccess | Constant |  MethodReference | PrefixOperator IdentifierLiteral | IdentifierLiteral PostfixOperator | IdentifierLiteral
+LeafExpression ::= FunctionInvocation | ArrayAccess | Constant |  MethodReference | PrefixOperator IdentifierLiteral | IdentifierLiteral PostfixOperator | IdentifierLiteral {
+    methods = [ getReference ]
+}
 ParenthesisExpression ::= LEFT_PARENTHESIS Expression RIGHT_PARENTHESIS
 UnaryExpression ::= UnaryOperator Expression
 
@@ -216,12 +218,14 @@ StringLiteral ::= SingleStringLiteral (OPERATOR_PLUS Expression)* | SingleString
 SingleStringLiteral ::= SINGLE_QUOTED_STRING | DOUBLE_QUOTED_STRING
 ListLiteral ::= LEFT_BRACKET ListContents RIGHT_BRACKET
 ListContents ::= (Expression (COMMA Expression)*)?
-IdentifierLiteral ::= IDENTIFIER | Type
-
-FunctionInvocation ::= FunctionName LEFT_PARENTHESIS FunctionArguments? RIGHT_PARENTHESIS {
+IdentifierLiteral ::= IDENTIFIER | Type {
     methods = [ getReference ]
 }
-CustomFunctionName ::= IDENTIFIER
+
+FunctionInvocation ::= FunctionName LEFT_PARENTHESIS FunctionArguments? RIGHT_PARENTHESIS {
+    methods = [ getReference isCustomFunction ]
+}
+private CustomFunctionName ::= IDENTIFIER
 
 private FunctionName ::= BuiltInFunctionName | CustomFunctionName
 private MethodReference ::= FunctionName // just for sake of better naming
@@ -297,7 +301,7 @@ Type ::= KEYWORD_ANY
     | KEYWORD_STRING
     | KEYWORD_TIME
 
-Constant ::= BuiltInVariableName | NumberLiteral | StringLiteral | ListLiteral | IDENTIFIER
+Constant ::= BuiltInVariableName | NumberLiteral | StringLiteral | ListLiteral
 BuiltInVariableName ::= BUILT_IN_VAR_NA
                         | BUILT_IN_VAR_TODAY
                         | BUILT_IN_VAR_TIMETODAY

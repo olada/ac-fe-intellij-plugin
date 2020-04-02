@@ -35,19 +35,24 @@ public class FormulaEngineFunctionInvocationImpl extends ASTWrapperPsiElement im
 
   @Override
   @Nullable
-  public FormulaEngineCustomFunctionName getCustomFunctionName() {
-    return PsiTreeUtil.getChildOfType(this, FormulaEngineCustomFunctionName.class);
-  }
-
-  @Override
-  @Nullable
   public FormulaEngineFunctionArguments getFunctionArguments() {
     return PsiTreeUtil.getChildOfType(this, FormulaEngineFunctionArguments.class);
   }
 
   @Override
+  @Nullable
+  public PsiElement getIdentifier() {
+    return findChildByType(IDENTIFIER);
+  }
+
+  @Override
   public PsiReference getReference() {
     return FormulaEnginePsiImplUtil.getReference(this);
+  }
+
+  @Override
+  public boolean isCustomFunction() {
+    return FormulaEnginePsiImplUtil.isCustomFunction(this);
   }
 
 }

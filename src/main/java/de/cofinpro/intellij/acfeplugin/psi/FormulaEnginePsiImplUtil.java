@@ -4,6 +4,8 @@ import com.intellij.psi.PsiReference;
 import de.cofinpro.intellij.acfeplugin.psi.stub.FunctionDefinitionStub;
 import de.cofinpro.intellij.acfeplugin.referencing.FormulaEngineArrayAccessReference;
 import de.cofinpro.intellij.acfeplugin.referencing.FormulaEngineFunctionReference;
+import de.cofinpro.intellij.acfeplugin.referencing.FormulaEngineIdentifierLiteralReference;
+import de.cofinpro.intellij.acfeplugin.referencing.FormulaEngineLeafExpressionReference;
 
 /**
  * Contains util functions which can be injected into PSI implementations via grammar kit.
@@ -36,8 +38,20 @@ public class FormulaEnginePsiImplUtil {
         return new FormulaEngineArrayAccessReference(arrayAccess);
     }
 
+    public static PsiReference getReference(FormulaEngineLeafExpression leafExpression) {
+        return new FormulaEngineLeafExpressionReference(leafExpression);
+    }
+
+    public static PsiReference getReference(FormulaEngineIdentifierLiteral identifierLiteral) {
+        return new FormulaEngineIdentifierLiteralReference(identifierLiteral);
+    }
+
     public static boolean isDeclaration(FormulaEngineStatement statement) {
         return statement.getDeclaration() != null;
+    }
+
+    public static boolean isCustomFunction(FormulaEngineFunctionInvocation functionInvocation) {
+        return functionInvocation.getBuiltInFunctionName() == null;
     }
 
     /**

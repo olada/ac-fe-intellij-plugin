@@ -19,7 +19,6 @@ public interface FormulaEngineElementTypes {
   IElementType CONSTANT = new FormulaEngineElementType("CONSTANT");
   IElementType CONTROL_STRUCTURE = new FormulaEngineElementType("CONTROL_STRUCTURE");
   IElementType CONTROL_STRUCTURE_BODY = new FormulaEngineElementType("CONTROL_STRUCTURE_BODY");
-  IElementType CUSTOM_FUNCTION_NAME = new FormulaEngineElementType("CUSTOM_FUNCTION_NAME");
   IElementType DECLARATION = new FormulaEngineElementType("DECLARATION");
   IElementType DO_WHILE = new FormulaEngineElementType("DO_WHILE");
   IElementType EXPRESSION = new FormulaEngineElementType("EXPRESSION");
@@ -211,9 +210,6 @@ public interface FormulaEngineElementTypes {
       }
       else if (type == CONTROL_STRUCTURE_BODY) {
         return new FormulaEngineControlStructureBodyImpl(node);
-      }
-      else if (type == CUSTOM_FUNCTION_NAME) {
-        return new FormulaEngineCustomFunctionNameImpl(node);
       }
       else if (type == DECLARATION) {
         return new FormulaEngineDeclarationImpl(node);

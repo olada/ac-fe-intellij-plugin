@@ -12,11 +12,13 @@ public interface FormulaEngineFunctionInvocation extends PsiElement {
   FormulaEngineBuiltInFunctionName getBuiltInFunctionName();
 
   @Nullable
-  FormulaEngineCustomFunctionName getCustomFunctionName();
-
-  @Nullable
   FormulaEngineFunctionArguments getFunctionArguments();
 
+  @Nullable
+  PsiElement getIdentifier();
+
   PsiReference getReference();
+
+  boolean isCustomFunction();
 
 }
