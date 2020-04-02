@@ -9,7 +9,6 @@ import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineStatement;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Arrays;
 import java.util.Optional;
 
 public class FormulaEngineArrayAccessReference extends FormulaEngineReference {
@@ -24,12 +23,12 @@ public class FormulaEngineArrayAccessReference extends FormulaEngineReference {
         FormulaEngineArrayAccess arrayAccess = (FormulaEngineArrayAccess) myElement;
         if (arrayAccess.getIdentifierLiteral() != null) {
             String identifierName = arrayAccess.getIdentifierLiteral().getIdentifier().getText();
-            return walkUp(identifierName, arrayAccess).orElse(null);
+            return findFirstDeclarationWalkingUp(identifierName, arrayAccess).orElse(null);
         }
         return null;
     }
 
-    private Optional<PsiElement> walkUp(@NotNull String identifierToSearch, PsiElement currentElement) {
+    private Optional<PsiElement> findFirstDeclarationWalkingUp(@NotNull String identifierToSearch, PsiElement currentElement) {
         if (currentElement instanceof PsiFile) {
             return Optional.empty();
         }
@@ -48,6 +47,6 @@ public class FormulaEngineArrayAccessReference extends FormulaEngineReference {
             }
         }
 
-        return walkUp(identifierToSearch, parent);
+        return findFirstDeclarationWalkingUp(identifierToSearch, parent);
     }
 }
