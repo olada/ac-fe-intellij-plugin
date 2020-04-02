@@ -30,7 +30,7 @@ intellij {
 patchPluginXml {
     changeNotes """
     <p>
-        <h2>Version 0.0.5 (2020-04-??)</h2>
+        <h2>Version 0.0.6 (2020-04-02)</h2>
         <ul>
             <li>Increase parser's robustness: Allows highlighting multiple syntax errors as well as continuing to show
                 the file structure even when there are syntax errors</li>
