@@ -22,4 +22,8 @@ public interface FormulaEngineDeclaration extends FormulaEngineNameIdentifierOwn
   @NotNull
   FormulaEngineVisibility getVisibility();
 
+  String getName();
+
+  int getTextOffset();
+
 }

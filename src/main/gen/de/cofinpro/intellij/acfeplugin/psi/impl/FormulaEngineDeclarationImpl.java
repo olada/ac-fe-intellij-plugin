@@ -56,4 +56,14 @@ public class FormulaEngineDeclarationImpl extends ASTWrapperPsiElement implement
     return notNullChild(PsiTreeUtil.getChildOfType(this, FormulaEngineVisibility.class));
   }
 
+  @Override
+  public String getName() {
+    return FormulaEnginePsiImplUtil.getName(this);
+  }
+
+  @Override
+  public int getTextOffset() {
+    return FormulaEnginePsiImplUtil.getTextOffset(this);
+  }
+
 }

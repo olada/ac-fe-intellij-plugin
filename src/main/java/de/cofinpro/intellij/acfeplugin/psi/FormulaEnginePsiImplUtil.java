@@ -11,7 +11,7 @@ import de.cofinpro.intellij.acfeplugin.referencing.FormulaEngineFunctionReferenc
 public class FormulaEnginePsiImplUtil {
     private FormulaEnginePsiImplUtil() {}
 
-    public static String getIdentifierName(FormulaEngineFunctionDefinition functionDefinition) {
+    public static String getName(FormulaEngineFunctionDefinition functionDefinition) {
         FunctionDefinitionStub stub = functionDefinition.getStub();
         if (stub != null) {
             return stub.getName();
@@ -20,8 +20,8 @@ public class FormulaEnginePsiImplUtil {
         }
     }
 
-    public static String getName(FormulaEngineFunctionDefinition functionDefinition) {
-        return getIdentifierName(functionDefinition);
+    public static String getName(FormulaEngineDeclaration declaration) {
+        return declaration.getNameIdentifier() == null ? "" : declaration.getNameIdentifier().getText();
     }
 
     public static PsiReference getReference(FormulaEngineFunctionInvocation functionInvocation) {
@@ -32,16 +32,30 @@ public class FormulaEnginePsiImplUtil {
         return new FormulaEngineArrayAccessReference(arrayAccess);
     }
 
+    public static boolean isDeclaration(FormulaEngineStatement statement) {
+        return statement.getDeclaration() != null;
+    }
+
     /**
      * Returns the offset of the identifier as the function definition's offset.
      * The text offset of a function definition needs to be its identifier literal because
-     * - when resolving the reference, the cursor should be places at the beginning of the identifier (not the beginning of the 'function' token)
+     * - when resolving the reference, the cursor should be placed at the beginning of the identifier (not the beginning of the 'function' token)
      * - otherwise the token 'function' will be part of the function reference which would be a bit surprising
      * @param functionDefinition the function definition
      * @return the offset
      */
     public static int getTextOffset(FormulaEngineFunctionDefinition functionDefinition) {
         return functionDefinition.getIdentifier().getTextOffset();
+    }
+
+    /**
+     * Returns the offset of the identifier as the declaration's offset so that the cursor is placed at the
+     * identifier, when resolving the reference.
+     * @param declaration the declaration
+     * @return the offset
+     */
+    public static int getTextOffset(FormulaEngineDeclaration declaration) {
+        return declaration.getNameIdentifier().getTextOffset();
     }
 
     /**

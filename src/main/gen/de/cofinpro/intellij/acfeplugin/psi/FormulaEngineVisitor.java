@@ -81,10 +81,6 @@ public class FormulaEngineVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitFunctionBodyStatement(@NotNull FormulaEngineFunctionBodyStatement o) {
-    visitPsiElement(o);
-  }
-
   public void visitFunctionDefinition(@NotNull FormulaEngineFunctionDefinition o) {
     visitNameIdentifierOwner(o);
     // visitStubBasedPsiElement(o);

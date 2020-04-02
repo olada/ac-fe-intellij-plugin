@@ -562,30 +562,17 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // FunctionBodyStatement*
+  // Statement*
   public static boolean FunctionBody(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "FunctionBody")) return false;
     Marker m = enter_section_(b, l, _NONE_, FUNCTION_BODY, "<function body>");
     while (true) {
       int c = current_position_(b);
-      if (!FunctionBodyStatement(b, l + 1)) break;
+      if (!Statement(b, l + 1)) break;
       if (!empty_element_parsed_guard_(b, "FunctionBody", c)) break;
     }
     exit_section_(b, l, m, true, false, null);
     return true;
-  }
-
-  /* ********************************************************** */
-  // FunctionDefinition | ControlStructure | RegularStatement
-  public static boolean FunctionBodyStatement(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "FunctionBodyStatement")) return false;
-    boolean r;
-    Marker m = enter_section_(b, l, _NONE_, FUNCTION_BODY_STATEMENT, "<function body statement>");
-    r = FunctionDefinition(b, l + 1);
-    if (!r) r = ControlStructure(b, l + 1);
-    if (!r) r = RegularStatement(b, l + 1);
-    exit_section_(b, l, m, r, false, null);
-    return r;
   }
 
   /* ********************************************************** */
@@ -1126,12 +1113,13 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // FunctionDefinition | RegularStatement
+  // FunctionDefinition | ControlStructure | RegularStatement
   public static boolean Statement(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "Statement")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, STATEMENT, "<statement>");
     r = FunctionDefinition(b, l + 1);
+    if (!r) r = ControlStructure(b, l + 1);
     if (!r) r = RegularStatement(b, l + 1);
     exit_section_(b, l, m, r, false, null);
     return r;

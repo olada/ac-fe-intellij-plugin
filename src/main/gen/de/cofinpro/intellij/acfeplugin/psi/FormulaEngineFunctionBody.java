@@ -8,6 +8,6 @@ import com.intellij.psi.PsiElement;
 public interface FormulaEngineFunctionBody extends PsiElement {
 
   @NotNull
-  List<FormulaEngineFunctionBodyStatement> getFunctionBodyStatementList();
+  List<FormulaEngineStatement> getStatementList();
 
 }

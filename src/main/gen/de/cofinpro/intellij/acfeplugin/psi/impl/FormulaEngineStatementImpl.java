@@ -34,6 +34,12 @@ public class FormulaEngineStatementImpl extends ASTWrapperPsiElement implements 
 
   @Override
   @Nullable
+  public FormulaEngineControlStructure getControlStructure() {
+    return PsiTreeUtil.getChildOfType(this, FormulaEngineControlStructure.class);
+  }
+
+  @Override
+  @Nullable
   public FormulaEngineDeclaration getDeclaration() {
     return PsiTreeUtil.getChildOfType(this, FormulaEngineDeclaration.class);
   }
@@ -60,6 +66,11 @@ public class FormulaEngineStatementImpl extends ASTWrapperPsiElement implements 
   @Nullable
   public FormulaEngineSeq getSeq() {
     return PsiTreeUtil.getChildOfType(this, FormulaEngineSeq.class);
+  }
+
+  @Override
+  public boolean isDeclaration() {
+    return FormulaEnginePsiImplUtil.isDeclaration(this);
   }
 
 }

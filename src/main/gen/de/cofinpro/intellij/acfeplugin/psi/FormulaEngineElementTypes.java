@@ -27,7 +27,6 @@ public interface FormulaEngineElementTypes {
   IElementType FUNCTION_ARGUMENT = new FormulaEngineElementType("FUNCTION_ARGUMENT");
   IElementType FUNCTION_ARGUMENTS = new FormulaEngineElementType("FUNCTION_ARGUMENTS");
   IElementType FUNCTION_BODY = new FormulaEngineElementType("FUNCTION_BODY");
-  IElementType FUNCTION_BODY_STATEMENT = new FormulaEngineElementType("FUNCTION_BODY_STATEMENT");
   IElementType FUNCTION_DEFINITION = new FunctionDefinitionElementType("FUNCTION_DEFINITION");
   IElementType FUNCTION_INVOCATION = new FormulaEngineElementType("FUNCTION_INVOCATION");
   IElementType FUNCTION_PARAMETER = new FormulaEngineElementType("FUNCTION_PARAMETER");
@@ -234,9 +233,6 @@ public interface FormulaEngineElementTypes {
       }
       else if (type == FUNCTION_BODY) {
         return new FormulaEngineFunctionBodyImpl(node);
-      }
-      else if (type == FUNCTION_BODY_STATEMENT) {
-        return new FormulaEngineFunctionBodyStatementImpl(node);
       }
       else if (type == FUNCTION_DEFINITION) {
         return new FormulaEngineFunctionDefinitionImpl(node);

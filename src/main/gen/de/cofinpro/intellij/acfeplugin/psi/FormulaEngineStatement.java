@@ -11,6 +11,9 @@ public interface FormulaEngineStatement extends PsiElement {
   FormulaEngineAssignment getAssignment();
 
   @Nullable
+  FormulaEngineControlStructure getControlStructure();
+
+  @Nullable
   FormulaEngineDeclaration getDeclaration();
 
   @Nullable
@@ -24,5 +27,7 @@ public interface FormulaEngineStatement extends PsiElement {
 
   @Nullable
   FormulaEngineSeq getSeq();
+
+  boolean isDeclaration();
 
 }

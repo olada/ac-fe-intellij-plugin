@@ -31,7 +31,12 @@ public abstract class FormulaEngineReference extends PsiReferenceBase<PsiElement
         if (indexOfLeftParenthesis >= 0) {
             return TextRange.from(0, indexOfLeftParenthesis);
         } else {
-            return TextRange.from(0, getElement().getTextLength());
+            int indexOfLeftBracket = getElement().getText().indexOf('[');
+            if (indexOfLeftBracket >= 0) {
+                return TextRange.from(0, indexOfLeftBracket);
+            } else {
+                return TextRange.from(0, getElement().getTextLength());
+            }
         }
     }
 }

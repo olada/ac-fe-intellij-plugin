@@ -252,14 +252,15 @@ BuiltInFunctionName ::= BUILT_IN_FUNC_ATTRIBUTE
     | BUILT_IN_FUNC_TIME
     | BUILT_IN_FUNC_TS
     | BUILT_IN_FUNC_TS_UPDATE
-FunctionBody ::= FunctionBodyStatement*
+FunctionBody ::= Statement*
 private RegularStatementWithoutSemicolon ::= Assignment | Declaration | Expression | ReturnStatement | Seq | KEYWORD_BREAK {
     recoverWhile = RecoverUntilSemicolon
 }
 private RecoverUntilSemicolon ::= !(SEMICOLON)
 private RegularStatement ::= RegularStatementWithoutSemicolon SEMICOLON
-Statement ::= FunctionDefinition | RegularStatement
-FunctionBodyStatement ::= FunctionDefinition | ControlStructure | RegularStatement
+Statement ::= FunctionDefinition | ControlStructure | RegularStatement {
+    methods = [ isDeclaration ]
+}
 
 SeqForParenthesis ::= LEFT_PARENTHESIS Assignment (COMMA (Assignment | FunctionInvocation))* SEMICOLON Expression SEMICOLON (Assignment | FunctionInvocation) RIGHT_PARENTHESIS
 Seq ::= KEYWORD_SEQ SeqForParenthesis SeqBody
@@ -270,6 +271,7 @@ private SeqBody ::= Assignment | CalculationExpression | FunctionInvocation | Li
 
 Declaration ::= (FullDeclaration | DeclarationWithoutType) DeclarationInitialization? {
     implements = ["de.cofinpro.intellij.acfeplugin.psi.FormulaEngineNameIdentifierOwner"]
+    methods = [ getName getTextOffset ]
 }
 private DeclarationInitialization ::= DeclarationOperator SeqOrExpression { pin = 1 }
 private SeqOrExpression ::= Seq | Expression
