@@ -4,10 +4,14 @@ import com.intellij.openapi.util.TextRange;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiReferenceBase;
+import com.intellij.psi.search.ProjectScope;
+import com.intellij.psi.stubs.StubIndex;
 import com.intellij.psi.util.PsiTreeUtil;
 import de.cofinpro.intellij.acfeplugin.psi.*;
+import de.cofinpro.intellij.acfeplugin.psi.stub.DeclarationStubIndex;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Collection;
 import java.util.Optional;
 
 /**
@@ -45,9 +49,10 @@ public abstract class FormulaEngineReference extends PsiReferenceBase<PsiElement
         }
     }
 
-    protected Optional<PsiElement> findFirstDeclarationWalkingUp(@NotNull String identifierToSearch, PsiElement currentElement) {
+    protected Optional<? extends PsiElement> findFirstDeclarationWalkingUp(@NotNull String identifierToSearch, PsiElement currentElement) {
         if (currentElement instanceof PsiFile) {
-            return Optional.empty();
+            Collection<FormulaEngineDeclaration> elements = StubIndex.getElements(DeclarationStubIndex.KEY, identifierToSearch, currentElement.getProject(), ProjectScope.getAllScope(currentElement.getProject()), FormulaEngineDeclaration.class);
+            return elements.stream().filter(declaration -> identifierToSearch.equals(declaration.getName())).findFirst();
         }
 
         PsiElement parent = currentElement.getParent();

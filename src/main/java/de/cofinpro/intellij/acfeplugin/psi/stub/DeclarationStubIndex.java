@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class DeclarationStubIndex extends StringStubIndexExtension<FormulaEngineDeclaration> {
     public static final StubIndexKey<String, FormulaEngineDeclaration> KEY = StubIndexKey.createIndexKey("fe.stub.declarations");
-    private static final int VERSION = 1;
+    private static final int VERSION = 0;
 
     @NotNull
     @Override
