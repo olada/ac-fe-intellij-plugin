@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'de.cofinpro.intellij'
-version '0.0.6'
+version '0.0.7'
 
 sourceCompatibility = 1.8
 
@@ -29,6 +29,14 @@ intellij {
 
 patchPluginXml {
     changeNotes """
+    <p>
+        <h2>Version 0.0.7 (2020-04-??)</h2>
+        <ul>
+            <li>Resolve references for variables</li>
+            <li>Find usages for variables and function parameters</li>
+        </ul>
+    </p>
+    
     <p>
         <h2>Version 0.0.6 (2020-04-02)</h2>
         <ul>
