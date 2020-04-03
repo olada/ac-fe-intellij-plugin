@@ -4,8 +4,10 @@ package de.cofinpro.intellij.acfeplugin.psi;
 import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
+import com.intellij.psi.StubBasedPsiElement;
+import de.cofinpro.intellij.acfeplugin.psi.stub.DeclarationStub;
 
-public interface FormulaEngineDeclaration extends FormulaEngineNameIdentifierOwner {
+public interface FormulaEngineDeclaration extends FormulaEngineNameIdentifierOwner, StubBasedPsiElement<DeclarationStub> {
 
   @Nullable
   FormulaEngineExpression getExpression();

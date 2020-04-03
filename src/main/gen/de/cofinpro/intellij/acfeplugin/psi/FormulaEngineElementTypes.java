@@ -4,6 +4,7 @@ package de.cofinpro.intellij.acfeplugin.psi;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.psi.PsiElement;
 import com.intellij.lang.ASTNode;
+import de.cofinpro.intellij.acfeplugin.psi.stub.DeclarationElementType;
 import de.cofinpro.intellij.acfeplugin.psi.stub.FunctionDefinitionElementType;
 import de.cofinpro.intellij.acfeplugin.psi.impl.*;
 
@@ -19,7 +20,7 @@ public interface FormulaEngineElementTypes {
   IElementType CONSTANT = new FormulaEngineElementType("CONSTANT");
   IElementType CONTROL_STRUCTURE = new FormulaEngineElementType("CONTROL_STRUCTURE");
   IElementType CONTROL_STRUCTURE_BODY = new FormulaEngineElementType("CONTROL_STRUCTURE_BODY");
-  IElementType DECLARATION = new FormulaEngineElementType("DECLARATION");
+  IElementType DECLARATION = new DeclarationElementType("DECLARATION");
   IElementType DO_WHILE = new FormulaEngineElementType("DO_WHILE");
   IElementType EXPRESSION = new FormulaEngineElementType("EXPRESSION");
   IElementType FOR = new FormulaEngineElementType("FOR");

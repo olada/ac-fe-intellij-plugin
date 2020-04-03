@@ -8,13 +8,24 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
 import static de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementTypes.*;
-import com.intellij.extapi.psi.ASTWrapperPsiElement;
+import com.intellij.extapi.psi.StubBasedPsiElementBase;
+import de.cofinpro.intellij.acfeplugin.psi.stub.DeclarationStub;
 import de.cofinpro.intellij.acfeplugin.psi.*;
+import com.intellij.psi.stubs.IStubElementType;
+import com.intellij.psi.tree.IElementType;
 
-public class FormulaEngineDeclarationImpl extends ASTWrapperPsiElement implements FormulaEngineDeclaration {
+public class FormulaEngineDeclarationImpl extends StubBasedPsiElementBase<DeclarationStub> implements FormulaEngineDeclaration {
+
+  public FormulaEngineDeclarationImpl(@NotNull DeclarationStub stub, @NotNull IStubElementType type) {
+    super(stub, type);
+  }
 
   public FormulaEngineDeclarationImpl(@NotNull ASTNode node) {
     super(node);
+  }
+
+  public FormulaEngineDeclarationImpl(DeclarationStub stub, IElementType type, ASTNode node) {
+    super(stub, type, node);
   }
 
   public void accept(@NotNull FormulaEngineVisitor visitor) {

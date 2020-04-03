@@ -271,7 +271,9 @@ IfOrElseBlock ::= LEFT_CURLY_BRACE ControlStructureBody RIGHT_CURLY_BRACE | Cont
 private SeqBody ::= Assignment | CalculationExpression | FunctionInvocation | ListLiteral | BuiltInVariableName
 
 Declaration ::= (FullDeclaration | DeclarationWithoutType) DeclarationInitialization? {
-    implements = ["de.cofinpro.intellij.acfeplugin.psi.FormulaEngineNameIdentifierOwner"]
+    implements = ["de.cofinpro.intellij.acfeplugin.psi.FormulaEngineNameIdentifierOwner" "com.intellij.psi.StubBasedPsiElement<de.cofinpro.intellij.acfeplugin.psi.stub.DeclarationStub>"]
+    stubClass = "de.cofinpro.intellij.acfeplugin.psi.stub.DeclarationStub"
+    elementTypeClass = "de.cofinpro.intellij.acfeplugin.psi.stub.DeclarationElementType"
     methods = [ getName getTextOffset ]
 }
 private DeclarationInitialization ::= DeclarationOperator SeqOrExpression { pin = 1 }

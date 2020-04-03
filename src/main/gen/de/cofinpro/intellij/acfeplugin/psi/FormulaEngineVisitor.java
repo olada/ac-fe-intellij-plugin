@@ -5,6 +5,7 @@ import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.StubBasedPsiElement;
+import de.cofinpro.intellij.acfeplugin.psi.stub.DeclarationStub;
 import de.cofinpro.intellij.acfeplugin.psi.stub.FunctionDefinitionStub;
 
 public class FormulaEngineVisitor extends PsiElementVisitor {
@@ -51,6 +52,7 @@ public class FormulaEngineVisitor extends PsiElementVisitor {
 
   public void visitDeclaration(@NotNull FormulaEngineDeclaration o) {
     visitNameIdentifierOwner(o);
+    // visitStubBasedPsiElement(o);
   }
 
   public void visitDoWhile(@NotNull FormulaEngineDoWhile o) {
