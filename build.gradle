@@ -34,6 +34,7 @@ patchPluginXml {
         <ul>
             <li>Resolve references for variables (including global and/or top level declarations)</li>
             <li>Find usages for variables and function parameters</li>
+            <li>Function renaming</li>
         </ul>
     </p>
     
