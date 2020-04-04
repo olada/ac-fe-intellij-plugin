@@ -65,4 +65,9 @@ public class FormulaEngineFunctionDefinitionImpl extends StubBasedPsiElementBase
     return FormulaEnginePsiImplUtil.getTextOffset(this);
   }
 
+  @Override
+  public PsiElement setName(String name) {
+    return FormulaEnginePsiImplUtil.setName(this, name);
+  }
+
 }

@@ -4,8 +4,10 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiPolyVariantReference;
 import com.intellij.psi.ResolveResult;
+import com.intellij.psi.impl.source.tree.LeafPsiElement;
 import com.intellij.psi.search.ProjectScope;
 import com.intellij.psi.stubs.StubIndex;
+import com.intellij.util.IncorrectOperationException;
 import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineFunctionDefinition;
 import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineFunctionInvocation;
 import de.cofinpro.intellij.acfeplugin.psi.stub.FunctionDefinitionsStubIndex;
@@ -47,5 +49,22 @@ public class FormulaEngineFunctionReference extends FormulaEngineReference imple
         }
 
         return null;
+    }
+
+    /**
+     * Needs to be overridden to support the rename operation for references to the function definition.
+     * @param newElementName new name of function definition
+     * @return new element with updated name
+     * @throws IncorrectOperationException (only applies if no identifier is present)
+     */
+    @Override
+    public PsiElement handleElementRename(@NotNull String newElementName) throws IncorrectOperationException {
+        LeafPsiElement identifier = (LeafPsiElement) functionInvocation.getIdentifier();
+        if (identifier != null) {
+            return (LeafPsiElement) identifier.replaceWithText(newElementName);
+        } else {
+            // identifier should never be null
+            return super.handleElementRename(newElementName);
+        }
     }
 }
