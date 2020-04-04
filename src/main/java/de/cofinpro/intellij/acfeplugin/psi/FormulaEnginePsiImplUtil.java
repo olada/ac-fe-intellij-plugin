@@ -1,6 +1,8 @@
 package de.cofinpro.intellij.acfeplugin.psi;
 
+import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiReference;
+import com.intellij.psi.impl.source.tree.LeafPsiElement;
 import de.cofinpro.intellij.acfeplugin.psi.stub.FunctionDefinitionStub;
 import de.cofinpro.intellij.acfeplugin.referencing.FormulaEngineArrayAccessReference;
 import de.cofinpro.intellij.acfeplugin.referencing.FormulaEngineFunctionReference;
@@ -85,5 +87,16 @@ public class FormulaEnginePsiImplUtil {
      */
     public static int getTextOffset(FormulaEngineFunctionParameter functionParameter) {
         return functionParameter.getIdentifierLiteral().getTextOffset();
+    }
+
+    /**
+     * Called, when the rename refactoring action is invoked on a function definition (or a reference).
+     * @param functionDefinition the function definition which the operation is applied to
+     * @param name new name
+     * @return new element
+     */
+    public static PsiElement setName(FormulaEngineFunctionDefinition functionDefinition, String name) {
+        LeafPsiElement identifier = (LeafPsiElement) functionDefinition.getIdentifier();
+        return (LeafPsiElement) identifier.replaceWithText(name);
     }
 }

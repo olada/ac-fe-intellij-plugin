@@ -22,4 +22,6 @@ public interface FormulaEngineFunctionDefinition extends FormulaEngineNameIdenti
 
   int getTextOffset();
 
+  PsiElement setName(String name);
+
 }

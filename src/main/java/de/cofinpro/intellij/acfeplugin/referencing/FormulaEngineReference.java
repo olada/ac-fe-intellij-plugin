@@ -7,6 +7,7 @@ import com.intellij.psi.PsiReferenceBase;
 import com.intellij.psi.search.ProjectScope;
 import com.intellij.psi.stubs.StubIndex;
 import com.intellij.psi.util.PsiTreeUtil;
+import com.intellij.util.IncorrectOperationException;
 import de.cofinpro.intellij.acfeplugin.psi.*;
 import de.cofinpro.intellij.acfeplugin.psi.stub.DeclarationStubIndex;
 import org.jetbrains.annotations.NotNull;
@@ -25,7 +26,13 @@ import java.util.Optional;
  */
 public abstract class FormulaEngineReference extends PsiReferenceBase<PsiElement> {
     public FormulaEngineReference(@NotNull PsiElement element) {
-        super(element);
+        /*
+         * Taken from Terence Parr's comment from https://intellij-support.jetbrains.com/hc/en-us/community/posts/206751155/comments/206653549
+         * WARNING: You must send the text range or you get this error:
+         * "Cannot find manipulator for PsiElement(ID) in org.antlr.jetbrains.sample.SampleElementRef"...
+         *  when you click on an identifier.
+         */
+        super(element, element.getTextRange());
     }
 
     /**
