@@ -59,12 +59,6 @@ public class FormulaEngineFunctionReference extends FormulaEngineReference imple
      */
     @Override
     public PsiElement handleElementRename(@NotNull String newElementName) throws IncorrectOperationException {
-        LeafPsiElement identifier = (LeafPsiElement) functionInvocation.getIdentifier();
-        if (identifier != null) {
-            return (LeafPsiElement) identifier.replaceWithText(newElementName);
-        } else {
-            // identifier should never be null
-            return super.handleElementRename(newElementName);
-        }
+        return handleElementRename(functionInvocation.getIdentifier(), newElementName);
     }
 }

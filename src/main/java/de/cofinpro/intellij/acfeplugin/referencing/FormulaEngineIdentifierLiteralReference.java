@@ -3,6 +3,7 @@ package de.cofinpro.intellij.acfeplugin.referencing;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiPolyVariantReference;
 import com.intellij.psi.ResolveResult;
+import com.intellij.util.IncorrectOperationException;
 import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineIdentifierLiteral;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -26,5 +27,10 @@ public class FormulaEngineIdentifierLiteralReference extends FormulaEngineRefere
     @Override
     public ResolveResult[] multiResolve(boolean incompleteCode) {
         return new ResolveResult[0];
+    }
+
+    @Override
+    public PsiElement handleElementRename(@NotNull String newElementName) throws IncorrectOperationException {
+        return super.handleElementRename(identifierLiteral.getIdentifier(), newElementName);
     }
 }

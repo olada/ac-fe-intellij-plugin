@@ -168,7 +168,7 @@ FunctionDefinition ::= KEYWORD_FUNCTION IDENTIFIER LEFT_PARENTHESIS FunctionPara
 FunctionParameters ::= FunctionParameter (COMMA FunctionParameter)*
 FunctionParameter ::= ParameterWithType | ParameterWithoutType {
     implements = ["de.cofinpro.intellij.acfeplugin.psi.FormulaEngineNameIdentifierOwner"]
-    methods = [ getName getTextOffset ]
+    methods = [ getName getTextOffset setName ]
 }
 private ParameterWithoutType ::= IdentifierLiteral
 private ParameterWithType ::= Type IdentifierLiteral
@@ -274,7 +274,7 @@ Declaration ::= (FullDeclaration | DeclarationWithoutType) DeclarationInitializa
     implements = ["de.cofinpro.intellij.acfeplugin.psi.FormulaEngineNameIdentifierOwner" "com.intellij.psi.StubBasedPsiElement<de.cofinpro.intellij.acfeplugin.psi.stub.DeclarationStub>"]
     stubClass = "de.cofinpro.intellij.acfeplugin.psi.stub.DeclarationStub"
     elementTypeClass = "de.cofinpro.intellij.acfeplugin.psi.stub.DeclarationElementType"
-    methods = [ getName getTextOffset ]
+    methods = [ getName getTextOffset setName ]
 }
 private DeclarationInitialization ::= DeclarationOperator SeqOrExpression { pin = 1 }
 private SeqOrExpression ::= Seq | Expression

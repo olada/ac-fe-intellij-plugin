@@ -4,6 +4,7 @@ import com.intellij.openapi.util.TextRange;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiReferenceBase;
+import com.intellij.psi.impl.source.tree.LeafPsiElement;
 import com.intellij.psi.search.ProjectScope;
 import com.intellij.psi.stubs.StubIndex;
 import com.intellij.psi.util.PsiTreeUtil;
@@ -95,5 +96,15 @@ public abstract class FormulaEngineReference extends PsiReferenceBase<PsiElement
         }
 
         return findFirstDeclarationWalkingUp(identifierToSearch, parent);
+    }
+
+    protected PsiElement handleElementRename(PsiElement identifierElement, String newName) {
+        LeafPsiElement identifier = (LeafPsiElement) identifierElement;
+        if (identifier != null) {
+            return (LeafPsiElement) identifier.replaceWithText(newName);
+        } else {
+            // identifier should never be null
+            return super.handleElementRename(newName);
+        }
     }
 }

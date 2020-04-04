@@ -96,7 +96,31 @@ public class FormulaEnginePsiImplUtil {
      * @return new element
      */
     public static PsiElement setName(FormulaEngineFunctionDefinition functionDefinition, String name) {
-        LeafPsiElement identifier = (LeafPsiElement) functionDefinition.getIdentifier();
+        return setName(functionDefinition.getIdentifier(), name);
+    }
+
+    /**
+     * Called, when the rename refactoring action is invoked on a declaration (or a reference).
+     * @param declaration the declaration which the operation is applied to
+     * @param name new name
+     * @return new element
+     */
+    public static PsiElement setName(FormulaEngineDeclaration declaration, String name) {
+        return setName(declaration.getIdentifierLiteral().getIdentifier(), name);
+    }
+
+    /**
+     * Called, when the rename refactoring action is invoked on a function parameter (or a reference).
+     * @param parameter the function definition which the operation is applied to
+     * @param name new name
+     * @return new element
+     */
+    public static PsiElement setName(FormulaEngineFunctionParameter parameter, String name) {
+        return setName(parameter.getIdentifierLiteral().getIdentifier(), name);
+    }
+
+    private static PsiElement setName(PsiElement e, String name) {
+        LeafPsiElement identifier = (LeafPsiElement) e;
         return (LeafPsiElement) identifier.replaceWithText(name);
     }
 }

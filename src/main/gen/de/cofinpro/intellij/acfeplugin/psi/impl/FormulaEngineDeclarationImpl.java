@@ -77,4 +77,9 @@ public class FormulaEngineDeclarationImpl extends StubBasedPsiElementBase<Declar
     return FormulaEnginePsiImplUtil.getTextOffset(this);
   }
 
+  @Override
+  public PsiElement setName(String name) {
+    return FormulaEnginePsiImplUtil.setName(this, name);
+  }
+
 }
