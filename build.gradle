@@ -35,7 +35,7 @@ patchPluginXml {
             <li>Resolve references for variables (including global and/or top level declarations)</li>
             <li>Find usages for variables and function parameters</li>
             <li>Rename functions, parameters and declarations (with in-place-rename support)</li>
-            <li>Structure view shows top level declarations</li>
+            <li>Structure view shows top level declarations (with filter possibilities for functions and declarations)</li>
         </ul>
     </p>
     
