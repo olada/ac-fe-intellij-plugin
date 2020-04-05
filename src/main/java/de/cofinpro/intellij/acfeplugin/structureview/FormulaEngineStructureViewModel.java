@@ -3,8 +3,7 @@ package de.cofinpro.intellij.acfeplugin.structureview;
 import com.intellij.ide.structureView.StructureViewModel;
 import com.intellij.ide.structureView.StructureViewModelBase;
 import com.intellij.ide.structureView.StructureViewTreeElement;
-import com.intellij.ide.util.treeView.smartTree.Filter;
-import com.intellij.ide.util.treeView.smartTree.Sorter;
+import com.intellij.ide.util.treeView.smartTree.*;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.psi.PsiFile;
 import org.jetbrains.annotations.NotNull;
@@ -30,6 +29,6 @@ public class FormulaEngineStructureViewModel extends StructureViewModelBase impl
     @NotNull
     @Override
     public Filter[] getFilters() {
-        return super.getFilters();
+        return new Filter[]{ new ShowDeclarationsFilter() };
     }
 }

@@ -110,4 +110,12 @@ public class FormulaEngineStructureViewElement implements ItemPresentation, Stru
         }
         return null;
     }
+
+    public boolean isFunctionDefinition() {
+        return psiElement instanceof FormulaEngineFunctionDefinition;
+    }
+
+    public boolean isDeclaration() {
+        return psiElement instanceof FormulaEngineDeclaration;
+    }
 }
