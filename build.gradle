@@ -37,7 +37,7 @@ patchPluginXml {
             <li>Rename functions, parameters and declarations (with in-place-rename support)</li>
             <li>Structure view shows top level variable declarations (with filter possibilities for functions and declarations)</li>
             <li>Structure view shows inner functions</li>
-            <li>Enhanced function resolving, so only functions are found from anywhere, if they are declared at top level</li>
+            <li>Enhanced function resolving which honors localilty of functions (inner functions). Therefore, only functions are found from anywhere, if they are declared at top level</li>
         </ul>
     </p>
     
