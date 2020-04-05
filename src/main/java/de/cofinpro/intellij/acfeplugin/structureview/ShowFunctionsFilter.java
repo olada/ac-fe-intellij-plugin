@@ -10,8 +10,8 @@ import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Allows filtering declarations in structure view.
- * By declaring this filter as "reverted", the filter is enabled by default - therefore declarations are shown
+ * Allows filtering functions in structure view.
+ * By declaring this filter as "reverted", the filter is enabled by default - therefore functions are shown
  * by default.
  */
 class ShowFunctionsFilter implements Filter {
