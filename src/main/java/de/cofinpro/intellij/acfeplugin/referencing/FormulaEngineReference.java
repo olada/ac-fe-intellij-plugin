@@ -12,6 +12,7 @@ import com.intellij.util.IncorrectOperationException;
 import de.cofinpro.intellij.acfeplugin.psi.*;
 import de.cofinpro.intellij.acfeplugin.psi.stub.DeclarationStubIndex;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -64,17 +65,7 @@ public abstract class FormulaEngineReference extends PsiReferenceBase<PsiElement
         }
 
         PsiElement parent = currentElement.getParent();
-        PsiElement[] elementsInParent = null;
-        if (parent instanceof FormulaEngineControlStructureBody
-                || parent instanceof FormulaEngineFunctionBody
-                || parent instanceof PsiFile) {
-            elementsInParent = PsiTreeUtil.getChildrenOfType(parent, FormulaEngineStatement.class);
-        } else if (parent instanceof FormulaEngineFunctionDefinition) {
-            FormulaEngineFunctionParameters functionParameters = ((FormulaEngineFunctionDefinition) parent).getFunctionParameters();
-            if (functionParameters != null) {
-                elementsInParent = functionParameters.getFunctionParameterList().toArray(new PsiElement[0]);
-            }
-        }
+        PsiElement[] elementsInParent = getElementsFromParent(parent);
 
         if (elementsInParent != null) {
             for (PsiElement element : elementsInParent) {
@@ -96,6 +87,22 @@ public abstract class FormulaEngineReference extends PsiReferenceBase<PsiElement
         }
 
         return findFirstDeclarationWalkingUp(identifierToSearch, parent);
+    }
+
+    @Nullable
+    private PsiElement[] getElementsFromParent(PsiElement parent) {
+        PsiElement[] elementsInParent = null;
+        if (parent instanceof FormulaEngineControlStructureBody
+                || parent instanceof FormulaEngineFunctionBody
+                || parent instanceof PsiFile) {
+            elementsInParent = PsiTreeUtil.getChildrenOfType(parent, FormulaEngineStatement.class);
+        } else if (parent instanceof FormulaEngineFunctionDefinition) {
+            FormulaEngineFunctionParameters functionParameters = ((FormulaEngineFunctionDefinition) parent).getFunctionParameters();
+            if (functionParameters != null) {
+                elementsInParent = functionParameters.getFunctionParameterList().toArray(new PsiElement[0]);
+            }
+        }
+        return elementsInParent;
     }
 
     protected PsiElement handleElementRename(PsiElement identifierElement, String newName) {
