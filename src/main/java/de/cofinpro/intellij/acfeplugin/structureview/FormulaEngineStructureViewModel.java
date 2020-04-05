@@ -29,6 +29,6 @@ public class FormulaEngineStructureViewModel extends StructureViewModelBase impl
     @NotNull
     @Override
     public Filter[] getFilters() {
-        return new Filter[]{ new ShowDeclarationsFilter() };
+        return new Filter[]{ new ShowDeclarationsFilter(), new ShowFunctionsFilter() };
     }
 }
