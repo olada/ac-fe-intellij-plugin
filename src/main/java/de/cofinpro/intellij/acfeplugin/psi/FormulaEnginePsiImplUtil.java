@@ -3,17 +3,46 @@ package de.cofinpro.intellij.acfeplugin.psi;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiReference;
 import com.intellij.psi.impl.source.tree.LeafPsiElement;
+import com.intellij.psi.util.PsiTreeUtil;
 import de.cofinpro.intellij.acfeplugin.psi.stub.FunctionDefinitionStub;
 import de.cofinpro.intellij.acfeplugin.referencing.FormulaEngineArrayAccessReference;
 import de.cofinpro.intellij.acfeplugin.referencing.FormulaEngineFunctionReference;
 import de.cofinpro.intellij.acfeplugin.referencing.FormulaEngineIdentifierLiteralReference;
 import de.cofinpro.intellij.acfeplugin.referencing.FormulaEngineLeafExpressionReference;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
 /**
  * Contains util functions which can be injected into PSI implementations via grammar kit.
  */
 public class FormulaEnginePsiImplUtil {
     private FormulaEnginePsiImplUtil() {}
+
+    public static List<FormulaEngineFunctionDefinition> getInnerFunctionDefinitions(FormulaEngineFunctionDefinition functionDefinition) {
+        FunctionDefinitionStub stub = functionDefinition.getStub();
+        if (stub != null) {
+            if (stub.hasInnerFunctionDefinitions()) {
+                return getFunctionDefinitions(functionDefinition);
+            } else {
+                return Collections.emptyList();
+            }
+        } else {
+            return getFunctionDefinitions(functionDefinition);
+        }
+    }
+
+    private static List<FormulaEngineFunctionDefinition> getFunctionDefinitions(FormulaEngineFunctionDefinition functionDefinition) {
+        if (!functionDefinition.getFunctionBody().getStatementList().isEmpty()) {
+            List<FormulaEngineStatement> statements = functionDefinition.getFunctionBody().getStatementList();
+            return statements.stream()
+                    .filter(statement -> statement.getFunctionDefinition() != null)
+                    .map(FormulaEngineStatement::getFunctionDefinition)
+                    .collect(Collectors.toList());
+        }
+        return Collections.emptyList();
+    }
 
     public static String getName(FormulaEngineFunctionDefinition functionDefinition) {
         FunctionDefinitionStub stub = functionDefinition.getStub();

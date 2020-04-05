@@ -48,7 +48,6 @@ public interface FormulaEngineElementTypes {
   IElementType STATEMENT = new FormulaEngineElementType("STATEMENT");
   IElementType STRING_LITERAL = new FormulaEngineElementType("STRING_LITERAL");
   IElementType SWITCH = new FormulaEngineElementType("SWITCH");
-  IElementType TOP_LEVEL_ITEM = new FormulaEngineElementType("TOP_LEVEL_ITEM");
   IElementType TYPE = new FormulaEngineElementType("TYPE");
   IElementType UNARY_EXPRESSION = new FormulaEngineElementType("UNARY_EXPRESSION");
   IElementType VISIBILITY = new FormulaEngineElementType("VISIBILITY");
@@ -292,9 +291,6 @@ public interface FormulaEngineElementTypes {
       }
       else if (type == SWITCH) {
         return new FormulaEngineSwitchImpl(node);
-      }
-      else if (type == TOP_LEVEL_ITEM) {
-        return new FormulaEngineTopLevelItemImpl(node);
       }
       else if (type == TYPE) {
         return new FormulaEngineTypeImpl(node);

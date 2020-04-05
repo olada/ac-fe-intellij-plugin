@@ -164,10 +164,6 @@ public class FormulaEngineVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitTopLevelItem(@NotNull FormulaEngineTopLevelItem o) {
-    visitPsiElement(o);
-  }
-
   public void visitType(@NotNull FormulaEngineType o) {
     visitPsiElement(o);
   }

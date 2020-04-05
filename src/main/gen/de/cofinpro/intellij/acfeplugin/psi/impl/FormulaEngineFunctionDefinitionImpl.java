@@ -56,6 +56,11 @@ public class FormulaEngineFunctionDefinitionImpl extends StubBasedPsiElementBase
   }
 
   @Override
+  public List<FormulaEngineFunctionDefinition> getInnerFunctionDefinitions() {
+    return FormulaEnginePsiImplUtil.getInnerFunctionDefinitions(this);
+  }
+
+  @Override
   public String getName() {
     return FormulaEnginePsiImplUtil.getName(this);
   }

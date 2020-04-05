@@ -37,19 +37,19 @@ public class FormulaEngineFileImpl extends PsiFileBase implements FormulaEngineF
     }
 
     private Collection<PsiElement> collectTopLevelElements() {
-        List<PsiElement> elements = PsiTreeUtil.getChildrenOfTypeAsList(this, FormulaEngineTopLevelItem.class).stream()
-                .filter(e -> e.getFunctionDefinition() != null || (e.getStatement() != null && e.getStatement().isDeclaration()))
+        List<PsiElement> elements = PsiTreeUtil.getChildrenOfAnyType(this, FormulaEngineStatement.class).stream()
+                .filter(e -> e.getFunctionDefinition() != null || e.isDeclaration())
                 .map(this::mapToChildElement)
                 .collect(Collectors.toList());
 
         return unmodifiableList(elements);
     }
 
-    private PsiElement mapToChildElement(FormulaEngineTopLevelItem topLevelItem) {
+    private PsiElement mapToChildElement(FormulaEngineStatement topLevelItem) {
         if (topLevelItem.getFunctionDefinition() != null) {
             return topLevelItem.getFunctionDefinition();
-        } else if (topLevelItem.getStatement() != null && topLevelItem.getStatement().isDeclaration()) {
-            return topLevelItem.getStatement().getDeclaration();
+        } else if (topLevelItem.isDeclaration()) {
+            return topLevelItem.getDeclaration();
         } else {
             throw new IllegalArgumentException("expected function definition or declaration");
         }

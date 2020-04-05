@@ -1278,19 +1278,6 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // FunctionDefinition | ControlStructure | Statement
-  public static boolean TopLevelItem(PsiBuilder b, int l) {
-    if (!recursion_guard_(b, l, "TopLevelItem")) return false;
-    boolean r;
-    Marker m = enter_section_(b, l, _NONE_, TOP_LEVEL_ITEM, "<top level item>");
-    r = FunctionDefinition(b, l + 1);
-    if (!r) r = ControlStructure(b, l + 1);
-    if (!r) r = Statement(b, l + 1);
-    exit_section_(b, l, m, r, false, null);
-    return r;
-  }
-
-  /* ********************************************************** */
   // KEYWORD_ANY
   //     | KEYWORD_BOOLEAN
   //     | KEYWORD_DATE
@@ -1362,12 +1349,12 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // TopLevelItem*
+  // Statement*
   static boolean feFile(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "feFile")) return false;
     while (true) {
       int c = current_position_(b);
-      if (!TopLevelItem(b, l + 1)) break;
+      if (!Statement(b, l + 1)) break;
       if (!empty_element_parsed_guard_(b, "feFile", c)) break;
     }
     return true;

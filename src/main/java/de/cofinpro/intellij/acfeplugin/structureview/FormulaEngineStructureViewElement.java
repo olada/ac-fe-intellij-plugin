@@ -18,6 +18,7 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
 import java.util.Collection;
+import java.util.List;
 
 public class FormulaEngineStructureViewElement implements ItemPresentation, StructureViewTreeElement, NavigationItem {
     private static final FormulaEnginePsiPresentationTextCreator psiPresenter = new FormulaEnginePsiPresentationTextCreator();
@@ -51,6 +52,9 @@ public class FormulaEngineStructureViewElement implements ItemPresentation, Stru
         if (psiElement instanceof FormulaEngineFile) {
             Collection<PsiElement> topLevelItems = ((FormulaEngineFile) psiElement).getTopLevelElements();
             return topLevelItems.stream().map(FormulaEngineStructureViewElement::new).toArray(TreeElement[]::new);
+        } else if (psiElement instanceof FormulaEngineFunctionDefinition) {
+            List<FormulaEngineFunctionDefinition> innerFunctionDefinitions = ((FormulaEngineFunctionDefinition) psiElement).getInnerFunctionDefinitions();
+            return innerFunctionDefinitions.stream().map(FormulaEngineStructureViewElement::new).toArray(TreeElement[]::new);
         }
         return EMPTY_ARRAY;
     }
