@@ -11,6 +11,7 @@ import com.intellij.pom.Navigatable;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.util.PlatformIcons;
+import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineDeclaration;
 import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineFunctionDefinition;
 import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineNameIdentifierOwner;
 import de.cofinpro.intellij.acfeplugin.psi.FormulaEnginePsiPresentationTextCreator;
@@ -18,7 +19,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
-import java.util.List;
+import java.util.Collection;
 
 public class FormulaEngineStructureViewFactory implements PsiStructureViewFactory {
     @Nullable
@@ -42,7 +43,6 @@ public class FormulaEngineStructureViewFactory implements PsiStructureViewFactor
 
         public Model(@NotNull PsiFile psiFile, @Nullable Editor editor, @NotNull StructureViewTreeElement root) {
             super(psiFile, editor, root);
-            withSuitableClasses(FormulaEngineFile.class, FormulaEngineFunctionDefinition.class);
             withSorters(Sorter.ALPHA_SORTER);
         }
 
@@ -87,8 +87,8 @@ public class FormulaEngineStructureViewFactory implements PsiStructureViewFactor
         @Override
         public TreeElement[] getChildren() {
             if (psiElement instanceof FormulaEngineFile) {
-                List<FormulaEngineFunctionDefinition> functionDefinitions = ((FormulaEngineFile) psiElement).getFunctionDefinitions();
-                return functionDefinitions.stream().map(Element::new).toArray(TreeElement[]::new);
+                Collection<PsiElement> topLevelItems = ((FormulaEngineFile) psiElement).getTopLevelElements();
+                return topLevelItems.stream().map(Element::new).toArray(TreeElement[]::new);
             }
             return EMPTY_ARRAY;
         }
@@ -120,6 +120,9 @@ public class FormulaEngineStructureViewFactory implements PsiStructureViewFactor
             if (psiElement instanceof FormulaEngineFunctionDefinition) {
                 return psiPresenter.createTextFor((FormulaEngineFunctionDefinition) psiElement);
             }
+            if (psiElement instanceof FormulaEngineDeclaration) {
+                return psiPresenter.createTextFor((FormulaEngineDeclaration) psiElement);
+            }
             return null;
         }
 
@@ -140,6 +143,8 @@ public class FormulaEngineStructureViewFactory implements PsiStructureViewFactor
             }
             else if (psiElement instanceof FormulaEngineFunctionDefinition) {
                 return PlatformIcons.METHOD_ICON;
+            } else if (psiElement instanceof FormulaEngineDeclaration) {
+                return PlatformIcons.VARIABLE_ICON;
             }
             return null;
         }

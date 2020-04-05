@@ -11,4 +11,13 @@ public class FormulaEnginePsiPresentationTextCreator {
         stringBuilder.append(')');
         return stringBuilder.toString();
     }
+
+    public String createTextFor(FormulaEngineDeclaration declaration) {
+        StringBuilder stringBuilder = new StringBuilder(declaration.getIdentifierLiteral().getText());
+        if (declaration.getType() != null) {
+            stringBuilder.append(" : ");
+            stringBuilder.append(declaration.getType().getText());
+        }
+        return stringBuilder.toString();
+    }
 }

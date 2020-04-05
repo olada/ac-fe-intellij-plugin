@@ -3,6 +3,7 @@ package de.cofinpro.intellij.acfeplugin.psi;
 import com.intellij.extapi.psi.PsiFileBase;
 import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.psi.FileViewProvider;
+import com.intellij.psi.PsiElement;
 import com.intellij.psi.util.CachedValue;
 import com.intellij.psi.util.CachedValueProvider;
 import com.intellij.psi.util.CachedValuesManager;
@@ -14,29 +15,44 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
-import static java.util.Collections.unmodifiableList;
+import static java.util.Collections.*;
 
 /**
  * Created by David Olah on 30.07.2018.
  */
 public class FormulaEngineFileImpl extends PsiFileBase implements FormulaEngineFile {
-    private final CachedValue<List<FormulaEngineFunctionDefinition>> functionDefinitions = createCachedValue(this::collectFunctionDefinitions);
+    private final CachedValue<Collection<PsiElement>> sortedTopLevelElements = createCachedValue(this::collectTopLevelElements);
 
     public FormulaEngineFileImpl(@NotNull FileViewProvider viewProvider) {
         super(viewProvider, FormulaEngineLanguage.INSTANCE);
     }
 
     @Override
-    public List<FormulaEngineFunctionDefinition> getFunctionDefinitions() {
-        return functionDefinitions.getValue();
+    public Collection<PsiElement> getTopLevelElements() {
+        return sortedTopLevelElements.getValue();
     }
 
-    private List<FormulaEngineFunctionDefinition> collectFunctionDefinitions() {
-        return unmodifiableList(new ArrayList<>(PsiTreeUtil.findChildrenOfType(this, FormulaEngineFunctionDefinition.class)));
+    private Collection<PsiElement> collectTopLevelElements() {
+        List<PsiElement> elements = PsiTreeUtil.getChildrenOfTypeAsList(this, FormulaEngineTopLevelItem.class).stream()
+                .filter(e -> e.getFunctionDefinition() != null || (e.getStatement() != null && e.getStatement().isDeclaration()))
+                .map(this::mapToChildElement)
+                .collect(Collectors.toList());
+
+        return unmodifiableList(elements);
+    }
+
+    private PsiElement mapToChildElement(FormulaEngineTopLevelItem topLevelItem) {
+        if (topLevelItem.getFunctionDefinition() != null) {
+            return topLevelItem.getFunctionDefinition();
+        } else if (topLevelItem.getStatement() != null && topLevelItem.getStatement().isDeclaration()) {
+            return topLevelItem.getStatement().getDeclaration();
+        } else {
+            throw new IllegalArgumentException("expected function definition or declaration");
+        }
     }
 
     @NotNull
