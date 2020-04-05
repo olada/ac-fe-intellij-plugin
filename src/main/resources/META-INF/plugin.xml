@@ -39,7 +39,7 @@
         <stubIndex implementation="de.cofinpro.intellij.acfeplugin.psi.stub.FunctionDefinitionsStubIndex"/>
         <stubIndex implementation="de.cofinpro.intellij.acfeplugin.psi.stub.DeclarationStubIndex"/>
         <lang.psiStructureViewFactory language="FormulaEngine"
-                                      implementationClass="de.cofinpro.intellij.acfeplugin.FormulaEngineStructureViewFactory" />
+                                      implementationClass="de.cofinpro.intellij.acfeplugin.structureview.FormulaEngineStructureViewFactory" />
         <lang.documentationProvider language="FormulaEngine"
                                     implementationClass="de.cofinpro.intellij.acfeplugin.FormulaEngineDocumentationProvider" />
         <lang.findUsagesProvider language="FormulaEngine"
