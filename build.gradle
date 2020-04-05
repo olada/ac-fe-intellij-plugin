@@ -30,7 +30,7 @@ intellij {
 patchPluginXml {
     changeNotes """
     <p>
-        <h2>Version 0.0.7 (2020-04-??)</h2>
+        <h2>Version 0.0.7 (2020-04-06)</h2>
         <ul>
             <li>Resolve references for variables (including global and/or top level declarations)</li>
             <li>Find usages for variables and function parameters</li>

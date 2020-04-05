@@ -16,7 +16,7 @@ public class FormulaEngineDocumentationProvider implements DocumentationProvider
             FormulaEngineFunctionDefinition functionDefinition = (FormulaEngineFunctionDefinition) element;
             String functionHeader = psiPresentationTextCreator.createTextFor(functionDefinition);
             String fileName = functionDefinition.getContainingFile().getVirtualFile().getName();
-            return functionHeader + " [ " + fileName + "]";
+            return functionHeader + " [" + fileName + "]";
         }
 
         return null;
