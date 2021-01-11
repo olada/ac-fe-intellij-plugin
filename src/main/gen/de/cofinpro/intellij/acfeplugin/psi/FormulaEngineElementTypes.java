@@ -63,6 +63,7 @@ public interface FormulaEngineElementTypes {
   IElementType BUILT_IN_FUNC_DAYPLUS = new FormulaEngineTokenType("dayplus");
   IElementType BUILT_IN_FUNC_DICT = new FormulaEngineTokenType("dict");
   IElementType BUILT_IN_FUNC_ELT = new FormulaEngineTokenType("elt");
+  IElementType BUILT_IN_FUNC_EVALUATE = new FormulaEngineElementType("built in func evaluate");
   IElementType BUILT_IN_FUNC_FIRST = new FormulaEngineTokenType("first");
   IElementType BUILT_IN_FUNC_FLOAT = new FormulaEngineTokenType("float");
   IElementType BUILT_IN_FUNC_HASH_GET = new FormulaEngineTokenType("hash_get");

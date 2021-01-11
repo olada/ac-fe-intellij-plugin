@@ -63,6 +63,7 @@ DIGIT = [0-9]
    "dayplus" { return FormulaEngineElementTypes.BUILT_IN_FUNC_DAYPLUS; }
    "dict" { return FormulaEngineElementTypes.BUILT_IN_FUNC_DICT; }
    "elt" { return FormulaEngineElementTypes.BUILT_IN_FUNC_ELT; }
+   "evaluate" { return FormulaEngineElementTypes.BUILT_IN_FUNC_EVALUATE; }
    "first" { return FormulaEngineElementTypes.BUILT_IN_FUNC_FIRST; }
    "float" { return FormulaEngineElementTypes.BUILT_IN_FUNC_FLOAT; }
    "integer" { return FormulaEngineElementTypes.BUILT_IN_FUNC_INTEGER; }
@@ -207,6 +208,7 @@ DIGIT = [0-9]
    "dayplus(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DAYPLUS; }
    "dict(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DICT; }
    "elt(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_ELT; }
+   "evaluate(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_EVALUATE; }
    "first(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_FIRST; }
    "float(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_FLOAT; }
    "integer(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_INTEGER; }
