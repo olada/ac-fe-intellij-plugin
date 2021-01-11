@@ -155,7 +155,8 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   //     | BUILT_IN_FUNC_BSEARCH
   //     | BUILT_IN_FUNC_CORRECT_PRICE_FIELD
   //     | BUILT_IN_FUNC_DATE | BUILT_IN_FUNC_DATETIME
-  //     | BUILT_IN_FUNC_DICT | BUILT_IN_FUNC_DICT_ISKEY | BUILT_IN_FUNC_DICT_KEYS | BUILT_IN_FUNC_DICT_PUT | BUILT_IN_FUNC_DICT_VALUES
+  //     | BUILT_IN_FUNC_DICT | BUILT_IN_FUNCTION_DICT_GET | BUILT_IN_FUNC_DICT_ISKEY
+  //     | BUILT_IN_FUNC_DICT_KEYS | BUILT_IN_FUNC_DICT_PUT | BUILT_IN_FUNC_DICT_VALUES
   //     | BUILT_IN_FUNC_STR | BUILT_IN_FUNC_FLOAT | BUILT_IN_FUNC_INTEGER | BUILT_IN_FUNC_LIST | BUILT_IN_FUNC_STRING
   //     | BUILT_IN_FUNC_DAYDIFF | BUILT_IN_FUNC_DAYPLUS
   //     | BUILT_IN_FUNC_ELT
@@ -195,6 +196,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_DATE);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_DATETIME);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_DICT);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_DICT_GET);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_DICT_ISKEY);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_DICT_KEYS);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_DICT_PUT);
