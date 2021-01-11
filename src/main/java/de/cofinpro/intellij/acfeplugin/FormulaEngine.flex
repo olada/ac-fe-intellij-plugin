@@ -101,6 +101,7 @@ DIGIT = [0-9]
    "string" { return FormulaEngineElementTypes.BUILT_IN_FUNC_STRING; }
    "strval" { return FormulaEngineElementTypes.BUILT_IN_FUNC_STRVAL; }
    "time" { return FormulaEngineElementTypes.BUILT_IN_FUNC_TIME; }
+   "toupper" { return FormulaEngineElementTypes.BUILT_IN_FUNC_TOUPPER; }
    "ts" { return FormulaEngineElementTypes.BUILT_IN_FUNC_TS; }
    "ts_update" { return FormulaEngineElementTypes.BUILT_IN_FUNC_TS_UPDATE; }
 }
@@ -243,6 +244,7 @@ DIGIT = [0-9]
    "string(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STRING; }
    "strval(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STRVAL; }
    "time(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_TIME; }
+   "toupper(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_TOUPPER; }
    "ts(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_TS; }
    "ts_update(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_TS_UPDATE; }
 

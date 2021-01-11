@@ -142,6 +142,7 @@
             BUILT_IN_FUNC_STRING = 'built in func string'
             BUILT_IN_FUNC_STRVAL = 'built in func strval'
             BUILT_IN_FUNC_TIME = 'built in func time'
+            BUILT_IN_FUNC_TOUPPER = 'built in func toupper'
             BUILT_IN_FUNC_TS = 'built in func ts'
             BUILT_IN_FUNC_TS_UPDATE = 'built in func ts_update'
 
@@ -269,6 +270,7 @@ BuiltInFunctionName ::= BUILT_IN_FUNC_ATTRIBUTE
     | BUILT_IN_FUNC_STATUS
     | BUILT_IN_FUNC_STRVAL
     | BUILT_IN_FUNC_TIME
+    | BUILT_IN_FUNC_TOUPPER
     | BUILT_IN_FUNC_TS
     | BUILT_IN_FUNC_TS_UPDATE
 FunctionBody ::= Statement*
