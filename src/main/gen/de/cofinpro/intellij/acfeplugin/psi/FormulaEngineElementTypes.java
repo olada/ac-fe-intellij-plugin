@@ -73,6 +73,7 @@ public interface FormulaEngineElementTypes {
   IElementType BUILT_IN_FUNC_IS_LIST = new FormulaEngineTokenType("is_list");
   IElementType BUILT_IN_FUNC_IS_NA = new FormulaEngineTokenType("is_na");
   IElementType BUILT_IN_FUNC_IS_NUMBER = new FormulaEngineElementType("is_number");
+  IElementType BUILT_IN_FUNC_IS_OPAQUE = new FormulaEngineElementType("is_opaque");
   IElementType BUILT_IN_FUNC_IS_STRING = new FormulaEngineTokenType("is_string");
   IElementType BUILT_IN_FUNC_IS_TIME = new FormulaEngineElementType("is_time");
   IElementType BUILT_IN_FUNC_KERNEL = new FormulaEngineTokenType("kernel");

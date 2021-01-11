@@ -73,6 +73,7 @@ DIGIT = [0-9]
    "is_list" { return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_LIST; }
    "is_na" { return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_NA; }
    "is_number" { return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_NUMBER; }
+   "is_opaque" { return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_OPAQUE; }
    "is_string" { return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_STRING; }
    "is_time" { return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_TIME; }
    "kernel" { return FormulaEngineElementTypes.BUILT_IN_FUNC_KERNEL; }
@@ -207,7 +208,8 @@ DIGIT = [0-9]
    "hash_put(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_PUT; }
    "is_list(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_LIST; }
    "is_na(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_NA; }
-   "is_number(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_NUMBER;}
+   "is_number(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_NUMBER; }
+   "is_opaque(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_OPAQUE; }
    "is_string(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_STRING; }
    "is_time(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_TIME; }
    "kernel(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_KERNEL; }
