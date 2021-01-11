@@ -73,6 +73,7 @@ DIGIT = [0-9]
    "is_list" { return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_LIST; }
    "is_na" { return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_NA; }
    "is_string" { return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_STRING; }
+   "is_time" { return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_TIME; }
    "kernel" { return FormulaEngineElementTypes.BUILT_IN_FUNC_KERNEL; }
    "last" { return FormulaEngineElementTypes.BUILT_IN_FUNC_LAST; }
    "len" { return FormulaEngineElementTypes.BUILT_IN_FUNC_LEN; }
@@ -206,6 +207,7 @@ DIGIT = [0-9]
    "is_list(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_LIST; }
    "is_na(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_NA; }
    "is_string(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_STRING; }
+   "is_time(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_TIME; }
    "kernel(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_KERNEL; }
    "last(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_LAST; }
    "len(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_LEN; }
