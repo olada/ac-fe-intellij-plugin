@@ -67,6 +67,7 @@ public interface FormulaEngineElementTypes {
   IElementType BUILT_IN_FUNC_FIRST = new FormulaEngineTokenType("first");
   IElementType BUILT_IN_FUNC_FLOAT = new FormulaEngineTokenType("float");
   IElementType BUILT_IN_FUNC_HASH_GET = new FormulaEngineTokenType("hash_get");
+  IElementType BUILT_IN_FUNC_HASH_GLOBAL = new FormulaEngineElementType("built in func hash_global");
   IElementType BUILT_IN_FUNC_HASH_ISKEY = new FormulaEngineTokenType("hash_iskey");
   IElementType BUILT_IN_FUNC_HASH_KEYS = new FormulaEngineTokenType("hash_keys");
   IElementType BUILT_IN_FUNC_HASH_PUT = new FormulaEngineTokenType("hash_put");

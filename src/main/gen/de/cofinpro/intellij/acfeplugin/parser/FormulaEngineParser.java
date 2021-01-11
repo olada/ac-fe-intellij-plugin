@@ -159,7 +159,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   //     | BUILT_IN_FUNC_ELT
   //     | BUILT_IN_FUNC_EVALUATE
   //     | BUILT_IN_FUNC_FIRST
-  //     | BUILT_IN_FUNC_HASH_GET | BUILT_IN_FUNC_HASH_PUT | BUILT_IN_FUNC_HASH_ISKEY | BUILT_IN_FUNC_HASH_KEYS
+  //     | BUILT_IN_FUNC_HASH_GET | BUILT_IN_FUNC_HASH_GLOBAL | BUILT_IN_FUNC_HASH_PUT | BUILT_IN_FUNC_HASH_ISKEY | BUILT_IN_FUNC_HASH_KEYS
   //     | BUILT_IN_FUNC_IS_DATE | BUILT_IN_FUNCTION_IS_DATETIME | BUILT_IN_FUNCTION_IS_FLOAT | BUILT_IN_FUNC_IS_INTEGER | BUILT_IN_FUNC_IS_LIST
   //     | BUILT_IN_FUNC_IS_MATRIX | BUILT_IN_FUNC_IS_NA | BUILT_IN_FUNC_IS_NUMBER | BUILT_IN_FUNC_IS_OPAQUE | BUILT_IN_FUNC_IS_STRING
   //     | BUILT_IN_FUNC_KERNEL
@@ -203,6 +203,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_ELT);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_FIRST);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_HASH_GET);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_HASH_GLOBAL);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_HASH_PUT);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_HASH_ISKEY);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_HASH_KEYS);

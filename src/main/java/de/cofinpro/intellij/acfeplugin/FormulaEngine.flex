@@ -68,6 +68,7 @@ DIGIT = [0-9]
    "float" { return FormulaEngineElementTypes.BUILT_IN_FUNC_FLOAT; }
    "integer" { return FormulaEngineElementTypes.BUILT_IN_FUNC_INTEGER; }
    "hash_get" { return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_GET; }
+   "hash_global" { return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_GLOBAL; }
    "hash_iskey" { return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_ISKEY; }
    "hash_keys" { return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_KEYS; }
    "hash_put" { return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_PUT; }
@@ -213,6 +214,7 @@ DIGIT = [0-9]
    "float(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_FLOAT; }
    "integer(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_INTEGER; }
    "hash_get(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_GET; }
+   "hash_global(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_GLOBAL; }
    "hash_iskey(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_ISKEY; }
    "hash_keys(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_KEYS; }
    "hash_put(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_PUT; }
