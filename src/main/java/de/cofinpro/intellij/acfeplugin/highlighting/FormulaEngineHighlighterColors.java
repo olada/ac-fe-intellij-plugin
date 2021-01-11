@@ -125,6 +125,7 @@ public class FormulaEngineHighlighterColors {
     public static final TextAttributesKey INBUILT_FUNCTION_TOUPPER_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_TOUPPER", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_TS_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_TS", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_TS_UPDATE_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_TS_UPDATE", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_FUNCTION_YEAR_FRACTION_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_YEAR_FRACTION", DefaultLanguageHighlighterColors.STATIC_FIELD);
 
     // General Tokens
     public static final TextAttributesKey NUMBER_SCIENTIFIC = createTextAttributesKey("FE_NUMBER_SCIENTIFIC", DefaultLanguageHighlighterColors.NUMBER);

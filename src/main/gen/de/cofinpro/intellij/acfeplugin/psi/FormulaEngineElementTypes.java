@@ -107,6 +107,7 @@ public interface FormulaEngineElementTypes {
   IElementType BUILT_IN_FUNC_TOUPPER = new FormulaEngineElementType("built in func toupper");
   IElementType BUILT_IN_FUNC_TS = new FormulaEngineTokenType("built in func ts");
   IElementType BUILT_IN_FUNC_TS_UPDATE = new FormulaEngineTokenType("built in func ts_update");
+  IElementType BUILT_IN_FUNC_YEAR_FRACTION = new FormulaEngineElementType("built in func year_fraction");
   IElementType BUILT_IN_VAR_DATA = new FormulaEngineTokenType("$DATA");
   IElementType BUILT_IN_VAR_DATETIME = new FormulaEngineTokenType("$DATETIME");
   IElementType BUILT_IN_VAR_DEPENDENCIES = new FormulaEngineTokenType("$DEPENDENCIES");

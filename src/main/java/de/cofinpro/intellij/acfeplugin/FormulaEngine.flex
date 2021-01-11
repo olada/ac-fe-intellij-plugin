@@ -107,6 +107,7 @@ DIGIT = [0-9]
    "toupper" { return FormulaEngineElementTypes.BUILT_IN_FUNC_TOUPPER; }
    "ts" { return FormulaEngineElementTypes.BUILT_IN_FUNC_TS; }
    "ts_update" { return FormulaEngineElementTypes.BUILT_IN_FUNC_TS_UPDATE; }
+   "year_fraction" { return FormulaEngineElementTypes.BUILT_IN_FUNC_YEAR_FRACTION; }
 }
 
 // Der Function Header soll Datentypen nicht als built-in methode markieren (clash von datentypen und built-in Methodennamen, bspw "string" oder "integer" -> klassische cast funktionen)
@@ -253,6 +254,7 @@ DIGIT = [0-9]
    "toupper(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_TOUPPER; }
    "ts(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_TS; }
    "ts_update(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_TS_UPDATE; }
+   "year_fraction(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_YEAR_FRACTION; }
 
    "," { return FormulaEngineElementTypes.COMMA; }
    ";" { return FormulaEngineElementTypes.SEMICOLON; }
