@@ -170,6 +170,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   //     | BUILT_IN_FUNC_MAX
   //     | BUILT_IN_FUNC_OUT
   //     | BUILT_IN_FUNC_REMOVE
+  //     | BUILT_IN_FUNC_SET_SUSPECT_PRICE_FIELD
   //     | BUILT_IN_FUNC_SQL
   //     | BUILT_IN_FUNC_SORT
   //     | BUILT_IN_FUNC_STATUS
@@ -212,6 +213,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_MAX);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_OUT);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_REMOVE);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_SET_SUSPECT_PRICE_FIELD);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_SQL);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_SORT);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_STATUS);
