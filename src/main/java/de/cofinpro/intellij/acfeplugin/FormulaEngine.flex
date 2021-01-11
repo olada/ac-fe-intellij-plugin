@@ -99,6 +99,7 @@ DIGIT = [0-9]
    "status" { return FormulaEngineElementTypes.BUILT_IN_FUNC_STATUS; }
    "str" { return FormulaEngineElementTypes.BUILT_IN_FUNC_STR; }
    "string" { return FormulaEngineElementTypes.BUILT_IN_FUNC_STRING; }
+   "strval" { return FormulaEngineElementTypes.BUILT_IN_FUNC_STRVAL; }
    "time" { return FormulaEngineElementTypes.BUILT_IN_FUNC_TIME; }
    "ts" { return FormulaEngineElementTypes.BUILT_IN_FUNC_TS; }
    "ts_update" { return FormulaEngineElementTypes.BUILT_IN_FUNC_TS_UPDATE; }
@@ -240,6 +241,7 @@ DIGIT = [0-9]
    "status(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STATUS; }
    "str(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STR; }
    "string(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STRING; }
+   "strval(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STRVAL; }
    "time(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_TIME; }
    "ts(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_TS; }
    "ts_update(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_TS_UPDATE; }

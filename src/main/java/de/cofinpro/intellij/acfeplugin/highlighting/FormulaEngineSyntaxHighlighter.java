@@ -110,6 +110,7 @@ public class FormulaEngineSyntaxHighlighter extends SyntaxHighlighterBase {
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_IS_NUMBER, INBUILT_FUNCTION_IS_NUMBER_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_IS_OPAQUE, INBUILT_FUNCTION_IS_OPAQUE_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_IS_STRING, INBUILT_FUNCTION_IS_STRING_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_STRVAL, INBUILT_FUNCTION_STRVAL_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_IS_TIME, INBUILT_FUNCTION_IS_TIME_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_KERNEL, INBUILT_FUNCTION_KERNEL_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_LAST, INBUILT_FUNCTION_LAST_ATTR_KEY);

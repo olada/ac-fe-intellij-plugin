@@ -212,6 +212,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_IS_NUMBER);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_IS_OPAQUE);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_IS_STRING);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_STRVAL);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_IS_TIME);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_KERNEL);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_LAST);
