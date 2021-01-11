@@ -83,6 +83,7 @@ public interface FormulaEngineElementTypes {
   IElementType BUILT_IN_FUNC_MAX = new FormulaEngineTokenType("max");
   IElementType BUILT_IN_FUNC_OUT = new FormulaEngineTokenType("out");
   IElementType BUILT_IN_FUNC_PRICE_FIELD = new FormulaEngineTokenType("price_field");
+  IElementType BUILT_IN_FUNC_REGEX_MATCH = new FormulaEngineElementType("built in func regex_match");
   IElementType BUILT_IN_FUNC_REMOVE = new FormulaEngineTokenType("remove");
   IElementType BUILT_IN_FUNC_SET_SUSPECT_PRICE_FIELD = new FormulaEngineElementType("built in func set_suspect_price_field");
   IElementType BUILT_IN_FUNC_SORT = new FormulaEngineTokenType("sort");

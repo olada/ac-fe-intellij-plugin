@@ -102,6 +102,7 @@ public class FormulaEngineHighlighterColors {
     public static final TextAttributesKey INBUILT_FUNCTION_MAX_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_MAX", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_OUT_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_OUT", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_PRICE_FIELD_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_PRICE_FIELD", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_FUNCTION_REGEX_MATCH = createTextAttributesKey("FE_INBUILT:FUNCTION_REGEX_MATCH", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_REMOVE_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_REMOVE", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_SET_SUSPECT_PRICE_FIELD = createTextAttributesKey("FE_INBUILT_FUNCTION_SET_SUSPECT_PRICE_FIELD", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_SORT_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_SORT", DefaultLanguageHighlighterColors.STATIC_FIELD);

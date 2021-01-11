@@ -116,6 +116,7 @@ public class FormulaEngineSyntaxHighlighter extends SyntaxHighlighterBase {
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_MAX, INBUILT_FUNCTION_MAX_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_OUT, INBUILT_FUNCTION_OUT_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_PRICE_FIELD, INBUILT_FUNCTION_PRICE_FIELD_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_REGEX_MATCH, INBUILT_FUNCTION_REGEX_MATCH);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_REMOVE, INBUILT_FUNCTION_REMOVE_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_SET_SUSPECT_PRICE_FIELD, INBUILT_FUNCTION_SET_SUSPECT_PRICE_FIELD);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_SORT, INBUILT_FUNCTION_SORT_ATTR_KEY);
