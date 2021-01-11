@@ -62,6 +62,7 @@ public interface FormulaEngineElementTypes {
   IElementType BUILT_IN_FUNC_DAYDIFF = new FormulaEngineTokenType("daydiff");
   IElementType BUILT_IN_FUNC_DAYPLUS = new FormulaEngineTokenType("dayplus");
   IElementType BUILT_IN_FUNC_DICT = new FormulaEngineTokenType("dict");
+  IElementType BUILT_IN_FUNC_DICT_PUT = new FormulaEngineElementType("built in func dict_put");
   IElementType BUILT_IN_FUNC_DICT_VALUES = new FormulaEngineElementType("built in func dict_values");
   IElementType BUILT_IN_FUNC_ELT = new FormulaEngineTokenType("elt");
   IElementType BUILT_IN_FUNC_EVALUATE = new FormulaEngineElementType("built in func evaluate");
