@@ -72,6 +72,7 @@ public class FormulaEngineHighlighterColors {
     public static final TextAttributesKey INBUILT_VARIABLE_DEPENDENCIES_TRIGGERS_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_DEPENDENCIES_TRIGGERS", DefaultLanguageHighlighterColors.STATIC_FIELD);
 
     // Built in Functions
+    public static final TextAttributesKey INBUILT_FUNCTION_ADO_BROWSE_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_ADO_BROWSE", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_ATTRIBUTE_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_ATTRIBUTE", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_BSEARCH_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_BSEARCH", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_CORRECT_PRICE_FIELD_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_CORRECT_PRICE_FIELD", DefaultLanguageHighlighterColors.STATIC_FIELD);

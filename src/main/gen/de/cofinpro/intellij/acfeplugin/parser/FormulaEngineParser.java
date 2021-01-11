@@ -151,7 +151,8 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // BUILT_IN_FUNC_ATTRIBUTE
+  // BUILT_IN_FUNC_ADO_BROWSE
+  //     | BUILT_IN_FUNC_ATTRIBUTE
   //     | BUILT_IN_FUNC_BSEARCH
   //     | BUILT_IN_FUNC_CORRECT_PRICE_FIELD
   //     | BUILT_IN_FUNC_DATE | BUILT_IN_FUNC_DATETIME
@@ -191,7 +192,8 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     if (!recursion_guard_(b, l, "BuiltInFunctionName")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, BUILT_IN_FUNCTION_NAME, "<built in function name>");
-    r = consumeToken(b, BUILT_IN_FUNC_ATTRIBUTE);
+    r = consumeToken(b, BUILT_IN_FUNC_ADO_BROWSE);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_ATTRIBUTE);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_BSEARCH);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_CORRECT_PRICE_FIELD);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_DATE);

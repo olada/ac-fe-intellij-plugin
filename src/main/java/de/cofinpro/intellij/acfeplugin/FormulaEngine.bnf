@@ -95,6 +95,7 @@
             BUILT_IN_VAR_DEPENDENCIES = '$DEPENDENCIES'
             BUILT_IN_VAR_DEPENDENCIES_TRIGGERS = '$DEPENDENCIES_TRIGGERS'
 
+            BUILT_IN_FUNC_ADO_BROWSR = 'built in func ado_browse'
             BUILT_IN_FUNC_ATTRIBUTE = 'attribute'
             BUILT_IN_FUNC_BSEARCH = 'built in func bsearch'
             BUILT_IN_FUNC_CORRECT_PRIZE_FIELD = 'built in func correct_price_field'
@@ -252,7 +253,8 @@ private CustomFunctionName ::= IDENTIFIER
 private FunctionName ::= BuiltInFunctionName | CustomFunctionName
 private MethodReference ::= FunctionName // just for sake of better naming
 
-BuiltInFunctionName ::= BUILT_IN_FUNC_ATTRIBUTE
+BuiltInFunctionName ::= BUILT_IN_FUNC_ADO_BROWSE
+    | BUILT_IN_FUNC_ATTRIBUTE
     | BUILT_IN_FUNC_BSEARCH
     | BUILT_IN_FUNC_CORRECT_PRICE_FIELD
     | BUILT_IN_FUNC_DATE | BUILT_IN_FUNC_DATETIME

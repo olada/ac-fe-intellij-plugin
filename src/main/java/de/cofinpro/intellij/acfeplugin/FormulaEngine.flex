@@ -54,6 +54,7 @@ DIGIT = [0-9]
 // Deshalb wurde der State "IN_PARENTHESIS" eingeführt, damit das nur auf "innerhalb von '(' und ')' beschränkt werden kann.
 <IN_PARENTHESIS> {
     // Built-in Functions (use parenthesis for matching but don't include the parenthesis in the token)
+   "ado_browse" { return FormulaEngineElementTypes.BUILT_IN_FUNC_ADO_BROWSE; }
    "attribute" { return FormulaEngineElementTypes.BUILT_IN_FUNC_ATTRIBUTE; }
    "bsearch" { return FormulaEngineElementTypes.BUILT_IN_FUNC_BSEARCH; }
    "correct_price_field" { return FormulaEngineElementTypes.BUILT_IN_FUNC_CORRECT_PRICE_FIELD; }
@@ -207,6 +208,7 @@ DIGIT = [0-9]
     "\$DEPENDENCIES_TRIGGERS" { return FormulaEngineElementTypes.BUILT_IN_VAR_DEPENDENCIES_TRIGGERS; }
 
     // Built-in Functions (use parenthesis for matching but don't include the parenthesis in the token)
+   "ado_browse(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_ADO_BROWSE; }
    "attribute(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_ATTRIBUTE; }
    "bsearch(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_BSEARCH; }
    "correct_price_field(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_CORRECT_PRICE_FIELD; }

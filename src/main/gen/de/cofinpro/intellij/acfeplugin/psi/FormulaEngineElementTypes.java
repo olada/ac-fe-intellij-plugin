@@ -54,6 +54,7 @@ public interface FormulaEngineElementTypes {
   IElementType WHILE = new FormulaEngineElementType("WHILE");
 
   IElementType BLOCK_COMMENT = new FormulaEngineTokenType("BLOCK_COMMENT");
+  IElementType BUILT_IN_FUNC_ADO_BROWSE = new FormulaEngineElementType("built in func ado_browse");
   IElementType BUILT_IN_FUNC_ATTRIBUTE = new FormulaEngineTokenType("attribute");
   IElementType BUILT_IN_FUNC_BSEARCH = new FormulaEngineTokenType("built in func bsearch");
   IElementType BUILT_IN_FUNC_CORRECT_PRICE_FIELD = new FormulaEngineElementType("built in func correct_price_field");
