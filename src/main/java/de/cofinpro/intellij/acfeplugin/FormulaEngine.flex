@@ -71,12 +71,13 @@ DIGIT = [0-9]
    "evaluate" { return FormulaEngineElementTypes.BUILT_IN_FUNC_EVALUATE; }
    "first" { return FormulaEngineElementTypes.BUILT_IN_FUNC_FIRST; }
    "float" { return FormulaEngineElementTypes.BUILT_IN_FUNC_FLOAT; }
-   "integer" { return FormulaEngineElementTypes.BUILT_IN_FUNC_INTEGER; }
    "hash_get" { return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_GET; }
    "hash_global" { return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_GLOBAL; }
    "hash_iskey" { return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_ISKEY; }
    "hash_keys" { return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_KEYS; }
    "hash_put" { return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_PUT; }
+   "insert" { return FormulaEngineElementTypes.BUILT_IN_FUNC_INSERT; }
+   "integer" { return FormulaEngineElementTypes.BUILT_IN_FUNC_INTEGER; }
    "is_date" { return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_DATE; }
    "is_datetime" { return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_DATETIME; }
    "is_float" { return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_FLOAT; }
@@ -223,12 +224,13 @@ DIGIT = [0-9]
    "evaluate(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_EVALUATE; }
    "first(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_FIRST; }
    "float(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_FLOAT; }
-   "integer(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_INTEGER; }
    "hash_get(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_GET; }
    "hash_global(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_GLOBAL; }
    "hash_iskey(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_ISKEY; }
    "hash_keys(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_KEYS; }
    "hash_put(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_PUT; }
+   "insert(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_INSERT; }
+   "integer(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_INTEGER; }
    "is_date(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_DATE; }
    "is_datetime(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_DATETIME; }
    "is_float(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_FLOAT; }
