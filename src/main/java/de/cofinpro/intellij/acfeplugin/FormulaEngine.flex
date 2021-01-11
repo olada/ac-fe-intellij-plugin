@@ -73,6 +73,7 @@ DIGIT = [0-9]
    "is_date" { return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_DATE; }
    "is_datetime" { return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_DATETIME; }
    "is_list" { return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_LIST; }
+   "is_matrix" { return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_MATRIX; }
    "is_na" { return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_NA; }
    "is_number" { return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_NUMBER; }
    "is_opaque" { return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_OPAQUE; }
@@ -211,6 +212,7 @@ DIGIT = [0-9]
    "is_date(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_DATE; }
    "is_datetime(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_DATETIME; }
    "is_list(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_LIST; }
+   "is_matrix(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_MATRIX; }
    "is_na(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_NA; }
    "is_number(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_NUMBER; }
    "is_opaque(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_OPAQUE; }
