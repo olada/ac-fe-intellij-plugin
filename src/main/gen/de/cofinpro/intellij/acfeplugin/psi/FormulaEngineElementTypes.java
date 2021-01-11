@@ -58,7 +58,7 @@ public interface FormulaEngineElementTypes {
   IElementType BUILT_IN_FUNC_BSEARCH = new FormulaEngineTokenType("built in func bsearch");
   IElementType BUILT_IN_FUNC_CORRECT_PRICE_FIELD = new FormulaEngineElementType("built in func correct_price_field");
   IElementType BUILT_IN_FUNC_DATE = new FormulaEngineTokenType("date");
-  IElementType BUILT_IN_FUNC_DATETIME = new FormulaEngineTokenType("datetime");
+  IElementType BUILT_IN_FUNC_DATETIME = new FormulaEngineTokenType("built in func datetime");
   IElementType BUILT_IN_FUNC_DAYDIFF = new FormulaEngineTokenType("daydiff");
   IElementType BUILT_IN_FUNC_DAYPLUS = new FormulaEngineTokenType("dayplus");
   IElementType BUILT_IN_FUNC_DICT = new FormulaEngineTokenType("dict");
@@ -70,12 +70,13 @@ public interface FormulaEngineElementTypes {
   IElementType BUILT_IN_FUNC_HASH_KEYS = new FormulaEngineTokenType("hash_keys");
   IElementType BUILT_IN_FUNC_HASH_PUT = new FormulaEngineTokenType("hash_put");
   IElementType BUILT_IN_FUNC_INTEGER = new FormulaEngineTokenType("built in func integer");
+  IElementType BUILT_IN_FUNC_IS_DATETIME = new FormulaEngineElementType("built in func is_datetime");
   IElementType BUILT_IN_FUNC_IS_LIST = new FormulaEngineTokenType("is_list");
   IElementType BUILT_IN_FUNC_IS_NA = new FormulaEngineTokenType("is_na");
-  IElementType BUILT_IN_FUNC_IS_NUMBER = new FormulaEngineElementType("is_number");
-  IElementType BUILT_IN_FUNC_IS_OPAQUE = new FormulaEngineElementType("is_opaque");
+  IElementType BUILT_IN_FUNC_IS_NUMBER = new FormulaEngineElementType("built in func is_number");
+  IElementType BUILT_IN_FUNC_IS_OPAQUE = new FormulaEngineElementType("built in func is_opaque");
   IElementType BUILT_IN_FUNC_IS_STRING = new FormulaEngineTokenType("is_string");
-  IElementType BUILT_IN_FUNC_IS_TIME = new FormulaEngineElementType("is_time");
+  IElementType BUILT_IN_FUNC_IS_TIME = new FormulaEngineElementType("built in func is_time");
   IElementType BUILT_IN_FUNC_KERNEL = new FormulaEngineTokenType("kernel");
   IElementType BUILT_IN_FUNC_LAST = new FormulaEngineTokenType("last");
   IElementType BUILT_IN_FUNC_LEN = new FormulaEngineTokenType("len");
