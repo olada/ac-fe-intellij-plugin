@@ -80,6 +80,7 @@ public class FormulaEngineHighlighterColors {
     public static final TextAttributesKey INBUILT_FUNCTION_DAYDIFF_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_DAYDIFF", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_DAYPLUS_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_DAYPLUS", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_DICT_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_DICT", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_FUNCTION_DICT_VALUES_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_DICT_VALUES", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_ELT_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_ELT", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_EVALUATE_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_EVALUATE", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_FIRST_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_FIRST", DefaultLanguageHighlighterColors.STATIC_FIELD);
