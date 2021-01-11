@@ -56,6 +56,7 @@ DIGIT = [0-9]
     // Built-in Functions (use parenthesis for matching but don't include the parenthesis in the token)
    "attribute" { return FormulaEngineElementTypes.BUILT_IN_FUNC_ATTRIBUTE; }
    "bsearch" { return FormulaEngineElementTypes.BUILT_IN_FUNC_BSEARCH; }
+   "correct_price_field" { return FormulaEngineElementTypes.BUILT_IN_FUNC_CORRECT_PRICE_FIELD; }
    "date" { return FormulaEngineElementTypes.BUILT_IN_FUNC_DATE; }
    "datetime" { return FormulaEngineElementTypes.BUILT_IN_FUNC_DATETIME; }
    "daydiff" { return FormulaEngineElementTypes.BUILT_IN_FUNC_DAYDIFF; }
@@ -186,6 +187,7 @@ DIGIT = [0-9]
     // Built-in Functions (use parenthesis for matching but don't include the parenthesis in the token)
    "attribute(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_ATTRIBUTE; }
    "bsearch(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_BSEARCH; }
+   "correct_price_field(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_CORRECT_PRICE_FIELD; }
    "date(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DATE; }
    "datetime(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DATETIME; }
    "daydiff(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DAYDIFF; }

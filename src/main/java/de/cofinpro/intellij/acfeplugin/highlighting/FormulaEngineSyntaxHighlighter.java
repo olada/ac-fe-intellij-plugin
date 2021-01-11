@@ -89,6 +89,7 @@ public class FormulaEngineSyntaxHighlighter extends SyntaxHighlighterBase {
         // Built in functions
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_ATTRIBUTE, INBUILT_FUNCTION_ATTRIBUTE_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_BSEARCH, INBUILT_FUNCTION_BSEARCH_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_CORRECT_PRICE_FIELD, INBUILT_FUNCTION_CORRECT_PRICE_FIELD);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_DATE, INBUILT_FUNCTION_DATE_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_DATETIME, INBUILT_FUNCTION_DATETIME_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_DAYDIFF, INBUILT_FUNCTION_DAYDIFF_ATTR_KEY);

@@ -153,6 +153,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   /* ********************************************************** */
   // BUILT_IN_FUNC_ATTRIBUTE
   //     | BUILT_IN_FUNC_BSEARCH
+  //     | BUILT_IN_FUNC_CORRECT_PRICE_FIELD
   //     | BUILT_IN_FUNC_DATE | BUILT_IN_FUNC_DATETIME | BUILT_IN_FUNC_DICT | BUILT_IN_FUNC_STR | BUILT_IN_FUNC_FLOAT | BUILT_IN_FUNC_INTEGER | BUILT_IN_FUNC_LIST | BUILT_IN_FUNC_STRING
   //     | BUILT_IN_FUNC_DAYDIFF | BUILT_IN_FUNC_DAYPLUS
   //     | BUILT_IN_FUNC_ELT
@@ -181,6 +182,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     Marker m = enter_section_(b, l, _NONE_, BUILT_IN_FUNCTION_NAME, "<built in function name>");
     r = consumeToken(b, BUILT_IN_FUNC_ATTRIBUTE);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_BSEARCH);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_CORRECT_PRICE_FIELD);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_DATE);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_DATETIME);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_DICT);
