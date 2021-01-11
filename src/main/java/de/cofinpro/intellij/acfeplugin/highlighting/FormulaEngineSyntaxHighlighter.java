@@ -102,6 +102,7 @@ public class FormulaEngineSyntaxHighlighter extends SyntaxHighlighterBase {
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_INTEGER, INBUILT_FUNCTION_INTEGER_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_IS_DATE, INBUILT_FUNCTION_IS_DATE_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_IS_DATETIME, INBUILT_FUNCTION_IS_DATETIME_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_IS_FLOAT, INBUILT_FUNCTION_IS_FLOAT_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_IS_LIST, INBUILT_FUNCTION_IS_LIST_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_IS_MATRIX, INBUILT_FUNCTION_IS_MATRIX_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_IS_NA, INBUILT_FUNCTION_IS_NA_ATTR_KEY);
