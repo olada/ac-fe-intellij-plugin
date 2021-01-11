@@ -73,6 +73,7 @@ public interface FormulaEngineElementTypes {
   IElementType BUILT_IN_FUNC_IS_DATE = new FormulaEngineElementType("built in func is_date");
   IElementType BUILT_IN_FUNC_IS_DATETIME = new FormulaEngineElementType("built in func is_datetime");
   IElementType BUILT_IN_FUNC_IS_FLOAT = new FormulaEngineElementType("built in func is_float");
+  IElementType BUILT_IN_FUNC_IS_INTEGER = new FormulaEngineElementType("built in func is_integer");
   IElementType BUILT_IN_FUNC_IS_LIST = new FormulaEngineTokenType("is_list");
   IElementType BUILT_IN_FUNC_IS_MATRIX = new FormulaEngineElementType("built in func is_matrix");
   IElementType BUILT_IN_FUNC_IS_NA = new FormulaEngineTokenType("is_na");
