@@ -95,6 +95,7 @@ DIGIT = [0-9]
    "remove" { return FormulaEngineElementTypes.BUILT_IN_FUNC_REMOVE; }
    "set_suspect_price_field" { return FormulaEngineElementTypes.BUILT_IN_FUNC_SET_SUSPECT_PRICE_FIELD; }
    "sort" { return FormulaEngineElementTypes.BUILT_IN_FUNC_SORT; }
+   "split" { return FormulaEngineElementTypes.BUILT_IN_FUNC_SPLIT;}
    "sql" { return FormulaEngineElementTypes.BUILT_IN_FUNC_SQL; }
    "status" { return FormulaEngineElementTypes.BUILT_IN_FUNC_STATUS; }
    "str" { return FormulaEngineElementTypes.BUILT_IN_FUNC_STR; }
@@ -238,6 +239,7 @@ DIGIT = [0-9]
    "remove(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_REMOVE; }
    "set_suspect_price_field(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_SET_SUSPECT_PRICE_FIELD; }
    "sort(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_SORT; }
+   "split(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_SPLIT; }
    "sql(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_SQL; }
    "status(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STATUS; }
    "str(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STR; }

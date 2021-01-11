@@ -137,6 +137,7 @@
             BUILT_IN_FUNC_SET_SUSPECT_PRICE_FIELD = ' built in func set_suspect_price_field'
             BUILT_IN_FUNC_SQL = 'sql'
             BUILT_IN_FUNC_SORT = 'sort'
+            BUILT_IN_FUNC_SPLIT ='built in func split'
             BUILT_IN_FUNC_STATUS = 'status'
             BUILT_IN_FUNC_STR = 'str'
             BUILT_IN_FUNC_STRING = 'built in func string'
@@ -267,6 +268,7 @@ BuiltInFunctionName ::= BUILT_IN_FUNC_ATTRIBUTE
     | BUILT_IN_FUNC_SET_SUSPECT_PRICE_FIELD
     | BUILT_IN_FUNC_SQL
     | BUILT_IN_FUNC_SORT
+    | BUILT_IN_FUNC_SPLIT
     | BUILT_IN_FUNC_STATUS
     | BUILT_IN_FUNC_STRVAL
     | BUILT_IN_FUNC_TIME
