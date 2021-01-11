@@ -8,6 +8,7 @@ import com.intellij.openapi.fileTypes.SyntaxHighlighterBase;
 import com.intellij.psi.tree.IElementType;
 // import com.sun.tools.internal.xjc.generator.bean.ImplStructureStrategy;
 import de.cofinpro.intellij.acfeplugin.lex.FormulaEngineLexerAdapter;
+import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementType;
 import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementTypes;
 import org.jetbrains.annotations.NotNull;
 
@@ -87,6 +88,7 @@ public class FormulaEngineSyntaxHighlighter extends SyntaxHighlighterBase {
 
         // Built in functions
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_ATTRIBUTE, INBUILT_FUNCTION_ATTRIBUTE_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_BSEARCH, INBUILT_FUNCTION_BSEARCH_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_DATE, INBUILT_FUNCTION_DATE_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_DATETIME, INBUILT_FUNCTION_DATETIME_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_DAYDIFF, INBUILT_FUNCTION_DAYDIFF_ATTR_KEY);

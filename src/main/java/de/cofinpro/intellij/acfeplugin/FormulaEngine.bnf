@@ -96,6 +96,7 @@
             BUILT_IN_VAR_DEPENDENCIES_TRIGGERS = '$DEPENDENCIES_TRIGGERS'
 
             BUILT_IN_FUNC_ATTRIBUTE = 'attribute'
+            BUILT_IN_FUNC_BSEARCH = 'built in func bsearch'
             BUILT_IN_FUNC_DATE = 'date'
             BUILT_IN_FUNC_DATETIME = 'datetime'
             BUILT_IN_FUNC_DAYDIFF = 'daydiff'
@@ -229,6 +230,7 @@ private FunctionName ::= BuiltInFunctionName | CustomFunctionName
 private MethodReference ::= FunctionName // just for sake of better naming
 
 BuiltInFunctionName ::= BUILT_IN_FUNC_ATTRIBUTE
+    | BUILT_IN_FUNC_BSEARCH
     | BUILT_IN_FUNC_DATE | BUILT_IN_FUNC_DATETIME | BUILT_IN_FUNC_DICT | BUILT_IN_FUNC_STR | BUILT_IN_FUNC_FLOAT | BUILT_IN_FUNC_INTEGER | BUILT_IN_FUNC_LIST | BUILT_IN_FUNC_STRING
     | BUILT_IN_FUNC_DAYDIFF | BUILT_IN_FUNC_DAYPLUS
     | BUILT_IN_FUNC_ELT

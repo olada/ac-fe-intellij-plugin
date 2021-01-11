@@ -55,6 +55,7 @@ public interface FormulaEngineElementTypes {
 
   IElementType BLOCK_COMMENT = new FormulaEngineTokenType("BLOCK_COMMENT");
   IElementType BUILT_IN_FUNC_ATTRIBUTE = new FormulaEngineTokenType("attribute");
+  IElementType BUILT_IN_FUNC_BSEARCH = new FormulaEngineTokenType("built in func bsearch");
   IElementType BUILT_IN_FUNC_DATE = new FormulaEngineTokenType("date");
   IElementType BUILT_IN_FUNC_DATETIME = new FormulaEngineTokenType("datetime");
   IElementType BUILT_IN_FUNC_DAYDIFF = new FormulaEngineTokenType("daydiff");

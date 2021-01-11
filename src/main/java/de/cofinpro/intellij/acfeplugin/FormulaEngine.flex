@@ -55,6 +55,7 @@ DIGIT = [0-9]
 <IN_PARENTHESIS> {
     // Built-in Functions (use parenthesis for matching but don't include the parenthesis in the token)
    "attribute" { return FormulaEngineElementTypes.BUILT_IN_FUNC_ATTRIBUTE; }
+   "bsearch" { return FormulaEngineElementTypes.BUILT_IN_FUNC_BSEARCH; }
    "date" { return FormulaEngineElementTypes.BUILT_IN_FUNC_DATE; }
    "datetime" { return FormulaEngineElementTypes.BUILT_IN_FUNC_DATETIME; }
    "daydiff" { return FormulaEngineElementTypes.BUILT_IN_FUNC_DAYDIFF; }
@@ -184,6 +185,7 @@ DIGIT = [0-9]
 
     // Built-in Functions (use parenthesis for matching but don't include the parenthesis in the token)
    "attribute(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_ATTRIBUTE; }
+   "bsearch(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_BSEARCH; }
    "date(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DATE; }
    "datetime(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DATETIME; }
    "daydiff(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DAYDIFF; }
