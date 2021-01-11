@@ -1,14 +1,11 @@
 package de.cofinpro.intellij.acfeplugin.highlighting;
 
 import com.intellij.lexer.Lexer;
-import com.intellij.openapi.editor.DefaultLanguageHighlighterColors;
-import com.intellij.openapi.editor.HighlighterColors;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.fileTypes.SyntaxHighlighterBase;
 import com.intellij.psi.tree.IElementType;
 // import com.sun.tools.internal.xjc.generator.bean.ImplStructureStrategy;
 import de.cofinpro.intellij.acfeplugin.lex.FormulaEngineLexerAdapter;
-import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementType;
 import de.cofinpro.intellij.acfeplugin.psi.FormulaEngineElementTypes;
 import org.jetbrains.annotations.NotNull;
 
@@ -89,7 +86,7 @@ public class FormulaEngineSyntaxHighlighter extends SyntaxHighlighterBase {
         // Built in functions
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_ATTRIBUTE, INBUILT_FUNCTION_ATTRIBUTE_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_BSEARCH, INBUILT_FUNCTION_BSEARCH_ATTR_KEY);
-        safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_CORRECT_PRICE_FIELD, INBUILT_FUNCTION_CORRECT_PRICE_FIELD);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_CORRECT_PRICE_FIELD, INBUILT_FUNCTION_CORRECT_PRICE_FIELD_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_DATE, INBUILT_FUNCTION_DATE_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_DATETIME, INBUILT_FUNCTION_DATETIME_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_DAYDIFF, INBUILT_FUNCTION_DAYDIFF_ATTR_KEY);
@@ -105,8 +102,9 @@ public class FormulaEngineSyntaxHighlighter extends SyntaxHighlighterBase {
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_INTEGER, INBUILT_FUNCTION_INTEGER_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_IS_LIST, INBUILT_FUNCTION_IS_LIST_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_IS_NA, INBUILT_FUNCTION_IS_NA_ATTR_KEY);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_IS_NUMBER, INBUILT_FUNCTION_IS_NUMBER_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_IS_STRING, INBUILT_FUNCTION_IS_STRING_ATTR_KEY);
-        safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_IS_TIME, INBUILT_FUNCTION_IS_TIME);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_IS_TIME, INBUILT_FUNCTION_IS_TIME_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_KERNEL, INBUILT_FUNCTION_KERNEL_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_LAST, INBUILT_FUNCTION_LAST_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_LEN, INBUILT_FUNCTION_LEN_ATTR_KEY);
@@ -117,9 +115,9 @@ public class FormulaEngineSyntaxHighlighter extends SyntaxHighlighterBase {
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_MAX, INBUILT_FUNCTION_MAX_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_OUT, INBUILT_FUNCTION_OUT_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_PRICE_FIELD, INBUILT_FUNCTION_PRICE_FIELD_ATTR_KEY);
-        safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_REGEX_MATCH, INBUILT_FUNCTION_REGEX_MATCH);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_REGEX_MATCH, INBUILT_FUNCTION_REGEX_MATCH_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_REMOVE, INBUILT_FUNCTION_REMOVE_ATTR_KEY);
-        safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_SET_SUSPECT_PRICE_FIELD, INBUILT_FUNCTION_SET_SUSPECT_PRICE_FIELD);
+        safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_SET_SUSPECT_PRICE_FIELD, INBUILT_FUNCTION_SET_SUSPECT_PRICE_FIELD_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_SORT, INBUILT_FUNCTION_SORT_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_SQL, INBUILT_FUNCTION_SQL_ATTR_KEY);
         safeMap(ATTRIBUTES, FormulaEngineElementTypes.BUILT_IN_FUNC_STATUS, INBUILT_FUNCTION_STATUS_ATTR_KEY);
