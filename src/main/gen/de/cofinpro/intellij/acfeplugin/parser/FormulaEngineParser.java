@@ -179,6 +179,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   //     | BUILT_IN_FUNC_RDBMS_PROC
   //     | BUILT_IN_FUNC_REGEX_MATCH
   //     | BUILT_IN_FUNC_REMOVE
+  //     | BUILT_IN_FUNC_SECOND
   //     | BUILT_IN_FUNC_SET_SUSPECT_PRICE_FIELD
   //     | BUILT_IN_FUNC_SQL
   //     | BUILT_IN_FUNC_SORT
@@ -245,6 +246,7 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_RDBMS_PROC);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_REGEX_MATCH);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_REMOVE);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_SECOND);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_SET_SUSPECT_PRICE_FIELD);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_SQL);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_SORT);

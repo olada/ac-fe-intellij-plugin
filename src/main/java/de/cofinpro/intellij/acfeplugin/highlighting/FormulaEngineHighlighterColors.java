@@ -122,6 +122,7 @@ public class FormulaEngineHighlighterColors {
     public static final TextAttributesKey INBUILT_FUNCTION_RDBMS_PROC_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_RDBMS_PROC", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_REGEX_MATCH_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_REGEX_MATCH", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_REMOVE_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_REMOVE", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_FUNCTION_SECOND_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_SECOND", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_SET_SUSPECT_PRICE_FIELD_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_SET_SUSPECT_PRICE_FIELD", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_SORT_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_SORT", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_SPLIT_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_SPLIT", DefaultLanguageHighlighterColors.STATIC_FIELD);

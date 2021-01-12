@@ -144,6 +144,7 @@
             BUILT_IN_FUNC_RDBMS_PROC = 'built in func rdbms_proc'
             BUILT_IN_FUNC_REGEX_MATCH = 'built in func regex_match'
             BUILT_IN_FUNC_REMOVE = 'remove'
+            BUILT_IN_FUNC_SECOND = 'built in func second'
             BUILT_IN_FUNC_SET_SUSPECT_PRICE_FIELD = ' built in func set_suspect_price_field'
             BUILT_IN_FUNC_SQL = 'sql'
             BUILT_IN_FUNC_SORT = 'sort'
@@ -283,6 +284,7 @@ BuiltInFunctionName ::= BUILT_IN_FUNC_ADO_BROWSE
     | BUILT_IN_FUNC_RDBMS_PROC
     | BUILT_IN_FUNC_REGEX_MATCH
     | BUILT_IN_FUNC_REMOVE
+    | BUILT_IN_FUNC_SECOND
     | BUILT_IN_FUNC_SET_SUSPECT_PRICE_FIELD
     | BUILT_IN_FUNC_SQL
     | BUILT_IN_FUNC_SORT

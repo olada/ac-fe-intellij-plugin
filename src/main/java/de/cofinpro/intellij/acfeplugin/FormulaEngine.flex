@@ -103,6 +103,7 @@ DIGIT = [0-9]
    "rdbms_proc" { return FormulaEngineElementTypes.BUILT_IN_FUNC_RDBMS_PROC; }
    "regex_match" { return FormulaEngineElementTypes.BUILT_IN_FUNC_REGEX_MATCH; }
    "remove" { return FormulaEngineElementTypes.BUILT_IN_FUNC_REMOVE; }
+   "second" { return FormulaEngineElementTypes.BUILT_IN_FUNC_SECOND; }
    "set_suspect_price_field" { return FormulaEngineElementTypes.BUILT_IN_FUNC_SET_SUSPECT_PRICE_FIELD; }
    "sort" { return FormulaEngineElementTypes.BUILT_IN_FUNC_SORT; }
    "split" { return FormulaEngineElementTypes.BUILT_IN_FUNC_SPLIT;}
@@ -258,6 +259,7 @@ DIGIT = [0-9]
    "rdbms_proc(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_RDBMS_PROC; }
    "regex_match(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_REGEX_MATCH; }
    "remove(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_REMOVE; }
+   "second(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_SECOND; }
    "set_suspect_price_field(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_SET_SUSPECT_PRICE_FIELD; }
    "sort(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_SORT; }
    "split(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_SPLIT; }
