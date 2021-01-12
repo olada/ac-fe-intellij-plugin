@@ -141,6 +141,7 @@
             BUILT_IN_FUNC_MAX = 'max'
             BUILT_IN_FUNC_OUT = 'out'
             BUILT_IN_FUNC_PRICE_FIELD = 'price_field'
+            BUILT_IN_FUNC_RDBMS_PROC = 'built in func rdbms_proc'
             BUILT_IN_FUNC_REGEX_MATCH = 'built in func regex_match'
             BUILT_IN_FUNC_REMOVE = 'remove'
             BUILT_IN_FUNC_SET_SUSPECT_PRICE_FIELD = ' built in func set_suspect_price_field'
@@ -279,6 +280,7 @@ BuiltInFunctionName ::= BUILT_IN_FUNC_ADO_BROWSE
     | BUILT_IN_FUNC_MAP
     | BUILT_IN_FUNC_MAX
     | BUILT_IN_FUNC_OUT
+    | BUILT_IN_FUNC_RDBMS_PROC
     | BUILT_IN_FUNC_REGEX_MATCH
     | BUILT_IN_FUNC_REMOVE
     | BUILT_IN_FUNC_SET_SUSPECT_PRICE_FIELD
