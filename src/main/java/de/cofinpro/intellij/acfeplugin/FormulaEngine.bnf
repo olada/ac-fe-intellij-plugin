@@ -152,6 +152,7 @@
             BUILT_IN_FUNC_STATUS = 'status'
             BUILT_IN_FUNC_STR = 'str'
             BUILT_IN_FUNC_STRING = 'built in func string'
+            BUILT_IN_FUNC_STRIP = 'built in func strip'
             BUILT_IN_FUNC_STRVAL = 'built in func strval'
             BUILT_IN_FUNC_TIME = 'built in func time'
             BUILT_IN_FUNC_TOUPPER = 'built in func toupper'
@@ -290,6 +291,7 @@ BuiltInFunctionName ::= BUILT_IN_FUNC_ADO_BROWSE
     | BUILT_IN_FUNC_SORT
     | BUILT_IN_FUNC_SPLIT
     | BUILT_IN_FUNC_STATUS
+    | BUILT_IN_FUNC_STRIP
     | BUILT_IN_FUNC_STRVAL
     | BUILT_IN_FUNC_TIME
     | BUILT_IN_FUNC_TOUPPER

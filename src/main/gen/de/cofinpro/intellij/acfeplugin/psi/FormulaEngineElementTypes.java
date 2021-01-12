@@ -111,6 +111,7 @@ public interface FormulaEngineElementTypes {
   IElementType BUILT_IN_FUNC_STATUS = new FormulaEngineTokenType("status");
   IElementType BUILT_IN_FUNC_STR = new FormulaEngineTokenType("str");
   IElementType BUILT_IN_FUNC_STRING = new FormulaEngineTokenType("built in func string");
+  IElementType BUILT_IN_FUNC_STRIP = new FormulaEngineElementType("built in func strip");
   IElementType BUILT_IN_FUNC_STRVAL = new FormulaEngineElementType("built in func strval");
   IElementType BUILT_IN_FUNC_TIME = new FormulaEngineTokenType("built in func time");
   IElementType BUILT_IN_FUNC_TOUPPER = new FormulaEngineElementType("built in func toupper");

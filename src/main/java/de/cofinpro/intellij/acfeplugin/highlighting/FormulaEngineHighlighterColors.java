@@ -130,6 +130,7 @@ public class FormulaEngineHighlighterColors {
     public static final TextAttributesKey INBUILT_FUNCTION_STATUS_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_STATUS", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_STR_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_STR", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_STRING_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_STRING", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_FUNCTION_STRIP_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_STRIP", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_TIME_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_TIME", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_TOUPPER_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_TOUPPER", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_TS_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_TS", DefaultLanguageHighlighterColors.STATIC_FIELD);

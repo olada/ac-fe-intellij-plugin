@@ -111,6 +111,7 @@ DIGIT = [0-9]
    "status" { return FormulaEngineElementTypes.BUILT_IN_FUNC_STATUS; }
    "str" { return FormulaEngineElementTypes.BUILT_IN_FUNC_STR; }
    "string" { return FormulaEngineElementTypes.BUILT_IN_FUNC_STRING; }
+   "strip" { return FormulaEngineElementTypes.BUILT_IN_FUNC_STRIP; }
    "strval" { return FormulaEngineElementTypes.BUILT_IN_FUNC_STRVAL; }
    "time" { return FormulaEngineElementTypes.BUILT_IN_FUNC_TIME; }
    "toupper" { return FormulaEngineElementTypes.BUILT_IN_FUNC_TOUPPER; }
@@ -267,6 +268,7 @@ DIGIT = [0-9]
    "status(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STATUS; }
    "str(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STR; }
    "string(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STRING; }
+   "strip(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STRIP; }
    "strval(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STRVAL; }
    "time(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_TIME; }
    "toupper(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_TOUPPER; }
