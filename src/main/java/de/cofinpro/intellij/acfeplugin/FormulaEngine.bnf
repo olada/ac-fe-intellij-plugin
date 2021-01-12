@@ -95,23 +95,42 @@
             BUILT_IN_VAR_DEPENDENCIES = '$DEPENDENCIES'
             BUILT_IN_VAR_DEPENDENCIES_TRIGGERS = '$DEPENDENCIES_TRIGGERS'
 
+            BUILT_IN_FUNC_ADO_BROWSR = 'built in func ado_browse'
             BUILT_IN_FUNC_ATTRIBUTE = 'attribute'
+            BUILT_IN_FUNC_BSEARCH = 'built in func bsearch'
+            BUILT_IN_FUNC_CORRECT_PRIZE_FIELD = 'built in func correct_price_field'
             BUILT_IN_FUNC_DATE = 'date'
             BUILT_IN_FUNC_DATETIME = 'datetime'
             BUILT_IN_FUNC_DAYDIFF = 'daydiff'
             BUILT_IN_FUNC_DAYPLUS = 'dayplus'
             BUILT_IN_FUNC_DICT = 'dict'
+            BUILT_IN_FUNC_DICT_GET ="built in func dict_get"
+            BUILT_IN_FUNC_DICT_ISKEY = 'built in func dict_iskey'
+            BUILT_IN_FUNC_DICT_KEYS = 'built in func dict_keys'
+            BUILT_IN_FUNC_DICT_PUT = 'built in func dict_put'
+            BUILT_IN_FUNC_DICT_VALUES = 'built in func dict_values'
             BUILT_IN_FUNC_ELT = 'elt'
+            BUILT_IN_FUNC_EVALUATE = 'built in func evaluate'
             BUILT_IN_FUNC_FIRST = 'first'
             BUILT_IN_FUNC_FLOAT = 'float'
             BUILT_IN_FUNC_HASH_GET = 'hash_get'
+            BUILT_IN_FUNC_HASH_GLOBAL = 'built in func hash_global'
             BUILT_IN_FUNC_HASH_ISKEY = 'hash_iskey'
             BUILT_IN_FUNC_HASH_KEYS = 'hash_keys'
             BUILT_IN_FUNC_HASH_PUT = 'hash_put'
+            BUILT_IN_FUNC_INSERT = 'built in func insert'
             BUILT_IN_FUNC_INTEGER = 'built in func integer'
+            BUILT_IN_FUNC_IS_DATE = 'built in func is_date'
+            BUILT_IN_FUNC_IS_DATETIME = 'built in func is_datetime'
+            BUILT_IN_FUNC_IS_FLOAT = 'built in func is_float'
+            BUILT_IN_FUNC_IS_INTEGER = 'built in func is_integer'
             BUILT_IN_FUNC_IS_LIST = 'is_list'
+            BUILT_IN_FUNC_IS_MATRIX = 'built in func is_matrix'
             BUILT_IN_FUNC_IS_NA = 'is_na'
+            BUILT_IN_FUNC_IS_NUMBER = 'built in func is_number'
+            BUILT_IN_FUNC_IS_OPAQUE = ' built in func is_opaque'
             BUILT_IN_FUNC_IS_STRING = 'is_string'
+            BUILT_IN_FUNC_IS_TIME = 'built in func is_time'
             BUILT_IN_FUNC_KERNEL = 'kernel'
             BUILT_IN_FUNC_LAST = 'last'
             BUILT_IN_FUNC_LEN = 'len'
@@ -122,15 +141,24 @@
             BUILT_IN_FUNC_MAX = 'max'
             BUILT_IN_FUNC_OUT = 'out'
             BUILT_IN_FUNC_PRICE_FIELD = 'price_field'
+            BUILT_IN_FUNC_RDBMS_PROC = 'built in func rdbms_proc'
+            BUILT_IN_FUNC_REGEX_MATCH = 'built in func regex_match'
             BUILT_IN_FUNC_REMOVE = 'remove'
+            BUILT_IN_FUNC_SECOND = 'built in func second'
+            BUILT_IN_FUNC_SET_SUSPECT_PRICE_FIELD = ' built in func set_suspect_price_field'
             BUILT_IN_FUNC_SQL = 'sql'
             BUILT_IN_FUNC_SORT = 'sort'
+            BUILT_IN_FUNC_SPLIT ='built in func split'
             BUILT_IN_FUNC_STATUS = 'status'
             BUILT_IN_FUNC_STR = 'str'
             BUILT_IN_FUNC_STRING = 'built in func string'
+            BUILT_IN_FUNC_STRIP = 'built in func strip'
+            BUILT_IN_FUNC_STRVAL = 'built in func strval'
             BUILT_IN_FUNC_TIME = 'built in func time'
+            BUILT_IN_FUNC_TOUPPER = 'built in func toupper'
             BUILT_IN_FUNC_TS = 'built in func ts'
             BUILT_IN_FUNC_TS_UPDATE = 'built in func ts_update'
+            BUILT_IN_FUNC_YEAR_FRACTION = 'built in func year_fraction'
 
             DOUBLE_QUOTED_STRING_LITERAL = 'double quoted string literal'
             SINGLE_QUOTED_STRING_LITERAL = 'single quoted string literal'
@@ -228,13 +256,23 @@ private CustomFunctionName ::= IDENTIFIER
 private FunctionName ::= BuiltInFunctionName | CustomFunctionName
 private MethodReference ::= FunctionName // just for sake of better naming
 
-BuiltInFunctionName ::= BUILT_IN_FUNC_ATTRIBUTE
-    | BUILT_IN_FUNC_DATE | BUILT_IN_FUNC_DATETIME | BUILT_IN_FUNC_DICT | BUILT_IN_FUNC_STR | BUILT_IN_FUNC_FLOAT | BUILT_IN_FUNC_INTEGER | BUILT_IN_FUNC_LIST | BUILT_IN_FUNC_STRING
+BuiltInFunctionName ::= BUILT_IN_FUNC_ADO_BROWSE
+    | BUILT_IN_FUNC_ATTRIBUTE
+    | BUILT_IN_FUNC_BSEARCH
+    | BUILT_IN_FUNC_CORRECT_PRICE_FIELD
+    | BUILT_IN_FUNC_DATE | BUILT_IN_FUNC_DATETIME
+    | BUILT_IN_FUNC_DICT | BUILT_IN_FUNC_DICT_GET | BUILT_IN_FUNC_DICT_ISKEY
+    | BUILT_IN_FUNC_DICT_KEYS | BUILT_IN_FUNC_DICT_PUT | BUILT_IN_FUNC_DICT_VALUES
+    | BUILT_IN_FUNC_STR | BUILT_IN_FUNC_FLOAT | BUILT_IN_FUNC_INTEGER | BUILT_IN_FUNC_LIST | BUILT_IN_FUNC_STRING
     | BUILT_IN_FUNC_DAYDIFF | BUILT_IN_FUNC_DAYPLUS
     | BUILT_IN_FUNC_ELT
+    | BUILT_IN_FUNC_EVALUATE
     | BUILT_IN_FUNC_FIRST
-    | BUILT_IN_FUNC_HASH_GET | BUILT_IN_FUNC_HASH_PUT | BUILT_IN_FUNC_HASH_ISKEY | BUILT_IN_FUNC_HASH_KEYS
-    | BUILT_IN_FUNC_IS_LIST | BUILT_IN_FUNC_IS_NA | BUILT_IN_FUNC_IS_STRING
+    | BUILT_IN_FUNC_HASH_GET | BUILT_IN_FUNC_HASH_GLOBAL | BUILT_IN_FUNC_HASH_PUT | BUILT_IN_FUNC_HASH_ISKEY | BUILT_IN_FUNC_HASH_KEYS
+    | BUILT_IN_FUNC_INSERT
+    | BUILT_IN_FUNC_IS_DATE | BUILT_IN_FUNC_IS_DATETIME | BUILT_IN_FUNC_IS_FLOAT | BUILT_IN_FUNC_IS_INTEGER | BUILT_IN_FUNC_IS_LIST
+    | BUILT_IN_FUNC_IS_MATRIX | BUILT_IN_FUNC_IS_NA | BUILT_IN_FUNC_IS_NUMBER | BUILT_IN_FUNC_IS_OPAQUE | BUILT_IN_FUNC_IS_STRING
+    | BUILT_IN_FUNC_IS_TIME
     | BUILT_IN_FUNC_KERNEL
     | BUILT_IN_FUNC_LAST
     | BUILT_IN_FUNC_LEN
@@ -244,13 +282,22 @@ BuiltInFunctionName ::= BUILT_IN_FUNC_ATTRIBUTE
     | BUILT_IN_FUNC_MAP
     | BUILT_IN_FUNC_MAX
     | BUILT_IN_FUNC_OUT
+    | BUILT_IN_FUNC_RDBMS_PROC
+    | BUILT_IN_FUNC_REGEX_MATCH
     | BUILT_IN_FUNC_REMOVE
+    | BUILT_IN_FUNC_SECOND
+    | BUILT_IN_FUNC_SET_SUSPECT_PRICE_FIELD
     | BUILT_IN_FUNC_SQL
     | BUILT_IN_FUNC_SORT
+    | BUILT_IN_FUNC_SPLIT
     | BUILT_IN_FUNC_STATUS
+    | BUILT_IN_FUNC_STRIP
+    | BUILT_IN_FUNC_STRVAL
     | BUILT_IN_FUNC_TIME
+    | BUILT_IN_FUNC_TOUPPER
     | BUILT_IN_FUNC_TS
     | BUILT_IN_FUNC_TS_UPDATE
+    | BUILT_IN_FUNC_YEAR_FRACTION
 FunctionBody ::= Statement*
 private RegularStatementWithoutSemicolon ::= Assignment | Declaration | Expression | ReturnStatement | Seq | KEYWORD_BREAK | KEYWORD_CONTINUE {
     recoverWhile = RecoverUntilSemicolon

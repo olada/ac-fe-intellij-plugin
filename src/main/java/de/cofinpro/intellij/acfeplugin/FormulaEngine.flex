@@ -54,23 +54,42 @@ DIGIT = [0-9]
 // Deshalb wurde der State "IN_PARENTHESIS" eingeführt, damit das nur auf "innerhalb von '(' und ')' beschränkt werden kann.
 <IN_PARENTHESIS> {
     // Built-in Functions (use parenthesis for matching but don't include the parenthesis in the token)
+   "ado_browse" { return FormulaEngineElementTypes.BUILT_IN_FUNC_ADO_BROWSE; }
    "attribute" { return FormulaEngineElementTypes.BUILT_IN_FUNC_ATTRIBUTE; }
+   "bsearch" { return FormulaEngineElementTypes.BUILT_IN_FUNC_BSEARCH; }
+   "correct_price_field" { return FormulaEngineElementTypes.BUILT_IN_FUNC_CORRECT_PRICE_FIELD; }
    "date" { return FormulaEngineElementTypes.BUILT_IN_FUNC_DATE; }
    "datetime" { return FormulaEngineElementTypes.BUILT_IN_FUNC_DATETIME; }
    "daydiff" { return FormulaEngineElementTypes.BUILT_IN_FUNC_DAYDIFF; }
    "dayplus" { return FormulaEngineElementTypes.BUILT_IN_FUNC_DAYPLUS; }
    "dict" { return FormulaEngineElementTypes.BUILT_IN_FUNC_DICT; }
+   "dict_get" { return FormulaEngineElementTypes.BUILT_IN_FUNC_DICT_GET; }
+   "dict_iskey" { return FormulaEngineElementTypes.BUILT_IN_FUNC_DICT_ISKEY; }
+   "dict_keys" { return FormulaEngineElementTypes.BUILT_IN_FUNC_DICT_KEYS; }
+   "dict_put" { return FormulaEngineElementTypes.BUILT_IN_FUNC_DICT_PUT; }
+   "dict_values" { return FormulaEngineElementTypes.BUILT_IN_FUNC_DICT_VALUES; }
    "elt" { return FormulaEngineElementTypes.BUILT_IN_FUNC_ELT; }
+   "evaluate" { return FormulaEngineElementTypes.BUILT_IN_FUNC_EVALUATE; }
    "first" { return FormulaEngineElementTypes.BUILT_IN_FUNC_FIRST; }
    "float" { return FormulaEngineElementTypes.BUILT_IN_FUNC_FLOAT; }
-   "integer" { return FormulaEngineElementTypes.BUILT_IN_FUNC_INTEGER; }
    "hash_get" { return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_GET; }
+   "hash_global" { return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_GLOBAL; }
    "hash_iskey" { return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_ISKEY; }
    "hash_keys" { return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_KEYS; }
    "hash_put" { return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_PUT; }
+   "insert" { return FormulaEngineElementTypes.BUILT_IN_FUNC_INSERT; }
+   "integer" { return FormulaEngineElementTypes.BUILT_IN_FUNC_INTEGER; }
+   "is_date" { return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_DATE; }
+   "is_datetime" { return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_DATETIME; }
+   "is_float" { return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_FLOAT; }
+   "is_integer" { return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_INTEGER; }
    "is_list" { return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_LIST; }
+   "is_matrix" { return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_MATRIX; }
    "is_na" { return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_NA; }
+   "is_number" { return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_NUMBER; }
+   "is_opaque" { return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_OPAQUE; }
    "is_string" { return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_STRING; }
+   "is_time" { return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_TIME; }
    "kernel" { return FormulaEngineElementTypes.BUILT_IN_FUNC_KERNEL; }
    "last" { return FormulaEngineElementTypes.BUILT_IN_FUNC_LAST; }
    "len" { return FormulaEngineElementTypes.BUILT_IN_FUNC_LEN; }
@@ -81,15 +100,24 @@ DIGIT = [0-9]
    "max" { return FormulaEngineElementTypes.BUILT_IN_FUNC_MAX; }
    "out" { return FormulaEngineElementTypes.BUILT_IN_FUNC_OUT; }
    "price_field" { return FormulaEngineElementTypes.BUILT_IN_FUNC_PRICE_FIELD; }
+   "rdbms_proc" { return FormulaEngineElementTypes.BUILT_IN_FUNC_RDBMS_PROC; }
+   "regex_match" { return FormulaEngineElementTypes.BUILT_IN_FUNC_REGEX_MATCH; }
    "remove" { return FormulaEngineElementTypes.BUILT_IN_FUNC_REMOVE; }
+   "second" { return FormulaEngineElementTypes.BUILT_IN_FUNC_SECOND; }
+   "set_suspect_price_field" { return FormulaEngineElementTypes.BUILT_IN_FUNC_SET_SUSPECT_PRICE_FIELD; }
    "sort" { return FormulaEngineElementTypes.BUILT_IN_FUNC_SORT; }
+   "split" { return FormulaEngineElementTypes.BUILT_IN_FUNC_SPLIT;}
    "sql" { return FormulaEngineElementTypes.BUILT_IN_FUNC_SQL; }
    "status" { return FormulaEngineElementTypes.BUILT_IN_FUNC_STATUS; }
    "str" { return FormulaEngineElementTypes.BUILT_IN_FUNC_STR; }
    "string" { return FormulaEngineElementTypes.BUILT_IN_FUNC_STRING; }
+   "strip" { return FormulaEngineElementTypes.BUILT_IN_FUNC_STRIP; }
+   "strval" { return FormulaEngineElementTypes.BUILT_IN_FUNC_STRVAL; }
    "time" { return FormulaEngineElementTypes.BUILT_IN_FUNC_TIME; }
+   "toupper" { return FormulaEngineElementTypes.BUILT_IN_FUNC_TOUPPER; }
    "ts" { return FormulaEngineElementTypes.BUILT_IN_FUNC_TS; }
    "ts_update" { return FormulaEngineElementTypes.BUILT_IN_FUNC_TS_UPDATE; }
+   "year_fraction" { return FormulaEngineElementTypes.BUILT_IN_FUNC_YEAR_FRACTION; }
 }
 
 // Der Function Header soll Datentypen nicht als built-in methode markieren (clash von datentypen und built-in Methodennamen, bspw "string" oder "integer" -> klassische cast funktionen)
@@ -183,23 +211,42 @@ DIGIT = [0-9]
     "\$DEPENDENCIES_TRIGGERS" { return FormulaEngineElementTypes.BUILT_IN_VAR_DEPENDENCIES_TRIGGERS; }
 
     // Built-in Functions (use parenthesis for matching but don't include the parenthesis in the token)
+   "ado_browse(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_ADO_BROWSE; }
    "attribute(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_ATTRIBUTE; }
+   "bsearch(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_BSEARCH; }
+   "correct_price_field(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_CORRECT_PRICE_FIELD; }
    "date(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DATE; }
    "datetime(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DATETIME; }
    "daydiff(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DAYDIFF; }
    "dayplus(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DAYPLUS; }
    "dict(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DICT; }
+   "dict_get(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DICT_GET; }
+   "dict_iskey(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DICT_ISKEY; }
+   "dict_keys(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DICT_KEYS; }
+   "dict_put(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DICT_PUT; }
+   "dict_values(" {yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DICT_VALUES; }
    "elt(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_ELT; }
+   "evaluate(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_EVALUATE; }
    "first(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_FIRST; }
    "float(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_FLOAT; }
-   "integer(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_INTEGER; }
    "hash_get(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_GET; }
+   "hash_global(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_GLOBAL; }
    "hash_iskey(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_ISKEY; }
    "hash_keys(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_KEYS; }
    "hash_put(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_HASH_PUT; }
+   "insert(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_INSERT; }
+   "integer(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_INTEGER; }
+   "is_date(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_DATE; }
+   "is_datetime(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_DATETIME; }
+   "is_float(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_FLOAT; }
+   "is_integer(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_INTEGER; }
    "is_list(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_LIST; }
+   "is_matrix(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_MATRIX; }
    "is_na(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_NA; }
+   "is_number(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_NUMBER; }
+   "is_opaque(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_OPAQUE; }
    "is_string(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_STRING; }
+   "is_time(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_IS_TIME; }
    "kernel(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_KERNEL; }
    "last(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_LAST; }
    "len(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_LEN; }
@@ -210,15 +257,24 @@ DIGIT = [0-9]
    "max(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_MAX; }
    "out(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_OUT; }
    "price_field(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_PRICE_FIELD; }
+   "rdbms_proc(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_RDBMS_PROC; }
+   "regex_match(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_REGEX_MATCH; }
    "remove(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_REMOVE; }
+   "second(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_SECOND; }
+   "set_suspect_price_field(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_SET_SUSPECT_PRICE_FIELD; }
    "sort(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_SORT; }
+   "split(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_SPLIT; }
    "sql(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_SQL; }
    "status(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STATUS; }
    "str(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STR; }
    "string(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STRING; }
+   "strip(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STRIP; }
+   "strval(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_STRVAL; }
    "time(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_TIME; }
+   "toupper(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_TOUPPER; }
    "ts(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_TS; }
    "ts_update(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_TS_UPDATE; }
+   "year_fraction(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_YEAR_FRACTION; }
 
    "," { return FormulaEngineElementTypes.COMMA; }
    ";" { return FormulaEngineElementTypes.SEMICOLON; }

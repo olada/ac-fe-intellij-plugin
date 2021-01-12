@@ -3,7 +3,6 @@ package de.cofinpro.intellij.acfeplugin.highlighting;
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
 
-import static com.intellij.openapi.editor.DefaultLanguageHighlighterColors.FUNCTION_DECLARATION;
 import static com.intellij.openapi.editor.DefaultLanguageHighlighterColors.KEYWORD;
 import static com.intellij.openapi.editor.colors.TextAttributesKey.createTextAttributesKey;
 
@@ -73,23 +72,43 @@ public class FormulaEngineHighlighterColors {
     public static final TextAttributesKey INBUILT_VARIABLE_DEPENDENCIES_TRIGGERS_ATTR_KEY = createTextAttributesKey("FE_INBUILT_VARIABLE_DEPENDENCIES_TRIGGERS", DefaultLanguageHighlighterColors.STATIC_FIELD);
 
     // Built in Functions
+    public static final TextAttributesKey INBUILT_FUNCTION_ADO_BROWSE_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_ADO_BROWSE", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_ATTRIBUTE_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_ATTRIBUTE", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_FUNCTION_BSEARCH_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_BSEARCH", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_FUNCTION_CORRECT_PRICE_FIELD_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_CORRECT_PRICE_FIELD", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_DATE_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_DATE", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_DATETIME_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_DATETIME", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_DAYDIFF_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_DAYDIFF", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_DAYPLUS_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_DAYPLUS", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_DICT_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_DICT", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_FUNCTION_DICT_GET_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_DICT_GET", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_FUNCTION_DICT_ISKEY_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_DICT_ISKEY", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_FUNCTION_DICT_KEYS_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_DICT_KEYS", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_FUNCTION_DICT_PUT_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_DICT_PUT", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_FUNCTION_DICT_VALUES_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_DICT_VALUES", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_ELT_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_ELT", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_FUNCTION_EVALUATE_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_EVALUATE", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_FIRST_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_FIRST", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_FLOAT_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_FLOAT", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_INTEGER_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_INTEGER", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_HASH_GET_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_HASH_GET", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_FUNCTION_HASH_GLOBAL_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_HASH_GLOBAL", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_HASH_ISKEY_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_HASH_ISKEY", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_HASH_KEYS_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_HASH_KEYS", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_HASH_PUT_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_HASH_PUT", DefaultLanguageHighlighterColors.STATIC_FIELD);
-    public static final TextAttributesKey INBUILT_FUNCTION_IS_NA_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_IS_NA", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_FUNCTION_INSERT_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_INSERT", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_FUNCTION_IS_DATE_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_IS_DATE", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_FUNCTION_IS_DATETIME_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_IS_DATETIME", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_FUNCTION_IS_FLOAT_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_IS_FLOAT", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_FUNCTION_IS_INTEGER_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_IS_INTEGER", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_IS_LIST_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_IS_LIST", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_FUNCTION_IS_MATRIX_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_IS_MATRIX", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_FUNCTION_IS_NA_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_IS_NA", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_FUNCTION_IS_NUMBER_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_IS_NUMBER", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_FUNCTION_IS_OPAQUE_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_IS_OPAQUE", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_IS_STRING_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_IS_STRING", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_FUNCTION_STRVAL_ATTR_KEY = createTextAttributesKey("FE_INBULT_FUNCTION_STRVAK", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_FUNCTION_IS_TIME_ATTR_KEY =createTextAttributesKey("FE_INBUILT_FUNCTION_IS_TIME", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_KERNEL_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_KERNEL", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_LAST_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_LAST", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_LEN_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_LEN", DefaultLanguageHighlighterColors.STATIC_FIELD);
@@ -100,15 +119,23 @@ public class FormulaEngineHighlighterColors {
     public static final TextAttributesKey INBUILT_FUNCTION_MAX_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_MAX", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_OUT_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_OUT", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_PRICE_FIELD_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_PRICE_FIELD", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_FUNCTION_RDBMS_PROC_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_RDBMS_PROC", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_FUNCTION_REGEX_MATCH_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_REGEX_MATCH", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_REMOVE_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_REMOVE", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_FUNCTION_SECOND_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_SECOND", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_FUNCTION_SET_SUSPECT_PRICE_FIELD_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_SET_SUSPECT_PRICE_FIELD", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_SORT_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_SORT", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_FUNCTION_SPLIT_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_SPLIT", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_SQL_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_SQL", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_STATUS_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_STATUS", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_STR_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_STR", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_STRING_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_STRING", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_FUNCTION_STRIP_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_STRIP", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_TIME_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_TIME", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_FUNCTION_TOUPPER_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_TOUPPER", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_TS_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_TS", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey INBUILT_FUNCTION_TS_UPDATE_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_TS_UPDATE", DefaultLanguageHighlighterColors.STATIC_FIELD);
+    public static final TextAttributesKey INBUILT_FUNCTION_YEAR_FRACTION_ATTR_KEY = createTextAttributesKey("FE_INBUILT_FUNCTION_YEAR_FRACTION", DefaultLanguageHighlighterColors.STATIC_FIELD);
 
     // General Tokens
     public static final TextAttributesKey NUMBER_SCIENTIFIC = createTextAttributesKey("FE_NUMBER_SCIENTIFIC", DefaultLanguageHighlighterColors.NUMBER);
