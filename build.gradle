@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'de.cofinpro.intellij'
-version '0.8.2'
+version '0.8.3'
 
 sourceCompatibility = 1.11
 
@@ -24,11 +24,18 @@ test {
 }
 
 intellij {
-    version '2020.3'
+    version '2021.1'
 }
 
 patchPluginXml {
     changeNotes """
+    <p>
+        <h2>Version 0.8.3 (2021-07-27)</h2>
+        <ul>
+            <li>Plugin is now compatible with IntelliJ version 2021.1</li>
+        </ul>
+    </p>
+
     <p>
         <h2>Version 0.8.2 (2020-12-13)</h2>
         <ul>
