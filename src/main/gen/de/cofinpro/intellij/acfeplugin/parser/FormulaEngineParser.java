@@ -151,13 +151,22 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   }
 
   /* ********************************************************** */
-  // BUILT_IN_FUNC_ATTRIBUTE
-  //     | BUILT_IN_FUNC_DATE | BUILT_IN_FUNC_DATETIME | BUILT_IN_FUNC_DICT | BUILT_IN_FUNC_STR | BUILT_IN_FUNC_FLOAT | BUILT_IN_FUNC_INTEGER | BUILT_IN_FUNC_LIST | BUILT_IN_FUNC_STRING
+  // BUILT_IN_FUNC_ADO_BROWSE
+  //     | BUILT_IN_FUNC_ATTRIBUTE
+  //     | BUILT_IN_FUNC_BSEARCH
+  //     | BUILT_IN_FUNC_CORRECT_PRICE_FIELD
+  //     | BUILT_IN_FUNC_DATE | BUILT_IN_FUNC_DATETIME
+  //     | BUILT_IN_FUNC_DICT | BUILT_IN_FUNCTION_DICT_GET | BUILT_IN_FUNC_DICT_ISKEY
+  //     | BUILT_IN_FUNC_DICT_KEYS | BUILT_IN_FUNC_DICT_PUT | BUILT_IN_FUNC_DICT_VALUES
+  //     | BUILT_IN_FUNC_STR | BUILT_IN_FUNC_FLOAT | BUILT_IN_FUNC_INTEGER | BUILT_IN_FUNC_LIST | BUILT_IN_FUNC_STRING
   //     | BUILT_IN_FUNC_DAYDIFF | BUILT_IN_FUNC_DAYPLUS
   //     | BUILT_IN_FUNC_ELT
+  //     | BUILT_IN_FUNC_EVALUATE
   //     | BUILT_IN_FUNC_FIRST
-  //     | BUILT_IN_FUNC_HASH_GET | BUILT_IN_FUNC_HASH_PUT | BUILT_IN_FUNC_HASH_ISKEY | BUILT_IN_FUNC_HASH_KEYS
-  //     | BUILT_IN_FUNC_IS_LIST | BUILT_IN_FUNC_IS_NA | BUILT_IN_FUNC_IS_STRING
+  //     | BUILT_IN_FUNC_HASH_GET | BUILT_IN_FUNC_HASH_GLOBAL | BUILT_IN_FUNC_HASH_PUT | BUILT_IN_FUNC_HASH_ISKEY | BUILT_IN_FUNC_HASH_KEYS
+  //     | BUILT_IN_FUNC_INSERT
+  //     | BUILT_IN_FUNC_IS_DATE | BUILT_IN_FUNCTION_IS_DATETIME | BUILT_IN_FUNCTION_IS_FLOAT | BUILT_IN_FUNC_IS_INTEGER | BUILT_IN_FUNC_IS_LIST
+  //     | BUILT_IN_FUNC_IS_MATRIX | BUILT_IN_FUNC_IS_NA | BUILT_IN_FUNC_IS_NUMBER | BUILT_IN_FUNC_IS_OPAQUE | BUILT_IN_FUNC_IS_STRING
   //     | BUILT_IN_FUNC_KERNEL
   //     | BUILT_IN_FUNC_LAST
   //     | BUILT_IN_FUNC_LEN
@@ -167,23 +176,41 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
   //     | BUILT_IN_FUNC_MAP
   //     | BUILT_IN_FUNC_MAX
   //     | BUILT_IN_FUNC_OUT
+  //     | BUILT_IN_FUNC_RDBMS_PROC
+  //     | BUILT_IN_FUNC_REGEX_MATCH
   //     | BUILT_IN_FUNC_REMOVE
+  //     | BUILT_IN_FUNC_SECOND
+  //     | BUILT_IN_FUNC_SET_SUSPECT_PRICE_FIELD
   //     | BUILT_IN_FUNC_SQL
   //     | BUILT_IN_FUNC_SORT
+  //     | BUILT_IN_FUNC_SPLIT
   //     | BUILT_IN_FUNC_STATUS
+  //     | BUILT_IN_FUNC_STRIP
   //     | BUILT_IN_FUNC_TIME
+  //     | BUILT_IN_FUNCTION_TOUPPER
   //     | BUILT_IN_FUNC_TS
   //     | BUILT_IN_FUNC_TS_UPDATE
+  //     | BUILT_IN_FUNC_YEAR_FRACTION
   public static boolean BuiltInFunctionName(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "BuiltInFunctionName")) return false;
     boolean r;
     Marker m = enter_section_(b, l, _NONE_, BUILT_IN_FUNCTION_NAME, "<built in function name>");
-    r = consumeToken(b, BUILT_IN_FUNC_ATTRIBUTE);
+    r = consumeToken(b, BUILT_IN_FUNC_ADO_BROWSE);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_ATTRIBUTE);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_BSEARCH);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_CORRECT_PRICE_FIELD);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_DATE);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_DATETIME);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_DICT);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_DICT_GET);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_DICT_ISKEY);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_DICT_KEYS);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_DICT_PUT);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_DICT_VALUES);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_EVALUATE);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_STR);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_FLOAT);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_INSERT);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_INTEGER);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_LIST);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_STRING);
@@ -192,12 +219,22 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_ELT);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_FIRST);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_HASH_GET);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_HASH_GLOBAL);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_HASH_PUT);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_HASH_ISKEY);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_HASH_KEYS);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_IS_DATE);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_IS_DATETIME);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_IS_FLOAT);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_IS_INTEGER);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_IS_LIST);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_IS_MATRIX);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_IS_NA);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_IS_NUMBER);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_IS_OPAQUE);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_IS_STRING);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_STRVAL);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_IS_TIME);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_KERNEL);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_LAST);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_LEN);
@@ -207,13 +244,21 @@ public class FormulaEngineParser implements PsiParser, LightPsiParser {
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_MAP);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_MAX);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_OUT);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_RDBMS_PROC);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_REGEX_MATCH);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_REMOVE);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_SECOND);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_SET_SUSPECT_PRICE_FIELD);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_SQL);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_SORT);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_SPLIT);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_STATUS);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_STRIP);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_TIME);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_TOUPPER);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_TS);
     if (!r) r = consumeToken(b, BUILT_IN_FUNC_TS_UPDATE);
+    if (!r) r = consumeToken(b, BUILT_IN_FUNC_YEAR_FRACTION);
     exit_section_(b, l, m, r, false, null);
     return r;
   }
