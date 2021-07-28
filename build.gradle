@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'de.cofinpro.intellij'
-version '0.8.3'
+version '0.9.0'
 
 sourceCompatibility = 1.11
 
@@ -24,18 +24,21 @@ test {
 }
 
 intellij {
-    version '2021.1'
+    version '2021.2'
 }
 
 patchPluginXml {
     changeNotes """
     <p>
-        <h2>Version 0.8.3 (2021-07-27)</h2>
+        <h2>Version 0.9.0 (2021-07-28)</h2>
         <ul>
-            <li>Plugin is now compatible with IntelliJ version 2021.1</li>
+            <li>Plugin is now compatible with IntelliJ version 2021.2</li>
+            <li>Syntax highlighting for following SDK methods: bsearch, correct_price_field, set_suspect_price_field, regex_match,
+                is_time, is_number, is_opaque, is_datetime, is_date, is_matrix, is_float, is_integer, strval, toupper, split,
+                evaluate, hash_global, year_fraction, dict_values, dict_put, dict_keys, dict_iskey, dict_get, insert, ado_browse,
+                rdbms_proc, second, strip</li>
         </ul>
     </p>
-
     <p>
         <h2>Version 0.8.2 (2020-12-13)</h2>
         <ul>
@@ -132,5 +135,5 @@ patchPluginXml {
     version = project.version
 
     sinceBuild '193.6494'
-    untilBuild '203.*'
+    untilBuild '212.*'
 }
