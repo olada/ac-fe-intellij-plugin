@@ -16,10 +16,12 @@ public class FormulaEngineComparisonExpressionImpl extends FormulaEngineExpressi
     super(node);
   }
 
+  @Override
   public void accept(@NotNull FormulaEngineVisitor visitor) {
     visitor.visitComparisonExpression(this);
   }
 
+  @Override
   public void accept(@NotNull PsiElementVisitor visitor) {
     if (visitor instanceof FormulaEngineVisitor) accept((FormulaEngineVisitor)visitor);
     else super.accept(visitor);

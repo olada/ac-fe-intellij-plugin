@@ -39,6 +39,7 @@ DIGIT = [0-9]
 
 %state IN_PARENTHESIS
 %state IN_FUNCTION_HEADER
+%state AS_VARIABLE_NAME
 
 %{
   private final FormulaEngineLexerStateTracker stateTracker = new FormulaEngineLexerStateTracker(this);
@@ -57,6 +58,7 @@ DIGIT = [0-9]
    "ado_browse" { return FormulaEngineElementTypes.BUILT_IN_FUNC_ADO_BROWSE; }
    "attribute" { return FormulaEngineElementTypes.BUILT_IN_FUNC_ATTRIBUTE; }
    "bsearch" { return FormulaEngineElementTypes.BUILT_IN_FUNC_BSEARCH; }
+   "bool" { return FormulaEngineElementTypes.BUILT_IN_FUNC_BOOL; }
    "correct_price_field" { return FormulaEngineElementTypes.BUILT_IN_FUNC_CORRECT_PRICE_FIELD; }
    "date" { return FormulaEngineElementTypes.BUILT_IN_FUNC_DATE; }
    "datetime" { return FormulaEngineElementTypes.BUILT_IN_FUNC_DATETIME; }
@@ -163,7 +165,7 @@ DIGIT = [0-9]
 
     // Data Types
     "any" { return FormulaEngineElementTypes.KEYWORD_ANY; }
-    "boolean" { return FormulaEngineElementTypes.KEYWORD_BOOLEAN; }
+    "bool" { return FormulaEngineElementTypes.KEYWORD_BOOLEAN; }
     "date" { return FormulaEngineElementTypes.KEYWORD_DATE; }
     "datetime" { return FormulaEngineElementTypes.KEYWORD_DATETIME; }
     "dict" { return FormulaEngineElementTypes.KEYWORD_DICT; }
@@ -214,6 +216,7 @@ DIGIT = [0-9]
    "ado_browse(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_ADO_BROWSE; }
    "attribute(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_ATTRIBUTE; }
    "bsearch(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_BSEARCH; }
+   "bool(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_BOOL; }
    "correct_price_field(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_CORRECT_PRICE_FIELD; }
    "date(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DATE; }
    "datetime(" { yypushback(1); return FormulaEngineElementTypes.BUILT_IN_FUNC_DATETIME; }

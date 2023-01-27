@@ -16,7 +16,7 @@ import com.intellij.psi.tree.IElementType;
 
 public class FormulaEngineDeclarationImpl extends StubBasedPsiElementBase<DeclarationStub> implements FormulaEngineDeclaration {
 
-  public FormulaEngineDeclarationImpl(@NotNull DeclarationStub stub, @NotNull IStubElementType type) {
+  public FormulaEngineDeclarationImpl(@NotNull DeclarationStub stub, @NotNull IStubElementType<?, ?> type) {
     super(stub, type);
   }
 
@@ -32,6 +32,7 @@ public class FormulaEngineDeclarationImpl extends StubBasedPsiElementBase<Declar
     visitor.visitDeclaration(this);
   }
 
+  @Override
   public void accept(@NotNull PsiElementVisitor visitor) {
     if (visitor instanceof FormulaEngineVisitor) accept((FormulaEngineVisitor)visitor);
     else super.accept(visitor);

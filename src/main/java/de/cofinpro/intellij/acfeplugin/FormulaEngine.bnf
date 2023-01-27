@@ -63,7 +63,7 @@
             KEYWORD_WHILE = 'while'
 
             KEYWORD_ANY = 'any'
-            KEYWORD_BOOLEAN = 'boolean'
+            KEYWORD_BOOLEAN = 'bool'
             KEYWORD_DATE = 'date'
             KEYWORD_DATETIME = 'datetime'
             KEYWORD_DICT = 'dict'
@@ -98,6 +98,7 @@
             BUILT_IN_FUNC_ADO_BROWSR = 'built in func ado_browse'
             BUILT_IN_FUNC_ATTRIBUTE = 'attribute'
             BUILT_IN_FUNC_BSEARCH = 'built in func bsearch'
+            BUILT_IN_FUNC_BOOL = 'built in func bool'
             BUILT_IN_FUNC_CORRECT_PRIZE_FIELD = 'built in func correct_price_field'
             BUILT_IN_FUNC_DATE = 'date'
             BUILT_IN_FUNC_DATETIME = 'datetime'
@@ -263,7 +264,7 @@ BuiltInFunctionName ::= BUILT_IN_FUNC_ADO_BROWSE
     | BUILT_IN_FUNC_DATE | BUILT_IN_FUNC_DATETIME
     | BUILT_IN_FUNC_DICT | BUILT_IN_FUNC_DICT_GET | BUILT_IN_FUNC_DICT_ISKEY
     | BUILT_IN_FUNC_DICT_KEYS | BUILT_IN_FUNC_DICT_PUT | BUILT_IN_FUNC_DICT_VALUES
-    | BUILT_IN_FUNC_STR | BUILT_IN_FUNC_FLOAT | BUILT_IN_FUNC_INTEGER | BUILT_IN_FUNC_LIST | BUILT_IN_FUNC_STRING
+    | BUILT_IN_FUNC_STR | BUILT_IN_FUNC_FLOAT | BUILT_IN_FUNC_INTEGER | BUILT_IN_FUNC_LIST | BUILT_IN_FUNC_STRING | BUILT_IN_FUNC_BOOL
     | BUILT_IN_FUNC_DAYDIFF | BUILT_IN_FUNC_DAYPLUS
     | BUILT_IN_FUNC_ELT
     | BUILT_IN_FUNC_EVALUATE

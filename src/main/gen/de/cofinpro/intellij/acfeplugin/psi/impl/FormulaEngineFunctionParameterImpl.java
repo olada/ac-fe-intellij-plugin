@@ -21,6 +21,7 @@ public class FormulaEngineFunctionParameterImpl extends ASTWrapperPsiElement imp
     visitor.visitFunctionParameter(this);
   }
 
+  @Override
   public void accept(@NotNull PsiElementVisitor visitor) {
     if (visitor instanceof FormulaEngineVisitor) accept((FormulaEngineVisitor)visitor);
     else super.accept(visitor);

@@ -21,6 +21,7 @@ public class FormulaEngineTypeImpl extends ASTWrapperPsiElement implements Formu
     visitor.visitType(this);
   }
 
+  @Override
   public void accept(@NotNull PsiElementVisitor visitor) {
     if (visitor instanceof FormulaEngineVisitor) accept((FormulaEngineVisitor)visitor);
     else super.accept(visitor);
