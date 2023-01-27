@@ -21,6 +21,7 @@ public abstract class FormulaEngineExpressionImpl extends ASTWrapperPsiElement i
     visitor.visitExpression(this);
   }
 
+  @Override
   public void accept(@NotNull PsiElementVisitor visitor) {
     if (visitor instanceof FormulaEngineVisitor) accept((FormulaEngineVisitor)visitor);
     else super.accept(visitor);

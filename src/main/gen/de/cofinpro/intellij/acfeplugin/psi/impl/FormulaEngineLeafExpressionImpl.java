@@ -17,10 +17,12 @@ public class FormulaEngineLeafExpressionImpl extends FormulaEngineExpressionImpl
     super(node);
   }
 
+  @Override
   public void accept(@NotNull FormulaEngineVisitor visitor) {
     visitor.visitLeafExpression(this);
   }
 
+  @Override
   public void accept(@NotNull PsiElementVisitor visitor) {
     if (visitor instanceof FormulaEngineVisitor) accept((FormulaEngineVisitor)visitor);
     else super.accept(visitor);

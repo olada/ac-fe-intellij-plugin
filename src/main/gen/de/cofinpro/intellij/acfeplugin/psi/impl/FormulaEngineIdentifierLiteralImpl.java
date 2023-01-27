@@ -22,6 +22,7 @@ public class FormulaEngineIdentifierLiteralImpl extends ASTWrapperPsiElement imp
     visitor.visitIdentifierLiteral(this);
   }
 
+  @Override
   public void accept(@NotNull PsiElementVisitor visitor) {
     if (visitor instanceof FormulaEngineVisitor) accept((FormulaEngineVisitor)visitor);
     else super.accept(visitor);
